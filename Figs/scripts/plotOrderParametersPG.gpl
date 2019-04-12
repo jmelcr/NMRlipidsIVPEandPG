@@ -1,5 +1,5 @@
 set term pdfcairo enhanced rounded color dashed dashlength 1 size 10cm, 21cm #16.2cm
-set out "../HGorderparametersPE.pdf"
+set out "../HGorderparametersPG.pdf"
 
 # write name of the blog on the plot:
 # set label 1 right at screen 0.982,0.995 "nmrlipids.blogspot.fi" font ",9" tc rgb "gray"
@@ -36,17 +36,17 @@ horizLines(filename)="< awk '{ if(substr($1,1,1)!~/#/) {print $1-0.46,$2,$3;prin
 # Subjective sweet spots:
 set style rectangle fc rgb "#D6F0FE" fs solid noborder
 set object 1 rectangle \
-         from 0.0,-0.01 to 1.5,-0.05 
+         from 0.0,0.057 to 1.5,0.0059 
 set object 2 rectangle \
-         from 1.5, 0.1 to 2.5, 0.06 
+         from 1.5, 0.053 to 2.5, 0.12 
 set object 3 rectangle \
-         from 2.5, -0.234 to 3.5, -0.173
+         from 2.5, -0.21 to 3.5, -0.152
 set object 4 rectangle \
-         from 3.5,-0.218 to 4.5,-0.17
+         from 3.5,-0.14 to 4.5,-0.18
 set object 6 rectangle \
-         from 4.5,-0.11 to 5.5,-0.158
+         from 4.5,-0.09 to 5.5,-0.134
 set object 7 rectangle \
-         from 4.5,-0.02 to 5.5,0.02
+         from 4.5,-0.03 to 5.5,0.02
 
 # Line- and point types for different force fields:
 # GROMOS-family:
@@ -114,22 +114,31 @@ dxL17pJ =  7*d
 # R-PDLF = R-type Proton Detected Local Field
 
 plot [0.5:5.5][0.13:-0.30] \
-     horizLines(' ../../../MATCH/Data/Lipid_Bilayers/POPE/T310K/Headgroup_Glycerol_Order_Parameters_Experiments.dat') \
-         u ($1):(($2)) w l ls 8 lc rgb "#5F5F5F" lw 6.5 t "POPE 310K experiment", \
-     horizLines(' ../../../MATCH/Data/Lipid_Bilayers/POPE/T310K/Headgroup_Glycerol_Order_Parameters_Experiments.dat') \
+     horizLines(' ../../../MATCH/Data/Lipid_Bilayers/POPG/T298K/Headgroup_Glycerol_Order_Parameters_Experiments2.dat') \
+         u ($1):(($2)) w l ls 8 lc rgb "#5F5F5F" lw 6.5 t "POPG 298K ^{13}C experiment", \
+     horizLines(' ../../../MATCH/Data/Lipid_Bilayers/POPG/T298K/Headgroup_Glycerol_Order_Parameters_Experiments2.dat') \
          u ($1):(($3)) w l ls 8 lc rgb "#5F5F5F" lw 6.5, \
-     "../../../MATCH/Data/Lipid_Bilayers/POPE/T310K/Slipids/OrdParsPOPEplot.dat" \
-         u ($1):($2)  lt Slipid pt 6 ps r t 'POPE 310K SLIPIDS', \
-     horizLines(' ../../../MATCH/Data/Lipid_Bilayers/DPPE/T341K/Headgroup_Glycerol_Order_Parameters_Experiments.dat') \
-         u ($1):($2*0.00784) w l ls 4 lc 16 lw 3 t "DPPE 341K experiment", \
-     horizLines(' ../../../MATCH/Data/Lipid_Bilayers/DPPE/T341K/Headgroup_Glycerol_Order_Parameters_Experiments.dat') \
+     horizLines(' ../../../MATCH/Data/Lipid_Bilayers/POPG/T298K/Headgroup_Glycerol_Order_Parameters_Experiments.dat') \
+         u ($1):($2*0.00784) w l ls 4 lc 16 lw 3 t "POPG 298K ^{2}H experiment", \
+     horizLines(' ../../../MATCH/Data/Lipid_Bilayers/POPG/T298K/Headgroup_Glycerol_Order_Parameters_Experiments.dat') \
          u ($1):($3*0.00784) w l ls 4 lc 16 lw 3 , \
-     horizLines(' ../../../MATCH/Data/Lipid_Bilayers/E.coliPE/T310K/Headgroup_Glycerol_Order_Parameters_Experiments.dat') \
-         u ($1):($2*0.00784) w l ls 4 lc rgb "#5F5F5F" lw 3 t "E. Coli PE 310K experiment", \
-     horizLines(' ../../../MATCH/Data/Lipid_Bilayers/E.coliPE/T310K/Headgroup_Glycerol_Order_Parameters_Experiments.dat') \
-         u ($1):($3*0.00784) w l ls 4 lc rgb "#5F5F5F" lw 3 , \
-     "../../../MATCH/Data/Lipid_Bilayers/DPPE/T336K/MODEL_SLIPIDS/Headgroup_Glycerol_Order_Parameters_Simulations.dat" \
-         u ($1):($2)  lt Slipid pt 12 ps r t 'DPPE 336K SLIPIDS', \
+     "../../../MATCH/Data/Lipid_Bilayers/POPG/T298K/MODEL_SLIPIDS/Headgroup_Glycerol_Order_Parameters_Simulation.dat" \
+     u ($1):($2) lt Slipid pt 6 ps r t 'POPG T298K SLIPIDS', \
+     "../../../MATCH/Data/Lipid_Bilayers/POPG/T298K/MODEL_CHARMM_GUI/Headgroup_Glycerol_Order_Parameters_Simulation.dat" \
+     u ($1):($2) lt CHARMM pt 6 ps r t 'POPG T298K CHARMM36',\
+     horizLines(' ../../../MATCH/Data/Lipid_Bilayers/DPPG/T314K/Headgroup_Glycerol_Order_Parameters_Experiments.dat') \
+         u ($1):($2*0.00784) w l ls 4 dt 2 lc rgb "#5F5F5F" lw 3 t "DPPG 314K experiment", \
+     horizLines(' ../../../MATCH/Data/Lipid_Bilayers/DPPG/T314K/Headgroup_Glycerol_Order_Parameters_Experiments.dat') \
+         u ($1):($3*0.00784) w l ls 4 dt 2 lc rgb "#5F5F5F" lw 3 , \
+     "../../../MATCH/Data/Lipid_Bilayers/DPPG/T298K/MODEL_SLIPIDS/Headgroup_Glycerol_Order_Parameters_Simulation.dat" \
+     u ($1):($2) lt Slipid pt 12 ps r t 'DPPG T298K SLIPIDS', \
+     "../../../MATCH/Data/Lipid_Bilayers/DPPG/T314K/MODEL_SLIPIDS/Headgroup_Glycerol_Order_Parameters_Simulation.dat" \
+     u ($1):($2) lt Slipid pt 8 ps r t 'DPPG T314K SLIPIDS', \
+     horizLines(' ../../../MATCH/Data/Lipid_Bilayers/E.coliPG/T310K/Headgroup_Glycerol_Order_Parameters_Experiments.dat') \
+         u ($1):($2*0.00784) w l ls 4 lt 0 lc rgb "#5F5F5F" lw 3 t "E. Coli PG 310K experiment", \
+     horizLines(' ../../../MATCH/Data/Lipid_Bilayers/E.coliPG/T310K/Headgroup_Glycerol_Order_Parameters_Experiments.dat') \
+         u ($1):($3*0.00784) w l ls 4 lt 0 lc rgb "#5F5F5F" lw 3 , \
+
 
 
 
