@@ -1,10 +1,12 @@
-# Taken from Fig. 5 in Scherer and Seelig in
-# The EMBO Journal vol.6 no.10 pp.2915-2922, 1987
+# POPC alpha(1) taken from Fig. 5 in Scherer and Seelig EMBO Journal vol.6 no.10 pp.2915-2922, 1987
 #
-0  5.96694214876
-0.0495726495726  6.56812884086
-0.107692307692  7.26954863318
-0.210256410256  8.24920534011
-0.34188034188  9.13329095147
-0.504273504274  9.52532316169
-
+# POPC alpha(2) taken from Fig. 4 in Macdonald and Seelig Biochemistry 26 (1987) p. 1231-1240
+#
+# POPG mol frac      POPC alpha(1)     POPC alpha(2)
+0                    5.96694214876      6.5
+0.0495726495726      6.56812884086      -
+0.107692307692       7.26954863318      -
+0.20                 8.24920534011      8.9
+0.34188034188        9.13329095147      -
+0.50                 9.52532316169      10.3
+0.8                     -               10.8

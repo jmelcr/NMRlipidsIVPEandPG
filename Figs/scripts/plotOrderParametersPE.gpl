@@ -119,7 +119,11 @@ plot [0.5:5.5][0.13:-0.30] \
      horizLines(' ../../../MATCH/Data/Lipid_Bilayers/POPE/T310K/Headgroup_Glycerol_Order_Parameters_Experiments.dat') \
          u ($1):(($3)) w l ls 8 lc rgb "#5F5F5F" lw 6.5, \
      "../../../MATCH/Data/Lipid_Bilayers/POPE/T310K/Slipids/OrdParsPOPEplot.dat" \
-         u ($1):($2)  lt Slipid pt 6 ps r t 'POPE 310K SLIPIDS', \
+         u ($1):($2)  lt Slipid pt 7 ps r t 'POPE 310K SLIPIDS', \
+     "../../../MATCH/Data/Lipid_Bilayers/POPE/T310K/CHARMM36/Headgroup_Glycerol_Order_Parameters_Simulation.dat" \
+         u ($1):($2)  lt CHARMM pt 7 ps r t 'POPE 310K CHARMM36',\
+     "../../../MATCH/Data/Lipid_Bilayers/POPE+150mNaCl/T310K/MODEL_CHARMM36_500lipids/Headgroup_Glycerol_Order_Parameters_Simulation.dat" \
+         u ($1):($2)  lt CHARMM pt 6 ps r t 'POPE (150 mM Na^+) 310K CHARMM36',\
      horizLines(' ../../../MATCH/Data/Lipid_Bilayers/DPPE/T341K/Headgroup_Glycerol_Order_Parameters_Experiments.dat') \
          u ($1):($2*0.00784) w l ls 4 lc 16 lw 3 t "DPPE 341K experiment", \
      horizLines(' ../../../MATCH/Data/Lipid_Bilayers/DPPE/T341K/Headgroup_Glycerol_Order_Parameters_Experiments.dat') \

@@ -188,6 +188,7 @@ of the Gromacs sofware package \cite{gromacsMANUAL}.
       \hline
       POPE  & GROMOS 43A1-S3 \cite{??}     & 128	& ?     & 313  & 2$\times$200 & 2$\times$100 & \cite{gromos43a1s3POPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
       POPE  & CHARMM36ua \cite{??}         & 336	& ?     & 310  & 2$\times$200 & 2$\times$100 & \cite{charmm36uaPOPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
+      POPE  & CHARMM36 \cite{??}           & 144	& 5760  & 310  & 500          & 400          & \cite{charmm36POPEfiles} \\
       POPE  & Slipids \cite{jambeck12b,??} & 336	& ?     & 310  & 2$\times$200 &  2$\times$100 & \cite{slipidsPOPEfiles}  \\
       POPE  & OPLS-UA vdW on H \cite{??}   & 128	& ?     & 303  & 2$\times$200 & 2$\times$100 & \cite{OPLSuaWvdWPOPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
       POPE  & OPLS-UA \cite{??}            & 128	& ?     & 303  & 2$\times$200 & 2$\times$100 & \cite{OPLSuaPOPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
@@ -221,8 +222,10 @@ of the Gromacs sofware package \cite{gromacsMANUAL}.
     \begin{tabular}{l c c r r r r r r c c}
       %\hline
       % some footnotes are not visible in typeset-MS (pdf)
-      lipid/counter-ions & force field for lipids / ions & NaCl (mM) & CaCl$_2$\,(M) &  \footnote{Number of lipid molecules with largest mole fraction}N$_{\rm l}$   &  \footnote{Number of water molecules}N$_{\rm w}$   & \footnote{Number of additional cations}N$_{\rm c}$  & \footnote{Simulation temperature}T (K)  & \footnote{Total simulation time}t$_{{\rm sim}}$(ns) & \footnote{Time used for analysis}t$_{{\rm anal}}$ (ns) &   \footnote{Reference for simulation files}files\\
+      lipid/counter-ions & force field for lipids / ions & NaCl (M) & CaCl$_2$\,(M) &  \footnote{Number of lipid molecules with largest mole fraction}N$_{\rm l}$   &  \footnote{Number of water molecules}N$_{\rm w}$   & \footnote{Number of additional cations}N$_{\rm c}$  & \footnote{Simulation temperature}T (K)  & \footnote{Total simulation time}t$_{{\rm sim}}$(ns) & \footnote{Time used for analysis}t$_{{\rm anal}}$ (ns) &   \footnote{Reference for simulation files}files\\
       \hline
+      POPC                   & CHARMM36 \cite{??}        & 0.11      & 0  & 500     & 25000 & 48  &  310  & 500 & 100 & \cite{POPCcharmm150mMNaCl301K}  \\
+      POPC:POPG (7:3)        & CHARMM36 \cite{??}        & 0.11      & 0  & 350     & ?     & ?   &  310  & 500 & 100 & \cite{POPC7POPG1charmm36NaCl}  \\
       POPC:POPG (1:1)/K$^+$  & CHARMM36 \cite{??}        &0          & 0      & ? & ? & ?  &  ?  & ? & ? & \cite{??} \todoi{Data to be uploaded by J. Madsen. Details to be filled once we have the data}  \\
       POPC:POPG (1:1)/K$^+$  & CHARMM36 \cite{??}        &0          & 0.15 \todoi{Concentration to be checked.}  & ? & ? & ?  &  ?  & ? & ? & \cite{??} \todoi{Data to be uploaded by J. Madsen. Details to be filled once we have the data}  \\
       POPC:POPG (1:1)/K$^+$  & CHARMM36 \cite{??}        &0          & 1.0  \todoi{Concentration to be checked.}  & ? & ? & ?  &  ?  & ? & ? & \cite{??} \todoi{Data to be uploaded by J. Madsen. Details to be filled once we have the data}  \\
@@ -233,11 +236,21 @@ of the Gromacs sofware package \cite{gromacsMANUAL}.
       POPC             & CHARMM36 \cite{??}        &0          & 0  & 256 & 8704 & 0  &  300  & 300 & 250 & \cite{POPCcharmm300K} \\
       POPC:POPE (1:1)  & CHARMM36 \cite{??}        &0          & 0  & 128 & 8704 & 0  &  300  & 300 & 250 & \cite{POPC1POPE1charmm36} \\
      \hline
+      POPC                   & Slipid \cite{??}        & 0.11      & 0  & 500     & 25000 & 48  &  310  & 500 & 100 & \cite{POPCslipid150mMNaCl301K}  \\
+      POPC:POPG (7:3)        & Slipid \cite{??}        & ?         & 0  & ?     & ?     & ?   &  310  & 500 & 100 & \cite{??} \todoi{Zenodo entry unclear.}  \\
+     \hline
       POPC             & Berger \cite{??} \todoi{This is probable not plain berger, correct force filed should be described.}  &0  & 0  & 256 & 10240 & 0  &  300  & 300 & 200 & \cite{POPCberger300K} \\
       POPC:POPE (1:1)  & Berger \cite{??}  \todoi{This is probable not plain berger, correct force filed should be described.} &0          & 0  & 128 & 11008 & 0  &  300  & 300 & 200 & \cite{POPC1POPE1berger} \\
       POPC:DOPE (1:1)  & Berger \cite{??}  \todoi{This is probable not plain berger, correct force filed should be described.}         &0          & 0  & 128 & 10240 & 0  &  300  & 300 & 200 & \cite{POPC1DOPE1berger} \\
+     \hline
       DOPC             & Berger \cite{??}  \todoi{This is probable not plain berger, correct force filed should be described.}         &0          & 0  & 256 & 11008 & 0  &  300  & 300 & 200 & \cite{DOPCberger300K} \\
       DOPC:DOPE (1:1)  & Berger \cite{??}   \todoi{This is probable not plain berger, correct force filed should be described.}        &0          & 0  & 128 & 11008 & 0  &  300  & 300 & 200 & \cite{DOPC1DOPE1berger} \\
+      \hline
+      POPG             & Slipids \cite{??} \todoi{Ion parameters?}       & 0.11          & 0  & 500 & 25000 & 49  &  310  & 500 & 100 & \cite{POPGslipids150mMNaCl} \\
+      POPG             & CHARMM36 \cite{??}        & 0.11          & 0  & 500 & 25000 & 49  &  310  & 500 & 100 & \cite{POPGcharmm150mMNaCl} \\
+     \hline
+      POPE             & Slipids \cite{??} \todoi{Ion parameters?}        & 0.11          & 0  & 500 & 25000 & 50  &  310  & 500 & 100 & \cite{POPEslipids150mMNaCl} \\
+      POPE             & CHARMM36 \cite{??}        & 0.11          & 0  & 500 & 25000 & 50  &  310  & 500 & 100 & \cite{POPEcharmm150mMNaCl} \\
     \end{tabular}
   \end{minipage}
   %\end{sidewaystable*} 
@@ -293,7 +306,7 @@ relatively similar. Also, the headgroup conformations are similar for PC and PE 
 PS and PG are singnificantly different. For PS lipids, the differences are discussed previously \cite{??}.
 
 \subsection{PE headgroup and glycerol backbone}
-\todo{Add results from this discussion: \url{http://nmrlipids.blogspot.com/2017/03/nmrlipids-iv-headgroup-glycerol.html?showComment=1502290977005#c4964787551006026647}}
+%\todo{Add results from this discussion: \url{http://nmrlipids.blogspot.com/2017/03/nmrlipids-iv-headgroup-glycerol.html?showComment=1502290977005#c4964787551006026647}}
 Order parameters from Slipids simulations 
 and experiments for DPPE are shown in Fig. \ref{HGorderParametersPE}.
 Glycerol backbone order parameters in Slipids are off from experiments,
@@ -318,7 +331,7 @@ would be correct.
     (DPPE from \cite{seelig76} and E.coliPE from \cite{gally81}).
     Absolute values are shown, because signs are not known experimentally.
   }
-  \todo{Experimental signs of the order parameters would be highly useful.} \\
+  \todo{Results from united atom simulations yet to be added} \\
 \end{figure}
 
 \todo{Berger results are not here yet, but we should mention the ring like structures
@@ -346,11 +359,6 @@ not give a very good argeement with the experiments.
     with simulations. This is not reliable and should be corrected when experimental
     data becomes available.
   }
-  \todo{More simulation data for lipids with different headgroups to be collected} \\
-  \todo{CHARMM GUI simulation contains only counter ions as potassium.
-    All experiments here contain some amount of sodium salt. The best
-    ion concentrations for comparison should be figured out.} \\
-  \todo{Experimental signs of the order parameters would highly useful.}
 \end{figure}
 
 \begin{figure}[]
@@ -377,15 +385,15 @@ As shown in Fig. \ref{HGorderparametersPCvsPEPSPGchol}, order parameters of PC
 headgroup behave in various lipid mixtures as expected from the electrometer concept \cite{seelig87, scherer87},
 i.e., order parameters increase when anionic lipids are mixed with PC and decrease with cationic
 surfactants. The changes with the addition of neutral lipids is significantly smaller.
-\begin{figure}[]
-  \centering
-  \includegraphics[width=8.0cm]{../Figs/HGorderparametersPCvsPEPSPGchol.eps}
-  \caption{\label{HGorderparametersPCvsPEPSPGchol}
-    PC headgroup order parameters from experiments of mixtures with
-    PE, PS, PG and cholesterol \cite{scherer87,scherer89,ferreira13}.
-    Signs are determined as discussed in \cite{botan15,ollila16}.
-  }
-\end{figure}
+%\begin{figure}[]
+%  \centering
+%  \includegraphics[width=8.0cm]{../Figs/HGorderparametersPCvsPEPSPGchol.eps}
+%  \caption{\label{HGorderparametersPCvsPEPSPGchol}
+%    PC headgroup order parameters from experiments of mixtures with
+%    PE, PS, PG and cholesterol \cite{scherer87,scherer89,ferreira13}.
+%    Signs are determined as discussed in \cite{botan15,ollila16}.
+%  }
+%\end{figure}
 
 
 The headgroup order parameters for PC lipids (POPC and DOPC)
@@ -420,7 +428,7 @@ consider mentioning this.}
 
 \begin{figure*}[]
   \centering
-  \includegraphics[width=16.0cm]{../Figs/HGorderparametersPCvsPEPSPG.eps}
+  \includegraphics[width=16.0cm]{../Figs/HGorderparametersPCvsPEPG.eps}
   \caption{\label{HGorderparametersPCvsPEPSPG}
     PC headgroup order parameters from mixtures with PE, PS and PG
     lipids with various mole fractions from different simulation models and experiments \cite{scherer87}.
@@ -460,7 +468,16 @@ is in line with the only available experiment for the $\beta$-carbon.
   pure POPS? Discussion in https://github.com/NMRLipids/NMRlipidsIVotherHGs/issues/1}
 \end{figure}
 
+\subsection{Ion binding to PE lipid bilayers}
 
+\begin{figure}[]
+  \centering
+  \includegraphics[width=8.0cm]{../Figs/NAdensPE.eps}
+  \caption{\label{NAdensPE}
+    Sodium (solid line) and choride ion density profiles along membrane normal
+    from different simulations with PE lipids.
+  }
+\end{figure}
 
 \subsection{Ca$^{2+}$ binding in bilayers with negatively charged PG and PS lipids}
 
@@ -542,14 +559,14 @@ POPG. The good agreement of $\alpha$ carbon would be explained by too weak depen
 parameter of bound charge
 \todo{The response of CHARMM36 to cationic surfactant against experiments \cite{scherer89} to be checked.
   I have already ran the simulations, analysis to be done.}.
-\begin{figure}[]
+\begin{figure*}[]
   \centering
-  \includegraphics[width=9.0cm]{../Figs/CHANGESwithCaClPG.eps}
+  \includegraphics[width=18.0cm]{../Figs/CHANGESwithCaClPG.eps}
   \caption{\label{changesWITHCaClPG}
     PG order parameters as a function CaCl$_2$ concentration from experiments \cite{borle85} and CHARMM36 simulations.
     Note that beta order parameter is calculated from empirical relation $\Delta S_{\beta}=0.43\Delta S_{\alpha}$ \cite{akutsu81}, not actually measured. 
   }
-\end{figure}
+\end{figure*}
 
 Also dependence of $\beta$-carbon of PG on CaCl$_2$ concentration is compared with
 experiments \cite{borle85} in Fig. \ref{PSPGchangesWITHCaCl}. Absolute value of
@@ -566,15 +583,15 @@ data is not available for comparison for this mixture.
 
 Also the experimental order parameters for PS and PG headgroups
 as a function of CaCl$_2$ concentration are shown in Fig. \ref{PSPGchangesWITHCaCl}.
-\todo{These should be compared to simulations for potential structural interpretation of the changes.}
-\begin{figure}[]
-  \centering
-  \includegraphics[width=9.0cm]{../Figs/PGwithCaCl.eps}
-  \caption{\label{PSPGchangesWITHCaCl}
-    PG and PS order parameters a function CaCl$_2$ concentration taken from \cite{borle85} and \cite{roux90}, respectively.
-  }
-  \todo{Get the small concentration data from the inserts}
-\end{figure}
+%\todo{These should be compared to simulations for potential structural interpretation of the changes.}
+%\begin{figure}[]
+%  \centering
+%  \includegraphics[width=9.0cm]{../Figs/PGwithCaCl.eps}
+%  \caption{\label{PSPGchangesWITHCaCl}
+%    PG and PS order parameters a function CaCl$_2$ concentration taken from \cite{borle85} and \cite{roux90}, respectively.
+%  }
+%  \todo{Get the small concentration data from the inserts}
+%\end{figure}
 
 \todo{There are mass density profiles available from CHARMM simulations, preliminary figures should be made:
 http://nmrlipids.blogspot.com/2017/03/nmrlipids-iv-headgroup-glycerol.html?showComment=1501446779291#c7311317114567929503}

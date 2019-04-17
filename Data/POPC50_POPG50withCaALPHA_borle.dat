@@ -1,6 +1,9 @@
 # Binding of Ca2+ to Mixtures of 50 mol % POPG plus 50 mol % a-CD2-POPC
 # (0.01 M PIPES, pH 7.1, 25 Celcius)
 #
+# Signs of POPG without ions is measured for NMRlipids IV by Tiago Ferreira
+# Sings of POPC from literature
+#
 # From Table III in Borle and Seelig, Chem. Phys. Lipids 1985, 36, 263-283
 #
 #[CaCl]    POPC_a  POPG_b

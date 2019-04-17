@@ -1,0 +1,13 @@
+# POPG beta(1) from tables II and III in Borle and Seelig Chem. Phys. Lipids 36 (1985) 263-283
+#
+# POPG beta(2) from Fig. 4 in Macdonald and Seelig Biochemistry 26 (1987) 1231-1240
+# 
+# Sings as measured by Tiago Ferreira for NMRlipidsIV from POPG
+#
+# Quadrupolar splittings reported
+#
+# mole fraction of PC        POPG beta(1)  POPG beta(2)    
+0                                4.7         3.4
+#0.2                              nan           3.8                    
+0.5                              5.0         4.8
+#0.8                              nan           6.1
