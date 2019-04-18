@@ -18,8 +18,8 @@ set size 1.0,0.25
 set label  "CHARMM36"  at graph  0.4,0.8
 #set label  "A_{pl} = 66.8 {\305}^2"  at graph  0.02,0.85
 #set label  "A_{pl} = 56 {\305}^2"  at graph  0.02,0.7 tc rgb 'red'
-set key at graph 0.7,0.7 maxcols 3 maxrows 5
-plot "../../../MATCH/Data/Lipid_Bilayers/POPE+150mNaCl/T310K/MODEL_CHARMM36_500lipids/IONdens.xvg" using 1:2 with lines title 'POPE 310K' lw 2 lc rgb 'black',\
+set key at graph 0.75,0.7 maxcols 3 maxrows 5
+plot "../../../MATCH/Data/Lipid_Bilayers/POPE+150mNaCl/T310K/MODEL_CHARMM36_500lipids/IONdens.xvg" using 1:2 with lines title 'POPE 310K 0.11 M NaCl' lw 2 lc rgb 'black',\
      "../../../MATCH/Data/Lipid_Bilayers/POPE+150mNaCl/T310K/MODEL_CHARMM36_500lipids/IONdens.xvg" using 1:3 with lines notitle lw 2 dt 2 lc rgb 'black',\
 #     "../../../MATCH/Data/Lipid_Bilayers/POPG+150mNaCl/T310K/MODEL_CHARMM36_500lipids/IONdens.xvg" using 1:2 with lines title 'POPG 310 with 150mM NaCl' lw 4 lc rgb 'black',\
 #     "../../../MATCH/Data/Lipid_Bilayers/POPS/T298K/MODEL_CHARMM36_POTASSIUMcounterion/Kdens.xvg" using 1:2 with lines title 'K' lw 2 lc rgb 'red',\
@@ -39,8 +39,8 @@ set label  "Slipids"  at graph  0.4,0.8
 #set label  "{/Arial:Bold A_{pl} = 68.7 {\305}^2}"  at graph  0.02,0.78 font ",12"
 #set label  "A_{pl} = 53.5 {\305}^2"  at graph  0.02,0.65  tc rgb 'red'
 #set label  "A_{pl} = 61.6 {\305}^2"  at graph  0.02,0.47  tc rgb 'green'
-set key at graph 0.7,0.7
-plot    "../../../MATCH/Data/Lipid_Bilayers/POPE+150mNaCl/T310K/MODEL_SLIPID_500lipids/IONdens.xvg" using 1:2 with lines title 'POPE 310K' lw 2 lc rgb 'black',\
+set key at graph 0.75,0.7
+plot    "../../../MATCH/Data/Lipid_Bilayers/POPE+150mNaCl/T310K/MODEL_SLIPID_500lipids/IONdens.xvg" using 1:2 with lines title 'POPE 310K 0.11 M NaCl' lw 2 lc rgb 'black',\
         "../../../MATCH/Data/Lipid_Bilayers/POPE+150mNaCl/T310K/MODEL_SLIPID_500lipids/IONdens.xvg" using 1:3 with lines notitle lw 2 dt 2 lc rgb 'black',\
 
 
