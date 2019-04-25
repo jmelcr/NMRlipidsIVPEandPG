@@ -17,6 +17,7 @@ set origin 0,1.05
 set size 1.0,0.25
 set label  "CHARMM36"  at graph  0.3,0.87
 set label  "A_{pl} = 66.8 {\305}^2"  at graph  0.02,0.85
+set label  "{/Arial:Bold A_{pl} = 66.4 {\305}^2}"  at graph  0.02,0.7 font ",12"
 #set label  "A_{pl} = 56 {\305}^2"  at graph  0.02,0.7 tc rgb 'red'
 set key at graph 1.0,0.9 maxcols 3 maxrows 5
 plot "../../../MATCH/Data/Lipid_Bilayers/POPG/T298K/MODEL_CHARMM_GUI/IONdens.xvg" using 1:2 with lines title 'POPG 298 with K^+' lw 2 dt 2 lc rgb 'black',\
@@ -67,9 +68,9 @@ set origin 0,0.3
 set size 1.0,0.2
 unset label
 set label  "Lipid17"  at graph  0.4,0.8
-set label  "A_{pl} = 57 {\305}^2"  at graph  0.02,0.85
-set label  "A_{pl} = 53 {\305}^2"  at graph  0.02,0.7 tc rgb 'red'
-#plot "../../Data/POPSlipid17ff99ionsDENSITY.txt" using 1:2 with lines title 'ff99ions' lw 2 lc rgb 'black',\
+set label  "{/Arial:Bold A_{pl} = 58 {\305}^2}"  at graph  0.02,0.85
+#set label  "A_{pl} = 53 {\305}^2"  at graph  0.02,0.7 tc rgb 'red'
+plot "../../../MATCH/Data/Lipid_Bilayers/POPG+150mNaCl/T310K/MODEL_LIPID17_500lipids/IONdens.xvg" using 1:2 with lines title '150 mM Na' lw 4 lc rgb 'black',\
 #     "../../Data/POPSlipid17jcionsDENSITY.txt" using 1:2 with lines title 'jcions' lw 2 lc rgb 'red',\
 
 set origin 0,0.15

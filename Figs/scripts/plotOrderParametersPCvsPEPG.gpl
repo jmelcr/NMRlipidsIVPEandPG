@@ -31,6 +31,10 @@ plot "../../Data/POPCvsPOPGCHARMMbeta.dat" using 1:($2+0.0785491) with linespoin
      "../../Data/POPCvsPOPGcharmm.dat" using 1:($6+0.07541):7 with yerrorbars  title 'CHARMM36 (POPC:POPG 150mM NaCl)' pt 4 ps 1.6 lw 4 lc  rgb "#0088BF",\
      "../../Data/POPCvsPOPGcharmm.dat" using 1:($8+0.07683) with linespoints  notitle pt 4 ps 1.6 lw 4 lc  rgb "#0088BF",\
      "../../Data/POPCvsPOPGcharmm.dat" using 1:($8+0.07683):9 with yerrorbars  notitle pt 4 ps 1.6 lw 4 lc rgb "#0088BF",\
+     "../../Data/POPCvsPOPGlipid17.dat" using 1:($6+0.01131) with linespoints  notitle pt 4 ps 1.6 lw 4 lc rgb "#FFD300",\
+     "../../Data/POPCvsPOPGlipid17.dat" using 1:($6+0.01131):7 with yerrorbars  title 'LIPID17 (POPC:POPG 150mM NaCl)' pt 4 ps 1.6 lw 4 lc  rgb "#FFD300",\
+     "../../Data/POPCvsPOPGlipid17.dat" using 1:($8+0.00607) with linespoints  notitle pt 4 ps 1.6 lw 4 lc  rgb "#FFD300",\
+     "../../Data/POPCvsPOPGlipid17.dat" using 1:($8+0.00607):9 with yerrorbars  notitle pt 4 ps 1.6 lw 4 lc rgb "#FFD300",\
      "../../Data/POPCvsPOPGslipid.dat" using 1:($6+0.01973) with linespoints  notitle pt 4 ps 1.6 lw 4 lc rgb "#7AEE9E",\
      "../../Data/POPCvsPOPGslipid.dat" using 1:($6+0.01973):7 with yerrorbars  title 'Slipid (POPC:POPG 150mM NaCl)' pt 4 ps 1.6 lw 4 lc  rgb "#7AEE9E",\
      "../../Data/POPCvsPOPGslipid.dat" using 1:($8+0.05030) with linespoints  notitle pt 4 ps 1.6 lw 4 lc  rgb "#7AEE9E",\
@@ -61,6 +65,10 @@ plot "../../Data/POPCvsPOPGCHARMMalpha.dat" using 1:($2-0.0319465) with linespoi
      "../../Data/POPCvsPOPGcharmm.dat" using 1:($2-0.03048):3 with yerrorbars  notitle pt 4 ps 1.6 lw 4 lc rgb "#0088BF",\
      "../../Data/POPCvsPOPGcharmm.dat" using 1:($4-0.03014) with linespoints  notitle pt 4 ps 1.6 lw 4 lc rgb "#0088BF",\
      "../../Data/POPCvsPOPGcharmm.dat" using 1:($4-0.03014):5 with yerrorbars  notitle pt 4 ps 1.6 lw 4 lc rgb "#0088BF",\
+     "../../Data/POPCvsPOPGlipid17.dat" using 1:($2-0.14424) with linespoints  notitle pt 4 ps 1.6 lw 4 lc rgb "#FFD300",\
+     "../../Data/POPCvsPOPGlipid17.dat" using 1:($2-0.14424):3 with yerrorbars  notitle pt 4 ps 1.6 lw 4 lc rgb "#FFD300",\
+     "../../Data/POPCvsPOPGlipid17.dat" using 1:($4-0.15723) with linespoints  notitle pt 4 ps 1.6 lw 4 lc rgb "#FFD300",\
+     "../../Data/POPCvsPOPGlipid17.dat" using 1:($4-0.15723):5 with yerrorbars  notitle pt 4 ps 1.6 lw 4 lc rgb "#FFD300",\
      "../../Data/POPCvsPOPGslipid.dat" using 1:($2-0.05696) with linespoints  notitle pt 4 ps 1.6 lw 4 lc rgb "#7AEE9E",\
      "../../Data/POPCvsPOPGslipid.dat" using 1:($2-0.05696):7 with yerrorbars  notitle  pt 4 ps 1.6 lw 4 lc  rgb "#7AEE9E",\
      "../../Data/POPCvsPOPGslipid.dat" using 1:($4-0.05022) with linespoints  notitle pt 4 ps 1.6 lw 4 lc  rgb "#7AEE9E",\
