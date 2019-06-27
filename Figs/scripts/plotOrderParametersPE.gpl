@@ -113,7 +113,7 @@ dxL17pJ =  7*d
 # DROSS = Dipolar Recoupling On-axis with Scaling and Shape preservation
 # R-PDLF = R-type Proton Detected Local Field
 
-plot [0.5:5.5][0.15:-0.30] \
+plot [0.5:5.5][0.2:-0.30] \
      horizLines(' ../../../MATCH/Data/Lipid_Bilayers/POPE/T310K/Headgroup_Glycerol_Order_Parameters_Experiments.dat') \
          u ($1):(($2)) w l ls 8 lc rgb "#5F5F5F" lw 6.5 t "POPE 310K experiment", \
      horizLines(' ../../../MATCH/Data/Lipid_Bilayers/POPE/T310K/Headgroup_Glycerol_Order_Parameters_Experiments.dat') \

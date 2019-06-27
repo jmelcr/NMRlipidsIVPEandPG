@@ -113,7 +113,7 @@ dxL17pJ =  7*d
 # DROSS = Dipolar Recoupling On-axis with Scaling and Shape preservation
 # R-PDLF = R-type Proton Detected Local Field
 
-plot [0.5:5.5][0.15:-0.30] \
+plot [0.5:5.5][0.2:-0.30] \
      horizLines(' ../../../MATCH/Data/Lipid_Bilayers/POPG/T298K/Headgroup_Glycerol_Order_Parameters_Experiments2.dat') \
          u ($1):(($2)) w l ls 8 lc rgb "#5F5F5F" lw 6.5 t "POPG 298K ^{13}C experiment", \
      horizLines(' ../../../MATCH/Data/Lipid_Bilayers/POPG/T298K/Headgroup_Glycerol_Order_Parameters_Experiments2.dat') \
@@ -132,6 +132,8 @@ plot [0.5:5.5][0.15:-0.30] \
      u ($1):($2) lt CHARMM pt 7 ps r t 'POPG  T310K + 150mM NaCl CHARMM36',\
      "../../../MATCH/Data/Lipid_Bilayers/POPG+150mNaCl/T310K/MODEL_LIPID17_500lipids/Headgroup_Glycerol_Order_Parameters_Simulation.dat" \
      u ($1):($2) lt Lipd17 pt 7 ps r t 'POPG  T310K + 150mM NaCl LIPID17',\
+     "../../../MATCH/Data/Lipid_Bilayers/POPG+150mNaCl/T310K/MODEL_GROMOS-CKP/OrdParmPOPGforplot.dat" \
+     u ($1):($2):($4) w ye lt CKP_QK pt 6 ps r t 'POPG T310K+150mM NaCl CKP', \
      horizLines(' ../../../MATCH/Data/Lipid_Bilayers/DPPG/T314K/Headgroup_Glycerol_Order_Parameters_Experiments.dat') \
          u ($1):($2*0.00784) w l ls 4 dt 2 lc rgb "#5F5F5F" lw 3 t "DPPG 314K experiment", \
      horizLines(' ../../../MATCH/Data/Lipid_Bilayers/DPPG/T314K/Headgroup_Glycerol_Order_Parameters_Experiments.dat') \
@@ -154,8 +156,6 @@ plot [0.5:5.5][0.15:-0.30] \
 #         u ($1+dxC36pK):($2):($3):($4) w ye lt CHARMM pt 6 ps r t 'POPS CHARMM36 K^+',\
 #     "../../../MATCH/Data/Lipid_Bilayers/POPS/T298K/MODEL_CHARMM36UA/head-glyc-OPs_ave_min_max.dat" \
 #         u ($1+dxCUApo):($2):($3):($4) w ye lt C36_UA pt 6 ps r t 'POPS CHARMM36-UA',\
-#     "../../../MATCH/Data/Lipid_Bilayers/POPS/T298K/MODEL_GROMOS-CKP2/head-glyc-OPs_ave_min_max.dat" \
-#         u ($1+dxCKPp2):($2):($3):($4) w ye lt CKP_QK pt 6 ps r t 'POPS CKP', \
 #     "../../../MATCH/Data/Lipid_Bilayers/POPS/T298K/MODEL_GROMOS-CKP1/head-glyc-OPs_ave_min_max.dat" \
 #         u ($1+dxCKPpo):($2):($3):($4) w ye lt CKP_QB pt 6 ps r t 'POPS CKPM', \
 #     "../../../MATCH/Data/Lipid_Bilayers/POPS/T298K/MODEL_MACROG/head-glyc-OPs_ave_min_max.dat" \
