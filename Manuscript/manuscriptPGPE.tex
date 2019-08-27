@@ -172,7 +172,7 @@ of the Gromacs sofware package \cite{gromacsMANUAL}.
 \begin{table*}[htb]
   %\begin{sidewaystable*}[!p]
   \centering
-  \caption{List of single lipid type MD simulations without additional ions.
+  \caption{List of MD simulations with PE lipids.
     % The salt concentrations calculated as [salt]=N$_{\rm c} \times$[water]\,/\,N$_{\rm w}$, where [water]\,=\,55.5~M.
     % these correspond the concentrations reported in the experiments by Akutsu et al.~\cite{akutsu81}.
     % The lipid force fields named as in our previous work~\cite{botan15}.
@@ -181,30 +181,69 @@ of the Gromacs sofware package \cite{gromacsMANUAL}.
     \begin{tabular}{l c c r r r r r r c c}
       %\hline
       % some footnotes are not visible in typeset-MS (pdf)
-      lipid/counter-ions & force field for lipids / ions & \footnote{Number of lipid molecules with largest mole fraction}N$_{\rm l}$   &  \footnote{Number of water molecules}N$_{\rm w}$    & \footnote{Simulation temperature}T (K)  & \footnote{Total simulation time}t$_{{\rm sim}}$(ns) & \footnote{Time used for analysis}t$_{{\rm anal}}$ (ns) &   \footnote{Reference for simulation files}files\\
+      lipid/counter-ions & force field for lipids / ions  & NaCl (M) & \footnote{Number of lipid molecules with largest mole fraction}N$_{\rm l}$   &  \footnote{Number of water molecules}N$_{\rm w}$   & \footnote{Number of additional cations}N$_{\rm c}$   & \footnote{Simulation temperature}T (K)  & \footnote{Total simulation time}t$_{{\rm sim}}$(ns) & \footnote{Time used for analysis}t$_{{\rm anal}}$ (ns) &   \footnote{Reference for simulation files}files\\
       \hline
-      DPPE  & Slipids \cite{jambeck12b}    & 288 	& 9386  & 336  & 200 & 100 & \cite{slipidsDPPEfiles}  \\
-      DPPE  & GROMOS-CKP    \cite{??}      & 128	& ?     & 342  & 2$\times$500 & 2$\times$400 & \cite{gromosCKPdppe} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
+      POPE  & CHARMM36 \cite{??}           &0       & 144	& 5760  &0    & 310  & 500          & 400          & \cite{charmm36POPEfiles} \\
+      POPE  & CHARMM36 \cite{??}           & 0      & 500       & 25000 & 0   &  310  & 500 & 100 & \cite{POPEcharmm} \\
+      POPE  & CHARMM36 \cite{??}           & 0.11   & 500       & 25000 & 50  &  310  & 500 & 100 & \cite{POPEcharmm150mMNaCl} \\
+      POPE  & CHARMM36ua \cite{??}         &0       & 336	& ?     &0    & 310  & 2$\times$200 & 2$\times$100 & \cite{charmm36uaPOPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
       \hline
-      POPE  & GROMOS 43A1-S3 \cite{??}     & 128	& ?     & 313  & 2$\times$200 & 2$\times$100 & \cite{gromos43a1s3POPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
-      POPE  & CHARMM36ua \cite{??}         & 336	& ?     & 310  & 2$\times$200 & 2$\times$100 & \cite{charmm36uaPOPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
-      POPE  & CHARMM36 \cite{??}           & 144	& 5760  & 310  & 500          & 400          & \cite{charmm36POPEfiles} \\
-      POPE  & Slipids \cite{jambeck12b,??} & 336	& ?     & 310  & 2$\times$200 &  2$\times$100 & \cite{slipidsPOPEfiles}  \\
-      POPE  & OPLS-UA vdW on H \cite{??}   & 128	& ?     & 303  & 2$\times$200 & 2$\times$100 & \cite{OPLSuaWvdWPOPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
-      POPE  & OPLS-UA \cite{??}            & 128	& ?     & 303  & 2$\times$200 & 2$\times$100 & \cite{OPLSuaPOPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
-      POPE  & Berger-based \cite{??}       & 128	& ?     & 303  & 2$\times$200 & 2$\times$100 & \cite{bergerPOPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
-      POPE  & Berger-based2 \cite{??}      & 128	& ?     & 303  & 2$\times$200 & 2$\times$100 & \cite{berger2POPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
-      POPE  & GROMOS-CKP    \cite{??}      & 128	& ?     & 313  & 2$\times$500 & 2$\times$400 & \cite{gromosCKPpope} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
+      DPPE  & Slipids \cite{jambeck12b}    &0    & 288 	& 9386  &0    & 336  & 200 & 100 & \cite{slipidsDPPEfiles}  \\
+      POPE  & Slipids \cite{jambeck12b,??} &0    & 336	& ?     &0    & 310  & 2$\times$200 &  2$\times$100 & \cite{slipidsPOPEfiles}  \\
+      POPE  & Slipids \cite{??} \todoi{Ion parameters?}        & 0    & 500 & 25000 & 0   &  310  & 500 & 100 & \cite{POPEslipids} \\
+      POPE  & Slipids \cite{??} \todoi{Ion parameters?}        & 0.11 & 500 & 25000 & 50  &  310  & 500 & 100 & \cite{POPEslipids150mMNaCl} \\
       \hline
-      DOPE  & Berger-based \cite{??}       & 128	& ?     & 271  & 2$\times$200 & 2$\times$100 & \cite{bergerDOPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
-      DOPE  & Berger-based2 \cite{??}      & 128	& ?     & 271  & 2$\times$300 & 2$\times$100 & \cite{berger2DOPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
-      DOPE  & GROMOS-CKP    \cite{??}      & 128	& ?     & 271  & 2$\times$500 & 2$\times$400 & \cite{gromosCKPdope} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
+      DPPE  & GROMOS-CKP    \cite{??}      &0    & 128	& ?     &0    & 342  & 2$\times$500 & 2$\times$400 & \cite{gromosCKPdppe} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
+      POPE  & GROMOS-CKP    \cite{??}      &0    & 128	& ?     &0    & 313  & 2$\times$500 & 2$\times$400 & \cite{gromosCKPpope} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
+      POPE  & GROMOS-CKP    \cite{??}      &0    & 500	& 25000 &0    & 310  & 500 & 100 & \cite{gromosCKPpopeT310} \\
+      DOPE  & GROMOS-CKP    \cite{??}      &0    & 128	& ?     &0    & 271  & 2$\times$500 & 2$\times$400 & \cite{gromosCKPdope} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
       \hline
-      POPG/K$^+$  & CHARMM36 \cite{??} \todoi{Correct citation for CHARMM POPG}   & 118& 4110  & 298  & 100 & 100 & \cite{CHARMM36popg}  \\
-      POPG/Na$^+$  & Slipids \cite{jambeck13}   & 288 	& 10664  & 298  & 250 & 100 & \cite{slipidsPOPGfiles} \\
+      POPE  & GROMOS 43A1-S3 \cite{??}     &0    & 128	& ?     &0    & 313  & 2$\times$200 & 2$\times$100 & \cite{gromos43a1s3POPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
       \hline
-      DPPG/Na$^+$  & Slipids \cite{jambeck13}   & 288 	& 11232  & 314  & 200 & 100 & \cite{slipidsDPPGfiles} \\
-      DPPG/Na$^+$  & Slipids \cite{jambeck13}   & 288 	& 11232  & 298  & 400 & 100 & \cite{slipidsDPPGfilesT298K} \\
+      POPE  & OPLS-UA vdW on H \cite{??}   &0    & 128	& ?     &0    & 303  & 2$\times$200 & 2$\times$100 & \cite{OPLSuaWvdWPOPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
+      POPE  & OPLS-UA \cite{??}            &0    & 128	& ?     &0    & 303  & 2$\times$200 & 2$\times$100 & \cite{OPLSuaPOPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
+      \hline
+      POPE  & Berger-based \cite{??}       &0    & 128	& ?     &0    & 303  & 2$\times$200 & 2$\times$100 & \cite{bergerPOPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
+      POPE  & Berger-based2 \cite{??}      &0    & 128	& ?     &0    & 303  & 2$\times$200 & 2$\times$100 & \cite{berger2POPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
+      DOPE  & Berger-based \cite{??}       &0    & 128	& ?     &0    & 271  & 2$\times$200 & 2$\times$100 & \cite{bergerDOPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
+      DOPE  & Berger-based2 \cite{??}      &0    & 128	& ?     &0    & 271  & 2$\times$300 & 2$\times$100 & \cite{berger2DOPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
+      \hline
+%      POPE             & LIPID17 \cite{??} & 0      & 500 & 25000 & 50  &  310  & 500 & 100 & \cite{POPElipid17150mMNaCl} \\
+      POPE             & LIPID17 \cite{??} & 0.11   & 500 & 25000 & 50  &  310  & 500 & 100 & \cite{POPElipid17150mMNaCl} \\
+    \end{tabular}
+  \end{minipage}
+  %\end{sidewaystable*} 
+\end{table*}
+
+      \begin{table*}[htb]
+  %\begin{sidewaystable*}[!p]
+  \centering
+  \caption{List of MD simulations with PG lipids.
+    % The salt concentrations calculated as [salt]=N$_{\rm c} \times$[water]\,/\,N$_{\rm w}$, where [water]\,=\,55.5~M.
+    % these correspond the concentrations reported in the experiments by Akutsu et al.~\cite{akutsu81}.
+    % The lipid force fields named as in our previous work~\cite{botan15}.
+  }\label{systemsII}
+  \begin{minipage}[t]{\textwidth}
+    \begin{tabular}{l c c r r r r r r c c}
+      %\hline
+      % some footnotes are not visible in typeset-MS (pdf)
+      lipid/counter-ions & force field for lipids / ions & NaCl (M) &  \footnote{Number of lipid molecules with largest mole fraction}N$_{\rm l}$   &  \footnote{Number of water molecules}N$_{\rm w}$   & \footnote{Number of additional cations}N$_{\rm c}$  & \footnote{Simulation temperature}T (K)  & \footnote{Total simulation time}t$_{{\rm sim}}$(ns) & \footnote{Time used for analysis}t$_{{\rm anal}}$ (ns) &   \footnote{Reference for simulation files}files\\
+      \hline
+      POPG/K$^+$  & CHARMM36 \cite{??} \todoi{Correct citation for CHARMM POPG}    &0         & 118& 4110   &0    & 298  & 100 & 100 & \cite{CHARMM36popg}  \\
+      POPG             & CHARMM36 \cite{??}        & 0.11           & 500 & 25000 & 49  &  310  & 500 & 100 & \cite{POPGcharmm150mMNaCl} \\
+      POPG             & CHARMM36 \cite{??}        & 0              & 500 & 25000 & 0   &  310  & 500 & 100 & \cite{POPGcharmm} \\
+      \hline
+      POPG/Na$^+$  & Slipids \cite{jambeck13}    &0         & 288 	& 10664   &0     & 298  & 250 & 100 & \cite{slipidsPOPGfiles} \\
+      DPPG/Na$^+$  & Slipids \cite{jambeck13}    &0         & 288 	& 11232  &0     & 314  & 200 & 100 & \cite{slipidsDPPGfiles} \\
+      DPPG/Na$^+$  & Slipids \cite{jambeck13}    &0         & 288 	& 11232   &0     & 298  & 400 & 100 & \cite{slipidsDPPGfilesT298K} \\
+      POPG         & Slipids \cite{??} \todoi{Ion parameters?}       & 0    & 500 & 25000 & 0  &  310  & 500 & 100 & \cite{POPGslipids} \\
+      POPG         & Slipids \cite{??} \todoi{Ion parameters?}       & 0.11    & 500 & 25000 & 49  &  310  & 500 & 100 & \cite{POPGslipids150mMNaCl} \\
+      \hline
+      POPG             & LIPID17 \cite{??}         & 0              & 500 & 25000 & 0   &  310  & 500 & 100 & \cite{POPGlipid17} \\
+      POPG             & LIPID17 \cite{??}         & 0.11           & 500 & 25000 & 49  &  310  & 500 & 100 & \cite{POPGlipid17150mMNaCl} \\
+      \hline
+      POPG             & GROMOS-CKP \cite{??}         & 0              & 500 & 25000 & 0  &  310  & 500 & 100 & \cite{POPGgromosCKP} \\
+      POPG             & GROMOS-CKP \cite{??}         & 0.11           & 500 & 25000 & 0  &  310  & 500 & 100 & \cite{POPGgromosCKP150mMNaCl} \\
     \end{tabular}
   \end{minipage}
   %\end{sidewaystable*} 
@@ -213,7 +252,7 @@ of the Gromacs sofware package \cite{gromacsMANUAL}.
 \begin{table*}[htb]
   %\begin{sidewaystable*}[!p]
   \centering
-  \caption{List of MD simulations with lipid mixtures and additional ions.
+  \caption{List of MD simulations with PE and PG lipids mixed with PC.
     % The salt concentrations calculated as [salt]=N$_{\rm c} \times$[water]\,/\,N$_{\rm w}$, where [water]\,=\,55.5~M.
     % these correspond the concentrations reported in the experiments by Akutsu et al.~\cite{akutsu81}.
     % The lipid force fields named as in our previous work~\cite{botan15}.
@@ -245,14 +284,6 @@ of the Gromacs sofware package \cite{gromacsMANUAL}.
      \hline
       DOPC             & Berger \cite{??}  \todoi{This is probable not plain berger, correct force filed should be described.}         &0          & 0  & 256 & 11008 & 0  &  300  & 300 & 200 & \cite{DOPCberger300K} \\
       DOPC:DOPE (1:1)  & Berger \cite{??}   \todoi{This is probable not plain berger, correct force filed should be described.}        &0          & 0  & 128 & 11008 & 0  &  300  & 300 & 200 & \cite{DOPC1DOPE1berger} \\
-      \hline
-      POPG             & Slipids \cite{??} \todoi{Ion parameters?}       & 0.11          & 0  & 500 & 25000 & 49  &  310  & 500 & 100 & \cite{POPGslipids150mMNaCl} \\
-      POPG             & CHARMM36 \cite{??}        & 0.11          & 0  & 500 & 25000 & 49  &  310  & 500 & 100 & \cite{POPGcharmm150mMNaCl} \\
-      POPG             & LIPID17 \cite{??}         & 0.11          & 0  & 500 & 25000 & 49  &  310  & 500 & 100 & \cite{POPGlipid17150mMNaCl} \\
-     \hline
-      POPE             & Slipids \cite{??} \todoi{Ion parameters?}        & 0.11          & 0  & 500 & 25000 & 50  &  310  & 500 & 100 & \cite{POPEslipids150mMNaCl} \\
-      POPE             & CHARMM36 \cite{??}        & 0.11          & 0  & 500 & 25000 & 50  &  310  & 500 & 100 & \cite{POPEcharmm150mMNaCl} \\
-      POPE             & LIPID17 \cite{??}         & 0.11          & 0  & 500 & 25000 & 50  &  310  & 500 & 100 & \cite{POPElipid17150mMNaCl} \\
     \end{tabular}
   \end{minipage}
   %\end{sidewaystable*} 

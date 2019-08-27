@@ -124,16 +124,16 @@ plot [0.5:5.5][0.2:-0.30] \
          u ($1):($3*0.00784) w l ls 4 lc 16 lw 3 , \
      "../../../MATCH/Data/Lipid_Bilayers/POPG/T298K/MODEL_SLIPIDS/Headgroup_Glycerol_Order_Parameters_Simulation.dat" \
      u ($1):($2) lt Slipid pt 6 ps r t 'POPG T298K SLIPIDS', \
-     "../../../MATCH/Data/Lipid_Bilayers/POPG+150mNaCl/T310K/MODEL_SLIPID_500lipids/Headgroup_Glycerol_Order_Parameters_Simulation.dat" \
-     u ($1):($2) lt Slipid pt 7 ps r t 'POPG T310K + 150mM NaCl SLIPIDS', \
+     "../../../MATCH/Data/Lipid_Bilayers/POPG/T310K/MODEL_SLIPID_500lipids/Headgroup_Glycerol_Order_Parameters_Simulation.dat" \
+     u ($1):($2) lt Slipid pt 7 ps r t 'POPG T310K SLIPIDS', \
      "../../../MATCH/Data/Lipid_Bilayers/POPG/T298K/MODEL_CHARMM_GUI/Headgroup_Glycerol_Order_Parameters_Simulation.dat" \
      u ($1):($2) lt CHARMM pt 6 ps r t 'POPG T298K CHARMM36',\
-     "../../../MATCH/Data/Lipid_Bilayers/POPG+150mNaCl/T310K/MODEL_CHARMM36_500lipids/Headgroup_Glycerol_Order_Parameters_Simulation.dat" \
-     u ($1):($2) lt CHARMM pt 7 ps r t 'POPG  T310K + 150mM NaCl CHARMM36',\
-     "../../../MATCH/Data/Lipid_Bilayers/POPG+150mNaCl/T310K/MODEL_LIPID17_500lipids/Headgroup_Glycerol_Order_Parameters_Simulation.dat" \
-     u ($1):($2) lt Lipd17 pt 7 ps r t 'POPG  T310K + 150mM NaCl LIPID17',\
-     "../../../MATCH/Data/Lipid_Bilayers/POPG+150mNaCl/T310K/MODEL_GROMOS-CKP/OrdParmPOPGforplot.dat" \
-     u ($1):($2):($4) w ye lt CKP_QK pt 6 ps r t 'POPG T310K+150mM NaCl CKP', \
+     "../../../MATCH/Data/Lipid_Bilayers/POPG/T310K/MODEL_CHARMM36_500lipids/Headgroup_Glycerol_Order_Parameters_Simulation.dat" \
+     u ($1):($2) lt CHARMM pt 7 ps r t 'POPG  T310K CHARMM36',\
+     "../../../MATCH/Data/Lipid_Bilayers/POPG/T310K/MODEL_LIPID17_500lipids/Headgroup_Glycerol_Order_Parameters_Simulation.dat" \
+     u ($1):($2) lt Lipd17 pt 7 ps r t 'POPG  T310K LIPID17',\
+     "../../../MATCH/Data/Lipid_Bilayers/POPG/T310K/MODEL_GROMOS-CKP/OrdParmPOPGforplot.dat" \
+     u ($1):($2):($4) w ye lt CKP_QK pt 6 ps r t 'POPG T310K CKP', \
      horizLines(' ../../../MATCH/Data/Lipid_Bilayers/DPPG/T314K/Headgroup_Glycerol_Order_Parameters_Experiments.dat') \
          u ($1):($2*0.00784) w l ls 4 dt 2 lc rgb "#5F5F5F" lw 3 t "DPPG 314K experiment", \
      horizLines(' ../../../MATCH/Data/Lipid_Bilayers/DPPG/T314K/Headgroup_Glycerol_Order_Parameters_Experiments.dat') \
