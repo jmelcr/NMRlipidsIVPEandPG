@@ -107,9 +107,8 @@ added salt is now collected and presented in this manuscript.
 %\end{figure}
 
 
-Absolute values of experimental order parameters for different lipid headgroups are
-collected in Fig. \ref{HGorderParameters}. Signs are measured only for PC as far as I know,
-thus only absolute values are used for now.
+Experimental order parameters for different lipid headgroups are
+collected in Fig. \ref{HGorderParameters}. 
 
 Based on superficial reading, the conclusions in the literature are roughly \\ 
 1) glycerol backbone structures are largely similar irrespectively of the headroup \cite{gally81}, \\
@@ -164,8 +163,13 @@ Angular brackets denote average over all sampled configurations.
 The order parameters were first calculated averaging over time separately
 for each lipid in the system. The average and
 the standard error of the mean were then calculated over different lipids.
-Python program ({\tt scripts/calcOrderParameters.py}) that uses the
-MDAnalysis library \cite{agrawal11,gowers16} is available in Ref. \citenum{MATCHgit}. 
+Python programs that use the MDAnalysis library \cite{agrawal11,gowers16}
+used for all atom simulations is available in Ref. \citenum{MATCHgit}
+({\tt scripts/calcOrderParameters.py}). For united atom simulations, the trajectories
+with hydrogens having ideal geometry were constructed first using either buildH program~\cite{buildH}
+or ({\tt scratch/opAAUA\_prod.py}) in  Ref. \citenum{MATCHgit}, and the order parameters were
+then calculated from these trajectories. This approach has been tested against trajectories
+with explicit hydrogens and the deviations in order parameters are small \cite{buildH,piggot18}.
 The ion number density profiles were calculated using the {\tt gmx density} tool
 of the Gromacs sofware package \cite{gromacsMANUAL}.
 
@@ -186,29 +190,29 @@ of the Gromacs sofware package \cite{gromacsMANUAL}.
       POPE  & CHARMM36 \cite{??}           &0       & 144	& 5760  &0    & 310  & 500          & 400          & \cite{charmm36POPEfiles} \\
       POPE  & CHARMM36 \cite{??}           & 0      & 500       & 25000 & 0   &  310  & 500 & 100 & \cite{POPEcharmm} \\
       POPE  & CHARMM36 \cite{??}           & 0.11   & 500       & 25000 & 50  &  310  & 500 & 100 & \cite{POPEcharmm150mMNaCl} \\
-      POPE  & CHARMM36ua \cite{??}         &0       & 336	& ?     &0    & 310  & 2$\times$200 & 2$\times$100 & \cite{charmm36uaPOPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
+      POPE  & CHARMM36ua \cite{??}         &0       & 336	& 15254 &0    & 310  & 2$\times$200 & 2$\times$100 & \cite{charmm36uaPOPEfiles}  \\
       \hline
       DPPE  & Slipids \cite{jambeck12b}    &0    & 288 	& 9386  &0    & 336  & 200 & 100 & \cite{slipidsDPPEfiles}  \\
       POPE  & Slipids \cite{jambeck12b,??} &0    & 336	& ?     &0    & 310  & 2$\times$200 &  2$\times$100 & \cite{slipidsPOPEfiles}  \\
-      POPE  & Slipids \cite{??} \todoi{Ion parameters?}        & 0    & 500 & 25000 & 0   &  310  & 500 & 100 & \cite{POPEslipids} \\
+      POPE  & Slipids \cite{??}            & 0    & 500 & 25000 & 0   &  310  & 500 & 100 & \cite{POPEslipids} \\
       POPE  & Slipids \cite{??} \todoi{Ion parameters?}        & 0.11 & 500 & 25000 & 50  &  310  & 500 & 100 & \cite{POPEslipids150mMNaCl} \\
       \hline
-      DPPE  & GROMOS-CKP    \cite{??}      &0    & 128	& ?     &0    & 342  & 2$\times$500 & 2$\times$400 & \cite{gromosCKPdppe} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
-      POPE  & GROMOS-CKP    \cite{??}      &0    & 128	& ?     &0    & 313  & 2$\times$500 & 2$\times$400 & \cite{gromosCKPpope} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
+      DPPE  & GROMOS-CKP    \cite{??}      &0    & 128	& 3655  &0    & 342  & 2$\times$500 & 2$\times$400 & \cite{gromosCKPdppe} \\
+      POPE  & GROMOS-CKP    \cite{??}      &0    & 128	& 3552  &0    & 313  & 2$\times$500 & 2$\times$400 & \cite{gromosCKPpope} \\
       POPE  & GROMOS-CKP    \cite{??}      &0    & 500	& 25000 &0    & 310  & 500 & 100 & \cite{gromosCKPpopeT310} \\
-      DOPE  & GROMOS-CKP    \cite{??}      &0    & 128	& ?     &0    & 271  & 2$\times$500 & 2$\times$400 & \cite{gromosCKPdope} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
+      DOPE  & GROMOS-CKP    \cite{??}      &0    & 128	& 4789  &0    & 271  & 2$\times$500 & 2$\times$400 & \cite{gromosCKPdope} \\
       \hline
-      POPE  & GROMOS 43A1-S3 \cite{??}     &0    & 128	& ?     &0    & 313  & 2$\times$200 & 2$\times$100 & \cite{gromos43a1s3POPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
+      POPE  & GROMOS 43A1-S3 \cite{??}     &0    & 128	& 3552     &0    & 313  & 2$\times$200 & 2$\times$100 & \cite{gromos43a1s3POPEfiles}  \\
       \hline
-      POPE  & OPLS-UA vdW on H \cite{??}   &0    & 128	& ?     &0    & 303  & 2$\times$200 & 2$\times$100 & \cite{OPLSuaWvdWPOPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
-      POPE  & OPLS-UA \cite{??}            &0    & 128	& ?     &0    & 303  & 2$\times$200 & 2$\times$100 & \cite{OPLSuaPOPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
+      POPE  & OPLS-UA vdW on H \cite{??}   &0    & 128	& 3328     &0    & 303  & 2$\times$200 & 2$\times$100 & \cite{OPLSuaWvdWPOPEfiles} \\
+      POPE  & OPLS-UA \cite{??}            &0    & 128	& 3328     &0    & 303  & 2$\times$200 & 2$\times$100 & \cite{OPLSuaPOPEfiles} \\
       \hline
-      POPE  & Berger-based \cite{??}       &0    & 128	& ?     &0    & 303  & 2$\times$200 & 2$\times$100 & \cite{bergerPOPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
-      POPE  & Berger-based2 \cite{??}      &0    & 128	& ?     &0    & 303  & 2$\times$200 & 2$\times$100 & \cite{berger2POPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
-      DOPE  & Berger-based \cite{??}       &0    & 128	& ?     &0    & 271  & 2$\times$200 & 2$\times$100 & \cite{bergerDOPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
-      DOPE  & Berger-based2 \cite{??}      &0    & 128	& ?     &0    & 271  & 2$\times$300 & 2$\times$100 & \cite{berger2DOPEfiles} \todoi{Not analyzed yet, waiting for the code for UA simulations.}  \\
+      POPE  & Berger-Vries \cite{??}       &0    & 128	& 3552  &0    & 303  & 2$\times$200 & 2$\times$100 & \cite{bergerPOPEfiles}  \\
+      POPE  & Berger-largeH \cite{??}      &0    & 128	& 3552  &0    & 303  & 2$\times$200 & 2$\times$100 & \cite{berger2POPEfiles}  \\
+      DOPE  & Berger-Vries \cite{??}       &0    & 128	& 4789  &0    & 271  & 2$\times$200 & 2$\times$100 & \cite{bergerDOPEfiles}  \\
+      DOPE  & Berger-largeH \cite{??}      &0    & 128	& 4789  &0    & 271  & 2$\times$300 & 2$\times$100 & \cite{berger2DOPEfiles} \\ 
       \hline
-%      POPE             & LIPID17 \cite{??} & 0      & 500 & 25000 & 50  &  310  & 500 & 100 & \cite{POPElipid17150mMNaCl} \\
+      POPE             & LIPID17 \cite{??} & 0      & 500 & 25000 & 50  &  310  & 500 & 100 & \cite{POPElipid17} \\
       POPE             & LIPID17 \cite{??} & 0.11   & 500 & 25000 & 50  &  310  & 500 & 100 & \cite{POPElipid17150mMNaCl} \\
     \end{tabular}
   \end{minipage}
@@ -243,7 +247,7 @@ of the Gromacs sofware package \cite{gromacsMANUAL}.
       POPG             & LIPID17 \cite{??}         & 0.11           & 500 & 25000 & 49  &  310  & 500 & 100 & \cite{POPGlipid17150mMNaCl} \\
       \hline
       POPG             & GROMOS-CKP \cite{??}         & 0              & 500 & 25000 & 0  &  310  & 500 & 100 & \cite{POPGgromosCKP} \\
-      POPG             & GROMOS-CKP \cite{??}         & 0.11           & 500 & 25000 & 0  &  310  & 500 & 100 & \cite{POPGgromosCKP150mMNaCl} \\
+      POPG             & GROMOS-CKP \cite{??}         & 0.11           & 500 & 25000 & 49 &  310  & 500 & 100 & \cite{POPGgromosCKP150mMNaCl} \\
     \end{tabular}
   \end{minipage}
   %\end{sidewaystable*} 
@@ -353,7 +357,9 @@ headgroups \cite{NMRlipidsIVps}, but this is not the case for PE and PG lipids.
     from experiments (POPE and signs this work, DPPE from Ref.~\citenum{seelig76}
     and E.coliPE from Ref.~\citenum{gally81}) and simulations with different force fields.
   }
-  \todo{Results from united atom GROMOS,CHARMM36ua,OPLS-UA,Berger and GROMOS-CKP simulations yet to be analyzed and added} \\
+  \todo{This should be clarified as in NMRlipidsI and error bars should be added.
+    Probably larger error bars for united atom models based on the report by Fuchs et al.
+  }
 \end{figure}
 
 \begin{figure}[!h]
@@ -378,7 +384,14 @@ CHARMM36 simulations seems to capture all the essential differences between
 headgroup order parameters of PC PE, PG (Figs. \ref{HGorderParametersPE} and \ref{HGorderParametersPOPG}),
 as previously observed also for PS lipids \cite{NMRlipidsIVps}. Therefore,
 the CHARMM36 simulations can be used to analyze the structural differences between
-headgroups \todo{We should do such analysis. Maybe similar to the PS part \cite{NMRlipidsIVps}?}
+headgroups (Fig.~\ref{structures}).
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=9.0cm]{../Figs/struct.png}
+  \caption{\label{structures}
+    Overlayed snapshots from CHARMM36 simulations of different lipids which give the best agreement with experiments.
+  }
+\end{figure}
 
 \subsection{Lipid headgroup interactions in PC:PE and PC:PG mixtures}
 According to the electrometer concept, the headgroup order parameters increase
