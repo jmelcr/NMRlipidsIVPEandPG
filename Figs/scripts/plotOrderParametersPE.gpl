@@ -9,7 +9,7 @@ set tmargin at screen 0.995
 set ylabel "S_{CH}" font "Arial,20" offset 2,-2.3
 
 set bmargin at screen 0.20
-set key l at screen 0.01,0.195 Left reverse noautotitle samplen 2 width 3 maxrows 12
+set key l at screen 0.01,0.195 Left reverse noautotitle samplen 2 width 3 maxrows 12 font ",10"
 #set key below horizontal left Left reverse noautotitle samplen 1 maxcols 2 maxrows 6
 
 set lmargin at screen 0.122 #0.157

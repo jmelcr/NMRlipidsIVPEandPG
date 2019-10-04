@@ -200,6 +200,7 @@ of the Gromacs sofware package \cite{gromacsMANUAL}.
       DPPE  & GROMOS-CKP    \cite{??}      &0    & 128	& 3655  &0    & 342  & 2$\times$500 & 2$\times$400 & \cite{gromosCKPdppe} \\
       POPE  & GROMOS-CKP    \cite{??}      &0    & 128	& 3552  &0    & 313  & 2$\times$500 & 2$\times$400 & \cite{gromosCKPpope} \\
       POPE  & GROMOS-CKP    \cite{??}      &0    & 500	& 25000 &0    & 310  & 500 & 100 & \cite{gromosCKPpopeT310} \\
+      POPE  & GROMOS-CKP    \cite{??}      &0.11 & 500	& 25000 &50   & 310  & 500 & 100 & \cite{gromosCKPpopeT310150mMNaCl} \\
       DOPE  & GROMOS-CKP    \cite{??}      &0    & 128	& 4789  &0    & 271  & 2$\times$500 & 2$\times$400 & \cite{gromosCKPdope} \\
       \hline
       POPE  & GROMOS 43A1-S3 \cite{??}     &0    & 128	& 3552     &0    & 313  & 2$\times$200 & 2$\times$100 & \cite{gromos43a1s3POPEfiles}  \\
@@ -344,13 +345,20 @@ relatively similar. Also, the headgroup conformations are similar for PC and PE 
 PS and PG are singnificantly different. For PS lipids, the differences are discussed previously \cite{??}.
 
 \subsection{Headgroup and glycerol backbone of POPE and POPG in MD simulations}
-
-The glycerol backbone order parameters in Slipid simulations are off from experiments
+As reported previously for PC \cite{botan15} and PS \cite{NMRlipidsIVps} lipids,
+the headgroup and glycerol backbone order parameters show wide variation between different force fields
 for both PE and PG lipids (Figs. \ref{HGorderParametersPE} and \ref{HGorderParametersPOPG}),
-as already reported previously for PC lipids \cite{botan15} and PS lipids \cite{NMRlipidsIVps}.
-The Slipid simulations were able to capture the essential differences between PC and PS lipid
-headgroups \cite{NMRlipidsIVps}, but this is not the case for PE and PG lipids.
- \begin{figure}[]
+and none of the force fields reproduce all values within experimental error bars.
+%The Slipid simulations were able to capture the essential differences between PC and PS lipid
+%headgroups \cite{NMRlipidsIVps}, but this is not the case for PE and PG lipids.
+%\todo{Berger results are not here yet, but we should mention the ring like structures
+%  pointed out by T. Piggot in the blog:
+The poor performance of headgroup order parameters in Berger model can be probably explained by ring like structures seen in Fig. 6 in Ref. \citenum{mukhopadhyay04},
+which is a typical feature for Berger based lipid force fields containing explicit hydrogen atoms in the head group \cite{zhao08,henin09,dahlberg10}.
+%}
+
+
+\begin{figure}[]
   \centering
   \includegraphics[width=9.0cm]{../Figs/HGorderparametersPE.pdf}
   \caption{\label{HGorderParametersPE}
@@ -374,25 +382,31 @@ headgroups \cite{NMRlipidsIVps}, but this is not the case for PE and PG lipids.
     and simulations with different force fields.
   }
 \end{figure}
-
-\todo{Berger results are not here yet, but we should mention the ring like structures
-  pointed out by T. Piggot in the blog:
-  The poor performance of headgroup order parameters in Berger model can be probably explained by ring like structures seen in Fig. 6 in Ref. \citenum{mukhopadhyay04}.
-  These ring like structures are a widespread feature of typical Berger based lipid force fields containing explicit hydrogen atoms in the head group \cite{zhao08,henin09,dahlberg10}.
-}
-
-CHARMM36 simulations seems to capture all the essential differences between
-headgroup order parameters of PC PE, PG (Figs. \ref{HGorderParametersPE} and \ref{HGorderParametersPOPG}),
-as previously observed also for PS lipids \cite{NMRlipidsIVps}. Therefore,
-the CHARMM36 simulations can be used to analyze the structural differences between
-headgroups (Fig.~\ref{structures}).
-\begin{figure}[!h]
+\begin{figure*}[!h]
   \centering
-  \includegraphics[width=9.0cm]{../Figs/struct.png}
+  \includegraphics[width=18.0cm]{../Figs/struct.png}
   \caption{\label{structures}
     Overlayed snapshots from CHARMM36 simulations of different lipids which give the best agreement with experiments.
   }
-\end{figure}
+\end{figure*}
+Also in line with previous studies for PC \cite{botan15} and PS \cite{NMRlipidsIVps} lipids,
+CHARMM36 simulations are in best agreement with experiments for headgroup and glycerol backbone
+order parameters, and seem to capture all the essential differences between different headroups
+(Figs. \ref{HGorderParametersPE} and \ref{HGorderParametersPOPG}).
+%headgroup order parameters of PC PE, PG (Figs. \ref{HGorderParametersPE} and \ref{HGorderParametersPOPG}),
+%as previously observed also for PS lipids \cite{NMRlipidsIVps}.
+In previous study, CHARMM36 predicted the more negative $\beta$-carbon order parameter and larger forking of
+the $\alpha$-carbon is PS headgroup than in PC \cite{NMRlipidsIVps}.
+In this work, the CHARMM36 simulations reproduce also the other essential differences in experimental
+headgroup order parameters between different headgroups (Fig. \ref{HGorderParameters}) despite the inaccuracies
+in individual segments:
+The PE headgroup order parameters in CHARMM36 simulations are similar to the PC \cite{botan15}
+and $\beta$-carbon order parameters is positive in PG headgroup, in contrast to the negative values observed in
+other lipids. Therefore, we use CHARMM36 simulations to analyze the structural differences between
+headgroups (Fig.~\ref{structures}). While rotation around N-C$_\alpha$-C$_\beta$-O$_\alpha$ dihedral was
+significantly different in PS and PC headgroups in previous work \cite{NMRlipidsIVps}, essential differences
+between PC, PE and PG are not observed here (Fig.~\ref{structures}) \todo{We need also the dihedral distributions to finish this discussion.}. \\
+\todo{Why is the $\beta$-carbon order parameter of PG different to PC and PE then?}
 
 \subsection{Lipid headgroup interactions in PC:PE and PC:PG mixtures}
 According to the electrometer concept, the headgroup order parameters increase
@@ -439,10 +453,10 @@ overestimated also in simulations here.
   \centering
   \includegraphics[width=9.0cm]{../Figs/CIdensPG.eps}
   \caption{\label{CIdensPG}
-    Counterion densities from simulations with PG lipids.
+    Counterion densities and area per lipids from simulations with PG lipids.
+    Experimental area for POPG at 303 K is 66.1 {\AA}$^2$ and 67 {\AA}$^2$ for DPPC at 323 K \cite{pan12b}.
   }
-  \todo{Data for CHARMM, Lipid17, Slipids, and also GROMOS also without ions is now available.
-    This data should be updated into this plot}
+  \todo{Data for GROMOS is also available without ions, but I could not analyze it, probably because tpr file was not correct.}
 \end{figure}
 
 
