@@ -16,10 +16,12 @@ set size 1.0,0.5
 plot "../../Data/POPGvsPOPCCHARMM36.dat" using 1:($2) with linespoints  title 'CHARMM36 (POPG:POPC 298K K^+)' pt 7 ps 1.6  lw 4 lc rgb "#0088BF",\
      "../../Data/POPCvsPOPGcharmm.dat" using (1-$1):($14) with linespoints  title 'CHARMM36 (POPG:POPC 310K 110mM NaCl)' pt 6 ps 1.6  lw 4 lc rgb "#0088BF",\
      "../../Data/POPCvsPOPGcharmm.dat" using (1-$1):($14):15 with ye notitle pt 6 ps 1.6  lw 4 lc rgb "#0088BF",\
-     "../../Data/POPCvsPOPGlipid17.dat" using (1-$1):($14) with linespoints  title 'LIPID17 (POPG:POPC 310K 110mM NaCl)' pt 6 ps 1.6  lw 4 lc rgb "#FFD300",\
+     "../../Data/POPCvsPOPGlipid17.dat" using (1-$1):($14) with linespoints  title 'LIPID17 (POPG:POPC 310K)' pt 6 ps 1.6  lw 4 lc rgb "#FFD300",\
      "../../Data/POPCvsPOPGlipid17.dat" using (1-$1):($14):15 with ye notitle pt 6 ps 1.6  lw 4 lc rgb "#FFD300",\
-     "../../Data/POPCvsPOPGslipid.dat" using (1-$1):($14) with linespoints  title 'Slipids (POPG:POPC 310K 110mM NaCl)' pt 6 ps 1.6  lw 4 lc rgb "#7AEE9E",\
+     "../../Data/POPCvsPOPGslipid.dat" using (1-$1):($14) with linespoints  title 'Slipids (POPG:POPC 310K)' pt 6 ps 1.6  lw 4 lc rgb "#7AEE9E",\
      "../../Data/POPCvsPOPGslipid.dat" using (1-$1):($14):15 with ye notitle pt 6 ps 1.6  lw 4 lc rgb "#7AEE9E",\
+     "../../Data/POPCvsPOPGgromos-ckp.dat" using (1-$1):($14) with linespoints  title 'GROMOS-CKP (POPG:POPC 310K)' pt 6 ps 1.6  lw 4 lc rgb "#FFA0A3",\
+     "../../Data/POPCvsPOPGgromos-ckp.dat" using (1-$1):($14):15 with ye notitle pt 6 ps 1.6  lw 4 lc rgb "#FFA0A3",\
      "../../Data/POPGvsPOPC1.dat" using ($1):($2*0.00784) with linespoints   title 'Experiment (POPG:POPC Borle 298K)' pt 6 ps 1.6  lw 4 lc rgb 'black',\
      "../../Data/POPGvsPOPC.dat" using 1:($3*0.00784) with linespoints   title 'Experiment (POPG:POPC Macdonald 298K)' pt 7 ps 1.6  lw 4 lc rgb 'black',\
      "../../Data/POPGvsPOPC.dat" using 1:($4*0.00784) with linespoints   title 'Experiment (POPG:POPC Macdonald 298K 100mM NaCl)' pt 7 dt 2 ps 1.6  lw 4 lc rgb 'black',\
@@ -43,6 +45,10 @@ plot "../../Data/POPGvsPOPCCHARMM36.dat" using 1:($3) with linespoints  notitle 
      "../../Data/POPCvsPOPGslipid.dat" using (1-$1):($10):11 with ye notitle pt 6 ps 1.6  lw 4 lc rgb "#7AEE9E",\
      "../../Data/POPCvsPOPGslipid.dat" using (1-$1):($12) with linespoints  notitle pt 6 ps 1.6  lw 4 lc rgb "#7AEE9E",\
      "../../Data/POPCvsPOPGslipid.dat" using (1-$1):($12):13 with ye notitle pt 6 ps 1.6  lw 4 lc rgb "#7AEE9E",\
+     "../../Data/POPCvsPOPGgromos-ckp.dat" using (1-$1):($10) with linespoints  notitle pt 6 ps 1.6  lw 4 lc rgb "#FFA0A3",\
+     "../../Data/POPCvsPOPGgromos-ckp.dat" using (1-$1):($10):11 with ye notitle pt 6 ps 1.6  lw 4 lc rgb "#FFA0A3",\
+     "../../Data/POPCvsPOPGgromos-ckp.dat" using (1-$1):($12) with linespoints  notitle pt 6 ps 1.6  lw 4 lc rgb "#FFA0A3",\
+     "../../Data/POPCvsPOPGgromos-ckp.dat" using (1-$1):($12):13 with ye notitle pt 6 ps 1.6  lw 4 lc rgb "#FFA0A3",\
 
 unset multiplot
 

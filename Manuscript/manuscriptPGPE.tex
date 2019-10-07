@@ -408,46 +408,45 @@ significantly different in PS and PC headgroups in previous work \cite{NMRlipids
 between PC, PE and PG are not observed here (Fig.~\ref{structures}) \todo{We need also the dihedral distributions to finish this discussion.}. \\
 \todo{Why is the $\beta$-carbon order parameter of PG different to PC and PE then?}
 
-\subsection{Lipid headgroup interactions in PC:PE and PC:PG mixtures}
-According to the electrometer concept, the headgroup order parameters increase
-with the addition of negatively charged PG lipids, but
-%decrease when mixed with positively charged surfactants and
-are not affected by the addition of zwitterionic PE lipids (Fig.~\ref{HGorderparametersPCvsPEPG}) \cite{seelig87, scherer87}. % or cholesterol.
-%In addition to the results summarized in Fig. \ref{HGorderparametersPCvsPEPSPGchol},
-%also mixtures of PC with negatively charged PI, CL, PA, and zwitterionic SM
-%follow the eletrometer concept \cite{scherer87}.
-%to mixtures of differently charged
-%lipids are collected from different experiments in Fig. \ref{HGorderparametersPCvsPEPSPGchol}.
-%%\section{PC lipid headgroup response to different mixtures in experiments}
-%As shown in Fig. \ref{HGorderparametersPCvsPEPSPGchol}, order parameters of PC
-%headgroup behave in various lipid mixtures as expected from the electrometer concept \cite{seelig87, scherer87},
-%i.e., order parameters increase when anionic lipids are mixed with PC and decrease with cationic
-%surfactants. The changes with the addition of neutral lipids is significantly smaller.
+\subsection{Lipid headgroup interactions in PC:PE and PC:PG mixtures and counterion binding}
 \begin{figure*}[]
   \centering
   \includegraphics[width=16.0cm]{../Figs/HGorderparametersPCvsPEPG.eps}
   \caption{\label{HGorderparametersPCvsPEPG}
-    Modulation of PC headgroup order parameters with increasing amount of PE (left) and PG (right) in bilayer
+    Modulation of POPC headgroup order parameters with increasing amount of POPE (left) and POPG (right) in bilayer
     from experiments \cite{scherer87,macdonald87} and simulations with different force fields.
     Signs are determined as discussed in \cite{botan15,ollila16}.
   }
-  \todo{Data for Slipids, and also GROMOS also without ions is now available.
-    This data should be updated into this plot}
   \todo{Data for CHARMM without ions to be added once this issue is solved: https://github.com/NMRLipids/MATCH/issues/83}
   %\todo{Simulation of CHARMM36 at 298K should be maybe rerun with Gromacs 5.}
 \end{figure*}
-%The headgroup order parameters for PC lipids (POPC and DOPC)
-%mixed with PE, PS and PG lipids are shown in Fig. \ref{HGorderparametersPCvsPEPSPG}
-%from different simulation model and experiments \cite{scherer87} with different
-%mole fractions. As already discussed previosly, the PC lipid headgroup behaviour
-%follows the electrometer concept in experiments when mixed with other lipids, i.e., the order
-%parameters increase when mixed with negatively charged lipids (PS, PI, CL, PA and PG)
-%remains almost unchaged when mixed with neutral lipids (PE and SM) \cite{scherer87}.
-This is roughly observed also in simulations here, althouht the changes in PC headgroup with
-PE are slightly overestimated and changes with PG lipid are slightly underestimated.
-The underestimated increase of PC headgroup order parameters with the addition of
-negaticely charged lipids was previously interepreted to indicate overestimated
-counterion binding affinity, which overcompensates the effect of negative charge \cite{NMRlipidsIVps}.
+According to the electrometer concept, the headgroup order parameters increase
+with the addition of negatively charged PG lipids, but
+are not affected by the addition of zwitterionic PE and SM lipids
+or cholesterol (Fig.~\ref{HGorderparametersPCvsPEPG}) \cite{seelig87, scherer87,antila18}. 
+The different responses of PC headgroup order parameters to PE and PG are roughly
+reproduced in CHARMM36 simulations, although the changes are slightly
+overestimated upon addition of PE and underestimated upon addition of PG.
+Interestingly, the response of POPC headgroup order parameters to POPE is
+close to experiments also in Berger-OPLS simulations, even though the response
+of Berger force field to cholesterol was significantly overestimated \cite{botan15}.
+In all force fields except Slipids, the $\alpha$-carbon order parameters of different
+hydrogens are responsing differently when mixed with PE or PG lipids \todo{Maybe we should figure out what is the reason for this}.
+\todo{Maybe we should analyze the P-N vector angle from different simulations}.
+
+In our previous study about PS lipids \cite{antila18}, we related the underestimated increase of PC
+headgroup order parameters upon addition of negaticely charged lipids
+%was previously interepreted
+to the overestimated counterion binding affinity, which would overcompensates the effect of negative charge.
+Similar correlation is observed here in other than GROMOS-CKP simulation:
+Lipid 17 simulation exhibits the stronger counter-ion binding affinitiy to the pure POPG bilayer (Fig. \ref{CIdensPG})
+and larger decrease in POPC $\beta$ carbon order parameter upon addition of POPG than other simulations.
+This, together with the low area per molecule in Lipid17 (59.5 {\AA} vs. 66.1 {\AA} in experiments) suggests
+that the counterion binding this model is too strong.
+However, $\beta$-carbon order parameter of POPC in GROMOS-CKP simulations is in line with experiments and
+increases more than in CHARMM36 and Slipids simulations even though the binding affinities in these
+simulations are simialar. On the other hand, the different responses of different hydrogens in $\alpha$-carbons
+complicate the interpretation. 
 Thus, the counterion binding to PG lipid bilayers (Fig. \ref{CIdensPG}) may be slightly
 overestimated also in simulations here.
 \begin{figure}[]

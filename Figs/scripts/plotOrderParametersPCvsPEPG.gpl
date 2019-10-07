@@ -3,54 +3,57 @@ set terminal postscript portrait enhanced color dashed lw 1 "Helvetica" 14
 set output "../HGorderparametersPCvsPEPG.eps"
 set multiplot layout 2,2	
 
-set ytic 0.02
+set ytic 0.01
 #set xtics ("{/Symbol b}" 1, "{/Symbol a}" 2, "g_{3R}" 3, "g_{3S}" 4, "g_{2}" 5, "g_{1R}" 6, "g_{1S}" 7)
 #set xtics ("{/Symbol b}" 1, "{/Symbol a}" 2, "g_{3}" 3, "g_{2}" 4, "g_{1}" 5)
 #set key box linestyle 1 linecolor rgb 'black'
-set key above maxcols 2 maxrows 5
 
+
+set key at graph 0.7,0.9 maxcols 2 maxrows 5
 set size 1.0,0.5
 set yrange [-0.025:0.037] 
 set xrange [0:0.82] 
 set ylabel "{/Symbol D}S_{CH}^{/Symbol b}"
-plot "../../Data/POPCvsPOPEberger.dat" using 1:($6-0.041295) with linespoints  title 'Berger-OPLS (POPC:POPE)' pt 7 ps 1.6 lw 4 lc rgb "#D70039",\
+plot "../../Data/POPCvsPOPEberger.dat" using 1:($6-0.041295) with linespoints  title 'Berger-OPLS' pt 7 ps 1.6 lw 4 lc rgb "#D70039",\
      "../../Data/POPCvsPOPEberger.dat" using 1:($8-0.0655363) with linespoints  notitle pt 7 ps 1.6 lw 4 lc rgb "#D70039",\
      "../../Data/POPCvsPOPEcharmm.dat" using 1:($6+0.07745) with linespoints  notitle pt 7 ps 1.6 lw 4 lc rgb "#0088BF",\
-     "../../Data/POPCvsPOPEcharmm.dat" using 1:($6+0.07745):7 with yerrorbars  title 'CHARMM36 (POPC:POPE)' pt 7 ps 1.6 lw 4 lc  rgb "#0088BF",\
+     "../../Data/POPCvsPOPEcharmm.dat" using 1:($6+0.07745):7 with yerrorbars  title 'CHARMM36' pt 7 ps 1.6 lw 4 lc  rgb "#0088BF",\
      "../../Data/POPCvsPOPEcharmm.dat" using 1:($8+0.07786) with linespoints  notitle pt 7 ps 1.6 lw 4 lc  rgb "#0088BF",\
      "../../Data/POPCvsPOPEcharmm.dat" using 1:($8+0.07786):9 with yerrorbars  notitle pt 7 ps 1.6 lw 4 lc rgb "#0088BF",\
-     "../../Data/PCvsPEbeta.dat" using 1:((-$2+5.54502369668)*0.00784) with linespoints   title 'Experiment (POPC:PE)' pt 7 ps 1.6 lw 4 lc rgb 'black',\
+     "../../Data/PCvsPEbeta.dat" using 1:((-$2+5.54502369668)*0.00784) with linespoints   title 'Exp (Scherer)' pt 7 ps 1.6 lw 4 lc rgb 'black',\
 #     "../../Data/POPCvsDOPEbergerOPLSbeta.dat" using 1:($2) with linespoints  title 'Berger-OPLS (POPC:DOPE)' pt 7 ps 1.6 lw 4 lc rgb "#D70039",\
 #     "../../Data/POPCvsDOPEbergerOPLSbeta.dat" using 1:($3) with linespoints  notitle pt 7 ps 1.6 lw 4 lc rgb "#D70039",\
 
+set key at graph 0.99,0.4 maxcols 1 maxrows 6
 set origin 1.0,0.5
 set size 1.0,0.5
+unset ylabel
 #set ylabel "S_{CH}^{/Symbol b}"
-plot "../../Data/POPCvsPOPGCHARMMbeta.dat" using 1:($2+0.0785491) with linespoints  title 'CHARMM36 (POPC:POPG)' pt 5 ps 1.6 lw 4 lc rgb "#0088BF",\
+plot "../../Data/POPCvsPOPGCHARMMbeta.dat" using 1:($2+0.0785491) with linespoints  title 'CHARMM36' pt 5 ps 1.6 lw 4 lc rgb "#0088BF",\
      "../../Data/POPCvsPOPGcharmm.dat" using 1:($6+0.07541) with linespoints  notitle pt 4 ps 1.6 lw 4 lc rgb "#0088BF",\
-     "../../Data/POPCvsPOPGcharmm.dat" using 1:($6+0.07541):7 with yerrorbars  title 'CHARMM36 (POPC:POPG 150mM NaCl)' pt 4 ps 1.6 lw 4 lc  rgb "#0088BF",\
+     "../../Data/POPCvsPOPGcharmm.dat" using 1:($6+0.07541):7 with yerrorbars  title 'CHARMM36 (150mM NaCl)' pt 4 ps 1.6 lw 4 lc  rgb "#0088BF",\
      "../../Data/POPCvsPOPGcharmm.dat" using 1:($8+0.07683) with linespoints  notitle pt 4 ps 1.6 lw 4 lc  rgb "#0088BF",\
      "../../Data/POPCvsPOPGcharmm.dat" using 1:($8+0.07683):9 with yerrorbars  notitle pt 4 ps 1.6 lw 4 lc rgb "#0088BF",\
-     "../../Data/POPCvsPOPGlipid17.dat" using 1:($6+0.00034) with linespoints  notitle pt 4 ps 1.6 lw 4 lc rgb "#FFD300",\
-     "../../Data/POPCvsPOPGlipid17.dat" using 1:($6+0.00034):7 with yerrorbars  title 'LIPID17 (POPC:POPG)' pt 4 ps 1.6 lw 4 lc  rgb "#FFD300",\
-     "../../Data/POPCvsPOPGlipid17.dat" using 1:($8+0.00073) with linespoints  notitle pt 4 ps 1.6 lw 4 lc  rgb "#FFD300",\
-     "../../Data/POPCvsPOPGlipid17.dat" using 1:($8+0.00073):9 with yerrorbars  notitle pt 4 ps 1.6 lw 4 lc rgb "#FFD300",\
-     "../../Data/POPCvsPOPGslipid.dat" using 1:($6+0.01273) with linespoints  notitle pt 4 ps 1.6 lw 4 lc rgb "#7AEE9E",\
-     "../../Data/POPCvsPOPGslipid.dat" using 1:($6+0.01273):7 with yerrorbars  title 'Slipid (POPC:POPG)' pt 4 ps 1.6 lw 4 lc  rgb "#7AEE9E",\
-     "../../Data/POPCvsPOPGslipid.dat" using 1:($8+0.04681) with linespoints  notitle pt 4 ps 1.6 lw 4 lc  rgb "#7AEE9E",\
-     "../../Data/POPCvsPOPGslipid.dat" using 1:($8+0.04681):9 with yerrorbars  notitle pt 4 ps 1.6 lw 4 lc rgb "#7AEE9E",\
-     "../../Data/POPCvsPOPGgromos-ckp.dat" using 1:($6-0.04125) with linespoints  notitle pt 4 ps 1.6 lw 4 lc rgb "#FFA0A3",\
-     "../../Data/POPCvsPOPGgromos-ckp.dat" using 1:($6-0.04125):7 with yerrorbars  title 'GROMOS-CKP (POPC:POPG)' pt 4 ps 1.6 lw 4 lc  rgb "#FFA0A3",\
-     "../../Data/POPCvsPOPGgromos-ckp.dat" using 1:($8-0.00447) with linespoints  notitle pt 4 ps 1.6 lw 4 lc  rgb "#FFA0A3",\
-     "../../Data/POPCvsPOPGgromos-ckp.dat" using 1:($8-0.00447):9 with yerrorbars  notitle pt 4 ps 1.6 lw 4 lc rgb "#FFA0A3",\
-     "../../Data/PCvsPGbeta.dat" using 1:((-$2+5.54502369668)*0.00784) with linespoints   title 'Exp (POPC:POPG) Scherer T98K' pt 5 ps 1.6 lw 4 lc rgb 'black'
+     "../../Data/POPCvsPOPGlipid17.dat" using 1:($6+0.00034) with linespoints  notitle pt 5 ps 1.6 lw 4 lc rgb "#FFD300",\
+     "../../Data/POPCvsPOPGlipid17.dat" using 1:($6+0.00034):7 with yerrorbars  title 'LIPID17' pt 5 ps 1.6 lw 4 lc  rgb "#FFD300",\
+     "../../Data/POPCvsPOPGlipid17.dat" using 1:($8+0.00073) with linespoints  notitle pt 5 ps 1.6 lw 4 lc  rgb "#FFD300",\
+     "../../Data/POPCvsPOPGlipid17.dat" using 1:($8+0.00073):9 with yerrorbars  notitle pt 5 ps 1.6 lw 4 lc rgb "#FFD300",\
+     "../../Data/POPCvsPOPGslipid.dat" using 1:($6+0.01273) with linespoints  notitle pt 5 ps 1.6 lw 4 lc rgb "#7AEE9E",\
+     "../../Data/POPCvsPOPGslipid.dat" using 1:($6+0.01273):7 with yerrorbars  title 'Slipid' pt 5 ps 1.6 lw 4 lc  rgb "#7AEE9E",\
+     "../../Data/POPCvsPOPGslipid.dat" using 1:($8+0.04681) with linespoints  notitle pt 5 ps 1.6 lw 4 lc  rgb "#7AEE9E",\
+     "../../Data/POPCvsPOPGslipid.dat" using 1:($8+0.04681):9 with yerrorbars  notitle pt 5 ps 1.6 lw 4 lc rgb "#7AEE9E",\
+     "../../Data/POPCvsPOPGgromos-ckp.dat" using 1:($6-0.04125) with linespoints  notitle pt 5 ps 1.6 lw 4 lc rgb "#FFA0A3",\
+     "../../Data/POPCvsPOPGgromos-ckp.dat" using 1:($6-0.04125):7 with yerrorbars  title 'GROMOS-CKP' pt 5 ps 1.6 lw 4 lc  rgb "#FFA0A3",\
+     "../../Data/POPCvsPOPGgromos-ckp.dat" using 1:($8-0.00447) with linespoints  notitle pt 5 ps 1.6 lw 4 lc  rgb "#FFA0A3",\
+     "../../Data/POPCvsPOPGgromos-ckp.dat" using 1:($8-0.00447):9 with yerrorbars  notitle pt 5 ps 1.6 lw 4 lc rgb "#FFA0A3",\
+     "../../Data/PCvsPGbeta.dat" using 1:((-$2+5.54502369668)*0.00784) with linespoints   title 'Exp (Scherer,T98K)' pt 5 ps 1.6 lw 4 lc rgb 'black'
 
 
 set size 1.0,0.5
 #set origin 2.0,0.5
 #set yrange [-0.02:0.04] 
 set ylabel "{/Symbol D}S_{CH}^{/Symbol a}"
-set xlabel "mole fraction of PE"
+set xlabel "mole fraction of POPE"
 plot "../../Data/POPCvsPOPEberger.dat" using 1:($2-0.095803) with linespoints notitle pt 7 ps 1.6 lw 4 lc rgb "#D70039",\
      "../../Data/POPCvsPOPEberger.dat" using 1:($4-0.153548) with linespoints  notitle pt 7 ps 1.6 lw 4 lc rgb "#D70039",\
      "../../Data/POPCvsPOPEcharmm.dat" using 1:($2-0.03453) with linespoints  notitle pt 7 ps 1.6 lw 4 lc rgb "#0088BF",\
@@ -59,31 +62,32 @@ plot "../../Data/POPCvsPOPEberger.dat" using 1:($2-0.095803) with linespoints no
      "../../Data/POPCvsPOPEcharmm.dat" using 1:($4-0.03340):5 with yerrorbars  notitle pt 7 ps 1.6 lw 4 lc rgb "#0088BF",\
      "../../Data/PCvsPEalpha.dat" using 1:(($2-5.96673023946)*0.00784) with linespoints  notitle pt 7 ps 1.6 lw 4 lc rgb 'black',\
 
-#unset yrange
+set key at graph 0.99,0.27 maxcols 1 maxrows 6
+unset ylabel
 set origin 1.0,0
 set size 1.0,0.5
-set xlabel "mole fraction of PG"
+set xlabel "mole fraction of POPG"
 plot "../../Data/POPCvsPOPGCHARMMalpha.dat" using 1:($2-0.0319465) with linespoints  notitle pt 5 ps 1.6 lw 4 lc rgb "#0088BF",\
      "../../Data/POPCvsPOPGCHARMMalpha.dat" using 1:($3-0.0361459) with linespoints  notitle pt 5 ps 1.6 lw 4 lc rgb "#0088BF",\
      "../../Data/POPCvsPOPGcharmm.dat" using 1:($2-0.03048) with linespoints  notitle pt 4 ps 1.6 lw 4 lc rgb "#0088BF",\
      "../../Data/POPCvsPOPGcharmm.dat" using 1:($2-0.03048):3 with yerrorbars  notitle pt 4 ps 1.6 lw 4 lc rgb "#0088BF",\
      "../../Data/POPCvsPOPGcharmm.dat" using 1:($4-0.03014) with linespoints  notitle pt 4 ps 1.6 lw 4 lc rgb "#0088BF",\
      "../../Data/POPCvsPOPGcharmm.dat" using 1:($4-0.03014):5 with yerrorbars  notitle pt 4 ps 1.6 lw 4 lc rgb "#0088BF",\
-     "../../Data/POPCvsPOPGlipid17.dat" using 1:($2-0.15289) with linespoints  notitle pt 4 ps 1.6 lw 4 lc rgb "#FFD300",\
-     "../../Data/POPCvsPOPGlipid17.dat" using 1:($2-0.15289):3 with yerrorbars  notitle pt 4 ps 1.6 lw 4 lc rgb "#FFD300",\
-     "../../Data/POPCvsPOPGlipid17.dat" using 1:($4-0.16765) with linespoints  notitle pt 4 ps 1.6 lw 4 lc rgb "#FFD300",\
-     "../../Data/POPCvsPOPGlipid17.dat" using 1:($4-0.16765):5 with yerrorbars  notitle pt 4 ps 1.6 lw 4 lc rgb "#FFD300",\
-     "../../Data/POPCvsPOPGslipid.dat" using 1:($2-0.06027) with linespoints  notitle pt 4 ps 1.6 lw 4 lc rgb "#7AEE9E",\
-     "../../Data/POPCvsPOPGslipid.dat" using 1:($2-0.06027):7 with yerrorbars  notitle  pt 4 ps 1.6 lw 4 lc  rgb "#7AEE9E",\
-     "../../Data/POPCvsPOPGslipid.dat" using 1:($4-0.05324) with linespoints  notitle pt 4 ps 1.6 lw 4 lc  rgb "#7AEE9E",\
-     "../../Data/POPCvsPOPGslipid.dat" using 1:($4-0.05324):9 with yerrorbars  notitle pt 4 ps 1.6 lw 4 lc rgb "#7AEE9E",\
-     "../../Data/POPCvsPOPGgromos-ckp.dat" using 1:($2-0.13562) with linespoints  notitle pt 4 ps 1.6 lw 4 lc rgb "#FFA0A3",\
-     "../../Data/POPCvsPOPGgromos-ckp.dat" using 1:($2-0.13562):7 with yerrorbars  notitle  pt 4 ps 1.6 lw 4 lc  rgb "#FFA0A3",\
-     "../../Data/POPCvsPOPGgromos-ckp.dat" using 1:($4-0.13557) with linespoints  notitle pt 4 ps 1.6 lw 4 lc  rgb "#FFA0A3",\
-     "../../Data/POPCvsPOPGgromos-ckp.dat" using 1:($4-0.13557):9 with yerrorbars  notitle pt 4 ps 1.6 lw 4 lc rgb "#FFA0A3",\
+     "../../Data/POPCvsPOPGlipid17.dat" using 1:($2-0.15289) with linespoints  notitle pt 5 ps 1.6 lw 4 lc rgb "#FFD300",\
+     "../../Data/POPCvsPOPGlipid17.dat" using 1:($2-0.15289):3 with yerrorbars  notitle pt 5 ps 1.6 lw 4 lc rgb "#FFD300",\
+     "../../Data/POPCvsPOPGlipid17.dat" using 1:($4-0.16765) with linespoints  notitle pt 5 ps 1.6 lw 4 lc rgb "#FFD300",\
+     "../../Data/POPCvsPOPGlipid17.dat" using 1:($4-0.16765):5 with yerrorbars  notitle pt 5 ps 1.6 lw 4 lc rgb "#FFD300",\
+     "../../Data/POPCvsPOPGslipid.dat" using 1:($2-0.06027) with linespoints  notitle pt 5 ps 1.6 lw 4 lc rgb "#7AEE9E",\
+     "../../Data/POPCvsPOPGslipid.dat" using 1:($2-0.06027):7 with yerrorbars  notitle  pt 5 ps 1.6 lw 4 lc  rgb "#7AEE9E",\
+     "../../Data/POPCvsPOPGslipid.dat" using 1:($4-0.05324) with linespoints  notitle pt 5 ps 1.6 lw 4 lc  rgb "#7AEE9E",\
+     "../../Data/POPCvsPOPGslipid.dat" using 1:($4-0.05324):9 with yerrorbars  notitle pt 5 ps 1.6 lw 4 lc rgb "#7AEE9E",\
+     "../../Data/POPCvsPOPGgromos-ckp.dat" using 1:($2-0.13562) with linespoints  notitle pt 5 ps 1.6 lw 4 lc rgb "#FFA0A3",\
+     "../../Data/POPCvsPOPGgromos-ckp.dat" using 1:($2-0.13562):7 with yerrorbars  notitle  pt 5 ps 1.6 lw 4 lc  rgb "#FFA0A3",\
+     "../../Data/POPCvsPOPGgromos-ckp.dat" using 1:($4-0.13557) with linespoints  notitle pt 5 ps 1.6 lw 4 lc  rgb "#FFA0A3",\
+     "../../Data/POPCvsPOPGgromos-ckp.dat" using 1:($4-0.13557):9 with yerrorbars  notitle pt 5 ps 1.6 lw 4 lc rgb "#FFA0A3",\
      "../../Data/PCvsPGalpha.dat" using 1:(($2-5.96694214876)*0.00784) with linespoints   notitle  pt 5 ps 1.6 lw 4 lc rgb 'black',\
-     "../../Data/PCvsPGalpha2.dat" using 1:(($3-6.5)*0.00784) with linespoints  title 'Exp(POPC:POPG) Macdonald T298K'  pt 4 ps 1.6 lw 4 lc rgb 'black' ,\
-     "../../Data/PCvsPGalpha2.dat" using 1:(($4-6.4)*0.00784) with linespoints  title 'Exp(POPC:POPG) Macdonald T298K 100mM NaCl'  pt 4 ps 1.6 dt 2 lw 4 lc rgb 'black'
+     "../../Data/PCvsPGalpha2.dat" using 1:(($3-6.5)*0.00784) with linespoints  title 'Exp (Macdonald, T298K)'  pt 4 ps 1.6 lw 4 lc rgb 'black' ,\
+     "../../Data/PCvsPGalpha2.dat" using 1:(($4-6.4)*0.00784) with linespoints  title 'Exp (Macdonald, T298K, 100mM NaCl)'  pt 4 ps 1.6 dt 2 lw 4 lc rgb 'black'
 
 
 unset multiplot
