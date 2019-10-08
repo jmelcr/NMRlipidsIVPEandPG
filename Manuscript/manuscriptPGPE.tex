@@ -408,7 +408,7 @@ significantly different in PS and PC headgroups in previous work \cite{NMRlipids
 between PC, PE and PG are not observed here (Fig.~\ref{structures}) \todo{We need also the dihedral distributions to finish this discussion.}. \\
 \todo{Why is the $\beta$-carbon order parameter of PG different to PC and PE then?}
 
-\subsection{Lipid headgroup interactions in PC:PE and PC:PG mixtures and counterion binding}
+\subsection{PC headgroup interactions with PE and PG}
 \begin{figure*}[]
   \centering
   \includegraphics[width=16.0cm]{../Figs/HGorderparametersPCvsPEPG.eps}
@@ -420,46 +420,38 @@ between PC, PE and PG are not observed here (Fig.~\ref{structures}) \todo{We nee
   \todo{Data for CHARMM without ions to be added once this issue is solved: https://github.com/NMRLipids/MATCH/issues/83}
   %\todo{Simulation of CHARMM36 at 298K should be maybe rerun with Gromacs 5.}
 \end{figure*}
-According to the electrometer concept, the headgroup order parameters increase
-with the addition of negatively charged PG lipids, but
+According to the electrometer concept, the PC headgroup order parameters increase
+with the addition of negatively charged PG or PS lipids, but
 are not affected by the addition of zwitterionic PE and SM lipids
 or cholesterol (Fig.~\ref{HGorderparametersPCvsPEPG}) \cite{seelig87, scherer87,antila18}. 
 The different responses of PC headgroup order parameters to PE and PG are roughly
 reproduced in CHARMM36 simulations, although the changes are slightly
-overestimated upon addition of PE and underestimated upon addition of PG.
+overestimated upon addition of PE and underestimated upon addition of PG (Fig.~\ref{HGorderparametersPCvsPEPG}).
 Interestingly, the response of POPC headgroup order parameters to POPE is
 close to experiments also in Berger-OPLS simulations, even though the response
-of Berger force field to cholesterol was significantly overestimated \cite{botan15}.
+of Berger force field to cholesterol was significantly overestimated in our previous work \cite{botan15}.
 In all force fields except Slipids, the $\alpha$-carbon order parameters of different
 hydrogens are responsing differently when mixed with PE or PG lipids \todo{Maybe we should figure out what is the reason for this}.
 \todo{Maybe we should analyze the P-N vector angle from different simulations}.
 
-In our previous study about PS lipids \cite{antila18}, we related the underestimated increase of PC
-headgroup order parameters upon addition of negaticely charged lipids
-%was previously interepreted
-to the overestimated counterion binding affinity, which would overcompensates the effect of negative charge.
-Similar correlation is observed here in other than GROMOS-CKP simulation:
-Lipid 17 simulation exhibits the stronger counter-ion binding affinitiy to the pure POPG bilayer (Fig. \ref{CIdensPG})
-and larger decrease in POPC $\beta$ carbon order parameter upon addition of POPG than other simulations.
-This, together with the low area per molecule in Lipid17 (59.5 {\AA} vs. 66.1 {\AA} in experiments) suggests
-that the counterion binding this model is too strong.
-However, $\beta$-carbon order parameter of POPC in GROMOS-CKP simulations is in line with experiments and
-increases more than in CHARMM36 and Slipids simulations even though the binding affinities in these
-simulations are simialar. On the other hand, the different responses of different hydrogens in $\alpha$-carbons
-complicate the interpretation. 
-Thus, the counterion binding to PG lipid bilayers (Fig. \ref{CIdensPG}) may be slightly
-overestimated also in simulations here.
+For $\beta$-carbon order parameter in PG headgroup, experiments report
+mild increase \cite{macdonald87} or no change~\cite{borle85} upon addition 
+of PC lipids (Fig. \ref{HGorderparametersPGvsPCchange}). 
+Simulations with all the tested force fields give only very small changes also for
+the $\alpha$-carbon order parameter (Figs. \ref{HGorderparametersPGvsPC} and \ref{HGorderparametersPGvsPCchange}). 
+Therefore, the simulations are generally in line with experimetns, suggesting that the
+interactions with PC do not essentially effect the PG headgroup structure.
+This is in contrast with previous results for PS headgroup \cite{antila18}, where
+all the force fieds significantly overestimated the structural response of PS headgroup
+to the interactions with PC lipids.
 \begin{figure}[]
   \centering
-  \includegraphics[width=9.0cm]{../Figs/CIdensPG.eps}
-  \caption{\label{CIdensPG}
-    Counterion densities and area per lipids from simulations with PG lipids.
-    Experimental area for POPG at 303 K is 66.1 {\AA}$^2$ and 67 {\AA}$^2$ for DPPC at 323 K \cite{pan12b}.
+  \includegraphics[width=8.0cm]{../Figs/HGorderparametersPGvsPCchange.eps}
+  \caption{\label{HGorderparametersPGvsPCchange}
+    Modulation of PG lipid headgroup order parameters with the increasing amount of PC in lipid bilayer
+    from experiments \cite{borle85,macdonald87} and simulations with different force fields.
   }
-  \todo{Data for GROMOS is also available without ions, but I could not analyze it, probably because tpr file was not correct.}
 \end{figure}
-
-
 
 \todo{This is text by P. Fuchs, copied from the blog. \\
 Area results in nm$^2$, the error is $<=$ 0.003 nm$^2$ \\
@@ -475,25 +467,65 @@ In contrast, the values for Berger are not that changed.
 The POPE value predicted by CHARMM 36 (in the mixture POPC/POPE 50:50) is much smaller than that predicted by Berger.\\
 -------\\
 The experimental acyl chain order parameters for POPE \cite{pare98} seem larger than reported for POPC \cite{ferreira13},
-  which supports the more condensed PE bilayer. In principle, this is beyond the scope of this work (lipid headgroups), but we can
-consider mentioning this.}
+which supports the more condensed PE bilayer.
+This is interesting, but to avoid the overexapansion of the manuscript, it is probably better to keep the focus in headgroups and ion binding also in this manuscript.}
 
 
-The order parameter of headgroup $\beta$-carbon of PG slightly increases with the addition
-of PC \cite{macdonald87}, althought also smaller changes have been observed~\cite{borle85}
-(Fig. \ref{HGorderparametersPSPGvsPC}).
-The increase in PG headgroup order parameter is not observed in simulations, which
-may arise from overestimated counterion binding overcompensating the changes in
-electrostatic environment as suggested for PC headgroup above. However, the changes
-are quite small and not fully consistent in experiments.
+
+
+\subsection{Counterion binding to PE and PG lipid bilayers}
+In our previous study about PS lipids \cite{antila18}, the underestimated increase of PC
+headgroup order parameters upon addition of negaticely charged lipids
+was related
+to the overestimated counterion binding affinity, which would overcompensates the effect of negative charge.
+Similar correlation is observed here in %other than GROMOS-CKP simulation:
+Lipid 17 simulations, which exhibits stronger counter-ion binding affinity to pure POPG bilayer (Fig. \ref{CIdensPG})
+and larger decrease in POPC $\beta$ carbon order parameter upon addition of POPG than other simulations.
+Together with the lower area per molecule (59.5 {\AA}$^2$) than in experiments (66.1 {\AA}$^2$),
+the results suggest that the counterions bind too strongly and shield the electrostatic repulsion between PG headgroups
+in bilayers simulated with Lipid17 parameters.
+In GROMOS-CKP simulations, however, the $\beta$-carbon order parameter of POPC
+increases upon addition of POPG more than in CHARMM36 and Slipids simulations even though the binding affinities in these
+simulations are similar. On the other hand, the responses of different hydrogens attached in $\alpha$-carbons
+are different in all simulations except in Slipids, most sever in Lipid17 and GROMOS-CKP where other in increases
+and other decreases \todo{Can we figure out the reason for this?}.
+In conclusion, the counter-ion binding seems to be overestimated in Lipid17 with the strongest affinity among the
+tested models, while with this data we cannot fully evaluate binding affinity in the other models.
 \begin{figure}[]
   \centering
-  \includegraphics[width=8.0cm]{../Figs/HGorderparametersPGvsPC.eps}
-  \caption{\label{HGorderparametersPGvsPC}
-    Modulation of PG lipid headgroup order parameters with the increasing amount of PC in lipid bilayer
-    from experiments \cite{borle85,macdonald87} and simulations with different force fields.
+  \includegraphics[width=9.0cm]{../Figs/CIdensPG.eps}
+  \caption{\label{CIdensPG}
+    Counterion densities and area per lipids from simulations with PG lipids.
+    Experimental area for POPG at 303 K is 66.1 {\AA}$^2$ and 67 {\AA}$^2$ for DPPC at 323 K \cite{pan12b}.
+  }
+  \todo{Data for GROMOS is also available without ions, but I could not analyze it, probably because tpr file was not correct.}
+\end{figure}
+
+%Sodium binding to PC lipid bilayers is significantly overestimated by most simulations models \cite{catte16}.
+%Also, sodium binding to PS lipids seems to be overestimated, although the
+%presence of counterions complicate the comparison for negatively charged lipids \cite{NMRlipidsIVps}.
+Similarly to POPG, the Lipid17 exhibits stronger sodium binding affinity
+to POPE bilayers than Slipids, CHARMM36 and GROMOS-CKP (Fig. \ref{NAdensPE}).
+Experimental data for sodium binding to PE lipids is not available, but
+large deviations from PC would be surprising.
+However, in Slipids and GROMOS-CKP simulations, the binding affinity to POPE is much weaker than to POPC
+(our previous work \cite{catte16} and Fig. ??). On the other hand, 
+the sodium binding affinity is stronger to POPE in Lipid17 simulations than to POPC in simulations with
+previous Amber lipid version, Lipid14.
+\todo{The potential differences in the used ion models should be checked}.
+\begin{figure}[]
+  \centering
+  \includegraphics[width=8.0cm]{../Figs/NAdensPE.eps}
+  \caption{\label{NAdensPE}
+    Sodium (solid line) and choride ion density profiles along membrane normal
+    from different simulations with PE lipids.
   }
 \end{figure}
+
+
+
+
+
 
 \clearpage
 \subsection{Cation binding to PE and PG lipid bilayers}
@@ -535,22 +567,6 @@ Based on the electrometer concept and other data is has been suggested that \cit
 The electrometer concept has been very useful in evaluating ion binding affinity in simulations
 against experiments, because the headgroup order parameter changes as a function of ion concentration
 can be directly compared with experiments \cite{catte16,melcr18,NMRlipidsIVps}.
-
-Sodium binding to PC lipid bilayers is significantly overestimated by most simulations models \cite{catte16}.
-Also, sodium binding to PS lipids seems to be overestimated, although the
-presence of counterions complicate the comparison for negatively charged lipids \cite{NMRlipidsIVps}.
-Sodium binding to PE lipids is weaker than to PC lipids in previous work \cite{catte16} in both CHARMM36 and Slipids simulations (Fig. \ref{NAdensPE}).
-This cannot be evaluated using electrometer concept because experimental data with PE lipids is not
-available \todo{Other experimental data should be checked and discussed}.
-The difference in Slipids may also be due to different ion model used \todo{The used ion model here should be checked}.
-\begin{figure}[]
-  \centering
-  \includegraphics[width=8.0cm]{../Figs/NAdensPE.eps}
-  \caption{\label{NAdensPE}
-    Sodium (solid line) and choride ion density profiles along membrane normal
-    from different simulations with PE lipids.
-  }
-\end{figure}
 
 Calcium binding affinity to PC and PS lipid bilayers was not correctly described by
 any of the standard MD simulation forced fields \cite{catte16,NMRlipidsIVps}, while
