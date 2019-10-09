@@ -473,7 +473,7 @@ This is interesting, but to avoid the overexapansion of the manuscript, it is pr
 
 
 
-\subsection{Counterion binding to PE and PG lipid bilayers}
+\subsection{Sodium binding to PE and PG lipid bilayers}
 In our previous study about PS lipids \cite{antila18}, the underestimated increase of PC
 headgroup order parameters upon addition of negaticely charged lipids
 was related
@@ -506,12 +506,19 @@ tested models, while with this data we cannot fully evaluate binding affinity in
 %presence of counterions complicate the comparison for negatively charged lipids \cite{NMRlipidsIVps}.
 Similarly to POPG, the Lipid17 exhibits stronger sodium binding affinity
 to POPE bilayers than Slipids, CHARMM36 and GROMOS-CKP (Fig. \ref{NAdensPE}).
-Experimental data for sodium binding to PE lipids is not available, but
-large deviations from PC would be surprising.
-However, in Slipids and GROMOS-CKP simulations, the binding affinity to POPE is much weaker than to POPC
-(our previous work \cite{catte16} and Fig. ??). On the other hand, 
-the sodium binding affinity is stronger to POPE in Lipid17 simulations than to POPC in simulations with
-previous Amber lipid version, Lipid14.
+In Lipid17 the sodium binding affinity to POPE is approximately similar as to POPC,
+while in other models exhibit weaker binding to POPE (Fig. \ref{NAdensPC}).
+The difference is small in Slipids and CHARMM36, while GROMOS-CKP predicts
+subtantially stronger binding to POPC.
+Experimental data for sodium binding to PE lipids is not available, while
+simulations in agreement with electrometer data from NMR suggests that
+sodium binding to POPC is weaker than in any of the simulations
+here (Fig. \ref{NAdensPC})~\cite{catte16,melcr18}. Assuming that the binding
+to POPE would be similar than to POPC, the sodium binding affinity to POPE
+is potentially realistic in CHARMM36, Slipids, and GROMOS-CKP simulations here,
+but substantially overestimated in Lipid17 simulation.
+%On the other hand, the sodium binding affinity is stronger to POPE in Lipid17 simulations than to POPC in simulations with
+%previous Amber lipid version, Lipid14.
 \todo{The potential differences in the used ion models should be checked}.
 \begin{figure}[]
   \centering
