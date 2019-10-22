@@ -89,20 +89,62 @@ Prague 6, Czech Republic}
 %\label{}
 \section{Introduction}
 
+PE and PG lipids are most common lipids in bacteria \cite{sohlenkamp16}.
 Zwitterionic PE is the second most abundant glycerophospholipid in eukaryotic cells
 and has been related to the diseases \cite{vance15,calzada16,patel17}.
+Anionic PG lipids are less abundant, but is also proposed to be fundamental for terrestrial life \cite{furse17}.
 PE and PG affect membrane protein functionality \cite{hariharan18} and bind to various proteins \cite{yeagle14}.
+PE headgroup is also prone for negative membrane curvature and causes membrane fusion \cite{??}.
+Therefore, the PE and PG headgroup structures play probably essential roles in 
+many biological processes.
 
-In NMRlipids I and II project we were looking for a MD model
-which would correctly reproduce headgroup and glycerol
-backbone structures and cation binding for PC lipid bilayers \cite{botan15,catte16}.
-Here we extend the same goal for other than PC lipids.
-Currently the focus is on PE, PG and PS bilayers and their
-mixtures with PC. Experimental data with different amounts of 
-added salt is now collected and presented in this manuscript.
+Structural details of lipid headgroups are mainly studied using NMR experiments, which
+suggest that the glycerol backbone structures are largely similar irrespectively of the headroup \cite{gally81}, 
+glycerol backbone and headgroup structure and behaviour are similar in model membranes and in bacteria \cite{gally81,scherer87,seelig90},
+and the headgroup structures are similar in PC, PE and PG lipids, while headgroup is more rigid in PS lipids \cite{wohlgemuth80,buldt81}. 
+%Extensive discussion about structural details of PE, PG or PS headgroups do not exists (as far as I know), 
+%In contrast to PC lipids (see \cite{botan15} and references therein).
+Some attempts to resolve conformational ensembles from NMR for PC lipids have been made,
+but lesser extend for other lipids \cite{??}.
+Classical molecular dynamics simulations could potentially give such ensembles and therefore enable
+the detailed studies of lipid headgroup behaviour in complex biomolecular systems, but current
+force fields are not accurate enough to reproduce the correct conformational ensembles for PC and PS headgroups \cite{botan15,antila19}.
+Several MD simulations of PE and PG lipids have been published especially in the context of modeling
+inner membrane of Gram-negative bacteria \cite{??}, but glycerol backbone and headgroup structures have not
+been evaluated against experiments.
 
+Besides the structure, also ion binding may regulate biophysical activity of especially negatively
+charged lipid headgroups \cite{??}. Monovalent cation (except Lithium) binding to zwitterionic PC headgroups is
+very weak, while multivalent ion binding is stronger but still weak \cite{??}. The ion binding affinity
+data for PE is more scarce \cite{??}, but large differences to PC would be surprising.
+Negatively charged lipids are suggested to bear same cation binding constants than zwitterionic lipids, but
+the amount of bound ions to negatively charged membranes would still be larger because
+the concentration of cations in the vicinity of membranes would be higher  \cite{seelig90}.
+%is stronger
+%Based on the electrometer concept and other data is has been suggested that \cite{seelig90}
+%\begin{displayquote}
+%  {\it ''(i) Ca$^{2+}$ binds to neutral lipids (phosphatidylcholine, phosphatidylethanolamine) and negatively charged lipids
+%    (phosphatidylglycerol) with approximately the same binding constant of K = 10-20 M$^{-1}$; \\
+%    (ii) the free Ca$^{2+}$
+%    concentration at the membrane interface is distinctly enhanced if the membrane carries a negative surface
+%    charge, either due to protein or to lipid; \\
+%    (iii) increased inter-facial Ca$^{2+}$ also means increased amounts
+%    of bound Ca$^{2+}$ at neutral and charged lipids; \\
+%    (iv) the actual binding step can be described by a Langmuir
+%    adsorption isotherm with a 1 lipid:1 Ca$^{2+}$ stoichiometry, provided the interfacial concentration C$_M$, is
+%    used to describe the chemical binding equilibrium.''}
+%\end{displayquote}
+On the other hand, anionic PS lipids are proposed chelate with calcium ions \cite{??}.
+In simulations, the cation binding affinity to PC and PS membranes is typically overestimated \cite{catte16,antila19},
+which can be improved by applying the ECC to the partial charges of the force fields \cite{melcr18,melcr19}.
 
-
+Here, we use open collaboration and order parameters of glycerol backbone and headgroup
+to evaluate the accuracy of PE and PG heagroup structures, and the cation binding affinity
+to anionic membranes containing PG lipids in the current MD simulation force fields.
+The force field giving the best description for glycerol backbone and headgroup structures
+of PC, PS, PG and PE headgroups (CHARMM36) reproduces the essential differences in order parameters
+between these headgroups, and therefore enables the analysis of structural differences between the
+headgroups.
 
 %\begin{figure}[]
 %  \centering
@@ -113,21 +155,6 @@ added salt is now collected and presented in this manuscript.
 %\end{figure}
 
 
-Experimental order parameters for different lipid headgroups are
-collected in Fig. \ref{HGorderParameters}. 
-
-Based on superficial reading, the conclusions in the literature are roughly \\ 
-1) glycerol backbone structures are largely similar irrespectively of the headroup \cite{gally81}, \\
-2) glycerol backbone and headgroup structure and behaviour are similar in model membranes and in bacteria \cite{gally81,scherer87,seelig90}, \\
-3) headgroup structures are similar in PC, PE and PG lipids, while headgroup is more rigid in PS lipids \cite{wohlgemuth80,buldt81}. \\
-Extensive discussion about structural details of PE, PG or PS headgroups do not exists (as far as I know), 
-In contrast to PC lipids (see \cite{botan15} and references therein).
-
-
-
-Several simulations containing PE, PG and PS lipids have been published \cite{??}, \todo{List should be completed}
-however, glycerol backbone and headgroup order parameters are not compared to
-the experiments (based on superficial reading of literature).
 
 \section{Methods}
 \subsection{Experimental C--H bond order parameters}% from the natural abundance $^{13}$C\,NMR}
@@ -137,7 +164,7 @@ were determined by measuring the chemical-shift resolved dipolar splittings
 with a R-type Proton Detected Local Field (R-PDLF) experiment~\cite{dvinskikh04} and
 %The corresponding order parameter signs were measured with a
 S-DROSS experiments~\cite{gross97} using natural abundance $^{13}$C solid state NMR spectroscopy
-as described previously \cite{ferreira13,ferreira16,NMRlipidsIVps}.
+as described previously \cite{ferreira13,ferreira16,antila19}.
 %The experiments were done in a Bruker Avance III 400 spectrometer operating at a $^1$H Larmor frequency of 400.03 MHz.
 %Magic angle spinning (MAS) of the sample was used at a frequency of 5.15 kHz (R-PDLF experiment) and 5 kHz (S-DROSS experiment).
 %The following experimental setups were used.
@@ -175,7 +202,7 @@ used for all atom simulations is available in Ref. \citenum{MATCHgit}
 with hydrogens having ideal geometry were constructed first using either buildH program~\cite{buildH}
 or ({\tt scratch/opAAUA\_prod.py}) in  Ref. \citenum{MATCHgit}, and the order parameters were
 then calculated from these trajectories. This approach has been tested against trajectories
-with explicit hydrogens and the deviations in order parameters are small \cite{buildH,piggot18}.
+with explicit hydrogens and the deviations in order parameters are small \cite{buildH,piggot17}.
 The ion number density profiles were calculated using the {\tt gmx density} tool
 of the Gromacs sofware package \cite{gromacsMANUAL}.
 
@@ -309,7 +336,7 @@ The glycerol backbone and $\alpha$-carbon peaks in INEPT spectra of POPE were as
 previously measured POPC spectra (Fig. \ref{POPEspectra}) \cite{ferreira13}. The $\beta$-carbon peak was assigned based
 on $^{13}$C chemical shift table for amines available at \url{https://www.chem.wisc.edu/areas/reich/nmr/c13-data/cdata.htm}.
 The order parameters for the glycerol backbone and headgroup C--H bonds were determined
-from 2D-RPDLF and S-DROSS experiments (Fig. \ref{POPEspectra}), as described previously \cite{NMRlipidsIVps}.
+from 2D-RPDLF and S-DROSS experiments (Fig. \ref{POPEspectra}), as described previously \cite{antila19}.
 The POPE experiments were recorded at 310~K, where the bilayer is in liquid disordered phase \cite{??}.
 \todo{Details to be checked by Tiago}.
 
@@ -334,7 +361,7 @@ order parameter was apparently similar to the value for PE and PC results.
     (top) Chemical structure of different lipids
     (bottom) Headgroup and glycerol backbone order parameters measured from lipids
     with different headgroups in lamellar liquid disordered phase.
-    The values and signs for POPE (310~K), POPG (298~K). POPS (298~K) \cite{NMRlipidsIVps} and POPC (300~K) \cite{ferreira13,ferreira16}
+    The values and signs for POPE (310~K), POPG (298~K). POPS (298~K) \cite{antila19} and POPC (300~K) \cite{ferreira13,ferreira16}
     are measured using $^{13}$C NMR. The literature values for
     DOPS with 0.1M of NaCl (303~K) \cite{browning80},
     POPG with 10nM PIPES (298~K) \cite{borle85},
@@ -350,12 +377,12 @@ relatively similar. Also, the headgroup conformations are similar for PC and PE 
 PS and PG are singnificantly different. For PS lipids, the differences are discussed previously \cite{??}.
 
 \subsection{Headgroup and glycerol backbone of POPE and POPG in MD simulations}
-As reported previously for PC \cite{botan15} and PS \cite{NMRlipidsIVps} lipids,
+As reported previously for PC \cite{botan15} and PS \cite{antila19} lipids,
 the headgroup and glycerol backbone order parameters show wide variation between different force fields
 for both PE and PG lipids (Figs. \ref{HGorderParametersPE} and \ref{HGorderParametersPOPG}),
 and none of the force fields reproduce all values within experimental error bars.
 %The Slipid simulations were able to capture the essential differences between PC and PS lipid
-%headgroups \cite{NMRlipidsIVps}, but this is not the case for PE and PG lipids.
+%headgroups \cite{antila19}, but this is not the case for PE and PG lipids.
 %\todo{Berger results are not here yet, but we should mention the ring like structures
 %  pointed out by T. Piggot in the blog:
 The poor performance of headgroup order parameters in Berger model can be probably explained by ring like structures seen in Fig. 6 in Ref. \citenum{mukhopadhyay04},
@@ -394,14 +421,14 @@ which is a typical feature for Berger based lipid force fields containing explic
     Overlayed snapshots from CHARMM36 simulations of different lipids which give the best agreement with experiments.
   }
 \end{figure*}
-Also in line with previous studies for PC \cite{botan15} and PS \cite{NMRlipidsIVps} lipids,
+Also in line with previous studies for PC \cite{botan15} and PS \cite{antila19} lipids,
 CHARMM36 simulations are in best agreement with experiments for headgroup and glycerol backbone
 order parameters, and seem to capture all the essential differences between different headroups
 (Figs. \ref{HGorderParametersPE} and \ref{HGorderParametersPOPG}).
 %headgroup order parameters of PC PE, PG (Figs. \ref{HGorderParametersPE} and \ref{HGorderParametersPOPG}),
-%as previously observed also for PS lipids \cite{NMRlipidsIVps}.
+%as previously observed also for PS lipids \cite{antila19}.
 In previous study, CHARMM36 predicted the more negative $\beta$-carbon order parameter and larger forking of
-the $\alpha$-carbon is PS headgroup than in PC \cite{NMRlipidsIVps}.
+the $\alpha$-carbon is PS headgroup than in PC \cite{antila19}.
 In this work, the CHARMM36 simulations reproduce also the other essential differences in experimental
 headgroup order parameters between different headgroups (Fig. \ref{HGorderParameters}) despite the inaccuracies
 in individual segments:
@@ -409,7 +436,7 @@ The PE headgroup order parameters in CHARMM36 simulations are similar to the PC 
 and $\beta$-carbon order parameters is positive in PG headgroup, in contrast to the negative values observed in
 other lipids. Therefore, we use CHARMM36 simulations to analyze the structural differences between
 headgroups (Fig.~\ref{structures}). While rotation around N-C$_\alpha$-C$_\beta$-O$_\alpha$ dihedral was
-significantly different in PS and PC headgroups in previous work \cite{NMRlipidsIVps}, essential differences
+significantly different in PS and PC headgroups in previous work \cite{antila19}, essential differences
 between PC, PE and PG are not observed here (Fig.~\ref{structures}) \todo{We need also the dihedral distributions to finish this discussion.}. \\
 \todo{Why is the $\beta$-carbon order parameter of PG different to PC and PE then?}
 
@@ -507,7 +534,7 @@ tested models, while with this data we cannot fully evaluate binding affinity in
 
 %Sodium binding to PC lipid bilayers is significantly overestimated by most simulations models \cite{catte16}.
 %Also, sodium binding to PS lipids seems to be overestimated, although the
-%presence of counterions complicate the comparison for negatively charged lipids \cite{NMRlipidsIVps}.
+%presence of counterions complicate the comparison for negatively charged lipids \cite{antila19}.
 Similarly to POPG, the Lipid17 exhibits stronger sodium binding affinity
 to POPE bilayers than Slipids, CHARMM36 and GROMOS-CKP (Fig. \ref{NAdensPE}).
 In Lipid17 the sodium binding affinity to POPE is approximately similar as to POPC,
@@ -545,7 +572,7 @@ affinity to lipid bilayers, because their magnitude is linearly proportional
 to the amount of bound charge in bilayer according to the molecular
 electrometer concept \cite{seelig87,catte16}. The molecular electrometer concept
 can be used also for bilayers containing PC lipids mixed with charged
-lipids \cite{borle85,macdonald87,roux90,NMRlipidsIVps}.
+lipids \cite{borle85,macdonald87,roux90,antila19}.
 %This is demonstrated in Figs \ref{OrderParametersWithCaCl},
 %\ref{OrderParametersWithCaClBELOW1M} and \ref{OrderParameterCHANGESWithCaClBELOW1M},
 %showing order parameters for PC headgroup $\alpha$ and $\beta$ carbons
@@ -562,25 +589,12 @@ lipids \cite{borle85,macdonald87,roux90,NMRlipidsIVps}.
 %At CaCl$_2$ concentrations ($\sim$ 50-300mM) where order parameters reach the values for pure PC,
 %the Ca2+ binding presumably fully cancels the charge from negative lipids and
 %overcharging occurs above these concenterations.
-Based on the electrometer concept and other data is has been suggested that \cite{seelig90}
-\begin{displayquote}
-  {\it ''(i) Ca$^{2+}$ binds to neutral lipids (phosphatidylcholine, phosphatidylethanolamine) and negatively charged lipids
-    (phosphatidylglycerol) with approximately the same binding constant of K = 10-20 M$^{-1}$; \\
-    (ii) the free Ca$^{2+}$
-    concentration at the membrane interface is distinctly enhanced if the membrane carries a negative surface
-    charge, either due to protein or to lipid; \\
-    (iii) increased inter-facial Ca$^{2+}$ also means increased amounts
-    of bound Ca$^{2+}$ at neutral and charged lipids; \\
-    (iv) the actual binding step can be described by a Langmuir
-    adsorption isotherm with a 1 lipid:1 Ca$^{2+}$ stoichiometry, provided the interfacial concentration C$_M$, is
-    used to describe the chemical binding equilibrium.''}
-\end{displayquote}
 The electrometer concept has been very useful in evaluating ion binding affinity in simulations
 against experiments, because the headgroup order parameter changes as a function of ion concentration
-can be directly compared with experiments \cite{catte16,melcr18,NMRlipidsIVps}.
+can be directly compared with experiments \cite{catte16,melcr18,antila19}.
 
 Calcium binding affinity to PC and PS lipid bilayers was not correctly described by
-any of the standard MD simulation forced fields \cite{catte16,NMRlipidsIVps}, while
+any of the standard MD simulation forced fields \cite{catte16,antila19}, while
 recently introduced force field with electronic continuum correction (ECC) performed better \cite{melcr18}.
 The decrease of $\alpha$-carbon order parameter of PC lipids in PC:PG mixtures as a function
 of calcium concentration is close to experiments CHARMM36 simulations (Fig. \ref{changesWITHCaClPG}),
