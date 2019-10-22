@@ -52,9 +52,9 @@ set xtics format "%G"
 set xlabel "Membrane normal coordinate (nm)"
 unset label
 set label  "Gromos-CKP"  at graph  0.4,0.9
-set label  "A_{pl} = 65.0 {\305}^2"  at graph  0.02,0.8
-set key at graph 0.87,0.82
-plot "../../../MATCH/Data/Lipid_Bilayers/POPG+150mNaCl/T310K/MODEL_GROMOS-CKP/IONdens.xvg" using 1:2 with lines title 'POPG+110mM NaCl 310K' lw 2 lc rgb 'black',\
+set label  "A_{pl} = 65.9 {\305}^2"  at graph  0.02,0.8
+set key at graph 0.67,0.82
+plot "../../../MATCH/Data/Lipid_Bilayers/POPG/T310K/MODEL_GROMOS-CKP/IONdens.xvg" using 1:2 with lines title 'POPG 310K' lw 4 lc rgb 'black',\
 
 
 
