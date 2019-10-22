@@ -89,6 +89,10 @@ Prague 6, Czech Republic}
 %\label{}
 \section{Introduction}
 
+Zwitterionic PE is the second most abundant glycerophospholipid in eukaryotic cells
+and has been related to the diseases \cite{vance15,calzada16,patel17}.
+PE and PG affect membrane protein functionality \cite{hariharan18} and bind to various proteins \cite{yeagle14}.
+
 In NMRlipids I and II project we were looking for a MD model
 which would correctly reproduce headgroup and glycerol
 backbone structures and cation binding for PC lipid bilayers \cite{botan15,catte16}.
@@ -97,7 +101,7 @@ Currently the focus is on PE, PG and PS bilayers and their
 mixtures with PC. Experimental data with different amounts of 
 added salt is now collected and presented in this manuscript.
 
-PE and PG affect membrane protein functionality \cite{hariharan18} and bind to various proteins \cite{yeagle14}.
+
 
 
 %\begin{figure}[]
@@ -272,12 +276,11 @@ of the Gromacs sofware package \cite{gromacsMANUAL}.
       \hline
       POPC                   & CHARMM36 \cite{??}        & 0.11      & 0  & 500     & 25000 & 48  &  310  & 500 & 100 & \cite{POPCcharmm150mMNaCl301K}  \\
       POPC:POPG (7:3)        & CHARMM36 \cite{??}        & 0.11      & 0  & 350     & ?     & ?   &  310  & 500 & 100 & \cite{POPC7POPG1charmm36NaCl}  \\
-      POPC:POPG (1:1)/K$^+$  & CHARMM36 \cite{??}        &0          & 0      & ? & ? & ?  &  ?  & ? & ? & \cite{??} \todoi{Data to be uploaded by J. Madsen. Details to be filled once we have the data}  \\
-      POPC:POPG (1:1)/K$^+$  & CHARMM36 \cite{??}        &0          & 0.15 \todoi{Concentration to be checked.}  & ? & ? & ?  &  ?  & ? & ? & \cite{??} \todoi{Data to be uploaded by J. Madsen. Details to be filled once we have the data}  \\
-      POPC:POPG (1:1)/K$^+$  & CHARMM36 \cite{??}        &0          & 1.0  \todoi{Concentration to be checked.}  & ? & ? & ?  &  ?  & ? & ? & \cite{??} \todoi{Data to be uploaded by J. Madsen. Details to be filled once we have the data}  \\
-      POPC:POPG (4:1)/K$^+$  & CHARMM36 \cite{??}        &0          & 0      & ? & ? & ?  &  ?  & ? & ? & \cite{??} \todoi{Data to be uploaded by J. Madsen. Details to be filled once we have the data}  \\
-      POPC:POPG (4:1)/K$^+$  & CHARMM36 \cite{??}        &0          & 0.15 \todoi{Concentration to be checked.}  & ? & ? & ?  &  ?  & ? & ? & \cite{??} \todoi{Data to be uploaded by J. Madsen. Details to be filled once we have the data}  \\
-      POPC:POPG (4:1)/K$^+$  & CHARMM36 \cite{??}        &0          & 1.0  \todoi{Concentration to be checked.}  & ? & ? & ?  &  ?  & ? & ? & \cite{??} \todoi{Data to be uploaded by J. Madsen. Details to be filled once we have the data}  \\
+      POPC:POPG (1:1)/K$^+$  & CHARMM36 \cite{??}        &0          & 0  & 250:250 & 18158 & 0   &  298  & 200 & 200 & \cite{CHARMM36POPCPOPG5050} \\ 
+      POPC:POPG (1:1)        & CHARMM36 \cite{??}        &0          & 0.34 \todoi{Concentration calculated based in total amount of calcium ions. This may not be reasonable due to the lack of counterions.}  & 250:250 & 20798 & 128 &  298  & 200 & 200 & \cite{CHARMM36POPCPOPG5050150mMCaCl} \\
+      POPC:POPG (1:1)        & CHARMM36 \cite{??}        &0          & 1.36  \todoi{Concentration calculated based in total amount of calcium ions. This may not be reasonable due to the lack of counterions.} & 250:250 & 18114 & 445  &  298  & 200 & 200 & \cite{CHARMM36POPCPOPG50501000mMCaCl} \\
+      POPC:POPG (4:1)/K$^+$  & CHARMM36 \cite{??}        &0          & 0  & 400:100 & 18664 & 0  &  298  & 200 & 200 & \cite{CHARMM36POPCPOPG4010} \\
+      POPC:POPG (4:1)/K$^+$  & CHARMM36 \cite{??}        &0          & 1.0 \todoi{Concentration calculated based in total amount of calcium ions. This may not be reasonable due to the lack of counterions.} & 400:100 & 18647 & 419  &  298  & 200 & 200 & \cite{CHARMM36POPCPOPG40101000mMCaCl} \\
       \hline
       POPC             & CHARMM36 \cite{??}        &0          & 0  & 256 & 8704 & 0  &  300  & 300 & 250 & \cite{POPCcharmm300K} \\
       POPC:POPE (1:1)  & CHARMM36 \cite{??}        &0          & 0  & 128 & 8704 & 0  &  300  & 300 & 250 & \cite{POPC1POPE1charmm36} \\
