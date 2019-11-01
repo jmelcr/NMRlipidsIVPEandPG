@@ -108,10 +108,10 @@ Classical molecular dynamics simulations could potentially give such ensembles a
 the detailed studies of lipid headgroup behaviour in complex biomolecular systems, but current
 force fields are not accurate enough to reproduce the correct conformational ensembles for PC and PS headgroups \cite{botan15,antila19}.
 Several MD simulations of PE and PG lipids have been published especially in the context of modeling
-inner membrane of Gram-negative bacteria \cite{devries04,murzyn05,pedersen06,zhao07,gurtovenko08,zhao08,kukol09,tsai12,dickson12,venable13,dickson14,berglund15}
+inner membrane of Gram-negative
+bacteria \cite{devries04,murzyn05,pedersen06,zhao07,gurtovenko08,zhao08,henin09,kukol09,tsai12,dickson12,venable13,dickson14,berglund15}
 \todo{There may be some relevant publication missing from here},
-but glycerol backbone and headgroup structures have not
-been evaluated against experiments.
+but evaluation of glycerol backbone and headgroup structures against experiments is rare \cite{henin09}.
 
 Besides the structure, also ion binding may regulate biophysical activity of especially negatively
 charged lipid headgroups \cite{seelig90}. Monovalent cation (except Lithium) binding to zwitterionic PC and anionic PS headgroups is
@@ -497,6 +497,28 @@ The response of PC headgroup order parameters to PE by the tested CHARMM36 and
 Berger-OPLS force fields, although CHARMM36 slightly overestimates the changes (Fig.~\ref{HGorderparametersPCvsPEPG}).
 The good performance of Berger-OPLS simulations is notable because the response of headgroup order parameters
 to cholesterol was significantly overestimated by the Berger/Höltje force field in our previous work \cite{botan15}.
+\todo{This is text by P. Fuchs, copied from the blog. \\
+Area results in nm$^2$, the error is $<=$ 0.003 nm$^2$ \\
+- pure POPC \\
+CHARMM36: 0.624 \\
+Berger : 0.649 \\
+- POPC/POPE 50:50 \\
+CHARMM36 : POPC 0.609, POPE 0.557 \\
+Berger-hacked: POPC 0.637, POPE 0.632 \\
+----- \\
+One can see that CHARMM 36 predicts a drop in the area on going from pure POPC to POPC/POPE 50:50. This means that POPC pack tightly to POPE. 
+In contrast, the values for Berger are not that changed. 
+The POPE value predicted by CHARMM 36 (in the mixture POPC/POPE 50:50) is much smaller than that predicted by Berger.\\
+-------\\
+The experimental acyl chain order parameters for POPE \cite{pare98} seem larger than reported for POPC \cite{ferreira13},
+which supports the more condensed PE bilayer.
+This is interesting, but not exactly the core message of the manuscript.
+Maybe we should mention this very briefly? For example, we could just report the areas per lipid (without distinguishing PC and PE)
+and mention the difference between CHARMM36 and Berger. I have opened an issue for this: https://github.com/NMRLipids/NMRlipidsIVPEandPG/issues/7
+}
+
+
+
 None of the force fields fully reproduces the PC headgroup order parameter response to the increasing amount of
 PG, which may be related to the counterion binding affinity (see also the next section) \cite{antila19}.
 In all force fields except Slipids, the order parameters of different
@@ -524,22 +546,6 @@ to the interactions with PC lipids \cite{antila18}.
   }
 \end{figure}
 
-\todo{This is text by P. Fuchs, copied from the blog. \\
-Area results in nm$^2$, the error is $<=$ 0.003 nm$^2$ \\
-- pure POPC \\
-CHARMM36: 0.624 \\
-Berger : 0.649 \\
-- POPC/POPE 50:50 \\
-CHARMM36 : POPC 0.609, POPE 0.557 \\
-Berger-hacked: POPC 0.637, POPE 0.632 \\
------ \\
-One can see that CHARMM 36 predicts a drop in the area on going from pure POPC to POPC/POPE 50:50. This means that POPC pack tightly to POPE. 
-In contrast, the values for Berger are not that changed. 
-The POPE value predicted by CHARMM 36 (in the mixture POPC/POPE 50:50) is much smaller than that predicted by Berger.\\
--------\\
-The experimental acyl chain order parameters for POPE \cite{pare98} seem larger than reported for POPC \cite{ferreira13},
-which supports the more condensed PE bilayer.
-This is interesting, but to avoid the overexapansion of the manuscript, it is probably better to keep the focus in headgroups and ion binding also in this manuscript.}
 
 
 
