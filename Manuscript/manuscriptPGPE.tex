@@ -415,7 +415,8 @@ ring like structures seen in Fig. 6 in Ref. \citenum{mukhopadhyay04}, which is a
 for Berger based lipid force fields containing explicit hydrogen atoms in the head group \cite{zhao08,henin09,dahlberg10}.
 The poor performance of glycerol backbone of Slipids simulations is systemically observed also
 for other lipids in previous studies \cite{botan15,antila19}.
-\todo{Should we comment more the relative quality of different force fields and/or make the subjective force field ranking figures?}
+\todo{Should we comment more the relative quality of different force fields and/or make the subjective force field ranking figures?
+https://github.com/NMRLipids/NMRlipidsIVPEandPG/issues/8}
 
 Without further discussion about poorly performing force fields, we focus on more detailed analysis
 of CHARMM36 simulations, which give the best overall agreement with experiments for
@@ -433,13 +434,13 @@ the PE headgroup order parameters are similar to the PC \cite{botan15}
 and $\beta$-carbon order parameters is positive in PG headgroup, while negative values observed in
 other lipids. Therefore, we use CHARMM36 simulations to analyze the structural differences between
 headgroups (Fig.~\ref{structures}).
-\todo{The structures are already in Fig. \ref{structures}, but we need also the dihedral distributions to finish the discussion}.
+\todo{The structures are already in Fig. \ref{structures}, but we need also the dihedral distributions to finish the discussion.
+Maybe we should analyze also some other structural features, at least P-N angles. More discussion in issue
+https://github.com/NMRLipids/NMRlipidsIVPEandPG/issues/9}.
 %While rotation around N-C$_\alpha$-C$_\beta$-O$_\alpha$ dihedral was
 %significantly different in PS and PC headgroups in previous work \cite{antila19}, essential differences
 %between PC, PE and PG are not observed here (Fig.~\ref{structures}) \todo{We need also the dihedral distributions to finish this discussion.}. \\
 %\todo{Why is the $\beta$-carbon order parameter of PG different to PC and PE then?}
-
-\todo{Maybe we should analyze also some other structural features, at least P-N angles.}
 
 \begin{figure}[]
   \centering
@@ -523,8 +524,9 @@ None of the force fields fully reproduces the PC headgroup order parameter respo
 PG, which may be related to the counterion binding affinity (see also the next section) \cite{antila19}.
 In all force fields except Slipids, the order parameters of different
 hydrogens attached to the $\alpha$-carbon are responsing differently when mixed with PE or PG lipids
-\todo{Maybe we should figure out what is the reason for this?}.\\
-\todo{Maybe we should analyze the P-N vector angle from different simulations?}.
+\todo{Maybe we should figure out what is the reason for this? \\
+  Maybe we should analyze the P-N vector angle from different simulations? \\
+  https://github.com/NMRLipids/NMRlipidsIVPEandPG/issues/10}.
 
 For $\beta$-carbon order parameter in PG headgroup, experiments report
 mild increase \cite{macdonald87} or no change~\cite{borle85} upon addition 
