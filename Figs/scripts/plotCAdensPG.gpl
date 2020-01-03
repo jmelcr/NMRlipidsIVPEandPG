@@ -2,7 +2,7 @@ set size 1.0,0.6
 set encoding iso_8859_1
 set terminal postscript portrait enhanced color dashed lw 1 "Helvetica" 14 background rgb 'white'
 set output "../CAdensPG.eps"
-set yrange [0:1.4] 
+set yrange [0:1.65] 
 set xrange [-4:4] 
 #set ytic 0.05
 #set xtics ("{/Symbol b}" 1, "{/Symbol a}" 2, "g_{3R}" 3, "g_{3S}" 4, "g_{2}" 5, "g_{1R}" 6, "g_{1S}" 7)
@@ -34,6 +34,8 @@ set label  "Lipid17"  at graph  0.4,0.85
 #set label  "A_{pl} = 53 {\305}^2"  at graph  0.02,0.7 tc rgb 'red'
 plot "../../../MATCH/Data/Lipid_Bilayers/POPG+80%POPC+1000mMCaCl/T298K/MODEL_LIPID17/IONdens.xvg" using 1:2 with lines title 'PC:PG (4:1) 1 M' lw 6 lc rgb 'black',\
      "../../../MATCH/Data/Lipid_Bilayers/POPG+80%POPC+100mMCaCl/T298K/MODEL_LIPID17/IONdens.xvg" using 1:2 with lines title 'PC:PG (4:1) 100 mM' lw 2 lc rgb 'black',\
+     "../../../MATCH/Data/Lipid_Bilayers/POPG+50%POPC+1000mMCaCl/T298K/MODEL_LIPID17/IONdens.xvg" using 1:2 with lines title 'PC:PG (1:1) 1 M' lw 6 lc rgb 'red',\
+     "../../../MATCH/Data/Lipid_Bilayers/POPG+50%POPC+100mMCaCl/T298K/MODEL_LIPID17/IONdens.xvg" using 1:2 with lines title 'PC:PG (1:1) 100 mM' lw 2 lc rgb 'red',\
 
 
 
