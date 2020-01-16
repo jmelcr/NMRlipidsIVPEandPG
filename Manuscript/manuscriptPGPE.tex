@@ -55,14 +55,51 @@
 % \affiliation command applies to all authors since the last \affiliation command. 
 % The \affiliation command should follow the other information.
 
+\author{Pavel Buslaev}
+\affiliation{University of Jyv{\"a}skyl{\"a}}
+
+\author{Fernando Favela-Rosales}
+\affiliation{Departamento de Investigaci\'{o}n, Tecnol\'{o}gico Nacional de M\'{e}xico, Campus Zacatecas Occidente, M\'{e}xico}
+
+\author{Patrick Fuchs}
+\affiliation{Paris, France}
+
+\author{Matti Javanainen}
+\affiliation{Institute of Organic Chemistry and Biochemistry of the 
+Czech Academy of Sciences, Flemingovo n\'{a}m. 542/2, CZ-16610 Prague 6, Czech Republic}
+
+\author{Jesper J. Madsen}
+\affiliation{Department of Chemistry, The University of Chicago, Chicago, Illinois, United States of America}
+\affiliation{Department of Global Health, College of Public Health, University of South Florida, Tampa, Florida, United States of America}
+
+\author{Josef Melcr}
+\affiliation{Institute of Organic Chemistry and Biochemistry of the 
+Czech Academy of Sciences, Flemingovo n\'{a}m. 542/2, CZ-16610 Prague 6, Czech Republic}
+\affiliation{Groningen Biomolecular Sciences and Biotechnology Institute 
+and The Zernike Institute for Advanced Materials, 
+University of Groningen, 9747 AG Groningen, The Netherlands}
+
+
+\author{Markus S. Miettinen}
+% \affiliation[Max Planck Institute of Colloids and Interfaces]{Department of Theory and Bio-Systems, Max Planck Institute of Colloids and Interfaces, 14424 Potsdam, Germany}
+\affiliation{Department of Theory and Bio-Systems, Max Planck Institute of Colloids and Interfaces, 14424 Potsdam, Germany}
+
 \author{O. H. Samuli Ollila}
 \email[]{samuli.ollila@helsinki.fi}
-%\homepage[]{Your web page}
-%\affiliation{Institute of Organic Chemistry and Biochemistry,
-%Academy of Sciences of the Czech Republic, 
-%Prague 6, Czech Republic}
 \affiliation{Institute of Biotechnology, University of Helsinki}
 
+\author{Chris G. Papadopoulos}
+\affiliation{I2BC - University Paris Sud}
+
+
+\author{Antonio Pe{\'o}n}
+\affiliation{Spain}
+
+\author{Thomas J. Piggot}
+\affiliation{Chemistry, University of Southampton, Highfield, Southampton SO17 1BJ, United Kingdom}
+
+\author{Pierre Poulain}
+\affiliation{Paris, France}
 
 % Collaboration name, if desired (requires use of superscriptaddress option in \documentclass). 
 % \noaffiliation is required (may also be used with the \author command).
@@ -434,7 +471,7 @@ the PE headgroup order parameters are similar to the PC \cite{botan15}
 and $\beta$-carbon order parameters is positive in PG headgroup, while negative values observed in
 other lipids. Therefore, we use CHARMM36 simulations to analyze the structural differences between
 headgroups (Fig.~\ref{structures}).
-\todo{The structures are already in Fig. \ref{structures}, but we need also the dihedral distributions to finish the discussion.
+\todo{The structures and dihedrals are in Fig. \ref{structures}, but we need to finish the discussion.
 Maybe we should analyze also some other structural features, at least P-N angles. More discussion in issue
 https://github.com/NMRLipids/NMRlipidsIVPEandPG/issues/9}.
 %While rotation around N-C$_\alpha$-C$_\beta$-O$_\alpha$ dihedral was
@@ -468,9 +505,11 @@ https://github.com/NMRLipids/NMRlipidsIVPEandPG/issues/9}.
 \end{figure}
 \begin{figure*}[!h]
   \centering
-  \includegraphics[width=18.0cm]{../Figs/struct.png}
+  \includegraphics[width=18.0cm]{../Figs/PCPEPGPSstructures.png}
+  \includegraphics[width=8.0cm]{../Figs/PCPEPGPSdihedrals1.png}
+  \includegraphics[width=8.0cm]{../Figs/PCPEPGPSdihedrals2.png}
   \caption{\label{structures}
-    Overlayed snapshots from CHARMM36 simulations of different lipids which give the best agreement with experiments.
+    Overlayed snapshots and dihedral angle distributions from CHARMM36 simulations of different lipids which give the best agreement with experiments.
   }
 \end{figure*}
 
@@ -709,13 +748,16 @@ On the other hand, the simulations are not converged.
 
 % If you have acknowledgments, this puts in the proper section head.
 \begin{acknowledgments}
-% Put your acknowledgments here.
+AP is grateful to the Centro de
+Supercomputación de Galicia (CESGA) for use of the Finis
+Terrae computer
+    %     Put your acknowledgments here.
 \end{acknowledgments}
-\newpage
-\appendix
-\begin{center}
-{\bf SUPPLEMENTARY INFORMATION}
-\end{center}
+%\newpage
+%\appendix
+%\begin{center}
+%{\bf SUPPLEMENTARY INFORMATION}
+%\end{center}
 
 
 
