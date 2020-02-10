@@ -14,13 +14,15 @@ set size 1.0,0.5
 set yrange [-0.025:0.037]
 #set yrange [-0.1:0]
 set ylabel "{/Symbol D}S_{CH}^{/Symbol b}"
-plot "../../Data/POPGvsPOPCCHARMM36.dat" using 1:($2-0.0680174585392) with linespoints  title 'CHARMM36 (POPG:POPC 298K K^+)' pt 7 ps 1.6  lw 4 lc rgb "#0088BF",\
+plot "../../Data/POPGvsPOPCCHARMM36.dat" using 1:($2-0.068017) with linespoints  title 'CHARMM36 (POPG:POPC 298K K^+)' pt 7 ps 1.6  lw 4 lc rgb "#0088BF",\
      "../../Data/POPCvsPOPGcharmm.dat" using (1-$1):($14-0.03587) with linespoints  title 'CHARMM36 (POPG:POPC 310K 110mM NaCl)' pt 6 ps 1.6  lw 4 lc rgb "#0088BF",\
      "../../Data/POPCvsPOPGcharmm.dat" using (1-$1):($14-0.03587):15 with ye notitle pt 6 ps 1.6  lw 4 lc rgb "#0088BF",\
      "../../Data/POPCvsPOPGlipid17.dat" using (1-$1):($14-0.00866) with linespoints  title 'LIPID17 (POPG:POPC 310K)' pt 6 ps 1.6  lw 4 lc rgb "#FFD300",\
      "../../Data/POPCvsPOPGlipid17.dat" using (1-$1):($14-0.00866):15 with ye notitle pt 6 ps 1.6  lw 4 lc rgb "#FFD300",\
      "../../Data/POPCvsPOPGslipid.dat" using (1-$1):($14-0.02692) with linespoints  title 'Slipids (POPG:POPC 310K)' pt 6 ps 1.6  lw 4 lc rgb "#7AEE9E",\
      "../../Data/POPCvsPOPGslipid.dat" using (1-$1):($14-0.02692):15 with ye notitle pt 6 ps 1.6  lw 4 lc rgb "#7AEE9E",\
+     "../../Data/POPCvsPOPGslipidT298K.dat" using (1-$1):($14-0.01819) with linespoints  title 'Slipids (POPG:POPC 298K)' pt 7 ps 1.6  lw 4 lc rgb "#7AEE9E",\
+     "../../Data/POPCvsPOPGslipidT298K.dat" using (1-$1):($14-0.01819):15 with ye notitle pt 7 ps 1.6  lw 4 lc rgb "#7AEE9E",\
      "../../Data/POPCvsPOPGgromos-ckp.dat" using (1-$1):($14-0.10310) with linespoints  title 'GROMOS-CKP (POPG:POPC 310K)' pt 6 ps 1.6  lw 4 lc rgb "#FFA0A3",\
      "../../Data/POPCvsPOPGgromos-ckp.dat" using (1-$1):($14-0.10310):15 with ye notitle pt 6 ps 1.6  lw 4 lc rgb "#FFA0A3",\
      "../../Data/POPGvsPOPC1.dat" using ($1):(($2-4.7)*0.00784) with linespoints   title 'Experiment (POPG:POPC Borle 298K)' pt 6 ps 1.6  lw 4 lc rgb 'black',\

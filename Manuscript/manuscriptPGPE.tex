@@ -281,6 +281,8 @@ of the Gromacs sofware package \cite{gromacsMANUAL}.
       POPE  & OPLS-UA vdW on H \cite{??}   &0    & 128	& 3328     &0    & 303  & 2$\times$200 & 2$\times$100 & \cite{OPLSuaWvdWPOPEfiles} \\
       POPE  & OPLS-UA \cite{??}            &0    & 128	& 3328     &0    & 303  & 2$\times$200 & 2$\times$100 & \cite{OPLSuaPOPEfiles} \\
       \hline
+      POPE  & OPLS-MacRog \cite{rog16}        &0    & 144	& 5760     &0    & 310  & 500 & 350 & \cite{MacRogPOPEfiles} \\
+      \hline
       POPE  & Berger-Vries \cite{??}       &0    & 128	& 3552  &0    & 303  & 2$\times$200 & 2$\times$100 & \cite{bergerPOPEfiles}  \\
       POPE  & Berger-largeH \cite{??}      &0    & 128	& 3552  &0    & 303  & 2$\times$200 & 2$\times$100 & \cite{berger2POPEfiles}  \\
       DOPE  & Berger-Vries \cite{??}       &0    & 128	& 4789  &0    & 271  & 2$\times$200 & 2$\times$100 & \cite{bergerDOPEfiles}  \\
@@ -355,8 +357,21 @@ of the Gromacs sofware package \cite{gromacsMANUAL}.
       POPC:POPE (1:1)  & CHARMM36 \cite{??}        &0          & 0  & 128 & 8704 & 0  &  300  & 300 & 250 & \cite{POPC1POPE1charmm36} \\
      \hline
       POPC                   & Slipid \cite{??}        & 0.11      & 0  & 500     & 25000 & 48  &  310  & 500 & 100 & \cite{POPCslipid150mMNaCl301K}  \\
-      POPC:POPG (7:3)        & Slipid \cite{??}        & ?         & 0  & ?     & ?     & ?   &  310  & 500 & 100 & \cite{??} \todoi{Zenodo entry unclear.}  \\
-     \hline
+      POPC:POPG (7:3)        & Slipid \cite{??}        & 0         & 0  & 350:150 & 25000 & 0   &  310  & 500 & 100 & \cite{slipidPOPC70POPG30T310K} \\
+      POPC:POPG (1:1)        & Slipid \cite{??}        & 0         & 0  & 128:128 & 12800 & 0   &  298  & 500 & 400 & \cite{slipidPOPC50POPG50T298K} \\
+      POPC:POPG (1:1)        & Slipid \cite{??}        & 0         & 0.1  & 128:128 & 12800 & 23  &  298  & 500 & 400 & \cite{slipidPOPC50POPG50T298K} \\
+      POPC:POPG (1:1)        & Slipid \cite{??}        & 0         & 0.2  & 128:128 & 12800 & 46  &  298  & 1500 & 500 & \cite{slipidPOPC50POPG50T298K} \\
+      POPC:POPG (1:1)        & Slipid \cite{??}        & 0         & 0.5  & 128:128 & 12800 & 115 &  298  & 1500 & 500 & \cite{slipidPOPC50POPG50T298K} \\
+      POPC:POPG (1:1)        & Slipid \cite{??}        & 0         & 1.0  & 128:128 & 12800 & 230 &  298  & 1500 & 500 & \cite{slipidPOPC50POPG50T298K} \\
+      
+      \hline
+      POPC:POPG (4:1)        & Lipid17 \cite{??}       &0          & 0  & 350:88 & 26265 & 0  &  298  & 400 & 350 & \cite{Lipid17POPCPOPG8020} \\
+      POPC:POPG (4:1)        & Lipid17 \cite{??}       &0          & 0.1& 350:88 & 26124 & 47 &  298  & 400 & 150 & \cite{Lipid17POPCPOPG8020100mMCaCl} \\
+      POPC:POPG (4:1)        & Lipid17 \cite{??}       &0          & 1.0& 350:88 & 24840 & 475 &  298  & 1200 & 200 & \cite{Lipid17POPCPOPG80201000mMCaCl} \\
+      POPC:POPG (1:1)        & Lipid17 \cite{??}       &0          & 0  & 150:150 & 31572 & 0  &  298  & 320 & 200 & \cite{Lipid17POPCPOPG5050} \\
+      POPC:POPG (1:1)        & Lipid17 \cite{??}       &0          & 0.1& 150:150 & 31401 & 57 &  298  & 720 & 198 & \cite{Lipid17POPCPOPG5050100mMCaCl} \\
+      POPC:POPG (1:1)        & Lipid17 \cite{??}       &0          & 1.0& 150:150 & 29865 & 569 &  298  & 720 & 200 & \cite{Lipid17POPCPOPG50501000mMCaCl} \\
+      \hline
       POPC             & Berger \cite{??} \todoi{This is probable not plain berger, correct force filed should be described.}  &0  & 0  & 256 & 10240 & 0  &  300  & 300 & 200 & \cite{POPCberger300K} \\
       POPC:POPE (1:1)  & Berger \cite{??}  \todoi{This is probable not plain berger, correct force filed should be described.} &0          & 0  & 128 & 11008 & 0  &  300  & 300 & 200 & \cite{POPC1POPE1berger} \\
       POPC:DOPE (1:1)  & Berger \cite{??}  \todoi{This is probable not plain berger, correct force filed should be described.}         &0          & 0  & 128 & 10240 & 0  &  300  & 300 & 200 & \cite{POPC1DOPE1berger} \\

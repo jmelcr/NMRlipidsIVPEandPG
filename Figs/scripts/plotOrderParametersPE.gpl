@@ -142,6 +142,8 @@ plot [0.5:5.5][0.26:-0.315] \
          u ($1):($2)  lt MacRog pt 7 ps r t 'POPE 303K OPLSua',\
      "../../../MATCH/Data/Lipid_Bilayers/POPE/T303K/MODEL_OPLSuaWvdW/OrdParsPOPE_forPLOT.dat" \
          u ($1):($2)  lt MacRog pt 6 ps r t 'POPE 303K OPLSuaWvdW',\
+     "../../../MATCH/Data/Lipid_Bilayers/POPE/T310K/MODEL_MACROG/Headgroup_Glycerol_Order_Parameters_Simulation.dat" \
+         u ($1):($2)  lt MacRog pt 13 ps r t 'POPE 310K MacRog',\
      "../../../MATCH/Data/Lipid_Bilayers/POPE/T310K/MODEL_LIPID17_500lipids/Headgroup_Glycerol_Order_Parameters_Simulation.dat" \
          u ($1):($2)  lt Lipd17 pt 6 ps r t 'POPE 310K LIPID17',\
      horizLines(' ../../../MATCH/Data/Lipid_Bilayers/DPPE/T341K/Headgroup_Glycerol_Order_Parameters_Experiments.dat') \
