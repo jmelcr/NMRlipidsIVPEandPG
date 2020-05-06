@@ -1,0 +1,1 @@
+{'SOFTWARE': 'gromacs', 'FF': 'CHARMM36', 'DOI': '10.5281/zenodo.3474862', 'TRJ': [['traj_comp.xtc']], 'TPR': [['mdrun.tpr']], 'FF_SOURCE': '??', 'ID': 0, 'FF_DATE': '??', 'SYSTEM': 'POPC_T303K'}

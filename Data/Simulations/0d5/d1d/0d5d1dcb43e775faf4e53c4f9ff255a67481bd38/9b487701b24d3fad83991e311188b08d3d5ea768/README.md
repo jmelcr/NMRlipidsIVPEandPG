@@ -1,0 +1,1 @@
+{'TRJ': [['run2.xtc']], 'FF_SOURCE': 'CHARMM-GUI', 'DOI': '10.5281/zenodo.1011096', 'ID': 0, 'SOFTWARE': 'gromacs', 'FF_DATE': '??', 'TPR': [['run2.tpr']], 'SYSTEM': 'POPG_T298K', 'FF': 'CHARMM36'}

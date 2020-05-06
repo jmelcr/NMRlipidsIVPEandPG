@@ -1,0 +1,1 @@
+{'DOI': '10.5281/zenodo.2641987', 'SYSTEM': 'POPE_310K', 'FF_SOURCE': 'CHARMM-GUI', 'TPR': [['POPE_C36_310K.tpr']], 'ID': 0, 'FF': 'CHARMM36', 'TRJ': [['POPE_C36_310K.xtc']], 'SOFTWARE': 'gromacs', 'FF_DATE': '??'}

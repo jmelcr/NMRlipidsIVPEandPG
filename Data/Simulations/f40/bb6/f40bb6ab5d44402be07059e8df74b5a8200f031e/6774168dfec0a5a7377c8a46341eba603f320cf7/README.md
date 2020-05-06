@@ -1,0 +1,1 @@
+{'FF_DATE': '??', 'ID': 0, 'FF': 'CHARMM36', 'FF_SOURCE': 'CHARMM-GUI', 'SYSTEM': 'POPS_T298K', 'TPR': [['for-md-CHARMM36_POPS_298K_v1.tpr']], 'TRJ': [['md-CHARMM36_10A-switch_POPS_v1_400-500ns_skip10.xtc']], 'DOI': '10.5281/zenodo.1129415', 'SOFTWARE': 'gromacs'}
