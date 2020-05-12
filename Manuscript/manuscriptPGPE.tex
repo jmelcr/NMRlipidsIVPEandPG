@@ -470,30 +470,6 @@ for other lipids in previous studies \cite{botan15,antila19}.
 \todo{Should we comment more the relative quality of different force fields and/or make the subjective force field ranking figures?
 https://github.com/NMRLipids/NMRlipidsIVPEandPG/issues/8}
 
-Without further discussion about poorly performing force fields, we focus on more detailed analysis
-of CHARMM36 simulations, which give the best overall agreement with experiments for
-the headgroup and glycerol backbone order parameters of all PC, PS, PG and PE lipids in this and our previous
-studies \cite{botan15,antila19}. Even thought many order parameters in CHARMM36 simulations are
-not within the experimental error bars, it seems to capture the essential differences between different headroups.
-%(Figs. \ref{HGorderParametersPE} and \ref{HGorderParametersPOPG}).
-In previous study, CHARMM36 predicted the more negative $\beta$-carbon order parameter and larger forking of
-the $\alpha$-carbon in PS headgroup than in PC \cite{antila19}.
-In this work,
-%the CHARMM36 simulations reproduce also the other essential differences in experimental
-%headgroup order parameters between different headgroups (Fig. \ref{HGorderParameters}) despite the inaccuracies
-%in individual segments:
-the PE headgroup order parameters are similar to the PC \cite{botan15}
-and $\beta$-carbon order parameters is positive in PG headgroup, while negative values observed in
-other lipids. Therefore, we use CHARMM36 simulations to analyze the structural differences between
-headgroups (Fig.~\ref{structures}).
-\todo{The structures and dihedrals are in Fig. \ref{structures}, but we need to finish the discussion.
-Maybe we should analyze also some other structural features, at least P-N angles. More discussion in issue
-https://github.com/NMRLipids/NMRlipidsIVPEandPG/issues/9}.
-%While rotation around N-C$_\alpha$-C$_\beta$-O$_\alpha$ dihedral was
-%significantly different in PS and PC headgroups in previous work \cite{antila19}, essential differences
-%between PC, PE and PG are not observed here (Fig.~\ref{structures}) \todo{We need also the dihedral distributions to finish this discussion.}. \\
-%\todo{Why is the $\beta$-carbon order parameter of PG different to PC and PE then?}
-
 \begin{figure}[]
   \centering
   \includegraphics[width=9.0cm]{../Figs/HGorderparametersPE.pdf}
@@ -518,16 +494,36 @@ https://github.com/NMRLipids/NMRlipidsIVPEandPG/issues/9}.
     and simulations with different force fields.
   }
 \end{figure}
+
+Without further discussion about poorly performing force fields, we focus on more detailed analysis
+of CHARMM36 simulations, which give the best overall agreement with experiments for
+the headgroup and glycerol backbone order parameters of all PC, PS, PG and PE lipids in this and our previous
+studies \cite{botan15,antila19}. Even thought many order parameters in CHARMM36 simulations are
+not within the experimental error bars, it captures the essential differences between different headroups
+with the exception of $\beta$-carbon order parameter of PC (Fig.~\ref{structures}),
+which is too large when compared with PS or PE order parameter, or with experiments \cite{botan15}.
+As already pointed out in our previous study \cite{antila19}, N-C$_\beta$-C$_\alpha$-O$_\alpha$
+dihedral exhibits a more asymmetric angle distribution for PS, having largest probability being
+in gauche 270$^\degree$ conformation, than for the PC headgroup.
+Also C$_\beta$-C$_\alpha$-O$_\alpha$-P in PS has asymmetric tendency to be in this conformation.
+In PG, O$_\beta$-C$_\beta$-C$_\alpha$-O$_\alpha$ dihedral (corresponding N-C$_\beta$-C$_\alpha$-O$_\alpha$ dihedral in other lipids)
+is mostly in trans conformation, and C$_\beta$-C$_\alpha$-O$_\alpha$-P  has asymmetric tendency to be in
+gauche 60$^\degree$ conformation. 
+
 \begin{figure*}[!h]
   \centering
   \includegraphics[width=18.0cm]{../Figs/PCPEPGPSstructures.png}
+  \includegraphics[width=8.0cm]{../Figs/CHARMMfromLIPIDS.eps}
   \includegraphics[width=8.0cm]{../Figs/PCPEPGPSdihedrals1.png}
   \includegraphics[width=8.0cm]{../Figs/PCPEPGPSdihedrals2.png}
   \includegraphics[width=8.0cm]{../Figs/HGtilt.png}
-  \includegraphics[width=8.0cm]{../Figs/CHARMMfromLIPIDS.eps}
   \caption{\label{structures}
-    Overlayed snapshots and dihedral angle distributions from CHARMM36 simulations of different lipids which give the best agreement with experiments.
+    Overlayed snapshots and dihedral angle distributions from CHARMM36 simulations of different lipids
+    which give the best agreement with experiments.
   }
+  \todo{The differences observed in dihedral distributions are not visible in the snapshot figures.} \\
+  \todo{Why integral of the P-N angle distributions are not the same?} \\
+  \todo{More detailed discussion of this figure is in https://github.com/NMRLipids/NMRlipidsIVPEandPG/issues/9} \\
 \end{figure*}
 
 \clearpage
