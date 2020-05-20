@@ -691,7 +691,7 @@ while the other simulations are more realistic, but slight overbinding cannot be
 
 \clearpage
 \subsection{Calcium binding to PE and PG lipid bilayers}
-\begin{figure*}[b]
+\begin{figure*}[bt]
   \centering
   \includegraphics[width=18.0cm]{../Figs/CHANGESwithCaClPG1PC1.eps}
   \caption{\label{changesWITHCaClPG}
@@ -707,25 +707,20 @@ while the other simulations are more realistic, but slight overbinding cannot be
     \todo{CHARMM36 simulations should be longer and with Na couterions.}
 \end{figure*}
 
-To evaluate calcium binding to PG containing lipid bilayers in simulations,
-we calculated the changes in headgroup order parameters upon addition of CaCl$_2$
-to POPC:POPG (1:1) and (4:1) mixtures for which experimental data is available \cite{borle85,macdonald87}.
+To evaluate the calcium binding in simulations of lipid bilayers containing PG lipids,
+we calculated the changes in headgroup order parameters of POPC:POPG (1:1) and (4:1) mixtures
+upon addition of CaCl$_2$, and compared these with the available experimental data \cite{borle85,macdonald87}.
 The headgroup order parameters of PC lipids can be used to measure the ion binding
-affinity to lipid bilayers and evaluate MD simulations against experimental data,
-because their magnitude is linearly proportional to the amount of bound charge in bilayer
-and order parameters can be directly calculated from MD simulations \cite{seelig87,catte16}.
+affinity to lipid bilayers because their magnitude is linearly proportional to the amount of bound charge in bilayer \cite{seelig87,catte16}.
 This molecular electrometer concept can be used also for bilayers containing PC lipids mixed with charged lipids \cite{borle85,macdonald87,roux90,antila19}.
-%The electrometer concept has been very useful in evaluating ion binding affinity in simulations
-%against experiments, because the headgroup order parameter changes as a function of ion concentration
-%can be directly compared with experiments \cite{catte16,melcr18,antila19}.
-%
+The headgroup order parameters can be used to evaluate MD simulations against experimental data,
+because they can be directly calculated from MD simulations \cite{catte16}.
 
-%Calcium binding affinity to PC and PS lipid bilayers was not correctly described by
-%any of the standard MD simulation forced fields \cite{catte16,antila19}, while
-%recently introduced force field with electronic continuum correction (ECC) performed better \cite{melcr18}.
-As previously observed for PC and PS lipids, the decrease in PC headgroup order parameters with
-increasing CaCl$_2$ concentration is overestimated in Slipids and Lipid17 simulations (Figs. \ref{changesWITHCaClPG} and \ref{changesWITHCaClPG1PC4})
-indicating too strong binding affinity of calcium into the bilayers.
+The decrease of POPC headgroup order parameters in mixtures with POPG lipids with
+increasing CaCl$_2$ concentration is overestimated in Slipids and Lipid17
+simulations (Figs. \ref{changesWITHCaClPG} and \ref{changesWITHCaClPG1PC4})
+indicating too strong binding affinity of calcium into the bilayers as previously
+observed for pure PC lipid bilayers and mixtures with PS lipids \cite{catte16,antila19}.
 \todo{CHARMM results to be mentioned once we have the new simulations.}
 %The decrease of $\alpha$-carbon order parameter of PC lipids in PC:PG mixtures as a function
 %of calcium concentration is close to experiments CHARMM36 simulations (Fig. \ref{changesWITHCaClPG}),
@@ -733,14 +728,35 @@ indicating too strong binding affinity of calcium into the bilayers.
 %However, the $\beta$-carbon order parameter was not actually measured from these samples,
 %but they are calculated from empirical relation $\Delta S_{\beta}=0.43\Delta S_{\alpha}$ \cite{akutsu81}.
 %On the other hand, the simulations are not converged.
-The behaviour of $\beta$-carbon order parameter of POPG is similar to POPC upon addition of calcium in experiments,
-exhibiting a rapid decrease with CaCl$_2$ concentrations below 10 mM,
-and then a more modest decrease with larger concentrations (Fig. \ref{changesWITHCaClPG}) \cite{borle85}.
-The behaviour is qualitatively different than in the $\beta$-carbon of PS lipids which increase upon addition of CaCl$_2$.
+The calcium binding affinity to lipid bilayers with PC and PS lipids
+was recently improved by applying the electronic continuum correction (ECC) to Amber Lipid14/17 force fields \cite{melcr18,melcr20}.
+In this approach, the electronic polarizability is implicitly included in the classical force fields
+by scaling the charges with constant factors \cite{leontyev11}. Here, we make a ECC-POPG force field
+by applying the scaling factors originally used for POPS also to POPG, i.e., we multiply
+charges and Lennard-Jones $\sigma$s of headgroup, glycerol backbone, and carbonyl regions with 
+$f_q$=0.75 and $f_\sigma$=0.89, respectively \cite{melcr20}.
+ECC-POPG model gives a weaker calcium binding affinity (Fig.\ref{CAdensPG}) and better agreement with the experimental
+PC headgroup order parameter changes (Fig. \ref{changesWITHCaClPG}) for POPC:POPG mixtures than the original Lipid17 model
+\todo{to be finished when we have all the data}, indicating that the ECC improves the simulation predictions of
+calcium binding affinity as previously observed for PC and PS lipids \cite{melcr18,melcr20}.
+
+Experimental data for the $\beta$-carbon order parameter of POPG
+shows a rapid decrease with increasing CaCl$_2$ concentrations up to 10 mM
+and more modest decrease with larger concentrations (Fig. \ref{changesWITHCaClPG}) \cite{borle85}.
+This behaviour is similar to that of $\beta$-carbon order parameters of POPC,
+but essentially different than observed for POPS, where $\beta$-carbon order parameters increases with
+addition of calcium \cite{antila19}. Experimentally measured changes of PG $\alpha$-carbon order parameters upon addition of
+calcium are not available.
+%upon addition of calcium in experiments,
+%exhibiting 
+%The behaviour is qualitatively different than in the $\beta$-carbon of PS lipids which increase upon addition of CaCl$_2$.
 Lipid17 and Slipids force fields correctly capture the PG $\beta$-carbon order parameter response to CaCl$_2$
 even thought the binding affinity was too large based on the comparison of PC headgroup order parameter changes with experiments.
-\todo{To be finished once we have the new CHARMM simulations.} For the response of PG $\alpha$-carbon order parameters to CaCl$_2$,
-different force fields give different predictions, but experimental data to evaluate these predictions is not available. 
+While applying ECC to Lipid17 improved the PC headgroup order parameter response and binding affinity,
+the response of PG $\beta$-carbon order parameter to calcium is too weak in this model.
+The response of PG $\alpha$-carbon order parameters to CaCl$_2$ differs between force fields,
+but experimental data to evaluate these predictions is not available. 
+\todo{To be finished once we have the new CHARMM simulations and conformational changes of PG analyzed.}
 % The result is similar to the $\sim$200~ns simulations with PC lipids in previous work \cite{catte16}.
 %However, when simulation was continued for $\mu$s, the binding affinity substantially increased
 %and interpretation was that calcium overbinds to PC lipid in CHARMM36. Therefore, the
@@ -754,7 +770,6 @@ different force fields give different predictions, but experimental data to eval
 
 \todo{We still need more data to finish the discussion. More detailed discussion is in https://github.com/NMRLipids/NMRlipidsIVPEandPG/issues/12}
 
-
 \begin{figure}[]
   \centering
   \includegraphics[width=8.0cm]{../Figs/CAdensPG1PC1.eps}
@@ -764,7 +779,6 @@ different force fields give different predictions, but experimental data to eval
 \end{figure}
 
 
-%\todo{We need PC:PG simulations with CaCl$_2$ from different force fields to finish the discussion.}
 
 
 \clearpage
