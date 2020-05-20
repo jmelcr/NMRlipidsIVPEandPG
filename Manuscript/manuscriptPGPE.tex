@@ -268,9 +268,9 @@ of the Gromacs sofware package \cite{gromacsMANUAL}.
       POPE  & CHARMM36ua \cite{??}         &0       & 336	& 15254 &0    & 310  & 2$\times$200 & 2$\times$100 & \cite{charmm36uaPOPEfiles}  \\
       \hline
       DPPE  & Slipids \cite{jambeck12b}    &0    & 288 	& 9386  &0    & 336  & 200 & 100 & \cite{slipidsDPPEfiles}  \\
-      POPE  & Slipids \cite{jambeck12b,??} &0    & 336	& ?     &0    & 310  & 2$\times$200 &  2$\times$100 & \cite{slipidsPOPEfiles}  \\
-      POPE  & Slipids \cite{??}            & 0    & 500 & 25000 & 0   &  310  & 500 & 100 & \cite{POPEslipids} \\
-      POPE  & Slipids \cite{??} \todoi{Ion parameters?}        & 0.11 & 500 & 25000 & 50  &  310  & 500 & 100 & \cite{POPEslipids150mMNaCl} \\
+      POPE  & Slipids \cite{jambeck12b} &0    & 336	& ?     &0    & 310  & 2$\times$200 &  2$\times$100 & \cite{slipidsPOPEfiles}  \\
+      POPE  & Slipids \cite{jambeck12b}            & 0    & 500 & 25000 & 0   &  310  & 500 & 100 & \cite{POPEslipids} \\
+      POPE  & Slipids / {\AA}qvist \cite{jambeck12b,aqvist90}  & 0.11 & 500 & 25000 & 50  &  310  & 500 & 100 & \cite{POPEslipids150mMNaCl} \\
       \hline
       DPPE  & GROMOS-CKP    \cite{??}      &0    & 128	& 3655  &0    & 342  & 2$\times$500 & 2$\times$400 & \cite{gromosCKPdppe} \\
       POPE  & GROMOS-CKP    \cite{??}      &0    & 128	& 3552  &0    & 313  & 2$\times$500 & 2$\times$400 & \cite{gromosCKPpope} \\
@@ -316,13 +316,13 @@ of the Gromacs sofware package \cite{gromacsMANUAL}.
       POPG             & CHARMM36 \cite{??}        & 0.11           & 500 & 25000 & 49  &  310  & 500 & 100 & \cite{POPGcharmm150mMNaCl} \\
       POPG             & CHARMM36 \cite{??}        & 0              & 500 & 25000 & 0   &  310  & 500 & 100 & \cite{POPGcharmm} \\
       \hline
-      POPG/Na$^+$  & Slipids \cite{jambeck13}    &0         & 288 	& 10664   &0     & 298  & 250 & 100 & \cite{slipidsPOPGfiles} \\
-      DPPG/Na$^+$  & Slipids \cite{jambeck13}    &0         & 288 	& 11232  &0     & 314  & 200 & 100 & \cite{slipidsDPPGfiles} \\
-      DPPG/Na$^+$  & Slipids \cite{jambeck13}    &0         & 288 	& 11232   &0     & 298  & 400 & 100 & \cite{slipidsDPPGfilesT298K} \\
-      POPG         & Slipids \cite{??} \todoi{Ion parameters?}       & 0    & 500 & 25000 & 0  &  310  & 500 & 100 & \cite{POPGslipids} \\
-      POPG         & Slipids \cite{??} \todoi{Ion parameters?}       & 0.11    & 500 & 25000 & 49  &  310  & 500 & 100 & \cite{POPGslipids150mMNaCl} \\
+      POPG/Na$^+$  & Slipids / {\AA}qvist \cite{jambeck13,aqvist90}    &0         & 288 	& 10664   &0     & 298  & 250 & 100 & \cite{slipidsPOPGfiles} \\
+      DPPG/Na$^+$  & Slipids / {\AA}qvist \cite{jambeck13,aqvist90}    &0         & 288 	& 11232  &0     & 314  & 200 & 100 & \cite{slipidsDPPGfiles} \\
+      DPPG/Na$^+$  & Slipids / {\AA}qvist \cite{jambeck13,aqvist90}    &0         & 288 	& 11232   &0     & 298  & 400 & 100 & \cite{slipidsDPPGfilesT298K} \\
+      POPG         & Slipids / {\AA}qvist \cite{jambeck13,aqvist90}    & 0    & 500 & 25000 & 0  &  310  & 500 & 100 & \cite{POPGslipids} \\
+      POPG         & Slipids / {\AA}qvist \cite{jambeck13,aqvist90}    & 0.11    & 500 & 25000 & 49  &  310  & 500 & 100 & \cite{POPGslipids150mMNaCl} \\
       \hline
-      POPG             & LIPID17 \cite{??}         & 0              & 500 & 25000 & 0   &  310  & 500 & 100 & \cite{POPGlipid17} \\
+      POPG             & LIPID17 / Dang \cite{gould18,smith94}         & 0              & 500 & 25000 & 0   &  310  & 500 & 100 & \cite{POPGlipid17} \\
       POPG             & LIPID17 \cite{??}         & 0.11           & 500 & 25000 & 49  &  310  & 500 & 100 & \cite{POPGlipid17150mMNaCl} \\
       \hline
       POPG             & GROMOS-CKP \cite{??}         & 0              & 500 & 25000 & 0  &  310  & 500 & 100 & \cite{POPGgromosCKP} \\
@@ -358,13 +358,13 @@ of the Gromacs sofware package \cite{gromacsMANUAL}.
       POPC             & CHARMM36 \cite{??}        &0          & 0  & 256 & 8704 & 0  &  300  & 300 & 250 & \cite{POPCcharmm300K} \\
       POPC:POPE (1:1)  & CHARMM36 \cite{??}        &0          & 0  & 128 & 8704 & 0  &  300  & 300 & 250 & \cite{POPC1POPE1charmm36} \\
      \hline
-      POPC                   & Slipid / ?? \cite{jambeck12b,??}  & 0.11      & 0  & 500     & 25000 & 48  &  310  & 500 & 100 & \cite{POPCslipid150mMNaCl301K}  \\
-      POPC:POPG (7:3)        & Slipid / Dang \cite{jambeck12b,jambeck2012another,smith94,dang06}        & 0         & 0  & 350:150 & 25000 & 0   &  310  & 500 & 100 & \cite{slipidPOPC70POPG30T310K} \\
-      POPC:POPG (1:1)        & Slipid / Dang \cite{jambeck12b,jambeck2012another,smith94,dang06}        & 0         & 0  & 128:128 & 12800 & 0   &  298  & 500 & 400 & \cite{slipidPOPC50POPG50T298K} \\
-      POPC:POPG (1:1)        & Slipid / Dang \cite{jambeck12b,jambeck2012another,smith94,dang06}   & 0         & 0.1  & 128:128 & 12800 & 23  &  298  & 500 & 400 & \cite{slipidPOPC50POPG50T298K} \\
-      POPC:POPG (1:1)        & Slipid / Dang \cite{jambeck12b,jambeck2012another,smith94,dang06}   & 0         & 0.2  & 128:128 & 12800 & 46  &  298  & 1500 & 500 & \cite{slipidPOPC50POPG50T298K} \\
-      POPC:POPG (1:1)        & Slipid / Dang \cite{jambeck12b,jambeck2012another,smith94,dang06}   & 0         & 0.5  & 128:128 & 12800 & 115 &  298  & 1500 & 500 & \cite{slipidPOPC50POPG50T298K} \\
-      POPC:POPG (1:1)        & Slipid / Dang \cite{jambeck12b,jambeck2012another,smith94,dang06}   & 0         & 1.0  & 128:128 & 12800 & 230 &  298  & 1500 & 500 & \cite{slipidPOPC50POPG50T298K} \\
+      POPC                   & Slipid / {\AA}qvist \cite{jambeck12b,aqvist90}  & 0         & 0  & 500     & 25000 & 0   &  310  & 500 & 100 & \cite{POPCslipid301K}  \\
+      POPC:POPG (7:3)        & Slipid / {\AA}qvist \cite{jambeck12b,aqvist90}  & 0         & 0  & 350:150 & 25000 & 0   &  310  & 500 & 100 & \cite{slipidPOPC70POPG30T310K} \\
+      POPC:POPG (1:1)        & Slipid / Dang \cite{jambeck12b,jambeck2012another,smith94,dang06} & 0         & 0  & 128:128 & 12800 & 0   &  298  & 500 & 400 & \cite{slipidPOPC50POPG50T298K} \\
+      POPC:POPG (1:1)        & Slipid / Dang \cite{jambeck12b,jambeck2012another,smith94,dang06} & 0         & 0.1  & 128:128 & 12800 & 23  &  298  & 500 & 400 & \cite{slipidPOPC50POPG50T298K} \\
+      POPC:POPG (1:1)        & Slipid / Dang \cite{jambeck12b,jambeck2012another,smith94,dang06} & 0         & 0.2  & 128:128 & 12800 & 46  &  298  & 1500 & 500 & \cite{slipidPOPC50POPG50T298K} \\
+      POPC:POPG (1:1)        & Slipid / Dang \cite{jambeck12b,jambeck2012another,smith94,dang06} & 0         & 0.5  & 128:128 & 12800 & 115 &  298  & 1500 & 500 & \cite{slipidPOPC50POPG50T298K} \\
+      POPC:POPG (1:1)        & Slipid / Dang \cite{jambeck12b,jambeck2012another,smith94,dang06} & 0         & 1.0  & 128:128 & 12800 & 230 &  298  & 1500 & 500 & \cite{slipidPOPC50POPG50T298K} \\
       
       \hline
       POPC:POPG (4:1)        & Lipid17 / Dang \cite{gould18,smith94,dang06}   &0          & 0  & 350:88 & 26265 & 0  &  298  & 400 & 350 & \cite{Lipid17POPCPOPG8020} \\
