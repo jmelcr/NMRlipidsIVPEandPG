@@ -283,19 +283,26 @@ of the Gromacs sofware package \cite{gromacsMANUAL}.
       POPE  & OPLS-UA vdW on H \cite{??}   &0    & 128	& 3328     &0    & 303  & 2$\times$200 & 2$\times$100 & \cite{OPLSuaWvdWPOPEfiles} \\
       POPE  & OPLS-UA \cite{??}            &0    & 128	& 3328     &0    & 303  & 2$\times$200 & 2$\times$100 & \cite{OPLSuaPOPEfiles} \\
       \hline
-      POPE  & OPLS-MacRog \cite{rog16}        &0    & 144	& 5760     &0    & 310  & 500 & 350 & \cite{MacRogPOPEfiles} \\
+      POPE  & OPLS-MacRog \cite{rog16}     &0    & 144	& 5760     &0    & 310  & 500 & 350 & \cite{MacRogPOPEfiles} \\
+      POPE  & OPLS-MacRog \cite{rog16}     &0    & 128	& 5120     &0    & 300  & 500 & 300 & \cite{MacRogPOPEfilesT300K} \\
       \hline
       POPE  & Berger-Vries \cite{??}       &0    & 128	& 3552  &0    & 303  & 2$\times$200 & 2$\times$100 & \cite{bergerPOPEfiles}  \\
       POPE  & Berger-largeH \cite{??}      &0    & 128	& 3552  &0    & 303  & 2$\times$200 & 2$\times$100 & \cite{berger2POPEfiles}  \\
       DOPE  & Berger-Vries \cite{??}       &0    & 128	& 4789  &0    & 271  & 2$\times$200 & 2$\times$100 & \cite{bergerDOPEfiles}  \\
       DOPE  & Berger-largeH \cite{??}      &0    & 128	& 4789  &0    & 271  & 2$\times$300 & 2$\times$100 & \cite{berger2DOPEfiles} \\ 
       \hline
-      POPE             & LIPID17 \cite{??} & 0      & 500 & 25000 & 50  &  310  & 500 & 100 & \cite{POPElipid17} \\
-      POPE             & LIPID17 \cite{??} & 0.11   & 500 & 25000 & 50  &  310  & 500 & 100 & \cite{POPElipid17150mMNaCl} \\
+      POPE             & LIPID17 \cite{gould18} & 0      & 500 & 25000 & 50  &  310  & 500 & 100 & \cite{POPElipid17} \\
+      POPE             & LIPID17 \cite{gould18} & 0.11   & 500 & 25000 & 50  &  310  & 500 & 100 & \cite{POPElipid17150mMNaCl} \\
     \end{tabular}
   \end{minipage}
   %\end{sidewaystable*} 
-  \todo{We need citations for the force fields.}
+  \todo{Citation for CHARMM36 PE?} \\
+  \todo{Which ion model is used in \cite{POPEcharmm150mMNaCl}?} \\
+  \todo{Citation for GROMOS-CKP?} \\
+  \todo{Citation for GROMOS 43A1-S3?} \\
+  \todo{Citation for OPLS-UA models?} \\
+  \todo{Citations for Berger-* simulations?} \\
+  \todo{LIPID17 simulations with correct dihedrals still coming}
 \end{table*}
 
       \begin{table*}[htb]
@@ -357,6 +364,12 @@ of the Gromacs sofware package \cite{gromacsMANUAL}.
       \hline
       POPC             & CHARMM36 \cite{??}        &0          & 0  & 256 & 8704 & 0  &  300  & 300 & 250 & \cite{POPCcharmm300K} \\
       POPC:POPE (1:1)  & CHARMM36 \cite{??}        &0          & 0  & 128 & 8704 & 0  &  300  & 300 & 250 & \cite{POPC1POPE1charmm36} \\
+      \hline
+      POPC             & OPLS-MacRog \cite{rog16}     &0          & 0  & 128 & 5120 & 0  &  300  & 500 & 300 & \cite{POPCmacrog300K} \\
+      POPC:POPE (1:1)  & OPLS-MacRog \cite{rog16}     &0          & 0  & 128 & 5120 & 0  &  300  & 500 & 300 & \cite{POPC1POPE1macrogT300K} \\
+      \hline
+      POPC             & Slipid \cite{jambeck12b}     &0          & 0  & 512 & 23943 & 0  &  300  & 170 & 100 & \cite{POPCslipid300K} \\
+      POPC:POPE (1:1)  & Slipid \cite{jambeck12b}     &0          & 0  & 128 & 5120 & 0  &  300  & 500 & 300 & \cite{POPC1POPE1slipidT298K} \\
      \hline
       POPC                   & Slipid / {\AA}qvist \cite{jambeck12b,aqvist90}  & 0         & 0  & 500     & 25000 & 0   &  310  & 500 & 100 & \cite{POPCslipid301K}  \\
       POPC:POPG (7:3)        & Slipid / {\AA}qvist \cite{jambeck12b,aqvist90}  & 0         & 0  & 350:150 & 25000 & 0   &  310  & 500 & 100 & \cite{slipidPOPC70POPG30T310K} \\
@@ -481,7 +494,7 @@ https://github.com/NMRLipids/NMRlipidsIVPEandPG/issues/8}
   }
   \todo{This should be clarified as in NMRlipidsI and error bars should be added.
     Probably larger error bars for united atom models based on the report by Fuchs et al.
-  }
+  } \\
 \end{figure}
 
 \begin{figure}[!h]
@@ -613,11 +626,10 @@ to the interactions with PC lipids \cite{antila18}.
 \subsection{Sodium binding to PE and PG lipid bilayers}
 Sodium binding affinity to PE lipids has not been measured experimentally,
 but large differences to PC would be surprising. 
-The sodium binding affinity to POPE depends on the used force field (Fig. \ref{NAdensPE}),
+In simulations, the sodium binding affinity to POPE depends on the used force field (Fig. \ref{NAdensPE}),
 but lesser extend than reported previously for PC~\cite{catte16}.
-%Similarly to POPG,
-Because some simulation and ion parameters are not identical with the previous work~\cite{catte16}
-\todo{This should be finished once we have the simulation details},
+\todo{This will be finished once we have all the simulation details and Lipid17 simulations with correct dihedrals from issue https://github.com/NMRLipids/NMRlipidsIVPEandPG/issues/12},
+Because some simulation and ion parameters are not identical with the previous work~\cite{catte16},
 we compare POPE results to the POPC simulations ran with identical parameters (Fig. \ref{NAdensPC}).
 In Lipid17 with the strongest sodium binding affinity to POPE,
 the binding affinity is approximately similar to POPC.
@@ -646,7 +658,7 @@ but substantially overestimated in Lipid17 simulation.
 \end{figure}
 
 Simulations with PG lipids give similar dependence on force field as observed in POPE simulations:
-Lipid 17 simulations exhibits stronger counter-ion binding affinity to pure POPG bilayer
+Lipid 17 simulations with Dang ion parameters exhibits stronger counter-ion binding affinity to pure POPG bilayer
 than CHARMM36, Slipids, and GROMOS-CKP simulations, which are roughly similar (Fig. \ref{CIdensPG}).
 Lipid17 also exhibits less increase in POPC headgroup
 %$\beta$ carbon
