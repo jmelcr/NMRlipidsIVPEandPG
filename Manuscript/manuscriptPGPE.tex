@@ -337,7 +337,9 @@ of the Gromacs sofware package \cite{gromacsMANUAL}.
     \end{tabular}
   \end{minipage}
   % \end{sidewaystable*}
-    \todo{We need citations for the force fields.}
+  \todo{Citations and ion model for CHARMM36?} \\
+  \todo{Lipid17 simulation with correct dihedral potentials still coming.} \\
+  \todo{Citation and ion model for GROMOS-CKP?}
 \end{table*}
 
 \begin{table*}[htb]
@@ -371,6 +373,9 @@ of the Gromacs sofware package \cite{gromacsMANUAL}.
       POPC             & Slipid \cite{jambeck12b}     &0          & 0  & 512 & 23943 & 0  &  300  & 170 & 100 & \cite{POPCslipid300K} \\
       POPC:POPE (1:1)  & Slipid \cite{jambeck12b}     &0          & 0  & 128 & 5120 & 0  &  300  & 500 & 300 & \cite{POPC1POPE1slipidT298K} \\
      \hline
+      POPC                   & GROMOS-CKP / ?? \cite{??,??}  & 0         & 0  & 500     & 25000 & 0   &  310  & 500 & 100 & \cite{POPCgromosCKPT310K}  \\
+      POPC:POPG (7:3)        & GROMOS-CKP / ?? \cite{??,??}  & 0         & 0  & 350:150 & 25000 & 0   &  310  & 500 & 100 & \cite{POPC7POPG3gromosCKPT310K} \\
+     \hline
       POPC                   & Slipid / {\AA}qvist \cite{jambeck12b,aqvist90}  & 0         & 0  & 500     & 25000 & 0   &  310  & 500 & 100 & \cite{POPCslipid301K}  \\
       POPC:POPG (7:3)        & Slipid / {\AA}qvist \cite{jambeck12b,aqvist90}  & 0         & 0  & 350:150 & 25000 & 0   &  310  & 500 & 100 & \cite{slipidPOPC70POPG30T310K} \\
       POPC:POPG (1:1)        & Slipid / Dang \cite{jambeck12b,jambeck2012another,smith94,dang06} & 0         & 0  & 128:128 & 12800 & 0   &  298  & 500 & 400 & \cite{slipidPOPC50POPG50T298K} \\
@@ -396,8 +401,9 @@ of the Gromacs sofware package \cite{gromacsMANUAL}.
     \end{tabular}
   \end{minipage}
   %\end{sidewaystable*}
-  \todo{Data for POPC:POPG mixtures by listed by Antonio Peon is missing from this table} \\
-    \todo{We need citations for the force fields.}
+  \todo{New CHARMM simulations are still to be ran.} \\
+  \todo{Citation and ion model for GROMOS-CKP?} \\
+  \todo{Citation and description for ''Berger'' model?}
 \end{table*}
 
 \clearpage
