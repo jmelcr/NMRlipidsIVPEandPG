@@ -53,7 +53,7 @@ set xtics format "%G"
 set xlabel "Membrane normal coordinate (nm)"
 set label  "Lipid17ecc"  at graph  0.4,0.85
 plot "../../../MATCH/Data/Lipid_Bilayers/POPG+50%POPC+1000mMCaCl/T298K/MODEL_LIPID17ecc/IONdens2.xvg" using 1:2 with lines title '1 M' lw 6 lc rgb 'black',\
-#     "../../../MATCH/Data/Lipid_Bilayers/POPG+50%POPC+100mMCaCl/T298K/MODEL_LIPID17ecc/IONdens.xvg" using 1:2 with lines title '100 mM' lw 2 lc rgb 'black',\
+     "../../../MATCH/Data/Lipid_Bilayers/POPG+50%POPC+100mMCaCl/T298K/MODEL_LIPID17ecc/IONdens.xvg" using 1:2 with lines title '100 mM' lw 2 lc rgb 'black',\
 
 
 

@@ -171,6 +171,21 @@ no ion \todo{Simulation details by Fuchs et al.}
 
 \noindent {\it DPPE} Data is available at \cite{gromosCKPdppe}. \todo{Simulation details by  T. Piggot.}
 
+\subsection{Lipid17}
+
+\subsection{ECC-LIPID POPG}
+In ECC-lipid models, electronic continuum correction (ECC) is applied to 
+implicitly include the missing electronic polarizability into the force field description \cite{melcr18,melcr19}.
+In practise, this is implemented by scaling the charges and Lennard-Jones $\sigma$s of headgroup, glycerol backbone, and carbonyl regions
+of Amber Lipid14/17 models are scaled by constant factors.
+Here, we follow the approach that previously improved ion binding to bilayers containing negatively charged PS lipids \cite{melcr19}:
+ECC-POPC parameters (scaling factors $f_q$=0.8 and $f_\sigma$=0.89 applied to Lipid14 POPC parameters) \cite{melcr18} were used for POPC
+and scaling factors of $f_q$=0.75 and $f_\sigma$=0.89 were applied to the charges and Lennard-Jones $\sigma$s of headgroup, glycerol backbone, and carbonyl regions
+of Amber Lipid17 POPG parameters. The Lipid17 parameters (described above) and initial configurations
+were taken from Ref. \cite{POPGlipid17} with the correct dihedral type,
+and the resulting parameters are available from Ref. \citenum{??}. ECC-ion parameters with the scaled charges \cite{pluharova14,kohagen16,martinek18},
+downloaded from \url{bitbucket.org/hseara/ions/src/master/}, were used in these simulations. 
+
 \clearpage
 \section{R-PDLF and SDROSS experiments}
 
