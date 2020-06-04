@@ -389,27 +389,28 @@ of the Gromacs sofware package \cite{gromacsMANUAL}.
       POPC:POPG (4:1)        & Lipid17 / Dang \cite{gould18,smith94,dang06}        &0          & 0.1& 350:88 & 26124 & 47 &  298  & 400 & 250 & \cite{Lipid17POPCPOPG8020100mMCaCl} \\
       POPC:POPG (4:1)        & Lipid17 / Dang \cite{gould18,smith94,dang06}        &0          & 1.0& 350:88 & 24840 & 475 &  298  & 1200 & 200 & \cite{Lipid17POPCPOPG80201000mMCaCl} \\
       POPC:POPG (1:1)        & Lipid17 / Dang \cite{gould18,smith94,dang06}        &0          & 0  & 150:150 & 31572 & 0  &  298  & 320 & 200 & \cite{Lipid17POPCPOPG5050} \\
-      POPC:POPG (1:1)        & Lipid17 / Dang \cite{gould18,smith94,dang06}        &0          & 0.1& 150:150 & 31401 & 57 &  298  & 720 & 198 & \cite{Lipid17POPCPOPG5050100mMCaCl} \\
+      POPC:POPG (1:1)        & Lipid17 / Dang \cite{gould18,smith94,dang06}        &0          & 0.1& 150:150 & 31401 & 57 &  298  & 718 & 198 & \cite{Lipid17POPCPOPG5050100mMCaCl} \\
       POPC:POPG (1:1)        & Lipid17 / Dang \cite{gould18,smith94,dang06}        &0          & 1.0& 150:150 & 29865 & 569 &  298  & 720 & 200 & \cite{Lipid17POPCPOPG50501000mMCaCl} \\
       \hline
       POPC:POPG (1:1)        & Lipid17ecc / ECC-ions \cite{pluharova14,kohagen16,martinek18}     &0          & 0  & 150:150 & 31572 & 0  &  298  & 347.8 & 333 & \cite{Lipid17eccPOPCPOPG5050} \\
       POPC:POPG (1:1)        & Lipid17ecc / ECC-ions \cite{pluharova14,kohagen16,martinek18}     &0          & 0.1& 150:150 & 29865 & 54 &  298  & 400 & 300 & \cite{Lipid17eccPOPCPOPG5050100mMCaCl} \\
-      POPC:POPG (1:1)        & Lipid17ecc / ECC-ions \cite{pluharova14,kohagen16,martinek18}     &0          & 1.0& 150:150 & 29865 & 569 &  298  & 720 & 200 & \cite{Lipid17eccPOPCPOPG50501000mMCaCl} \\
+      POPC:POPG (1:1)        & Lipid17ecc / ECC-ions \cite{pluharova14,kohagen16,martinek18}     &0          & 1.0& 150:150 & 29865 & 569 &  298  & 600 & 400 & \cite{Lipid17eccPOPCPOPG50501000mMCaCl} \\
       \hline
       POPC             & Berger \cite{??} \todoi{This is probable not plain berger, correct force filed should be described.}  &0  & 0  & 256 & 10240 & 0  &  300  & 300 & 200 & \cite{POPCberger300K} \\
       POPC:POPE (1:1)  & Berger \cite{??}  \todoi{This is probable not plain berger, correct force filed should be described.} &0          & 0  & 128 & 11008 & 0  &  300  & 300 & 200 & \cite{POPC1POPE1berger} \\
-      POPC:DOPE (1:1)  & Berger \cite{??}  \todoi{This is probable not plain berger, correct force filed should be described.}         &0          & 0  & 128 & 10240 & 0  &  300  & 300 & 200 & \cite{POPC1DOPE1berger} \\
+      POPC:DOPE (1:1)  & Berger \cite{??}  \todoi{This is probable not plain berger, correct force filed should be described.} &0          & 0  & 128 & 10240 & 0  &  300  & 300 & 200 & \cite{POPC1DOPE1berger} \\
      \hline
-      DOPC             & Berger \cite{??}  \todoi{This is probable not plain berger, correct force filed should be described.}         &0          & 0  & 256 & 11008 & 0  &  300  & 300 & 200 & \cite{DOPCberger300K} \\
-      DOPC:DOPE (1:1)  & Berger \cite{??}   \todoi{This is probable not plain berger, correct force filed should be described.}        &0          & 0  & 128 & 11008 & 0  &  300  & 300 & 200 & \cite{DOPC1DOPE1berger} \\
+      DOPC             & Berger \cite{??}  \todoi{This is probable not plain berger, correct force filed should be described.} &0          & 0  & 256 & 11008 & 0  &  300  & 300 & 200 & \cite{DOPCberger300K} \\
+      DOPC:DOPE (1:1)  & Berger \cite{??}   \todoi{This is probable not plain berger, correct force filed should be described.}  &0          & 0  & 128 & 11008 & 0  &  300  & 300 & 200 & \cite{DOPC1DOPE1berger} \\
     \end{tabular}
   \end{minipage}
   %\end{sidewaystable*}
   \todo{New CHARMM simulations are still to be ran.} \\
   \todo{Citation and ion model for GROMOS-CKP?} \\
   \todo{Citation and description for ''Berger'' model?} \\
-  \todo{Missing Zenodo entries of Lipid17 should be updated to the ones with corrected dihedrals.}\\
-  \todo{Lipid17ecc simulations to be added.}
+  \todo{Lipid17 POPC and POPC:POPG mixtures (https://doi.org/10.5281/zenodo.3241242 and https://doi.org/10.5281/zenodo.3237656)
+    should be added after simulated with corrected dihedrals.}\\
+  \todo{Upcoming Lipid17ecc with POPC:POPS (4:1) mixture simulations to be added.}
 \end{table*}
 
 \clearpage
