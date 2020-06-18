@@ -1,1 +1,1 @@
-{'TRJ': [['run2.xtc']], 'FF_SOURCE': 'CHARMM-GUI', 'DOI': '10.5281/zenodo.1011096', 'ID': 0, 'SOFTWARE': 'gromacs', 'FF_DATE': '??', 'TPR': [['run2.tpr']], 'SYSTEM': 'POPG_T298K', 'FF': 'CHARMM36'}
+{'ID': 0, 'DOI': '10.5281/zenodo.1011096', 'SYSTEM': 'POPG_T298K', 'SOFTWARE': 'gromacs', 'FF': 'CHARMM36', 'FF_SOURCE': 'CHARMM-GUI', 'FF_DATE': '??', 'TRJ': [['run2.xtc']], 'TPR': [['run2.tpr']], 'POPG': 'POPG', 'POT': 'POT', 'NPOPG': 14986, 'NPOT': 118}
