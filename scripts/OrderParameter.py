@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python
 """
  calculation of order parameters of lipid bilayers
@@ -112,7 +113,34 @@ class OrderParameter:
 
 	# convert to numpy array
         return self.traj
-     
+
+
+#Anne: Added calc_angle from https://github.com/NMRLipids/MATCH/blob/master/scripts/calcOrderParameters.py
+#Anne: removed self from function arguments
+def calc_angle(atoms, z_dim=45.0):
+        """
+        calculates the angle between the vector and z-axis in degrees
+        no PBC check!
+        assuming a sim-box-centred membrane --> it's centre ~ z_dim/2
+        Warning: user has to make sure that correct z_dim is supplied,
+                 otherwise - This is a bit DIRTY!!
+                 -- this is taken care of in the main trajectory reader in this module
+        """
+        vec = atoms[1].position - atoms[0].position
+        d = math.sqrt(np.square(vec).sum())
+        cos = vec[2]/d
+        # values for the bottom leaflet are inverted so that 
+        # they have the same nomenclature as the top leaflet
+        cos *= math.copysign(1.0, atoms[0].position[2]-z_dim*0.5)
+        try:
+            angle = math.degrees(math.acos(cos))
+        except ValueError:
+            if abs(cos)>=1.0:
+                print("Cosine is too large = {} --> truncating it to +/-1.0".format(cos))
+                cos = math.copysign(1.0, cos)
+                angle = math.degrees(math.acos(cos))
+        return angle
+
 
 
 def read_trajs_calc_OPs(ordPars, top, trajs):
@@ -153,22 +181,21 @@ def read_trajs_calc_OPs(ordPars, top, trajs):
 
     # go through trajectory frame-by-frame
     Nres=len(op.selection)
-    Nframes=len(mol.trajectory)	
+    Nframes=len(mol.trajectory)
     for op in ordPars.values():
-        op.traj=[0]*Nres		
+        op.traj=[0]*Nres
     for frame in mol.trajectory:
-	
+
         for op in ordPars.values():
             for i in range(0,Nres):
-                residue=op.selection[i]	
+                residue=op.selection[i]
                 S = op.calc_OP(residue)
                 op.traj[i]=op.traj[i]+S/Nframes
             #op.traj.append(np.mean(tmp))
-		
+
         #print "--", mol.atoms[0].position
  #   for op in ordPars.values():
- #	op.traj=op.traj/Nframes   
-	  	
+ #	op.traj=op.traj/Nframes
 
 def parse_op_input(fname):
     """
@@ -178,7 +205,7 @@ def parse_op_input(fname):
     (flexible cols)
     fname : string
         input file name
-    returns : dictionary 
+    returns : dictionary
         with OrderParameters class instances
     """
     ordPars = OrderedDict()
@@ -187,7 +214,7 @@ def parse_op_input(fname):
             for line in f.readlines():
                 if not line.startswith("#"):
                     items = line.split()
-                	
+
                     ordPars[items[0]] = OrderParameter(*items)
 
     except:
@@ -201,11 +228,34 @@ def parse_op_input(fname):
 
 def find_OP(inp_fname, top_fname, traj_fname):
     ordPars = parse_op_input(inp_fname)
-		
+
  #   for file_name in os.listdir(os.getcwd()):
  #       if file_name.startswith(traj_fname):
  #           trajs.append(file_name)
-            
+
     read_trajs_calc_OPs(ordPars, top_fname, traj_fname)
-    
+
     return ordPars
+
+#
+
+
+def read_trj_PN_angles(molname, top_fname, traj_fname):
+    mol = mda.Universe(top_fname, traj_fname)
+
+    selection = mol.select_atoms("resname " + molname + " and (name P or name N)").atoms.split("residue")
+
+    Nres=len(selection)
+    Nframes=len(mol.trajectory)
+    resAveragePNangles = []
+
+    for i in range(0,10):
+        residue = selection[i]
+        PNangles = []
+        for frame in mol.trajectory:
+            PNangle = calc_angle(residue)
+            PNangles.append(PNangle)
+
+        averageAngle = sum(PNangles) / Nframes
+        resAveragePNangles.append(averageAngle)
+    return resAveragePNangles
