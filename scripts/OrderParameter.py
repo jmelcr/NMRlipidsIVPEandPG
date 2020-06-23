@@ -249,7 +249,7 @@ def read_trj_PN_angles(molname, top_fname, traj_fname):
     Nframes=len(mol.trajectory)
     resAveragePNangles = []
 
-    for i in range(0,10):
+    for i in range(0,Nres):
         residue = selection[i]
         PNangles = []
         for frame in mol.trajectory:
@@ -258,4 +258,6 @@ def read_trj_PN_angles(molname, top_fname, traj_fname):
 
         averageAngle = sum(PNangles) / Nframes
         resAveragePNangles.append(averageAngle)
-    return resAveragePNangles
+
+    totalAverage = sum(resAveragePNangles) / Nres
+    return resAveragePNangles, totalAverage
