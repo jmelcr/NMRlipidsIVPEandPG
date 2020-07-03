@@ -23,6 +23,8 @@ import os, sys
 import warnings
 from optparse import OptionParser
 from collections import OrderedDict
+from operator import add
+
 
 #k_b = 0.0083144621  #kJ/Mol*K
 #f_conc=55430  # factor for calculating concentrations of salts from numbers of ions/waters; in mM/L
@@ -240,24 +242,52 @@ def find_OP(inp_fname, top_fname, traj_fname):
 #
 
 
-def read_trj_PN_angles(molname, top_fname, traj_fname):
+def read_trj_PN_angles(molname,atoms, top_fname, traj_fname):
+
     mol = mda.Universe(top_fname, traj_fname)
 
-    selection = mol.select_atoms("resname " + molname + " and (name P or name N)").atoms.split("residue")
+#    print(atoms[0])
+#    print(atoms[1])
+    selection = mol.select_atoms("resname " + molname + " and (name " + atoms[0] + " or name " + atoms[1] + ")").atoms.split("residue")
 
     Nres=len(selection)
     Nframes=len(mol.trajectory)
-    resAveragePNangles = []
+    angles = np.zeros((Nres,Nframes))
 
+#    sumsResAngles = [0]*Nres
+    resAverageAngles = [0]*Nres
+    resSTDerror = [0]*Nres
+    j = 0
+
+    for frame in mol.trajectory:
+        for i in range(0,Nres):
+            residue = selection[i]
+            angles[i,j] = calc_angle(residue)
+        j=j+1
+#        sumsResAngles = map(add,sumsResAngles, frameAngles) 
+
+#    resAverageAngles = [x / Nframes for x in sumsResAngles]
     for i in range(0,Nres):
-        residue = selection[i]
-        PNangles = []
-        for frame in mol.trajectory:
-            PNangle = calc_angle(residue)
-            PNangles.append(PNangle)
+        resAverageAngles[i] = sum(angles[i,:]) / Nframes
+        resSTDerror[i] = np.std(angles[i,:])
 
-        averageAngle = sum(PNangles) / Nframes
-        resAveragePNangles.append(averageAngle)
+    totalAverage = sum(resAverageAngles) / Nres
+    totalSTDerror = np.std(resAverageAngles)
 
-    totalAverage = sum(resAveragePNangles) / Nres
-    return resAveragePNangles, totalAverage
+# standard errors
+    
+
+
+
+#    for i in range(0,Nres):
+#        residue = selection[i]
+#        PNangles = []
+#        for frame in mol.trajectory:
+#            PNangle = calc_angle(residue)
+#            PNangles.append(PNangle)
+#
+#        averageAngle = sum(PNangles) / Nframes
+#        resAveragePNangles.append(averageAngle)
+
+    return angles, totalAverage, totalSTDerror
+
