@@ -243,9 +243,11 @@ def find_OP(inp_fname, top_fname, traj_fname):
 
 
 def read_trj_PN_angles(molname,atoms, top_fname, traj_fname):
+
     mol = mda.Universe(top_fname, traj_fname)
-    print(atoms[0])
-    print(atoms[1])
+
+#    print(atoms[0])
+#    print(atoms[1])
     selection = mol.select_atoms("resname " + molname + " and (name " + atoms[0] + " or name " + atoms[1] + ")").atoms.split("residue")
 
     Nres=len(selection)
@@ -288,3 +290,4 @@ def read_trj_PN_angles(molname,atoms, top_fname, traj_fname):
 #        resAveragePNangles.append(averageAngle)
 
     return angles, totalAverage, totalSTDerror
+
