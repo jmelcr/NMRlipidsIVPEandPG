@@ -1,1 +1,0 @@
-{'ID': 0, 'DOI': '10.5281/zenodo.1011096', 'SYSTEM': 'POPG_T298K', 'SOFTWARE': 'gromacs', 'FF': 'CHARMM36', 'FF_SOURCE': 'CHARMM-GUI', 'FF_DATE': '??', 'TRJ': [['run2.xtc']], 'TPR': [['run2.tpr']], 'POPG': 'POPG', 'POT': 'POT', 'NPOPG': 14986, 'NPOT': 118}

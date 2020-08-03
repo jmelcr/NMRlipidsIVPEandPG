@@ -21,9 +21,12 @@ import numpy as np
 import math
 import os, sys
 import warnings
+import re
+import cmath
 from optparse import OptionParser
 from collections import OrderedDict
 from operator import add
+from linecache import getline
 
 
 #k_b = 0.0083144621  #kJ/Mol*K
@@ -40,15 +43,18 @@ class OrderParameter:
     and OP trajectories
     and methods to evaluate OPs.
     """
-    def __init__(self, name, resname, atom_A_name, atom_B_name, *args):
+    def __init__(self, resname, atom_A_name, atom_B_name, M_atom_A_name, M_atom_B_name, *args):  #removed name, resname from arguments
         """
         it doesn't matter which comes first,
         atom A or B, for OP calculation.
         """
-        self.name = name             # name of the order parameter, a label
+#        self.name = name             # name of the order parameter, a label
         self.resname = resname       # name of residue atoms are in
         self.atAname = atom_A_name
         self.atBname = atom_B_name
+        self.M_atAname = M_atom_A_name
+        self.M_atBname = M_atom_B_name
+        self.name = M_atom_A_name + " " + M_atom_B_name # generic name of atom A and atom B
         for field in self.__dict__:
             if not isinstance(field, str):
                 warnings.warn("provided name >> {} << is not a string! \n \
@@ -69,6 +75,7 @@ class OrderParameter:
         else:
             warnings.warn("Number of optional positional arguments is {len}, not 2 or 0. Args: {args}\nWrong file format?")
         self.traj = []  # for storing OPs
+        self.selection = []
         
 
     def calc_OP(self, atoms):
@@ -163,7 +170,7 @@ def read_trajs_calc_OPs(ordPars, top, trajs):
     mol = mda.Universe(top, trajs)
 
     # make atom selections for each OP and store it as its attribute for later use in trajectory
-    for op in ordPars.values():
+    for op in ordPars:
         # selection = pairs of atoms, split-by residues
         selection = mol.select_atoms("resname {rnm} and name {atA} {atB}".format(
                                     rnm=op.resname, atA=op.atAname, atB=op.atBname)
@@ -171,58 +178,109 @@ def read_trajs_calc_OPs(ordPars, top, trajs):
         for res in selection:
             # check if we have only 2 atoms (A & B) selected
             if res.n_atoms != 2:
-                print(res.resnames, res.resids)
+                #print(res.resnames, res.resids)
                 for atom in res.atoms:
-                    print(atom.name, atom.id)
-                atA=op.atAnam
-                atB=op.atBname
-                nat=res.n_atoms
-                warning.warn("Selection >> name {atA} {atB} << \
-                contains {nat} atoms, but should contain exactly 2!")
+                  # print(atom.name, atom.id)
+                   atA=op.atAname
+                   atB=op.atBname
+                   nat=res.n_atoms
+                   warnings.warn("Selection >> name {atA} {atB} << \
+                   contains {nat} atoms, but should contain exactly 2!")
         op.selection = selection
 
     # go through trajectory frame-by-frame
-    Nres=len(op.selection)
-    Nframes=len(mol.trajectory)
-    for op in ordPars.values():
-        op.traj=[0]*Nres
-    for frame in mol.trajectory:
+        Nres=len(op.selection)
 
-        for op in ordPars.values():
+    Nframes=len(mol.trajectory)
+    for op in ordPars:
+        op.traj= [0]*Nres
+#        op.traj=[0]*Nres
+#        if len(op.traj) == 0:
+#            print(op.atAname + " " + op.atBname)
+#        print("op.traj length " + str(len(op.traj)))
+
+    for frame in mol.trajectory:
+        for op in ordPars:            #.values():
             for i in range(0,Nres):
+#             for i, op in enumerate(ordPars,1):
                 residue=op.selection[i]
                 S = op.calc_OP(residue)
+#                print(S)
+#                    print(op.atAname + " " + op.atBname)
+#                    print(i)
+#                op.traj.append(S/Nframes)
                 op.traj[i]=op.traj[i]+S/Nframes
             #op.traj.append(np.mean(tmp))
 
         #print "--", mol.atoms[0].position
- #   for op in ordPars.values():
- #	op.traj=op.traj/Nframes
+#    for op in ordPars:
+#        op.traj=op.traj/Nframes
 
 def parse_op_input(fname):
-    """
-    parses input file with Order Parameter definitions
-    file format is as follows:
-    OP_name    resname    atom1    atom2
-    (flexible cols)
-    fname : string
-        input file name
-    returns : dictionary
-        with OrderParameters class instances
-    """
-    ordPars = OrderedDict()
-    try:
-        with open(fname,"r") as f:
-            for line in f.readlines():
-                if not line.startswith("#"):
-                    items = line.split()
+    ordPars = []
+    atomC = []
+    atomH = []
+    resname = ""
 
-                    ordPars[items[0]] = OrderParameter(*items)
+#    try:
+    with open(fname,"r") as f:
+        for ind, line in enumerate(f,1):
+            if line.startswith("#Whole molecules"):
+#                print(getline(f.name, ind + 1).split())
+                resname = getline(f.name, ind + 1).split()[1]
+                break
+    with open(fname, "r") as f:
+        for line in f.readlines():
+            if not line.startswith("#"):
+                regexp1_H = re.compile(r'M_[A-Z0-9]*C[0-9]*H[0-9]*_M')
+                regexp2_H = re.compile(r'M_G[0-9]*H[0-9]*_M')
+                regexp1_C = re.compile(r'M_[A-Z0-9]*C[0-9]*_M')
+                regexp2_C = re.compile(r'M_G[0-9]_M')
 
-    except:
-        inpf=opts.inp_fname
-        raise RuntimeError("Couldn't read input file >> {inpf} <<")
+                if regexp1_C.search(line) or regexp2_C.search(line):
+                    atomC = line.split()
+                    atomH = []
+                elif regexp1_H.search(line) or regexp2_H.search(line):
+                    atomH = line.split()
+                else:
+                    atomC = []
+                    atomH = []
+
+                if atomH:
+                    items = [atomC[1], atomH[1], atomC[0], atomH[0]]
+#                    print(items)
+                    op = OrderParameter(resname, items[0], items[1], items[2], items[3])
+                    ordPars.append(op)
+#    except:
+#        inpf=opts.inp_fname
+#        raise RuntimeError("Couldn't read input file >> {inpf} <<")
     return ordPars
+
+
+#def parse_op_input(fname):
+#    """
+#    parses input file with Order Parameter definitions
+#    file format is as follows:
+#    OP_name    resname    atom1    atom2
+#    (flexible cols)
+#    fname : string
+#        input file name
+#    returns : dictionary
+#        with OrderParameters class instances
+#    """
+#    ordPars = OrderedDict()
+#    try:
+#        with open(fname,"r") as f:
+#            for line in f.readlines():
+#                if not line.startswith("#"):
+#                    items = line.split()
+#
+#                    ordPars[items[0]] = OrderParameter(*items)
+#
+#    except:
+#        inpf=opts.inp_fname
+#        raise RuntimeError("Couldn't read input file >> {inpf} <<")
+#    return ordPars
 
 
 

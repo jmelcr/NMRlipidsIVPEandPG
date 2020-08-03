@@ -1,0 +1,44 @@
+ID: 0
+DOI: 10.5281/zenodo.2628335
+MAPPING:
+- - /media/akiirikk/DATADRIVE1/tietokanta/NMRlipidsIVPEandPG/scripts/mapping_files/mappingPOPCcharmm.txt
+SYSTEM: POPC_310K
+SOFTWARE: gromacs
+FF: CHARMM36
+FF_SOURCE: ??
+FF_DATE: ??
+TRJ:
+- - m_400_500_POPC_charmm.xtc
+TPR:
+- - md_080.tpr
+INI:
+- - ''
+PREEQTIME: '0'
+POPC: POPC
+POPG: POPG
+POPS: POPS
+POPE: POPE
+POT: POT
+SOD: SOD
+CLA: CLA
+CAL: CAL
+TIP3: TIP3
+NPOPC:
+- 256
+- 256
+NPOPG:
+- 0
+- 0
+NPOPS:
+- 0
+- 0
+NPOPE:
+- 0
+- 0
+NPOT: 0
+NSOD: 0
+NCLA: 0
+NCAL: 0
+NTIP3: 0
+TEMPERATURE: '310'
+TRJLENGTH: 81620
