@@ -133,5 +133,8 @@ M_HW2_M          HW2
 #Whole molecules
 M_POPG_M         POPG
 M_NA_M           NA
+M_CA_M           CAL
+M_K_M            POT
+M_CL_M           CLA
 M_CHOL_M         CHO
-M_SOL_M          SOL
+M_SOL_M          TIP3
