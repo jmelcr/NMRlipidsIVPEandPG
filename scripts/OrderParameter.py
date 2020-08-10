@@ -22,7 +22,7 @@ import math
 import os, sys
 import warnings
 import re
-import cmath
+
 from optparse import OptionParser
 from collections import OrderedDict
 from operator import add
@@ -126,7 +126,7 @@ class OrderParameter:
 
 #Anne: Added calc_angle from https://github.com/NMRLipids/MATCH/blob/master/scripts/calcOrderParameters.py
 #Anne: removed self from function arguments
-def calc_angle(atoms, z_dim=45.0):
+def calc_angle(atoms, z_dim):
         """
         calculates the angle between the vector and z-axis in degrees
         no PBC check!
@@ -150,6 +150,11 @@ def calc_angle(atoms, z_dim=45.0):
                 angle = math.degrees(math.acos(cos))
         return angle
 
+
+def calc_z_dim(gro):
+        u = mda.Universe(gro)
+        z = u.dimensions[2]
+        return z
 
 
 def read_trajs_calc_OPs(ordPars, top, trajs):
@@ -300,9 +305,10 @@ def find_OP(inp_fname, top_fname, traj_fname):
 #
 
 
-def read_trj_PN_angles(molname,atoms, top_fname, traj_fname):
+def read_trj_PN_angles(molname,atoms, top_fname, traj_fname, gro_fname):
 
     mol = mda.Universe(top_fname, traj_fname)
+    z_dim = calc_z_dim(gro_fname)
 
 #    print(atoms[0])
 #    print(atoms[1])
@@ -320,7 +326,7 @@ def read_trj_PN_angles(molname,atoms, top_fname, traj_fname):
     for frame in mol.trajectory:
         for i in range(0,Nres):
             residue = selection[i]
-            angles[i,j] = calc_angle(residue)
+            angles[i,j] = calc_angle(residue, z_dim)
         j=j+1
 #        sumsResAngles = map(add,sumsResAngles, frameAngles) 
 
@@ -347,5 +353,5 @@ def read_trj_PN_angles(molname,atoms, top_fname, traj_fname):
 #        averageAngle = sum(PNangles) / Nframes
 #        resAveragePNangles.append(averageAngle)
 
-    return angles, totalAverage, totalSTDerror
+    return angles, resAverageAngles, totalAverage, totalSTDerror
 
