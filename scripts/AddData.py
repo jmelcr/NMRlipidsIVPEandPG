@@ -5,25 +5,37 @@
 
 # ## Simulation description file
 
-# In[72]:
+# In[1]:
 
 
-DOI="10.5281/zenodo.3483785"
+DOI="10.5281/zenodo.1129415"
 
 user_information = """
-POPC:POPE
+POPS
 #NMRLIPIDS BEGIN
 
 @SIM
-@MAPPING=POPC,mappingPOPCcharmm.txt,POPE,mappingPOPEcharmm.txt
-@SYSTEM=POPC:POPE_1:1_298K
+@MAPPING=POPS,mappingPOPScharmm.txt
+@SYSTEM=POPS_298K
 @SOFTWARE=gromacs
 @FF=CHARMM36
 @FF_SOURCE=CHARMM-GUI
 @FF_DATE=??
-@TRJ=run.wrapped.xtc
-@TPR=step7_1.tpr
+@TRJ=md-CHARMM36_10A-switch_POPS_v1_400-500ns_skip10.xtc
+@TPR=for-md-CHARMM36_POPS_298K_v1.tpr
 @PREEQTIME=0
+
+@SIM
+@MAPPING=POPS,mappingPOPScharmm.txt
+@SYSTEM=POPS_298K
+@SOFTWARE=gromacs
+@FF=CHARMM36
+@FF_SOURCE=CHARMM-GUI
+@FF_DATE=??
+@TRJ=md-CHARMM36_10A-switch_POPS_v2_400-500ns_skip10.xtc
+@TPR=for-md-CHARMM36_POPS_298K_v2.tpr
+@PREEQTIME=0
+
 
 @POPC=POPC
 @POPG=POPG
@@ -57,12 +69,12 @@ POPC:POPE
 
 
 # Working directory
-dir_wrk  = "/media/akiirikk/DATADRIVE1/tietokanta/temp/DATAbankTST/TABLEIII/POPCPOPE_11charmm"
+dir_wrk  = "/media/osollila/Data/tmp/DATABANK/"
 
 
 # ## General Imports
 
-# In[73]:
+# In[2]:
 
 
 # Working with files and directories
@@ -91,7 +103,7 @@ from copy import deepcopy
 
 # ## Directories
 
-# In[74]:
+# In[3]:
 
 
 dir_wrk = os.path.normpath(dir_wrk)
@@ -102,7 +114,7 @@ print(dir_wrk)
 
 # ## Check that the DOI link is valid
 
-# In[75]:
+# In[4]:
 
 
 DOI_url = 'https://doi.org/' + DOI
@@ -129,7 +141,7 @@ else:
 
 # ## Read input description
 
-# In[76]:
+# In[5]:
 
 
 bNMRLIPIDS = False #Check if the link contains NMRLIPIDS metadata
@@ -163,7 +175,7 @@ print(sims)
 
 # ### Dictionares
 
-# In[77]:
+# In[6]:
 
 
 #Molecules dictionary
@@ -357,7 +369,7 @@ print(software_dict.keys())
 
 # ### Check software used by the simulation
 
-# In[78]:
+# In[7]:
 
 
 sims_valid_software = []
@@ -374,7 +386,7 @@ for sim in sims:
 
 # ### Check that all entry keys provided for each simulation are valid:
 
-# In[79]:
+# In[8]:
 
 
 sims_valid_entries = []
@@ -404,7 +416,7 @@ for sim in sims_valid_software:
 
 # ### Process entries with files information to contain file names in arrays
 
-# In[80]:
+# In[9]:
 
 
 sims_files_to_array = deepcopy(sims_valid_entries)
@@ -431,7 +443,7 @@ for sim in sims_files_to_array:
 
 # ### Check for multiple files in entries that can only contain one
 
-# In[81]:
+# In[10]:
 
 
 sims_valid_file_entries = []
@@ -456,7 +468,7 @@ for sim in sims_files_to_array:
 
 # ### Check if the submitted simulation has rssion has all required files and information
 
-# In[82]:
+# In[11]:
 
 
 sims_required_entries = []
@@ -480,7 +492,7 @@ for sim in sims_valid_file_entries:
 
 # ### Check status links
 
-# In[83]:
+# In[12]:
 
 
 # Download link
@@ -494,7 +506,7 @@ def download_link(doi, file):
         return ""
 
 
-# In[84]:
+# In[13]:
 
 
 #print(sims_required_entries)
@@ -549,7 +561,7 @@ for sim in sims_required_entries:
 
 # ## Download files from links
 
-# In[85]:
+# In[14]:
 
 
 # Create temporary directory where to download files and analyze them
@@ -580,7 +592,7 @@ for sim in sims_working_links:
 
 # ## Calculate hash downloaded files
 
-# In[86]:
+# In[15]:
 
 
 dir_tmp = os.path.join(dir_wrk, "tmp/")
@@ -633,7 +645,7 @@ for sim in sims_hashes:
 print(sims_hashes)
 
 
-# In[87]:
+# In[16]:
 
 
 str(sims_working_links)
@@ -641,7 +653,7 @@ str(sims_working_links)
 
 # ## Make a dictionary of mapping files and save it in the simulation dictionary
 
-# In[91]:
+# In[20]:
 
 
 mapping = sim['MAPPING'].split(',')
@@ -664,7 +676,13 @@ print(sim)
 
 # ## Read molecule numbers into dictionary
 
-# In[92]:
+# In[21]:
+
+
+print(sim['MAPPING_DICT'])
+
+
+# In[22]:
 
 
 #Anne:Read molecule numbers from tpr or gro file.
@@ -738,10 +756,10 @@ for sim in sims_working_links :
         mapping_files.append(value)
         
     print(mapping_files)
-    m_file = mapping_files[1]
+    m_file = mapping_files[0]
     
     for key_mol in molecules_dict:
-        with open(m_file,"r") as f:
+        with open('mapping_files/'+m_file,"r") as f:
             for line in f:
                 #print(key_mol)
                 #print(sim[key_mol])
@@ -759,7 +777,7 @@ for sim in sims_working_links :
 print(sim)
 
 
-# In[93]:
+# In[23]:
 
 
 #Anne: Read temperature and trajectory length from tpr file
@@ -798,7 +816,7 @@ for sim in sims_working_links:
 
 # # Save to databank
 
-# In[94]:
+# In[24]:
 
 
 #import json
@@ -814,16 +832,16 @@ for sim in sims_working_links:
     sub_dir2 = sims_hashes[ID].get('TPR')[0][1]
     sub_dir3 = sims_hashes[ID].get('TRJ')[0][1]
     
-    get_ipython().system("mkdir {'../TABLEIII/'}")
+   # !mkdir {'../TABLEIII/'}
    # !mkdir {'../Data/Simulations'}
    # !mkdir {'../Data/Simulations/TABLEIII'}
     
-    get_ipython().system("mkdir {'../TABLEIII/' + str(head_dir)}")
-    get_ipython().system("mkdir {'../TABLEIII/' + str(head_dir) + '/' + str(sub_dir1)}")
-    get_ipython().system("mkdir {'../TABLEIII/' + str(head_dir) + '/' + str(sub_dir1) + '/' + str(sub_dir2)}")
-    get_ipython().system("mkdir {'../TABLEIII/' + str(head_dir) + '/' + str(sub_dir1) + '/' + str(sub_dir2) + '/' + str(sub_dir3)}")
+    get_ipython().system("mkdir {'../Data/Simulations/' + str(head_dir)}")
+    get_ipython().system("mkdir {'../Data/Simulations/' + str(head_dir) + '/' + str(sub_dir1)}")
+    get_ipython().system("mkdir {'../Data/Simulations/' + str(head_dir) + '/' + str(sub_dir1) + '/' + str(sub_dir2)}")
+    get_ipython().system("mkdir {'../Data/Simulations/' + str(head_dir) + '/' + str(sub_dir1) + '/' + str(sub_dir2) + '/' + str(sub_dir3)}")
     
-    DATAdir = '../TABLEIII/' + str(head_dir) + '/' + str(sub_dir1) + '/' + str(sub_dir2) + '/' + str(sub_dir3)
+    DATAdir = '../Data/Simulations/' + str(head_dir) + '/' + str(sub_dir1) + '/' + str(sub_dir2) + '/' + str(sub_dir3)
     data_directory[str(ID)] = DATAdir
     
     # SAMULI: I am writin now in txt, but using json might be better in the future
@@ -851,12 +869,6 @@ for sim in sims_working_links:
 # 
 
 # In[ ]:
-
-
-## First dowload packages and calculate the correlation functions using gromacs tools
-
-
-# In[95]:
 
 
 from OrderParameter import *
@@ -920,7 +932,8 @@ for sim in sims_working_links:
         mapping_file = sim['MAPPING_DICT'][key]
     
      #   try:
-        OrdParam=find_OP(mapping_file,tpr,xtcwhole)
+        OrdParam=find_OP('mapping_files/'+mapping_file,tpr,xtcwhole)
+        
       #  except OSError:
             #OrdParam=find_OP(mapping_file,tpr,xtcwhole)
         
@@ -943,19 +956,4 @@ for sim in sims_working_links:
     get_ipython().system("cp {str(dir_wrk)}'/tmp/'{str(ID)}'/OrderParameters.json' {data_directory.get(str(ID))}  ")
     
     print("Done calculating order parameters.")
-
-
-# In[ ]:
-
-
-
-
-    
-
-
-# In[ ]:
-
-
-
-
 
