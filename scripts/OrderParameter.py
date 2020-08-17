@@ -355,3 +355,97 @@ def read_trj_PN_angles(molname,atoms, top_fname, traj_fname, gro_fname):
 
     return angles, resAverageAngles, totalAverage, totalSTDerror
 
+#####Dihedrals#####
+#Anne: Functions needed for dihedral analysis
+
+class Dihedrals:
+
+    def __init__(self, resname, atom_1_name, atom_2_name, atom_3_name, atom_4_name, *args):
+        self.resname = resname       # name of residue atoms are in
+        self.at1name = atom_1_name
+        self.at2name = atom_2_name
+        self.at3name = atom_3_name
+        self.at4name = atom_4_name
+        self.name = atom_1_name + " " + atom_2_name + " " + atom_3_name + " " + atom_4_name  # generic name of atom A and atom B
+
+        self.traj = []
+        self.selection = []
+
+#def calcDihedrals(atom1, atom2, atom3, atom4):
+    
+#    return
+
+def parseDihedralInput(mapping_file):
+#reads all heavy atoms from mapping file and forms groups of four consecutive atoms for dihedral calculation
+#not ready yet!!!!
+    G1 = []
+    G2 = []
+    G3 = []
+    resname = ""
+    dihGroups = []
+
+    regexp_H = re.compile(r'M_[A-Z0-9]*H[0-9]*_M')
+    regexp_1 = re.compile(r'M_G[0-9]*[A-Z][0-9]*_M')
+#    try:
+    with open(mapping_file,"r") as f:
+        for ind, line in enumerate(f,1):
+            if line.startswith("#Whole molecules"):
+#                print(getline(f.name, ind + 1).split())
+                resname = getline(f.name, ind + 1).split()[1]
+                break
+    with open(mapping_file, "r") as f:
+        for line in f.readlines():
+            if not line.startswith("#") and not regexp_H.search(line):
+                    if line.startswith("M_G1"):
+                        atom = line.split()
+                        G1.append(atom[0])
+                    elif line.startswith("M_G2"):
+                        atom = line.split()
+                        G2.append(atom[0])
+                    elif line.startswith("M_G3"):
+                        atom = line.split()
+                        G3.append(atom[0])
+
+    G1.reverse()
+    G2.reverse()
+    print(G1)
+    print(G2)
+    print(G3)
+    G1G3 = G1 + G3
+    G2G3 = G2 + G3
+
+    dihAtoms = []
+
+    for atom in G1G3:
+        if regexp_1.search(atom):
+            dihAtoms.append(atom)
+
+            if len(dihAtoms) == 4:
+                #dihGroups.append(Dihedrals(dihAtoms))
+                print(dihAtoms)
+                dihAtoms.pop(0) #remove first atom from dihAtoms
+        else:
+            dihAtoms.append(atom)
+            print(dihAtoms)
+            dihAtoms.pop(3) #remove last atom from dihAtoms
+#empty dihAtoms list
+    dihAtoms = []
+
+    for atom in G2G3:
+        if regexp_1.search(atom):
+            dihAtoms.append(atom)
+
+            if len(dihAtoms) == 4:
+                #dihGroups.append(Dihedrals(dihAtoms))
+                print(dihAtoms)
+                dihAtoms.pop(0) #remove first atom from dihAtoms
+        else:
+            dihAtoms.append(atom)
+            print(dihAtoms)
+            dihAtoms.pop(3) #remove last atom from dihAtoms
+
+
+    return dihGroups
+
+
+#def readTrjCalcDih(trj, tpr, mapping_file):
