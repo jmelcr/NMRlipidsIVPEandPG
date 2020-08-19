@@ -1,0 +1,29 @@
+ID: 0
+DOI: 10.5281/zenodo.1129415
+MAPPING: POPS,mappingPOPScharmm.txt
+SYSTEM: POPS_298K
+SOFTWARE: gromacs
+FF: CHARMM36
+FF_SOURCE: CHARMM-GUI
+FF_DATE: ??
+TRJ:
+- - md-CHARMM36_10A-switch_POPS_v1_400-500ns_skip10.xtc
+TPR:
+- - for-md-CHARMM36_POPS_298K_v1.tpr
+PREEQTIME: '0'
+NPOPC:
+- 0
+- 0
+NPOPG:
+- 0
+- 0
+NPOPS:
+- 64
+- 64
+NPOPE:
+- 0
+- 0
+MAPPING_DICT:
+  POPS: mappingPOPScharmm.txt
+TEMPERATURE: '298'
+TRJLENGTH: 100050.0
