@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+
 # coding: utf-8
 
 # # Database test
@@ -8,29 +8,8 @@
 # In[1]:
 
 
-DOI="10.5281/zenodo.1011096"
-def_file  = "/home/samuli/work/NMRlipids/MATCH/scripts/orderParm_defs/order_parameter_definitions_MODEL_CHARMM36_POPG.def"
+from POPEcharmm import *
 
-user_information = """
-POPC multiple trajectories test
-#NMRLIPIDS BEGIN
-
-@SIM
-@SYSTEM=POPG_T298K
-@SOFTWARE=gromacs
-@FF=CHARMM36
-@FF_SOURCE=CHARMM-GUI
-@FF_DATE=??
-@TRJ=run2.xtc
-@TPR=run2.tpr
-
-#NMRLIPIDS END
-
-"""
-
-
-# Working directory
-dir_wrk  = "/home/samuli/work/temp/DATAbankTST/POPCcharmm/"
 
 
 # ## General Imports
@@ -68,9 +47,9 @@ from copy import deepcopy
 
 
 dir_wrk = os.path.normpath(dir_wrk)
+#mapping_dir =os.path.normpath(mapping_dir)
 print(dir_wrk)
-def_file = os.path.normpath(def_file)
-print(def_file)
+#print(mapping_dir)
 
 
 # ## Check that the DOI link is valid
@@ -139,6 +118,79 @@ print(sims)
 # In[6]:
 
 
+#Molecules dictionary
+
+lipids_dict = {
+                'POPC' : {"REQUIRED": False,
+                             "TYPE": "string",
+                         },
+                'POPG' : {"REQUIRED": False,
+                            "TYPE" : "string",
+                        },
+                'POPS' : {"REQUIRED": False,
+                            "TYPE" : "string",
+                        },
+                'POPE' : {"REQUIRED": False,
+                            "TYPE" : "string",
+                        },
+                }
+
+molecules_dict = {
+                
+                'POT' : {"REQUIRED": False,
+                            "TYPE" : "string",
+                        },
+                'SOD' : {"REQUIRED": False,
+                            "TYPE" : "string",
+                        },
+                'CLA' : {"REQUIRED": False,
+                            "TYPE" : "string",
+                        },
+                'CAL' : {"REQUIRED": False,
+                            "TYPE" : "string",
+                        },
+                'SOL' : {"REQUIRED": False,
+                            "TYPE" : "string",
+                        },
+                }
+
+
+               
+molecule_numbers_dict = {
+                'NPOPC' : {"REQUIRED": False,
+                              "TYPE": "array",
+                          },
+                'NPOPG' : {"REQUIRED": False,
+                            "TYPE" : "array",
+                         },
+                'NPOPS' : {"REQUIRED": False,
+                            "TYPE" : "array",
+                        },
+                'NPOPE' : {"REQUIRED": False,
+                            "TYPE" : "array",
+                        },
+    
+               'NPOT' : {"REQUIRED": False,
+                            "TYPE" : "integer",
+                        },
+                'NSOD' : {"REQUIRED": False,
+                            "TYPE" : "integer",
+                        },
+                'NCLA' : {"REQUIRED": False,
+                            "TYPE" : "integer",
+                        },
+                'NCAL' : {"REQUIRED": False,
+                             "TYPE" : "integer",
+                         },
+                'NSOL' : {"REQIRED": False,
+                            "TYPE" : "integer",
+                        },
+    
+                }
+               
+                
+                
+
 # Gromacs
 gromacs_dict = {
                'INI' : {"REQUIRED": False,
@@ -181,9 +233,24 @@ gromacs_dict = {
                'DOI' : {"REQUIRED": True,
                             "TYPE" : "string",
                            },
+    
                'SYSTEM' : {"REQUIRED": True,
                             "TYPE" : "string",
                            },
+            'TEMPERATURE' : {"REQUIRED": False,
+                            "TYPE" : "integer",
+                            },
+             'TRJLENGTH' : {"REQUIRED": False,
+                           "TYPE" : "integer",
+                           },
+            'PREEQTIME' : {"REQUIRED": False,
+                          "TYPE" : "integer",
+                          },
+            'MAPPING' : {"REQUIRED": True,
+                             "TYPE" : "string",
+ #                        "EXTENSION": ("txt"),
+                             },
+              
                }
 
 # Amber
@@ -267,12 +334,15 @@ for sim in sims_valid_software:
     #print("ID {0}".format(sim["ID"]))
     wrong_key_entries = 0
     software_dict_name = "{0}_dict".format(sim['SOFTWARE'].lower())
+    print(sim.items())
     for key_sim, value_sim in sim.items():
         #print(key_sim, value_sim)
+        #print(key_sim.upper())
         if key_sim.upper() in ("ID", "SOFTWARE"):
             #print("NOT REQUIRED")
             continue
-        if key_sim.upper() not in software_dict[sim['SOFTWARE'].upper()].keys():
+    #Anne: check if key is in molecules_dict or molecule_numbers_dict too
+        if key_sim.upper() not in software_dict[sim['SOFTWARE'].upper()].keys() and key_sim.upper() not in molecules_dict.keys() and key_sim.upper() not in lipids_dict.keys() and key_sim.upper() not in molecule_numbers_dict:
             print ("{0} NOT in {1}".format(key_sim, software_dict_name))
             wrong_key_entries += 1
     if wrong_key_entries:
@@ -389,15 +459,19 @@ for sim in sims_required_entries:
         #print("key_sim = {0} => value_sim = {1}".format(key_sim, value_sim))
         try:
             entry_type = software_sim[key_sim]['TYPE']
+            extension_type = software_sim[key_sim]['EXTENSION']
             #print("entry_type = {0}".format(entry_type))
-            if "file" in entry_type:
+            if "file" in entry_type and "txt" not in extension_type:
                 for file_provided in value_sim:
                     #print("File={0}".format(file_provided[0]))
                     file_url = download_link(DOI, file_provided[0])
                     if file_url == "":
+                        
                         wrong_links += 1
                         continue
                     try:
+                        if key_sim == 'INI':
+                            continue
                         response = urllib.request.urlopen(file_url)
                         #print("Status of the DOI link: {0}".format(response.msg))
                     except HTTPError as e:
@@ -427,37 +501,38 @@ for sim in sims_required_entries:
 
 # ## Download files from links
 
-# In[15]:
+# In[14]:
 
 
-## Create temporary directory where to download files and analyze them
-#dir_tmp = os.path.join(dir_wrk, "tmp/")
-#if (not os.path.isdir(dir_tmp)): os.mkdir(dir_tmp)
+# Create temporary directory where to download files and analyze them
+dir_tmp = os.path.join(dir_wrk, "tmp/")
+if (not os.path.isdir(dir_tmp)): os.mkdir(dir_tmp)
 
-#for sim in sims_working_links:
-#    print("ID {0}".format(sim["ID"]), flush=True)
-#    software_sim = software_dict[sim['SOFTWARE'].upper()]
-#    dir_sim = os.path.join(dir_tmp, str(sim["ID"]))
-#    if (not os.path.isdir(dir_sim)): os.mkdir(dir_sim)
-#    for key_sim, value_sim in sim.items():
-#        #print("key_sim = {0} => value_sim = {1}".format(key_sim, value_sim))
-#        try:
-#            entry_type = software_sim[key_sim]['TYPE']
- #           #print("entry_type = {0}".format(entry_type))
-#            if "file" in entry_type:
-#                for file_provided in tqdm(value_sim, desc = key_sim):
-#                    file_url = download_link(DOI, file_provided[0])
-#                    file_name = os.path.join(dir_sim, file_provided[0])
-#                    if (not os.path.isfile(file_name)):
-#                        response = urllib.request.urlretrieve(file_url, file_name)
-#        except: #It is normal that fails for "ID" and "SOFTWARE"
-#            continue
+for sim in sims_working_links:
+    print("ID {0}".format(sim["ID"]), flush=True)
+    software_sim = software_dict[sim['SOFTWARE'].upper()]
+    dir_sim = os.path.join(dir_tmp, str(sim["ID"]))
+    if (not os.path.isdir(dir_sim)): os.mkdir(dir_sim)
+    for key_sim, value_sim in sim.items():
+        #print("key_sim = {0} => value_sim = {1}".format(key_sim, value_sim))
+        try:
+            entry_type = software_sim[key_sim]['TYPE']
+            extension_type = software_sim[key_sim]['EXTENSION']
+            #print("entry_type = {0}".format(entry_type))
+            if "file" in entry_type and "txt" not in extension_type:
+                for file_provided in tqdm(value_sim, desc = key_sim):
+                    file_url = download_link(DOI, file_provided[0])
+                    file_name = os.path.join(dir_sim, file_provided[0])
+                    if (not os.path.isfile(file_name)):
+                        response = urllib.request.urlretrieve(file_url, file_name)
+        except: #It is normal that fails for "ID" and "SOFTWARE"
+            continue
             
 
 
 # ## Calculate hash downloaded files
 
-# In[14]:
+# In[15]:
 
 
 dir_tmp = os.path.join(dir_wrk, "tmp/")
@@ -510,16 +585,185 @@ for sim in sims_hashes:
 print(sims_hashes)
 
 
-# In[15]:
+# In[16]:
 
 
 str(sims_working_links)
 
 
+# ## Make a dictionary of mapping files and save it in the simulation dictionary
+
+# In[20]:
+
+
+mapping = sim['MAPPING'].split(',')
+mapping_dict = {}
+
+for i in range(0, int(len(mapping)/2)):
+    lipid = mapping[2*i]
+    print(i)
+    print(lipid)
+    path = mapping[2*i+1]
+    mapping_dict[lipid]=path
+
+#print(mapping_dict)
+
+sim['MAPPING_DICT'] = mapping_dict
+
+print(sim['MAPPING_DICT'])
+print(sim)
+
+
+# ## Read molecule numbers into dictionary
+
+# In[21]:
+
+
+print(sim['MAPPING_DICT'])
+mapping_filesTST = []
+for value in sim['MAPPING_DICT'].values():
+    mapping_filesTST.append(value)
+print(mapping_filesTST)
+
+# In[22]:
+
+
+#Anne:Read molecule numbers from tpr or gro file.
+import MDAnalysis
+from MDAnalysis import Universe
+    
+for sim in sims_working_links :
+    ID = sim.get('ID')
+    tpr = str(dir_wrk)+ '/tmp/' + str(ID) + '/' + str(sim.get('TPR')).translate({ord(c): None for c in "']["})
+    trj = str(dir_wrk)+ '/tmp/' + str(ID) + '/' + str(sim.get('TRJ')).translate({ord(c): None for c in "']["})
+    gro = str(dir_wrk)+ '/tmp/' + str(ID) + '/conf.gro'
+    print(gro)
+    
+ #   if str(sim.get('INI')).translate({ord(c): None for c in "']["}) != '':
+ #       gro = str(sim.get('INI')).translate({ord(c): None for c in "']["})
+ #       gro_path = str(dir_wrk) + '/tmp/' + str(ID) + '/' + gro
+
+  #  else:
+    get_ipython().system('echo System | gmx trjconv -f {trj} -s {tpr} -dump 0 -o {gro}')
+    gro_path = str(dir_wrk) + '/tmp/' + str(ID) + '/' + 'conf.gro'
+    
+    
+    
+    leaflet1 = 0 #total number of lipids in upper leaflet
+    leaflet2 = 0 #total number of lipids in lower leaflet
+    
+    u = Universe(gro_path)
+
+    lipids = []
+    
+    for key_mol in lipids_dict:
+        molecules = u.select_atoms("resname " + key_mol)
+        
+        if molecules.n_residues > 0:
+            lipids.append(key_mol)
+            
+    membrane = " ".join(str(x) for x in lipids)
+    
+    R_membrane_z = u.select_atoms("resname " + membrane).center_of_mass()[2]
+    
+#number of each lipid per leaflet
+        
+    for key_mol in lipids_dict:
+        molecules = u.select_atoms("resname " + key_mol).residues
+        leaflet1 = 0 
+        leaflet2 = 0 
+        
+        x = 'N' + key_mol
+        
+        if molecules.n_residues > 0:
+            
+            for mol in molecules:
+                R = mol.atoms.center_of_mass()
+                
+                if R[2] - R_membrane_z > 0:
+                    leaflet1 = leaflet1 + 1
+                   # print('layer1  ' + str(leaflet1))
+                elif R[2] - R_membrane_z < 0:
+                    leaflet2 = leaflet2 +1
+                   # print('layer2  ' + str(leaflet2))
+                    
+        sim[x] = [leaflet1, leaflet2] 
+#print("upper leaflet: " + str(leaflet1))
+#print("lower leaflet: " + str(leaflet2))
+
+###########################################################################################        
+#numbers of other molecules
+    mapping_files = []
+
+    for value in sim['MAPPING_DICT'].values():
+        mapping_files.append(value)
+        
+    print(mapping_files)
+    m_file = mapping_files[0]
+    
+    for key_mol in molecules_dict:
+        with open('mapping_files/'+m_file,"r") as f:
+            for line in f:
+                #print(key_mol)
+                #print(sim[key_mol])
+                if sim[key_mol] in line:
+                    #print(sim[key_mol])
+                    #print(line)
+                    M_mol = line.split()[1]
+                    print(sim[key_mol] + " " +M_mol)
+        #print(u.select_atoms("resname " + key_mol).n_residues)
+                    x = 'N' + key_mol
+                    sim[x] = u.select_atoms("resname " + M_mol ).n_residues
+        
+        
+
+print(sim)
+
+
+# In[23]:
+
+
+#Anne: Read temperature and trajectory length from tpr file
+import re
+
+dt = 0
+nsteps = 0
+nstxout = 0
+
+for sim in sims_working_links:
+    ID = sim.get('ID')
+    tpr = str(sim.get('TPR')).translate({ord(c): None for c in "']["})
+    tpr_path = str(dir_wrk) + '/tmp/' + str(ID) + '/' + tpr
+    trj = str(sim.get('TRJ')).translate({ord(c): None for c in "']["})
+    trj_path = str(dir_wrk) + '/tmp/' + str(ID) + '/' + trj
+    
+    get_ipython().system('echo System | gmx dump -s {tpr_path} > tpr.txt')
+    
+    file1 = str(dir_wrk) + '/tmp/' + str(ID) + '/tpr.txt'
+
+    with open("tpr.txt", 'rt') as tpr_info:
+        for line in tpr_info:
+            if 'ref-t' in line:
+                sim['TEMPERATURE']=line.split()[1]
+    
+    mol = Universe(tpr_path, trj_path)
+    Nframes=len(mol.trajectory)
+    timestep = mol.trajectory.dt
+ 
+    trj_length = Nframes * timestep
+   
+    sim['TRJLENGTH'] = trj_length
+    
+    print(sim)
+
+
 # # Save to databank
 
-# In[16]:
+# In[24]:
 
+
+#import json
+import yaml
 
 data_directory = {}
 for sim in sims_working_links:
@@ -531,8 +775,9 @@ for sim in sims_working_links:
     sub_dir2 = sims_hashes[ID].get('TPR')[0][1]
     sub_dir3 = sims_hashes[ID].get('TRJ')[0][1]
     
-    get_ipython().system("mkdir {'../Data/'}")
-    get_ipython().system("mkdir {'../Data/Simulations'}")
+   # !mkdir {'../TABLEIII/'}
+   # !mkdir {'../Data/Simulations'}
+   # !mkdir {'../Data/Simulations/TABLEIII'}
     
     get_ipython().system("mkdir {'../Data/Simulations/' + str(head_dir)}")
     get_ipython().system("mkdir {'../Data/Simulations/' + str(head_dir) + '/' + str(sub_dir1)}")
@@ -543,19 +788,28 @@ for sim in sims_working_links:
     data_directory[str(ID)] = DATAdir
     
     # SAMULI: I am writin now in txt, but using json might be better in the future
-    outfileDICT=open(str(DATAdir)+'/README.md','w')
-    outfileDICT.write(str(sim))
-    outfileDICT.close()
+   # outfileDICT=open(str(DATAdir)+'/README.md','w')
+   # outfileDICT=str(dir_wrk)+'/tmp/'+str(ID)+'/'+ 'README.json'
+    
+   # with open(outfileDICT, 'w') as f:
+   #     json.dump(sim, f)
+   
+
+    #!cp {str(dir_wrk)}'/tmp/'{str(ID)}'/README.json' {data_directory.get(str(ID))}  
+# dictionary saved in yaml format
+    outfileDICT=str(dir_wrk)+'/tmp/'+str(ID)+'/'+ 'README.yaml'
+    
+    with open(outfileDICT, 'w') as f:
+        yaml.dump(sim,f, sort_keys=False)
+        
+    get_ipython().system("cp {str(dir_wrk)}'/tmp/'{str(ID)}'/README.yaml' {data_directory.get(str(ID))}")
+    #outfileDICT.write(str(sim))
+    #outfileDICT.close()
+   
 
 
 # # Analysis starts here
 # 
-
-# In[17]:
-
-
-## First dowload packages and calculate the correlation functions using gromacs tools
-
 
 # In[ ]:
 
@@ -565,12 +819,14 @@ import warnings
 #from corrtimes import *
 import subprocess
 import mdtraj
+import json
 #!cp corr_ftios_ind.sh {dir_wrk}
 for sim in sims_working_links:
     trj=sim.get('TRJ')
     tpr=sim.get('TPR')
     ID=sim.get('ID')
     software=sim.get('SOFTWARE')
+    preEQ=sim.get('PREEQTIME')
     
     ext=trj[0:-3] # getting the trajectory extension
     
@@ -601,36 +857,46 @@ for sim in sims_working_links:
     
         xtc = str(dir_wrk) + '/tmp/' + str(ID) + '/' + str(trj[0][0])  
         tpr = str(dir_wrk) + '/tmp/' + str(ID) + '/' + str(tpr[0][0])
-        xtcwhole=str(dir_wrk)+'/tmp/'+str(ID)+'/'+'whole.xtc'
-        get_ipython().system('echo System | gmx trjconv -f {xtc} -s {tpr} -o {xtcwhole} -pbc mol ')
+        xtcwhole=str(dir_wrk)+'/tmp/'+str(ID)+'/whole.xtc'
+        get_ipython().system('echo System | gmx trjconv -f {xtc} -s {tpr} -o {xtcwhole} -pbc mol -b {preEQ}')
    
-       
+
+    
     print("Calculating order parameters")
-    OrdParam=find_OP(def_file,tpr,xtcwhole)
+    
     outfile=open(str(dir_wrk)+'/tmp/'+str(ID)+'/'+'OrderParameters.dat','w')
     line1="Atom     Average OP     OP stem"+'\n'
     outfile.write(line1)
     
     data = {}
-    outfile2=str(dir_wrk)+'/tmp/'+str(ID)+'/'+'OrderParameters.json'
+    outfile2=str(dir_wrk)+'/tmp/'+str(ID)+'/'+'OrderParameters.json' 
+
+    for key in sim['MAPPING_DICT']:    
+        mapping_file = sim['MAPPING_DICT'][key]
     
-    for i,op in enumerate(OrdParam.values()):
-        resops =op.get_op_res
-        (op.avg, op.std, op.stem) =op.get_avg_std_stem_OP
-        line2=str(op.name)+" "+str(op.avg)+" "+str(op.stem)+'\n'
-        outfile.write(line2)
+     #   try:
+        OrdParam=find_OP('mapping_files/'+mapping_file,tpr,xtcwhole)
         
-        data[str(op.name)]=[]
-        data[str(op.name)].append(op.get_avg_std_stem_OP)
+      #  except OSError:
+            #OrdParam=find_OP(mapping_file,tpr,xtcwhole)
+        
+    
+    
+        for i,op in enumerate(OrdParam):
+            resops =op.get_op_res
+            (op.avg, op.std, op.stem) =op.get_avg_std_stem_OP
+            line2=str(op.name)+" "+str(op.avg)+" "+str(op.stem)+'\n'
+            outfile.write(line2)
+    
+            data[str(op.name)]=[]
+            data[str(op.name)].append(op.get_avg_std_stem_OP)
+        
         with open(outfile2, 'w') as f:
             json.dump(data,f)
 
     outfile.close()
     get_ipython().system("cp {str(dir_wrk)}'/tmp/'{str(ID)}'/OrderParameters.dat' {data_directory.get(str(ID))}    ")
-    get_ipython().system("cp {str(dir_wrk)}'/tmp/'{str(ID)}'/OrderParameters.json' {data_directory.get(str(ID))}    ")
-
-
-
-
-
+    get_ipython().system("cp {str(dir_wrk)}'/tmp/'{str(ID)}'/OrderParameters.json' {data_directory.get(str(ID))}  ")
+    
+    print("Done calculating order parameters.")
 

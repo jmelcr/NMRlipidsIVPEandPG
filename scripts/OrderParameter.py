@@ -126,21 +126,18 @@ class OrderParameter:
 
 #Anne: Added calc_angle from https://github.com/NMRLipids/MATCH/blob/master/scripts/calcOrderParameters.py
 #Anne: removed self from function arguments
-def calc_angle(atoms, z_dim):
+def calc_angle(atoms, com):
         """
         calculates the angle between the vector and z-axis in degrees
         no PBC check!
-        assuming a sim-box-centred membrane --> it's centre ~ z_dim/2
-        Warning: user has to make sure that correct z_dim is supplied,
-                 otherwise - This is a bit DIRTY!!
-                 -- this is taken care of in the main trajectory reader in this module
+        Calculates the center of mass of the selected atoms to invert bottom leaflet vector
         """
         vec = atoms[1].position - atoms[0].position
         d = math.sqrt(np.square(vec).sum())
         cos = vec[2]/d
         # values for the bottom leaflet are inverted so that 
         # they have the same nomenclature as the top leaflet
-        cos *= math.copysign(1.0, atoms[0].position[2]-z_dim*0.5)
+        cos *= math.copysign(1.0, atoms[0].position[2]-com)
         try:
             angle = math.degrees(math.acos(cos))
         except ValueError:
@@ -308,12 +305,11 @@ def find_OP(inp_fname, top_fname, traj_fname):
 def read_trj_PN_angles(molname,atoms, top_fname, traj_fname, gro_fname):
 
     mol = mda.Universe(top_fname, traj_fname)
-    z_dim = calc_z_dim(gro_fname)
+#    z_dim = calc_z_dim(gro_fname)
 
-#    print(atoms[0])
-#    print(atoms[1])
-    selection = mol.select_atoms("resname " + molname + " and (name " + atoms[0] + " or name " + atoms[1] + ")").atoms.split("residue")
-
+    selection = mol.select_atoms("resname " + molname + " and (name " + atoms[0] + ")", "resname " + molname + " and (name " + atoms[1] + ")").atoms.split("residue")
+    com = mol.select_atoms("resname " + molname + " and (name " + atoms[0] + " or name " + atoms[1] + ")").center_of_mass()
+    
     Nres=len(selection)
     Nframes=len(mol.trajectory)
     angles = np.zeros((Nres,Nframes))
@@ -326,7 +322,8 @@ def read_trj_PN_angles(molname,atoms, top_fname, traj_fname, gro_fname):
     for frame in mol.trajectory:
         for i in range(0,Nres):
             residue = selection[i]
-            angles[i,j] = calc_angle(residue, z_dim)
+            #print(residue)
+            angles[i,j] = calc_angle(residue, com[2])
         j=j+1
 #        sumsResAngles = map(add,sumsResAngles, frameAngles) 
 
