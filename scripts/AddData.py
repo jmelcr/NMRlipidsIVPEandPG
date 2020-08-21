@@ -6,9 +6,15 @@
 # ## Simulation description file
 
 # In[1]:
+import sys
+import importlib
+import re
+
+inp = sys.argv[1].split('.')[0]
+print(inp)
+inFile = importlib.import_module(inp, package=None)
 
 
-from POPEcharmm import *
 
 
 
@@ -46,7 +52,8 @@ from copy import deepcopy
 # In[3]:
 
 
-dir_wrk = os.path.normpath(dir_wrk)
+#dir_wrk = os.path.normpath(dir_wrk)
+dir_wrk = inFile.dir_wrk
 #mapping_dir =os.path.normpath(mapping_dir)
 print(dir_wrk)
 #print(mapping_dir)
@@ -57,7 +64,7 @@ print(dir_wrk)
 # In[4]:
 
 
-DOI_url = 'https://doi.org/' + DOI
+DOI_url = 'https://doi.org/' + inFile.DOI
 print(DOI_url)
 
 try:
@@ -88,7 +95,7 @@ bNMRLIPIDS = False #Check if the link contains NMRLIPIDS metadata
 nsims =0 # Counter number of simulations in a submission
 sims = [] #Array with the dictionary containing the information of a simulation
 
-for line in user_information.split("\n"):
+for line in inFile.user_information.split("\n"):
     if line.strip() == "":
         continue
     if "#NMRLIPIDS BEGIN" in line:
@@ -101,7 +108,7 @@ for line in user_information.split("\n"):
         #sims.append({"ID" : nsims, "STATUS" : 0})
         sims.append({"ID" : nsims})
         nsims += 1
-        sims[-1]["DOI"] = DOI
+        sims[-1]["DOI"] = inFile.DOI
         continue
     if not bNMRLIPIDS:
         continue
@@ -243,7 +250,10 @@ gromacs_dict = {
              'TRJLENGTH' : {"REQUIRED": False,
                            "TYPE" : "integer",
                            },
-            'PREEQTIME' : {"REQUIRED": False,
+            'PREEQTIME' : {"REQUIRED": True,
+                          "TYPE" : "integer",
+                          },
+          'TIMELEFTOUT' : {"REQUIRED":True,
                           "TYPE" : "integer",
                           },
             'MAPPING' : {"REQUIRED": True,
@@ -595,35 +605,36 @@ str(sims_working_links)
 
 # In[20]:
 
+for sim in sims_working_links :
 
-mapping = sim['MAPPING'].split(',')
-mapping_dict = {}
+    mapping = sim['MAPPING'].split(',')
+    mapping_dict = {}
 
-for i in range(0, int(len(mapping)/2)):
-    lipid = mapping[2*i]
-    print(i)
-    print(lipid)
-    path = mapping[2*i+1]
-    mapping_dict[lipid]=path
+    for i in range(0, int(len(mapping)/2)):
+        lipid = mapping[2*i]
+        print(i)
+        print(lipid)
+        path = mapping[2*i+1]
+        mapping_dict[lipid]=path
 
-#print(mapping_dict)
+    #print(mapping_dict)
 
-sim['MAPPING_DICT'] = mapping_dict
+    sim['MAPPING_DICT'] = mapping_dict
 
-print(sim['MAPPING_DICT'])
-print(sim)
+    print(sim['MAPPING_DICT'])
+    print(sim)
 
 
 # ## Read molecule numbers into dictionary
 
 # In[21]:
 
-
-print(sim['MAPPING_DICT'])
-mapping_filesTST = []
-for value in sim['MAPPING_DICT'].values():
-    mapping_filesTST.append(value)
-print(mapping_filesTST)
+for sim in sims_working_links :
+    print(sim['MAPPING_DICT'])
+    mapping_filesTST = []
+    for value in sim['MAPPING_DICT'].values():
+        mapping_filesTST.append(value)
+    print(mapping_filesTST)
 
 # In[22]:
 
@@ -635,7 +646,9 @@ from MDAnalysis import Universe
 for sim in sims_working_links :
     ID = sim.get('ID')
     tpr = str(dir_wrk)+ '/tmp/' + str(ID) + '/' + str(sim.get('TPR')).translate({ord(c): None for c in "']["})
+    print(tpr)
     trj = str(dir_wrk)+ '/tmp/' + str(ID) + '/' + str(sim.get('TRJ')).translate({ord(c): None for c in "']["})
+    print(trj)
     gro = str(dir_wrk)+ '/tmp/' + str(ID) + '/conf.gro'
     print(gro)
     
@@ -645,6 +658,8 @@ for sim in sims_working_links :
 
   #  else:
     get_ipython().system('echo System | gmx trjconv -f {trj} -s {tpr} -dump 0 -o {gro}')
+    #os.system('echo System | gmx trjconv -f {trj} -s {tpr} -dump 0 -o {gro}')
+    #echo System | gmx trjconv -f {trj} -s {tpr} -dump 0 -o {gro}
     gro_path = str(dir_wrk) + '/tmp/' + str(ID) + '/' + 'conf.gro'
     
     
@@ -693,6 +708,7 @@ for sim in sims_working_links :
 
 ###########################################################################################        
 #numbers of other molecules
+for sim in sims_working_links :
     mapping_files = []
 
     for value in sim['MAPPING_DICT'].values():
@@ -724,7 +740,6 @@ print(sim)
 
 
 #Anne: Read temperature and trajectory length from tpr file
-import re
 
 dt = 0
 nsteps = 0
