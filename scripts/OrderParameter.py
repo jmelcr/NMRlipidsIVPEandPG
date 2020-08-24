@@ -379,10 +379,9 @@ def parseDihedralInput(mapping_file):
     G2 = []
     G3 = []
     resname = ""
-    dihGroups = []
 
     regexp_H = re.compile(r'M_[A-Z0-9]*H[0-9]*_M')
-    regexp_1 = re.compile(r'M_G[0-9]*[A-Z][0-9]*_M')
+    regexp_1 = re.compile(r'M_G[0-9]*[A-Z]*[0-9]*_M')
 #    try:
     with open(mapping_file,"r") as f:
         for ind, line in enumerate(f,1):
@@ -405,44 +404,59 @@ def parseDihedralInput(mapping_file):
 
     G1.reverse()
     G2.reverse()
-    print(G1)
-    print(G2)
-    print(G3)
+
     G1G3 = G1 + G3
     G2G3 = G2 + G3
 
     dihAtoms = []
+
+#make groups of 4 atoms from G1 tail
+    dihGroups1 = []
 
     for atom in G1G3:
         if regexp_1.search(atom):
             dihAtoms.append(atom)
 
             if len(dihAtoms) == 4:
-                #dihGroups.append(Dihedrals(dihAtoms))
-                print(dihAtoms)
+                if "M_G3" in dihAtoms[0]: #do not read groups of atoms containing only head group atoms yet
+                    break
+                dihGroups1.append(dihAtoms)
+                #print(dihAtoms)
+#                print(dihGroups)
                 dihAtoms.pop(0) #remove first atom from dihAtoms
         else:
             dihAtoms.append(atom)
-            print(dihAtoms)
-            dihAtoms.pop(3) #remove last atom from dihAtoms
+            if len(dihAtoms) == 4:
+                #print(dihAtoms)
+                dihGroups1.append(dihAtoms)
+#                print(dihGroups)
+                dihAtoms.pop(3) #remove last atom from dihAtoms
 #empty dihAtoms list
     dihAtoms = []
+
+#make group of 4 atoms from G2 tail and G3 head group
+    dihGroups2 = []
 
     for atom in G2G3:
         if regexp_1.search(atom):
             dihAtoms.append(atom)
 
             if len(dihAtoms) == 4:
-                #dihGroups.append(Dihedrals(dihAtoms))
-                print(dihAtoms)
+                dihGroups2.append(dihAtoms)
+                #print(dihAtoms)
+#                print(dihGroups)
                 dihAtoms.pop(0) #remove first atom from dihAtoms
+                
         else:
             dihAtoms.append(atom)
-            print(dihAtoms)
-            dihAtoms.pop(3) #remove last atom from dihAtoms
+            if len(dihAtoms) == 4:
+                dihGroups2.append(dihAtoms)
+               # print(dihAtoms)
+#                print(dihGroups)
+                dihAtoms.pop(3) #remove last atom from dihAtoms
 
 
-    return dihGroups
+    return dihGroups1 + dihGroups2
 
 
 #def readTrjCalcDih(trj, tpr, mapping_file):
