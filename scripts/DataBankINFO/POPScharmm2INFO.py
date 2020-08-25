@@ -1,18 +1,19 @@
-DOI="10.5281/zenodo.3474862"
+DOI="10.5281/zenodo.1129415"
+
 user_information = """
-POPC
+POPS
 #NMRLIPIDS BEGIN
 
 @SIM
-@SYSTEM=POPC_T303K
-@MAPPING=POPC,mappingPOPCcharmm.txt
+@MAPPING=POPS,mappingPOPScharmm.txt
+@SYSTEM=POPS_298K
 @SOFTWARE=gromacs
 @FF=CHARMM36
-@FF_SOURCE=??
+@FF_SOURCE=CHARMM-GUI
 @FF_DATE=??
-@TRJ=traj_comp.xtc
-@TPR=mdrun.tpr
-@PREEQTIME=0
+@TRJ=md-CHARMM36_10A-switch_POPS_v2_400-500ns_skip10.xtc
+@TPR=for-md-CHARMM36_POPS_298K_v2.tpr
+@PREEQTIME=400
 @TIMELEFTOUT=0
 
 @POPC=POPC
@@ -40,7 +41,11 @@ POPC
 @TEMPERATURE=0
 @TRJLENGTH=0
 
+
 #NMRLIPIDS END
 
 """
-dir_wrk = "../../POPCcharmm"
+
+
+# Working directory
+dir_wrk  = "/media/osollila/Data/tmp/DATABANK/"

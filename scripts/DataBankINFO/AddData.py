@@ -9,6 +9,7 @@
 import sys
 import importlib
 import re
+from random import randint
 
 inp = sys.argv[1].split('.')[0]
 print(inp)
@@ -514,21 +515,23 @@ for sim in sims_required_entries:
 # In[14]:
 
 
+
 # Create temporary directory where to download files and analyze them
-dir_tmp = os.path.join(dir_wrk, "tmp/")
+dir_tmp = os.path.join(dir_wrk, "tmp_6-" + str(randint(100000, 999999)))
 if (not os.path.isdir(dir_tmp)): os.mkdir(dir_tmp)
 
 for sim in sims_working_links:
     print("ID {0}".format(sim["ID"]), flush=True)
     software_sim = software_dict[sim['SOFTWARE'].upper()]
     dir_sim = os.path.join(dir_tmp, str(sim["ID"]))
+    DOI = sim['DOI']
     if (not os.path.isdir(dir_sim)): os.mkdir(dir_sim)
     for key_sim, value_sim in sim.items():
         #print("key_sim = {0} => value_sim = {1}".format(key_sim, value_sim))
         try:
             entry_type = software_sim[key_sim]['TYPE']
             extension_type = software_sim[key_sim]['EXTENSION']
-            #print("entry_type = {0}".format(entry_type))
+            print("entry_type = {0}".format(entry_type))
             if "file" in entry_type and "txt" not in extension_type:
                 for file_provided in tqdm(value_sim, desc = key_sim):
                     file_url = download_link(DOI, file_provided[0])
@@ -545,7 +548,7 @@ for sim in sims_working_links:
 # In[15]:
 
 
-dir_tmp = os.path.join(dir_wrk, "tmp/")
+#dir_tmp = os.path.join(dir_wrk, "tmp/")
 sims_hashes = deepcopy(sims_working_links)
 
 for sim in sims_hashes:
@@ -645,11 +648,11 @@ from MDAnalysis import Universe
     
 for sim in sims_working_links :
     ID = sim.get('ID')
-    tpr = str(dir_wrk)+ '/tmp/' + str(ID) + '/' + str(sim.get('TPR')).translate({ord(c): None for c in "']["})
+    tpr = str(dir_tmp) + '/' + str(ID) + '/' + str(sim.get('TPR')).translate({ord(c): None for c in "']["})
     print(tpr)
-    trj = str(dir_wrk)+ '/tmp/' + str(ID) + '/' + str(sim.get('TRJ')).translate({ord(c): None for c in "']["})
+    trj = str(dir_tmp) + '/' + str(ID) + '/' + str(sim.get('TRJ')).translate({ord(c): None for c in "']["})
     print(trj)
-    gro = str(dir_wrk)+ '/tmp/' + str(ID) + '/conf.gro'
+    gro = str(dir_tmp) + '/' + str(ID) + '/conf.gro'
     print(gro)
     
  #   if str(sim.get('INI')).translate({ord(c): None for c in "']["}) != '':
@@ -660,7 +663,7 @@ for sim in sims_working_links :
     get_ipython().system('echo System | gmx trjconv -f {trj} -s {tpr} -dump 0 -o {gro}')
     #os.system('echo System | gmx trjconv -f {trj} -s {tpr} -dump 0 -o {gro}')
     #echo System | gmx trjconv -f {trj} -s {tpr} -dump 0 -o {gro}
-    gro_path = str(dir_wrk) + '/tmp/' + str(ID) + '/' + 'conf.gro'
+    gro_path = str(dir_tmp) + '/' + str(ID) + '/' + 'conf.gro'
     
     
     
@@ -718,7 +721,7 @@ for sim in sims_working_links :
     m_file = mapping_files[0]
     
     for key_mol in molecules_dict:
-        with open('mapping_files/'+m_file,"r") as f:
+        with open('../mapping_files/'+m_file,"r") as f:
             for line in f:
                 #print(key_mol)
                 #print(sim[key_mol])
@@ -748,13 +751,13 @@ nstxout = 0
 for sim in sims_working_links:
     ID = sim.get('ID')
     tpr = str(sim.get('TPR')).translate({ord(c): None for c in "']["})
-    tpr_path = str(dir_wrk) + '/tmp/' + str(ID) + '/' + tpr
+    tpr_path = str(dir_tmp) + '/' + str(ID) + '/' + tpr
     trj = str(sim.get('TRJ')).translate({ord(c): None for c in "']["})
-    trj_path = str(dir_wrk) + '/tmp/' + str(ID) + '/' + trj
+    trj_path = str(dir_tmp) + '/' + str(ID) + '/' + trj
     
     get_ipython().system('echo System | gmx dump -s {tpr_path} > tpr.txt')
     
-    file1 = str(dir_wrk) + '/tmp/' + str(ID) + '/tpr.txt'
+    file1 = str(dir_tmp) + '/' + str(ID) + '/tpr.txt'
 
     with open("tpr.txt", 'rt') as tpr_info:
         for line in tpr_info:
@@ -794,12 +797,12 @@ for sim in sims_working_links:
    # !mkdir {'../Data/Simulations'}
    # !mkdir {'../Data/Simulations/TABLEIII'}
     
-    get_ipython().system("mkdir {'../Data/Simulations/' + str(head_dir)}")
-    get_ipython().system("mkdir {'../Data/Simulations/' + str(head_dir) + '/' + str(sub_dir1)}")
-    get_ipython().system("mkdir {'../Data/Simulations/' + str(head_dir) + '/' + str(sub_dir1) + '/' + str(sub_dir2)}")
-    get_ipython().system("mkdir {'../Data/Simulations/' + str(head_dir) + '/' + str(sub_dir1) + '/' + str(sub_dir2) + '/' + str(sub_dir3)}")
+    get_ipython().system("mkdir {'../../Data/Simulations/' + str(head_dir)}")
+    get_ipython().system("mkdir {'../../Data/Simulations/' + str(head_dir) + '/' + str(sub_dir1)}")
+    get_ipython().system("mkdir {'../../Data/Simulations/' + str(head_dir) + '/' + str(sub_dir1) + '/' + str(sub_dir2)}")
+    get_ipython().system("mkdir {'../../Data/Simulations/' + str(head_dir) + '/' + str(sub_dir1) + '/' + str(sub_dir2) + '/' + str(sub_dir3)}")
     
-    DATAdir = '../Data/Simulations/' + str(head_dir) + '/' + str(sub_dir1) + '/' + str(sub_dir2) + '/' + str(sub_dir3)
+    DATAdir = '../../Data/Simulations/' + str(head_dir) + '/' + str(sub_dir1) + '/' + str(sub_dir2) + '/' + str(sub_dir3)
     data_directory[str(ID)] = DATAdir
     
     # SAMULI: I am writin now in txt, but using json might be better in the future
@@ -812,12 +815,12 @@ for sim in sims_working_links:
 
     #!cp {str(dir_wrk)}'/tmp/'{str(ID)}'/README.json' {data_directory.get(str(ID))}  
 # dictionary saved in yaml format
-    outfileDICT=str(dir_wrk)+'/tmp/'+str(ID)+'/'+ 'README.yaml'
+    outfileDICT=str(dir_tmp)+ '/' + str(ID)+'/'+ 'README.yaml'
     
     with open(outfileDICT, 'w') as f:
         yaml.dump(sim,f, sort_keys=False)
         
-    get_ipython().system("cp {str(dir_wrk)}'/tmp/'{str(ID)}'/README.yaml' {data_directory.get(str(ID))}")
+    get_ipython().system("cp {str(dir_tmp)}'/'{str(ID)}'/README.yaml' {data_directory.get(str(ID))}")
     #outfileDICT.write(str(sim))
     #outfileDICT.close()
    
@@ -841,7 +844,7 @@ for sim in sims_working_links:
     tpr=sim.get('TPR')
     ID=sim.get('ID')
     software=sim.get('SOFTWARE')
-    preEQ=sim.get('PREEQTIME')
+    EQtime=float(sim.get('TIMELEFTOUT'))*1000
     
     ext=trj[0:-3] # getting the trajectory extension
     
@@ -853,9 +856,9 @@ for sim in sims_working_links:
         print("converting the trajectory into xtc")
         
         pdb = sim.get('PDB')
-        output_traj = str(dir_wrk) + '/tmp/' + str(ID) + '/' + 'tmp_converted.xtc'
-        input_traj = str(dir_wrk) + '/tmp/' + str(ID) + '/' + trj[0][0]
-        input_pdb = str(dir_wrk) + '/tmp/' + str(ID) + '/' + pdb[0][0]
+        output_traj = str(dir_tmp) + '/' + str(ID) + '/' + 'tmp_converted.xtc'
+        input_traj = str(dir_tmp) + '/' + str(ID) + '/' + trj[0][0]
+        input_pdb = str(dir_tmp) + '/' + str(ID) + '/' + pdb[0][0]
       
         if os.path.isfile(output_traj): # when we're done with the converted trajectory we can simply remove it
             get_ipython().system('rm {output_traj}')
@@ -863,34 +866,34 @@ for sim in sims_working_links:
         get_ipython().system('echo System | mdconvert {input_traj} -o {output_traj} -t {input_pdb} --force # force overwrite')
         
         # SAMULI: this xtcwhole does not necessarily have molecules as whole. Only if {input_traj} has.
-        xtcwhole = str(dir_wrk) + '/tmp/' + str(ID) + '/' + 'tmp_converted.xtc'
+        xtcwhole = str(dir_tmp) + '/' + str(ID) + '/' + 'tmp_converted.xtc'
         tpr=input_pdb
         
         print("trajectory conversion is completed")
         
     else:
     
-        xtc = str(dir_wrk) + '/tmp/' + str(ID) + '/' + str(trj[0][0])  
-        tpr = str(dir_wrk) + '/tmp/' + str(ID) + '/' + str(tpr[0][0])
-        xtcwhole=str(dir_wrk)+'/tmp/'+str(ID)+'/whole.xtc'
-        get_ipython().system('echo System | gmx trjconv -f {xtc} -s {tpr} -o {xtcwhole} -pbc mol -b {preEQ}')
+        xtc = str(dir_tmp) + '/' + str(ID) + '/' + str(trj[0][0])  
+        tpr = str(dir_tmp) + '/' + str(ID) + '/' + str(tpr[0][0])
+        xtcwhole=str(dir_tmp) + '/' + str(ID) + '/whole.xtc'
+        get_ipython().system('echo System | gmx trjconv -f {xtc} -s {tpr} -o {xtcwhole} -pbc mol -b {EQtime}')
    
 
     
     print("Calculating order parameters")
     
-    outfile=open(str(dir_wrk)+'/tmp/'+str(ID)+'/'+'OrderParameters.dat','w')
+    outfile=open(str(dir_tmp) + '/' + str(ID)+'/'+'OrderParameters.dat','w')
     line1="Atom     Average OP     OP stem"+'\n'
     outfile.write(line1)
     
     data = {}
-    outfile2=str(dir_wrk)+'/tmp/'+str(ID)+'/'+'OrderParameters.json' 
+    outfile2=str(dir_tmp) + '/' + str(ID)+'/'+'OrderParameters.json' 
 
     for key in sim['MAPPING_DICT']:    
         mapping_file = sim['MAPPING_DICT'][key]
     
      #   try:
-        OrdParam=find_OP('mapping_files/'+mapping_file,tpr,xtcwhole)
+        OrdParam=find_OP('../mapping_files/'+mapping_file,tpr,xtcwhole)
         
       #  except OSError:
             #OrdParam=find_OP(mapping_file,tpr,xtcwhole)
@@ -910,8 +913,8 @@ for sim in sims_working_links:
             json.dump(data,f)
 
     outfile.close()
-    get_ipython().system("cp {str(dir_wrk)}'/tmp/'{str(ID)}'/OrderParameters.dat' {data_directory.get(str(ID))}    ")
-    get_ipython().system("cp {str(dir_wrk)}'/tmp/'{str(ID)}'/OrderParameters.json' {data_directory.get(str(ID))}  ")
+    get_ipython().system("cp {str(dir_tmp)}'/'{str(ID)}'/OrderParameters.dat' {data_directory.get(str(ID))}    ")
+    get_ipython().system("cp {str(dir_tmp)}'/'{str(ID)}'/OrderParameters.json' {data_directory.get(str(ID))}  ")
     
     print("Done calculating order parameters.")
 

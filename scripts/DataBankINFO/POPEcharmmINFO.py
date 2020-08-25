@@ -1,21 +1,20 @@
-DOI="10.5281/zenodo.1011096"
+DOI="10.5281/zenodo.2641987"
 
 user_information = """
-POPC multiple trajectories test
+POPE
 #NMRLIPIDS BEGIN
 
 @SIM
-@MAPPING=POPG,mappingPOPGcharmm.txt
-@SYSTEM=POPG_T298K
+@MAPPING=POPE,mappingPOPEcharmm.txt
+@SYSTEM=POPE_310K
 @SOFTWARE=gromacs
 @FF=CHARMM36
 @FF_SOURCE=CHARMM-GUI
 @FF_DATE=??
-@TRJ=run2.xtc
-@TPR=run2.tpr
-
+@TRJ=POPE_C36_310K.xtc
+@TPR=POPE_C36_310K.tpr
 @PREEQTIME=0
-@TIMELEFTOUT=0
+@TIMELEFTOUT=50
 
 @POPC=POPC
 @POPG=POPG
@@ -42,8 +41,11 @@ POPC multiple trajectories test
 @TEMPERATURE=0
 @TRJLENGTH=0
 
+
 #NMRLIPIDS END
 
 """
-dir_wrk = "../../POPGcharmm/"
 
+
+# Working directory
+dir_wrk  = "/media/osollila/Data/tmp/DATABANK/"
