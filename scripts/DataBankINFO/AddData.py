@@ -882,24 +882,18 @@ for sim in sims_working_links:
     
     print("Calculating order parameters")
     
-    outfile=open(str(dir_tmp) + '/' + str(ID)+'/'+'OrderParameters.dat','w')
-    line1="Atom     Average OP     OP stem"+'\n'
-    outfile.write(line1)
-    
-    data = {}
-    outfile2=str(dir_tmp) + '/' + str(ID)+'/'+'OrderParameters.json' 
 
     for key in sim['MAPPING_DICT']:    
         mapping_file = sim['MAPPING_DICT'][key]
-    
-     #   try:
         OrdParam=find_OP('../mapping_files/'+mapping_file,tpr,xtcwhole)
-        
-      #  except OSError:
-            #OrdParam=find_OP(mapping_file,tpr,xtcwhole)
-        
+
+        outfile=open(str(dir_tmp) + '/' + str(ID)+'/' + key + 'OrderParameters.dat','w')
+        line1="Atom     Average OP     OP stem"+'\n'
+        outfile.write(line1)
     
-    
+        data = {}
+        outfile2=str(dir_tmp) + '/' + str(ID)+'/' + key + 'OrderParameters.json' 
+        
         for i,op in enumerate(OrdParam):
             resops =op.get_op_res
             (op.avg, op.std, op.stem) =op.get_avg_std_stem_OP
@@ -912,9 +906,10 @@ for sim in sims_working_links:
         with open(outfile2, 'w') as f:
             json.dump(data,f)
 
-    outfile.close()
-    get_ipython().system("cp {str(dir_tmp)}'/'{str(ID)}'/OrderParameters.dat' {data_directory.get(str(ID))}    ")
-    get_ipython().system("cp {str(dir_tmp)}'/'{str(ID)}'/OrderParameters.json' {data_directory.get(str(ID))}  ")
+        outfile.close()
+
+        get_ipython().system("cp {str(dir_tmp)}'/'{str(ID)}'/'{key}'OrderParameters.dat' {data_directory.get(str(ID))}    ")
+        get_ipython().system("cp {str(dir_tmp)}'/'{str(ID)}'/'{key}'OrderParameters.json' {data_directory.get(str(ID))}  ")
     
     print("Done calculating order parameters.")
 
