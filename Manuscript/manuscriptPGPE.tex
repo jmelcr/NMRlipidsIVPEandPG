@@ -358,11 +358,12 @@ of the Gromacs sofware package \cite{gromacsMANUAL}.
       \hline
       POPC                   & CHARMM36 \cite{??}        & 0.11      & 0  & 500     & 25000 & 48  &  310  & 500 & 100 & \cite{POPCcharmm150mMNaCl301K}  \\
       POPC:POPG (7:3)        & CHARMM36 \cite{??}        & 0.11      & 0  & 350     & ?     & ?   &  310  & 500 & 100 & \cite{POPC7POPG1charmm36NaCl}  \\
-      POPC:POPG (1:1)/K$^+$  & CHARMM36 \cite{??}        &0          & 0  & 250:250 & 18158 & 0   &  298  & 200 & 200 & \cite{CHARMM36POPCPOPG5050} \\ 
+      POPC:POPG (1:1)        & CHARMM36 \cite{??}        &0          & 0  & 150:150 & 31500 & 0   &  298  & 500 & 400 & \cite{CHARMM36POPCPOPG5050} \\ 
       POPC:POPG (1:1)        & CHARMM36 \cite{??}        &0          & 0.34 \todoi{Concentration calculated based in total amount of calcium ions. This may not be reasonable due to the lack of counterions.}  & 250:250 & 20798 & 128 &  298  & 200 & 200 & \cite{CHARMM36POPCPOPG5050150mMCaCl} \\
-      POPC:POPG (1:1)        & CHARMM36 \cite{??}        &0          & 1.36  \todoi{Concentration calculated based in total amount of calcium ions. This may not be reasonable due to the lack of counterions.} & 250:250 & 18114 & 445  &  298  & 200 & 200 & \cite{CHARMM36POPCPOPG50501000mMCaCl} \\
-      POPC:POPG (4:1)/K$^+$  & CHARMM36 \cite{??}        &0          & 0  & 400:100 & 18664 & 0  &  298  & 200 & 200 & \cite{CHARMM36POPCPOPG4010} \\
-      POPC:POPG (4:1)/K$^+$  & CHARMM36 \cite{??}        &0          & 1.0 \todoi{Concentration calculated based in total amount of calcium ions. This may not be reasonable due to the lack of counterions.} & 400:100 & 18647 & 419  &  298  & 200 & 200 & \cite{CHARMM36POPCPOPG40101000mMCaCl} \\
+      POPC:POPG (1:1)        & CHARMM36 \cite{??}        &0          & 1.08 & 150:150 & 29766 & 578  &  298  & 500 & 400 & \cite{CHARMM36POPCPOPG50501000mMCaCl} \\
+      POPC:POPG (4:1)        & CHARMM36 \cite{??}        &0          & 0  & 350:88 & 26280 & 0  &  298  & 500 & 400 & \cite{CHARMM36POPCPOPG4010} \\
+      POPC:POPG (4:1)        & CHARMM36 \cite{??}        &0          & 0.1 & 350:88 & 26280 & 47  &  298  & 500 & 400 & \cite{CHARMM36POPCPOPG4010100mMCaCl} \\
+      POPC:POPG (4:1)        & CHARMM36 \cite{??}        &0          & 1.0 & 350:88 & 24927 & 451  &  298  & 500 & 400 & \cite{CHARMM36POPCPOPG40101000mMCaCl} \\
       \hline
       POPC             & CHARMM36 \cite{??}        &0          & 0  & 256 & 8704 & 0  &  300  & 300 & 250 & \cite{POPCcharmm300K} \\
       POPC:POPE (1:1)  & CHARMM36 \cite{??}        &0          & 0  & 128 & 8704 & 0  &  300  & 300 & 250 & \cite{POPC1POPE1charmm36} \\
@@ -546,9 +547,10 @@ which could be a potential reason for the too negative $\beta$ headgroup order p
   \centering
   \includegraphics[width=18.0cm]{../Figs/PCPEPGPSstructures.png}
   \includegraphics[width=8.0cm]{../Figs/CHARMMfromLIPIDS.eps}
-  \includegraphics[width=8.0cm]{../Figs/PCPEPGPSdihedrals1.png}
-  \includegraphics[width=8.0cm]{../Figs/PCPEPGPSdihedrals2.png}
-  \includegraphics[width=8.0cm]{../Figs/PNangle.eps}
+%  \includegraphics[width=8.0cm]{../Figs/PCPEPGPSdihedrals1.png}
+%  \includegraphics[width=8.0cm]{../Figs/PCPEPGPSdihedrals2.png}
+  \includegraphics[width=8.0cm]{../Figs/PNangleNORM.eps}
+  \includegraphics[width=8.0cm]{../Figs/DIHEDRALS.eps}
   \caption{\label{structures}
     Overlayed snapshots and dihedral angle distributions from CHARMM36 simulations of different lipids
     which give the best agreement with experiments.
@@ -728,7 +730,7 @@ while the other simulations are more realistic, but slight overbinding cannot be
     %(right) The headgroup order parameters of PG from PC:PG mixtures as a function CaCl$_2$
     %concentration from experiments \cite{borle85} and CHARMM36 simulations.
   }
-    \todo{CHARMM36 simulations should be longer and with Na couterions.}
+  \todo{Data for CHARMM with 100mM is still coming.}
 \end{figure*}
 
 To evaluate the calcium binding in simulations of lipid bilayers containing PG lipids,
@@ -800,6 +802,7 @@ but experimental data to evaluate these predictions is not available.
   \caption{\label{CAdensPG}
     Calcium ion density profiles along membrane normal from simulations of POPC:POPG (1:1) mixtures with different force fields.
   }
+  \todo{Density of CHARMM simulation still to be updated from the new data.}
 \end{figure}
 
 
