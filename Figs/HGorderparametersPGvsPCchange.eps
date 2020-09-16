@@ -1,9 +1,9 @@
 %!PS-Adobe-2.0
 %%Title: ../HGorderparametersPGvsPCchange.eps
-%%Creator: gnuplot 5.0 patchlevel 3
-%%CreationDate: Mon Feb 10 15:06:50 2020
+%%Creator: gnuplot 5.2 patchlevel 2
+%%CreationDate: Thu Sep 10 12:36:08 2020
 %%DocumentFonts: (atend)
-%%BoundingBox: 50 50 554 410
+%%BoundingBox: 50 50 554 770
 %%Orientation: Portrait
 %%Pages: (atend)
 %%EndComments
@@ -45,7 +45,7 @@ gnudict begin
 /vpt vpt_ def
 /doclip {
   ClipToBoundingBox {
-    newpath 50 50 moveto 554 50 lineto 554 410 lineto 50 410 lineto closepath
+    newpath 50 50 moveto 554 50 lineto 554 770 lineto 50 770 lineto closepath
     clip
   } if
 } def
@@ -431,15 +431,27 @@ Level1 {Level1PatternFill} {Level2PatternFill} ifelse
 dup length dict begin {1 index /FID eq {pop pop} {def} ifelse} forall
 currentdict end definefont pop
 %
+/Metrics {ExtendTextBox Gswidth} def
+/Lwidth {currentpoint stroke M 0 vshift R Metrics} def
+/Rwidth {currentpoint stroke M dup stringwidth pop neg vshift R Metrics} def
+/Cwidth {currentpoint stroke M dup stringwidth pop -2 div vshift R Metrics} def
+/GLwidth {currentpoint stroke M 0 vshift R {ExtendTextBox} forall} def
+/GRwidth {currentpoint stroke M dup Gwidth vshift R {ExtendTextBox} forall} def
+/GCwidth {currentpoint stroke M dup Gwidth 2 div vshift R {ExtendTextBox} forall} def
+/GLwidth2 {0 Gwidth AddGlyphWidth} def
+/GRwidth2 {Gwidth -1 mul 0 AddGlyphWidth} def
+/GCwidth2 {Gwidth 2 div dup -1 mul AddGlyphWidth} def
+/AddGlyphWidth { dup TBx2 gt {userdict /TBx2 3 -1 roll put} {pop} ifelse
+                 dup TBx1 lt {userdict /TBx1 3 -1 roll put} {pop} ifelse } def
 /MFshow {
    { dup 5 get 3 ge
      { 5 get 3 eq {gsave} {grestore} ifelse }
      {dup dup 0 get findfont exch 1 get scalefont setfont
      [ currentpoint ] exch dup 2 get 0 exch R dup 5 get 2 ne {dup dup 6
-     get exch 4 get {textshow} {stringwidth pop 0 R} ifelse }if dup 5 get 0 eq
+     get exch 4 get {textshow} {Metrics pop 0 R} ifelse }if dup 5 get 0 eq
      {dup 3 get {2 get neg 0 exch R pop} {pop aload pop M} ifelse} {dup 5
-     get 1 eq {dup 2 get exch dup 3 get exch 6 get stringwidth pop -2 div
-     dup 0 R} {dup 6 get stringwidth pop -2 div 0 R 6 get
+     get 1 eq {dup 2 get exch dup 3 get exch 6 get Gswidth pop -2 div
+     dup 0 R} {dup 6 get Gswidth pop -2 div 0 R 6 get
      textshow 2 index {aload pop M neg 3 -1 roll neg R pop pop} {pop pop pop
      pop aload pop M} ifelse }ifelse }ifelse }
      ifelse }
@@ -468,42 +480,39 @@ systemdict /pdfmark known not {
 SDict begin [
   /Title (../HGorderparametersPGvsPCchange.eps)
   /Subject (gnuplot plot)
-  /Creator (gnuplot 5.0 patchlevel 3)
-  /Author (osollila)
+  /Creator (gnuplot 5.2 patchlevel 2)
 %  /Producer (gnuplot)
 %  /Keywords ()
-  /CreationDate (Mon Feb 10 15:06:50 2020)
+  /CreationDate (Thu Sep 10 12:36:08 2020)
   /DOCINFO pdfmark
 end
 } ifelse
 %
-% Support for boxed text - Ethan A Merritt May 2005
+% Support for boxed text - Ethan A Merritt Sep 2016
 %
 /InitTextBox { userdict /TBy2 3 -1 roll put userdict /TBx2 3 -1 roll put
            userdict /TBy1 3 -1 roll put userdict /TBx1 3 -1 roll put
 	   /Boxing true def } def
-/ExtendTextBox { Boxing
-    { gsave dup false charpath pathbbox
+/ExtendTextBox { dup type /stringtype eq
+    { Boxing { gsave dup false charpath pathbbox
       dup TBy2 gt {userdict /TBy2 3 -1 roll put} {pop} ifelse
       dup TBx2 gt {userdict /TBx2 3 -1 roll put} {pop} ifelse
       dup TBy1 lt {userdict /TBy1 3 -1 roll put} {pop} ifelse
       dup TBx1 lt {userdict /TBx1 3 -1 roll put} {pop} ifelse
-      grestore } if } def
+      grestore } if }
+    {} ifelse} def
 /PopTextBox { newpath TBx1 TBxmargin sub TBy1 TBymargin sub M
                TBx1 TBxmargin sub TBy2 TBymargin add L
 	       TBx2 TBxmargin add TBy2 TBymargin add L
 	       TBx2 TBxmargin add TBy1 TBymargin sub L closepath } def
 /DrawTextBox { PopTextBox stroke /Boxing false def} def
-/FillTextBox { gsave PopTextBox 1 1 1 setrgbcolor fill grestore /Boxing false def} def
+/FillTextBox { gsave PopTextBox fill grestore /Boxing false def} def
 0 0 0 0 InitTextBox
 /TBxmargin 20 def
 /TBymargin 20 def
 /Boxing false def
 /textshow { ExtendTextBox Gshow } def
 %
-% redundant definitions for compatibility with prologue.ps older than 5.0.2
-/LTB {BL [] LCb DL} def
-/LTb {PL [] LCb DL} def
 end
 %%EndProlog
 %%Page: 1 1
@@ -519,100 +528,100 @@ BackgroundColor 0 lt 3 1 roll 0 lt exch 0 lt or or not {gsave BackgroundColor C 
 1.000 UL
 LTb
 LCb setrgbcolor
-770 433 M
+770 4057 M
 63 0 V
 3954 0 R
 -63 0 V
 stroke
-686 433 M
+686 4057 M
 [ [(Helvetica) 140.0 0.0 true true 0 (-0.02)]
 ] -46.7 MRshow
 1.000 UL
 LTb
 LCb setrgbcolor
-770 1043 M
+770 4767 M
 63 0 V
 3954 0 R
 -63 0 V
 stroke
-686 1043 M
+686 4767 M
 [ [(Helvetica) 140.0 0.0 true true 0 ( 0)]
 ] -46.7 MRshow
 1.000 UL
 LTb
 LCb setrgbcolor
-770 1653 M
+770 5476 M
 63 0 V
 3954 0 R
 -63 0 V
 stroke
-686 1653 M
+686 5476 M
 [ [(Helvetica) 140.0 0.0 true true 0 ( 0.02)]
 ] -46.7 MRshow
 1.000 UL
 LTb
 LCb setrgbcolor
-770 280 M
+849 3880 M
 0 63 V
-0 1829 R
+0 2136 R
 0 -63 V
 stroke
-770 140 M
+849 3740 M
 [ [(Helvetica) 140.0 0.0 true true 0 ( 0)]
 ] -46.7 MCshow
 1.000 UL
 LTb
 LCb setrgbcolor
-1573 280 M
+1636 3880 M
 0 63 V
-0 1829 R
+0 2136 R
 0 -63 V
 stroke
-1573 140 M
+1636 3740 M
 [ [(Helvetica) 140.0 0.0 true true 0 ( 0.2)]
 ] -46.7 MCshow
 1.000 UL
 LTb
 LCb setrgbcolor
-2377 280 M
+2424 3880 M
 0 63 V
-0 1829 R
+0 2136 R
 0 -63 V
 stroke
-2377 140 M
+2424 3740 M
 [ [(Helvetica) 140.0 0.0 true true 0 ( 0.4)]
 ] -46.7 MCshow
 1.000 UL
 LTb
 LCb setrgbcolor
-3180 280 M
+3212 3880 M
 0 63 V
-0 1829 R
+0 2136 R
 0 -63 V
 stroke
-3180 140 M
+3212 3740 M
 [ [(Helvetica) 140.0 0.0 true true 0 ( 0.6)]
 ] -46.7 MCshow
 1.000 UL
 LTb
 LCb setrgbcolor
-3984 280 M
+3999 3880 M
 0 63 V
-0 1829 R
+0 2136 R
 0 -63 V
 stroke
-3984 140 M
+3999 3740 M
 [ [(Helvetica) 140.0 0.0 true true 0 ( 0.8)]
 ] -46.7 MCshow
 1.000 UL
 LTb
 LCb setrgbcolor
-4787 280 M
+4787 3880 M
 0 63 V
-0 1829 R
+0 2136 R
 0 -63 V
 stroke
-4787 140 M
+4787 3740 M
 [ [(Helvetica) 140.0 0.0 true true 0 ( 1)]
 ] -46.7 MCshow
 1.000 UL
@@ -621,10 +630,10 @@ LCb setrgbcolor
 1.000 UL
 LTB
 LCb setrgbcolor
-770 2172 N
-770 280 L
+770 6079 N
+0 -2199 V
 4017 0 V
-0 1892 V
+0 2199 V
 -4017 0 V
 Z stroke
 1.000 UP
@@ -632,7 +641,7 @@ Z stroke
 LTb
 LCb setrgbcolor
 LCb setrgbcolor
-112 1226 M
+126 4979 M
 currentpoint gsave translate -270 rotate 0 0 moveto
 [ [(Symbol) 140.0 0.0 true true 0 (D)]
 [(Helvetica) 140.0 0.0 true true 0 (S)]
@@ -646,285 +655,413 @@ LTb
 4.000 UL
 LTb
 0.00 0.53 0.75 C LCb setrgbcolor
-4511 3467 M
-[ [(Helvetica) 140.0 0.0 true true 0 (CHARMM36 \(POPG:POPC 298K K)]
-[(Helvetica) 112.0 70.0 true true 0 (+)]
-[(Helvetica) 140.0 0.0 true true 0 (\))]
-] -60.7 MRshow
+4511 7067 M
+[ [(Helvetica) 140.0 0.0 true true 0 (CHARMM36 T=310K)]
+] -46.7 MRshow
 1.600 UP
 4.000 UL
 LTb
-0.00 0.53 0.75 C 4595 3467 M
+0.00 0.53 0.75 C 4595 7067 M
 399 0 V
-770 1043 M
-2779 978 L
-1205 71 V
-770 1043 CircleF
-2779 978 CircleF
-3984 1049 CircleF
-4794 3467 CircleF
+3606 4568 M
+849 4760 L
+3606 4568 Circle
+849 4760 Circle
+4794 7067 Circle
 % End plot #1
 % Begin plot #2
 1.600 UP
 4.000 UL
 LTb
-0.00 0.53 0.75 C LCb setrgbcolor
-4511 3327 M
-[ [(Helvetica) 140.0 0.0 true true 0 (CHARMM36 \(POPG:POPC 310K 110mM NaCl\))]
-] -46.7 MRshow
-1.600 UP
-4.000 UL
-LTb
-0.00 0.53 0.75 C 4595 3327 M
-399 0 V
-3582 872 M
-770 1037 L
-3582 872 Circle
-770 1037 Circle
-4794 3327 Circle
+0.00 0.53 0.75 C 3606 4482 M
+0 173 V
+-31 -173 R
+62 0 V
+-62 173 R
+62 0 V
+849 4710 M
+0 101 V
+818 4710 M
+62 0 V
+-62 101 R
+62 0 V
+3606 4568 Circle
+849 4760 Circle
 % End plot #2
 % Begin plot #3
 1.600 UP
 4.000 UL
 LTb
-0.00 0.53 0.75 C 3582 798 M
-0 149 V
-3551 798 M
-62 0 V
--62 149 R
-62 0 V
-770 994 M
-0 87 V
-0 -87 R
-31 0 V
--31 87 R
-31 0 V
-3582 872 Circle
-770 1037 Circle
-% End plot #3
-% Begin plot #4
-1.600 UP
-4.000 UL
-LTb
 1.00 0.83 0.00 C LCb setrgbcolor
-4511 3187 M
+4511 6927 M
 [ [(Helvetica) 140.0 0.0 true true 0 (LIPID17 \(POPG:POPC 310K\))]
 ] -46.7 MRshow
 1.600 UP
 4.000 UL
 LTb
-1.00 0.83 0.00 C 4595 3187 M
+1.00 0.83 0.00 C 4595 6927 M
 399 0 V
-3582 1005 M
-770 1043 L
-3582 1005 Circle
-770 1043 Circle
-4794 3187 Circle
+3606 4723 M
+849 4767 L
+3606 4723 Circle
+849 4767 Circle
+4794 6927 Circle
+% End plot #3
+% Begin plot #4
+1.600 UP
+4.000 UL
+LTb
+1.00 0.83 0.00 C 3606 4567 M
+0 311 V
+-31 -311 R
+62 0 V
+-62 311 R
+62 0 V
+849 4620 M
+0 294 V
+818 4620 M
+62 0 V
+-62 294 R
+62 0 V
+3606 4723 Circle
+849 4767 Circle
 % End plot #4
 % Begin plot #5
 1.600 UP
 4.000 UL
 LTb
-1.00 0.83 0.00 C 3582 871 M
-0 268 V
-3551 871 M
-62 0 V
--62 268 R
-62 0 V
-770 917 M
-0 252 V
-0 -252 R
-31 0 V
--31 252 R
-31 0 V
-3582 1005 Circle
-770 1043 Circle
+0.48 0.93 0.62 C LCb setrgbcolor
+4511 6787 M
+[ [(Helvetica) 140.0 0.0 true true 0 (Slipids T=310K \(Aqvist\))]
+] -46.7 MRshow
+1.600 UP
+4.000 UL
+LTb
+0.48 0.93 0.62 C 4595 6787 M
+399 0 V
+3606 5032 M
+849 4767 L
+3606 5032 Circle
+849 4767 Circle
+4794 6787 Circle
 % End plot #5
 % Begin plot #6
 1.600 UP
 4.000 UL
 LTb
-0.48 0.93 0.62 C LCb setrgbcolor
-4511 3047 M
-[ [(Helvetica) 140.0 0.0 true true 0 (Slipids \(POPG:POPC 310K\))]
-] -46.7 MRshow
-1.600 UP
-4.000 UL
-LTb
-0.48 0.93 0.62 C 4595 3047 M
-399 0 V
-3582 1271 M
-770 1043 L
-3582 1271 Circle
-770 1043 Circle
-4794 3047 Circle
+0.48 0.93 0.62 C 3606 4949 M
+0 166 V
+-31 -166 R
+62 0 V
+-62 166 R
+62 0 V
+849 4717 M
+0 99 V
+-31 -99 R
+62 0 V
+-62 99 R
+62 0 V
+3606 5032 Circle
+849 4767 Circle
 % End plot #6
 % Begin plot #7
 1.600 UP
 4.000 UL
 LTb
-0.48 0.93 0.62 C 3582 1199 M
-0 143 V
--31 -143 R
-62 0 V
--62 143 R
-62 0 V
-770 1000 M
-0 86 V
-0 -86 R
-31 0 V
--31 86 R
-31 0 V
-3582 1271 Circle
-770 1043 Circle
-% End plot #7
-% Begin plot #8
-1.600 UP
-4.000 UL
-LTb
-0.48 0.93 0.62 C LCb setrgbcolor
-4511 2907 M
-[ [(Helvetica) 140.0 0.0 true true 0 (Slipids \(POPG:POPC 298K\))]
-] -46.7 MRshow
-1.600 UP
-4.000 UL
-LTb
-0.48 0.93 0.62 C 4595 2907 M
-399 0 V
-2779 836 M
-770 1043 L
-2779 836 CircleF
-770 1043 CircleF
-4794 2907 CircleF
-% End plot #8
-% Begin plot #9
-1.600 UP
-4.000 UL
-LTb
-0.48 0.93 0.62 C 2779 732 M
-0 209 V
-2748 732 M
-62 0 V
--62 209 R
-62 0 V
-2779 836 CircleF
-% End plot #9
-% Begin plot #10
-1.600 UP
-4.000 UL
-LTb
 1.00 0.63 0.64 C LCb setrgbcolor
-4511 2767 M
+4511 6647 M
 [ [(Helvetica) 140.0 0.0 true true 0 (GROMOS-CKP \(POPG:POPC 310K\))]
 ] -46.7 MRshow
 1.600 UP
 4.000 UL
 LTb
-1.00 0.63 0.64 C 4595 2767 M
+1.00 0.63 0.64 C 4595 6647 M
 399 0 V
-3582 742 M
-770 1043 L
-3582 742 Circle
-770 1043 Circle
-4794 2767 Circle
-% End plot #10
-% Begin plot #11
+3606 4417 M
+849 4767 L
+3606 4417 Circle
+849 4767 Circle
+4794 6647 Circle
+% End plot #7
+% Begin plot #8
 1.600 UP
 4.000 UL
 LTb
-1.00 0.63 0.64 C 3582 730 M
-0 24 V
--31 -24 R
+1.00 0.63 0.64 C 3606 4404 M
+0 26 V
+-31 -26 R
 62 0 V
--62 24 R
+-62 26 R
 62 0 V
-770 1036 M
-0 13 V
-0 -13 R
-31 0 V
--31 13 R
-31 0 V
-3582 742 Circle
-770 1043 Circle
-% End plot #11
-% Begin plot #12
+849 4759 M
+0 15 V
+-31 -15 R
+62 0 V
+-62 15 R
+62 0 V
+3606 4417 Circle
+849 4767 Circle
+% End plot #8
+% Begin plot #9
 1.600 UP
 4.000 UL
 LTb
 0.00 0.00 0.00 C LCb setrgbcolor
-4511 2627 M
+4511 6507 M
 [ [(Helvetica) 140.0 0.0 true true 0 (Experiment \(POPG:POPC Borle 298K\))]
 ] -46.7 MRshow
 1.600 UP
 4.000 UL
 LTb
-0.00 0.00 0.00 C 4595 2627 M
+0.00 0.00 0.00 C 4595 6507 M
 399 0 V
-770 1043 M
-2009 72 V
-770 1043 Circle
-2779 1115 Circle
-4794 2627 Circle
-% End plot #12
-% Begin plot #13
+849 4767 M
+1969 83 V
+849 4767 Circle
+2818 4850 Circle
+4794 6507 Circle
+% End plot #9
+% Begin plot #10
 1.600 UP
 4.000 UL
 LTb
 0.00 0.00 0.00 C LCb setrgbcolor
-4511 2487 M
+4511 6367 M
 [ [(Helvetica) 140.0 0.0 true true 0 (Experiment \(POPG:POPC Macdonald 298K\))]
 ] -46.7 MRshow
 1.600 UP
 4.000 UL
 LTb
-0.00 0.00 0.00 C 4595 2487 M
+0.00 0.00 0.00 C 4595 6367 M
 399 0 V
-770 1043 M
-803 96 V
-1206 239 V
-1205 311 V
-770 1043 CircleF
-1573 1139 CircleF
-2779 1378 CircleF
-3984 1689 CircleF
-4794 2487 CircleF
-% End plot #13
-% Begin plot #14
+849 4767 M
+787 111 V
+1182 278 V
+1181 361 V
+849 4767 CircleF
+1636 4878 CircleF
+2818 5156 CircleF
+3999 5517 CircleF
+4794 6367 CircleF
+% End plot #10
+% Begin plot #11
 1.600 UP
 4.000 UL
 LTb
 LT1
 0.00 0.00 0.00 C LCb setrgbcolor
-4511 2347 M
+4511 6227 M
 [ [(Helvetica) 140.0 0.0 true true 0 (Experiment \(POPG:POPC Macdonald 298K 100mM NaCl\))]
 ] -46.7 MRshow
 1.600 UP
 4.000 UL
 LTb
 LT1
-0.00 0.00 0.00 C 4595 2347 M
+0.00 0.00 0.00 C 4595 6227 M
 399 0 V
-770 1043 M
-803 72 V
-1206 215 V
-1205 287 V
-770 1043 CircleF
-1573 1115 CircleF
-2779 1330 CircleF
-3984 1617 CircleF
-4794 2347 CircleF
-% End plot #14
+849 4767 M
+787 83 V
+1182 250 V
+1181 334 V
+849 4767 CircleF
+1636 4850 CircleF
+2818 5100 CircleF
+3999 5434 CircleF
+4794 6227 CircleF
+% End plot #11
 2.000 UL
 LTb
 LCb setrgbcolor
 1.000 UL
 LTB
 LCb setrgbcolor
-770 2172 N
-770 280 L
+770 6079 N
+0 -2199 V
 4017 0 V
-0 1892 V
+0 2199 V
 -4017 0 V
+Z stroke
+1.000 UP
+1.000 UL
+LTb
+LCb setrgbcolor
+1.000 UL
+LTb
+LCb setrgbcolor
+602 448 M
+63 0 V
+4122 0 R
+-63 0 V
+stroke
+518 448 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 82)]
+] -46.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+602 1452 M
+63 0 V
+4122 0 R
+-63 0 V
+stroke
+518 1452 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 84)]
+] -46.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+602 2456 M
+63 0 V
+4122 0 R
+-63 0 V
+stroke
+518 2456 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 86)]
+] -46.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+602 3460 M
+63 0 V
+4122 0 R
+-63 0 V
+stroke
+518 3460 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 88)]
+] -46.7 MRshow
+1.000 UL
+LTb
+LCb setrgbcolor
+684 448 M
+0 63 V
+0 2949 R
+0 -63 V
+stroke
+684 308 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 0)]
+] -46.7 MCshow
+1.000 UL
+LTb
+LCb setrgbcolor
+1505 448 M
+0 63 V
+0 2949 R
+0 -63 V
+stroke
+1505 308 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 0.2)]
+] -46.7 MCshow
+1.000 UL
+LTb
+LCb setrgbcolor
+2325 448 M
+0 63 V
+0 2949 R
+0 -63 V
+stroke
+2325 308 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 0.4)]
+] -46.7 MCshow
+1.000 UL
+LTb
+LCb setrgbcolor
+3146 448 M
+0 63 V
+0 2949 R
+0 -63 V
+stroke
+3146 308 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 0.6)]
+] -46.7 MCshow
+1.000 UL
+LTb
+LCb setrgbcolor
+3966 448 M
+0 63 V
+0 2949 R
+0 -63 V
+stroke
+3966 308 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 0.8)]
+] -46.7 MCshow
+1.000 UL
+LTb
+LCb setrgbcolor
+4787 448 M
+0 63 V
+0 2949 R
+0 -63 V
+stroke
+4787 308 M
+[ [(Helvetica) 140.0 0.0 true true 0 ( 1)]
+] -46.7 MCshow
+1.000 UL
+LTb
+LCb setrgbcolor
+1.000 UL
+LTB
+LCb setrgbcolor
+602 3460 N
+602 448 L
+4185 0 V
+0 3012 V
+-4185 0 V
+Z stroke
+1.000 UP
+1.000 UL
+LTb
+LCb setrgbcolor
+LCb setrgbcolor
+126 1954 M
+currentpoint gsave translate -270 rotate 0 0 moveto
+[ [(Helvetica) 140.0 0.0 true true 0 (P-N vector angle \(degrees\))]
+] -46.7 MCshow
+grestore
+LTb
+LCb setrgbcolor
+2694 98 M
+[ [(Helvetica) 140.0 0.0 true true 0 (mole fraction of POPC)]
+] -46.7 MCshow
+LTb
+% Begin plot #1
+1.600 UP
+4.000 UL
+LTb
+0.00 0.53 0.75 C 684 1342 M
+3556 2642 L
+684 1342 Circle
+3556 2642 Circle
+% End plot #1
+% Begin plot #2
+1.600 UP
+4.000 UL
+LTb
+0.00 0.53 0.75 C 684 1227 M
+0 231 V
+653 1227 M
+62 0 V
+-62 231 R
+62 0 V
+2841 985 R
+0 397 V
+-31 -397 R
+62 0 V
+-62 397 R
+62 0 V
+684 1342 Circle
+3556 2642 Circle
+% End plot #2
+2.000 UL
+LTb
+LCb setrgbcolor
+1.000 UL
+LTB
+LCb setrgbcolor
+602 3460 N
+602 448 L
+4185 0 V
+0 3012 V
+-4185 0 V
 Z stroke
 1.000 UP
 1.000 UL

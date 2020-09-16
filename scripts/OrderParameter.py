@@ -333,7 +333,7 @@ def read_trj_PN_angles(molname,atoms, top_fname, traj_fname, gro_fname):
         resSTDerror[i] = np.std(angles[i,:])
 
     totalAverage = sum(resAverageAngles) / Nres
-    totalSTDerror = np.std(resAverageAngles)
+    totalSTDerror = np.std(resAverageAngles) / np.sqrt(Nres)
 
 # standard errors
     

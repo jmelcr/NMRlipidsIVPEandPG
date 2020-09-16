@@ -356,13 +356,16 @@ of the Gromacs sofware package \cite{gromacsMANUAL}.
       % some footnotes are not visible in typeset-MS (pdf)
       lipid/counter-ions & force field for lipids / ions & NaCl (M) & CaCl$_2$\,(M) &  \footnote{Number of lipid molecules with largest mole fraction}N$_{\rm l}$   &  \footnote{Number of water molecules}N$_{\rm w}$   & \footnote{Number of additional cations}N$_{\rm c}$  & \footnote{Simulation temperature}T (K)  & \footnote{Total simulation time}t$_{{\rm sim}}$(ns) & \footnote{Time used for analysis}t$_{{\rm anal}}$ (ns) &   \footnote{Reference for simulation files}files\\
       \hline
-      POPC                   & CHARMM36 \cite{??}        & 0.11      & 0  & 500     & 25000 & 48  &  310  & 500 & 100 & \cite{POPCcharmm150mMNaCl301K}  \\
-      POPC:POPG (7:3)        & CHARMM36 \cite{??}        & 0.11      & 0  & 350     & ?     & ?   &  310  & 500 & 100 & \cite{POPC7POPG1charmm36NaCl}  \\
-      POPC:POPG (1:1)/K$^+$  & CHARMM36 \cite{??}        &0          & 0  & 250:250 & 18158 & 0   &  298  & 200 & 200 & \cite{CHARMM36POPCPOPG5050} \\ 
+%      POPC                   & CHARMM36 \cite{??}        & 0.11      & 0  & 500     & 25000 & 48  &  310  & 500 & 100 & \cite{POPCcharmm150mMNaCl301K}  \\
+%      POPC:POPG (7:3)        & CHARMM36 \cite{??}        & 0.11      & 0  & 350     & ?     & ?   &  310  & 500 & 100 & \cite{POPC7POPG1charmm36NaCl}  \\
+      POPC                   & CHARMM36 \cite{??}        & 0         & 0  & 500     & 25000 & 0   &  310  & 500 & 100 & \cite{POPCcharmmT310K}  \\
+      POPC:POPG (7:3)        & CHARMM36 \cite{??}        & 0         & 0  & 350     & 25000 & 0   &  310  & 500 & 100 & \cite{POPC7POPG1charmm36}  \\
+      POPC:POPG (1:1)        & CHARMM36 \cite{??}        &0          & 0  & 150:150 & 31500 & 0   &  298  & 500 & 400 & \cite{CHARMM36POPCPOPG5050} \\ 
       POPC:POPG (1:1)        & CHARMM36 \cite{??}        &0          & 0.34 \todoi{Concentration calculated based in total amount of calcium ions. This may not be reasonable due to the lack of counterions.}  & 250:250 & 20798 & 128 &  298  & 200 & 200 & \cite{CHARMM36POPCPOPG5050150mMCaCl} \\
-      POPC:POPG (1:1)        & CHARMM36 \cite{??}        &0          & 1.36  \todoi{Concentration calculated based in total amount of calcium ions. This may not be reasonable due to the lack of counterions.} & 250:250 & 18114 & 445  &  298  & 200 & 200 & \cite{CHARMM36POPCPOPG50501000mMCaCl} \\
-      POPC:POPG (4:1)/K$^+$  & CHARMM36 \cite{??}        &0          & 0  & 400:100 & 18664 & 0  &  298  & 200 & 200 & \cite{CHARMM36POPCPOPG4010} \\
-      POPC:POPG (4:1)/K$^+$  & CHARMM36 \cite{??}        &0          & 1.0 \todoi{Concentration calculated based in total amount of calcium ions. This may not be reasonable due to the lack of counterions.} & 400:100 & 18647 & 419  &  298  & 200 & 200 & \cite{CHARMM36POPCPOPG40101000mMCaCl} \\
+      POPC:POPG (1:1)        & CHARMM36 \cite{??}        &0          & 1.08 & 150:150 & 29766 & 578  &  298  & 500 & 400 & \cite{CHARMM36POPCPOPG50501000mMCaCl} \\
+      POPC:POPG (4:1)        & CHARMM36 \cite{??}        &0          & 0  & 350:88 & 26280 & 0  &  298  & 500 & 400 & \cite{CHARMM36POPCPOPG4010} \\
+      POPC:POPG (4:1)        & CHARMM36 \cite{??}        &0          & 0.1 & 350:88 & 26280 & 47  &  298  & 500 & 400 & \cite{CHARMM36POPCPOPG4010100mMCaCl} \\
+      POPC:POPG (4:1)        & CHARMM36 \cite{??}        &0          & 1.0 & 350:88 & 24927 & 451  &  298  & 500 & 400 & \cite{CHARMM36POPCPOPG40101000mMCaCl} \\
       \hline
       POPC             & CHARMM36 \cite{??}        &0          & 0  & 256 & 8704 & 0  &  300  & 300 & 250 & \cite{POPCcharmm300K} \\
       POPC:POPE (1:1)  & CHARMM36 \cite{??}        &0          & 0  & 128 & 8704 & 0  &  300  & 300 & 250 & \cite{POPC1POPE1charmm36} \\
@@ -370,13 +373,13 @@ of the Gromacs sofware package \cite{gromacsMANUAL}.
       POPC             & OPLS-MacRog \cite{rog16}     &0          & 0  & 128 & 5120 & 0  &  300  & 500 & 300 & \cite{POPCmacrog300K} \\
       POPC:POPE (1:1)  & OPLS-MacRog \cite{rog16}     &0          & 0  & 128 & 5120 & 0  &  300  & 500 & 300 & \cite{POPC1POPE1macrogT300K} \\
       \hline
-      POPC             & Slipid \cite{jambeck12b}     &0          & 0  & 512 & 23943 & 0  &  300  & 170 & 100 & \cite{POPCslipid300K} \\
-      POPC:POPE (1:1)  & Slipid \cite{jambeck12b}     &0          & 0  & 128 & 5120 & 0  &  300  & 500 & 300 & \cite{POPC1POPE1slipidT298K} \\
+      POPC             & Slipid \cite{jambeck12b}     &0          & 0  & 512 & 23943 & 0  &  298  & 170 & 100 & \cite{POPCslipid298K} \\
+      POPC:POPE (1:1)  & Slipid \cite{jambeck12b}     &0          & 0  & 128 & 5120  & 0  &  298  & 500 & 300 & \cite{POPC1POPE1slipidT298K} \\
      \hline
       POPC                   & GROMOS-CKP / ?? \cite{??,??}  & 0         & 0  & 500     & 25000 & 0   &  310  & 500 & 100 & \cite{POPCgromosCKPT310K}  \\
       POPC:POPG (7:3)        & GROMOS-CKP / ?? \cite{??,??}  & 0         & 0  & 350:150 & 25000 & 0   &  310  & 500 & 100 & \cite{POPC7POPG3gromosCKPT310K} \\
      \hline
-      POPC                   & Slipid / {\AA}qvist \cite{jambeck12b,aqvist90}  & 0         & 0  & 500     & 25000 & 0   &  310  & 500 & 100 & \cite{POPCslipid301K}  \\
+      POPC                   & Slipid \cite{jambeck12b}  & 0         & 0  & 500     & 25000 & 0   &  310  & 500 & 100 & \cite{POPCslipid301K}  \\
       POPC:POPG (7:3)        & Slipid / {\AA}qvist \cite{jambeck12b,aqvist90}  & 0         & 0  & 350:150 & 25000 & 0   &  310  & 500 & 100 & \cite{slipidPOPC70POPG30T310K} \\
       POPC:POPG (1:1)        & Slipid / Dang \cite{jambeck12b,jambeck2012another,smith94,dang06} & 0         & 0  & 128:128 & 12800 & 0   &  298  & 500 & 400 & \cite{slipidPOPC50POPG50T298K} \\
       POPC:POPG (1:1)        & Slipid / Dang \cite{jambeck12b,jambeck2012another,smith94,dang06} & 0         & 0.1  & 128:128 & 12800 & 23  &  298  & 500 & 400 & \cite{slipidPOPC50POPG50T298K} \\
@@ -546,9 +549,10 @@ which could be a potential reason for the too negative $\beta$ headgroup order p
   \centering
   \includegraphics[width=18.0cm]{../Figs/PCPEPGPSstructures.png}
   \includegraphics[width=8.0cm]{../Figs/CHARMMfromLIPIDS.eps}
-  \includegraphics[width=8.0cm]{../Figs/PCPEPGPSdihedrals1.png}
-  \includegraphics[width=8.0cm]{../Figs/PCPEPGPSdihedrals2.png}
-  \includegraphics[width=8.0cm]{../Figs/PNangle.eps}
+%  \includegraphics[width=8.0cm]{../Figs/PCPEPGPSdihedrals1.png}
+%  \includegraphics[width=8.0cm]{../Figs/PCPEPGPSdihedrals2.png}
+  \includegraphics[width=8.0cm]{../Figs/PNangleNORM.eps}
+  \includegraphics[width=8.0cm]{../Figs/DIHEDRALS.eps}
   \caption{\label{structures}
     Overlayed snapshots and dihedral angle distributions from CHARMM36 simulations of different lipids
     which give the best agreement with experiments.
@@ -567,7 +571,7 @@ which could be a potential reason for the too negative $\beta$ headgroup order p
     from experiments \cite{scherer87,macdonald87} and simulations with different force fields.
     Signs are determined as discussed in \cite{botan15,ollila16}.
   }
-  %\todo{Simulation of CHARMM36 at 298K should be maybe rerun with Gromacs 5.}
+  \todo{P-N vector angles from Berger-OPLS, Lipid17, and GROMOS-CKP simulations are yet to be analyzed.}
 \end{figure*}
 
 In experiments, the PC headgroup order parameters increase
@@ -629,6 +633,7 @@ to the interactions with PC lipids \cite{antila18}.
     Modulation of PG lipid headgroup order parameters with the increasing amount of PC in lipid bilayer
     from experiments \cite{borle85,macdonald87} and simulations with different force fields.
   }
+  \todo{P-N angles from Lipid17, Slipids, and GROMOS-CKP yet to be calculated.}
 \end{figure}
 
 
@@ -728,7 +733,8 @@ while the other simulations are more realistic, but slight overbinding cannot be
     %(right) The headgroup order parameters of PG from PC:PG mixtures as a function CaCl$_2$
     %concentration from experiments \cite{borle85} and CHARMM36 simulations.
   }
-    \todo{CHARMM36 simulations should be longer and with Na couterions.}
+  \todo{Data for CHARMM with 100mM is still coming.} \\
+  \todo{P-N vector angles from Lipid17 and Lipid17ecc models yet to be analyzed.}
 \end{figure*}
 
 To evaluate the calcium binding in simulations of lipid bilayers containing PG lipids,
@@ -800,6 +806,7 @@ but experimental data to evaluate these predictions is not available.
   \caption{\label{CAdensPG}
     Calcium ion density profiles along membrane normal from simulations of POPC:POPG (1:1) mixtures with different force fields.
   }
+  \todo{Density of CHARMM simulation still to be updated from the new data.}
 \end{figure}
 
 
