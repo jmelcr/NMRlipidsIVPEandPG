@@ -141,6 +141,9 @@ lipids_dict = {
                 'POPE' : {"REQUIRED": False,
                             "TYPE" : "string",
                         },
+                'CHOL' : {"REQUIRED": False,
+                            "TYPE" : "string",
+                        },
                 }
 
 molecules_dict = {
@@ -175,6 +178,10 @@ molecule_numbers_dict = {
                             "TYPE" : "array",
                         },
                 'NPOPE' : {"REQUIRED": False,
+                            "TYPE" : "array",
+                        },
+    
+                'NCHOL' : {"REQUIRED": False,
                             "TYPE" : "array",
                         },
     
