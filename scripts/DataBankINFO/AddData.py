@@ -643,16 +643,19 @@ for sim in sims_working_links :
 
 
 #Anne:Read molecule numbers from tpr or gro file.
+#Calculates numbers of lipid molecules in each leaflet. This is done by checking on which side of the centre 
+#of mass the membrane each the centre of mass of a lipid molecule is.
+#If a lipid molecule is split so that headgroup and tails are their own residues, the centre of mass of the
+#headgroup is used in the calculation.
+################################################################################################################
 import MDAnalysis
 from MDAnalysis import Universe
     
 for sim in sims_working_links :
     ID = sim.get('ID')
-    tpr = str(dir_tmp) + '/' + str(ID) + '/' + str(sim.get('TPR')).translate({ord(c): None for c in "']["})
-    print(tpr)
-    trj = str(dir_tmp) + '/' + str(ID) + '/' + str(sim.get('TRJ')).translate({ord(c): None for c in "']["})
-    print(trj)
-    gro = str(dir_tmp) + '/' + str(ID) + '/conf.gro'
+    tpr = str(dir_wrk)+ '/tmp/' + str(ID) + '/' + str(sim.get('TPR')).translate({ord(c): None for c in "']["})
+    trj = str(dir_wrk)+ '/tmp/' + str(ID) + '/' + str(sim.get('TRJ')).translate({ord(c): None for c in "']["})
+    gro = str(dir_wrk)+ '/tmp/' + str(ID) + '/conf.gro'
     print(gro)
     
  #   if str(sim.get('INI')).translate({ord(c): None for c in "']["}) != '':
@@ -661,9 +664,7 @@ for sim in sims_working_links :
 
   #  else:
     get_ipython().system('echo System | gmx trjconv -f {trj} -s {tpr} -dump 0 -o {gro}')
-    #os.system('echo System | gmx trjconv -f {trj} -s {tpr} -dump 0 -o {gro}')
-    #echo System | gmx trjconv -f {trj} -s {tpr} -dump 0 -o {gro}
-    gro_path = str(dir_tmp) + '/' + str(ID) + '/' + 'conf.gro'
+    gro_path = str(dir_wrk) + '/tmp/' + str(ID) + '/' + 'conf.gro'
     
     
     
@@ -671,68 +672,81 @@ for sim in sims_working_links :
     leaflet2 = 0 #total number of lipids in lower leaflet
     
     u = Universe(gro_path)
-
     lipids = []
-    
+
+# select lipids 
     for key_mol in lipids_dict:
-        molecules = u.select_atoms("resname " + key_mol)
-        
+        selection = ""
+        if key_mol in sim['MAPPING_DICT'].keys():
+            m_file = sim['MAPPING_DICT'][key_mol]
+            with open('mapping_files/'+m_file,"r") as f:
+                    for line in f:
+                        if len(line.split()) > 2 and "Individual atoms" not in line:
+                            selection = selection + "(resname " + line.split()[2] + " and name " + line.split()[1] + ") and "
+                        elif "Individual atoms" in line:
+                            continue
+                        else:
+                            selection = "resname " + sim.get(key_mol)
+                            break
+        selection = selection.rstrip(' and ')
+  #      print(selection)
+        molecules = u.select_atoms(selection)
+       # print(molecules)
         if molecules.n_residues > 0:
-            lipids.append(key_mol)
-            
-    membrane = " ".join(str(x) for x in lipids)
+            lipids.append(selection)
+# join all the selected the lipids together to make a selection of the entire membrane and calculate the
+# z component of the centre of mass of the membrane
+    membrane = " and ".join(str(x) for x in lipids)
+ #   print(membrane)
+    R_membrane_z = u.select_atoms(membrane).center_of_mass()[2]
+    print(R_membrane_z)
     
-    R_membrane_z = u.select_atoms("resname " + membrane).center_of_mass()[2]
-    
-#number of each lipid per leaflet
+#####number of each lipid per leaflet
         
     for key_mol in lipids_dict:
-        molecules = u.select_atoms("resname " + key_mol).residues
         leaflet1 = 0 
         leaflet2 = 0 
         
+        selection = ""
+        if key_mol in sim['MAPPING_DICT'].keys():
+            m_file = sim['MAPPING_DICT'][key_mol]
+            with open('mapping_files/'+m_file,"r") as f:
+                    for line in f:
+                        if len(line.split()) > 2 and "Individual atoms" not in line:
+                            selection = selection + "resname " + line.split()[2] + " and name " + line.split()[1] + " or "
+                        elif "Individual atoms" in line:
+                            continue
+                        else:
+                            selection = "resname " + sim.get(key_mol)
+                            break
+        selection = selection.rstrip(' or ')
+   #     print(selection)
+        molecules = u.select_atoms(selection)
+        print(molecules.residues)
         x = 'N' + key_mol
-        
         if molecules.n_residues > 0:
-            
-            for mol in molecules:
+            for mol in molecules.residues:
                 R = mol.atoms.center_of_mass()
                 
                 if R[2] - R_membrane_z > 0:
                     leaflet1 = leaflet1 + 1
-                   # print('layer1  ' + str(leaflet1))
+                       # print('layer1  ' + str(leaflet1))
                 elif R[2] - R_membrane_z < 0:
                     leaflet2 = leaflet2 +1
-                   # print('layer2  ' + str(leaflet2))
-                    
-        sim[x] = [leaflet1, leaflet2] 
+                       # print('layer2  ' + str(leaflet2))
+            sim[x] = [leaflet1, leaflet2] 
+
+        
 #print("upper leaflet: " + str(leaflet1))
 #print("lower leaflet: " + str(leaflet2))
 
 ###########################################################################################        
 #numbers of other molecules
-for sim in sims_working_links :
-    mapping_files = []
-
-    for value in sim['MAPPING_DICT'].values():
-        mapping_files.append(value)
-        
-    print(mapping_files)
-    m_file = mapping_files[0]
-    
     for key_mol in molecules_dict:
-        with open('../mapping_files/'+m_file,"r") as f:
-            for line in f:
-                #print(key_mol)
-                #print(sim[key_mol])
-                if sim[key_mol] in line:
-                    #print(sim[key_mol])
-                    #print(line)
-                    M_mol = line.split()[1]
-                    print(sim[key_mol] + " " +M_mol)
-        #print(u.select_atoms("resname " + key_mol).n_residues)
-                    x = 'N' + key_mol
-                    sim[x] = u.select_atoms("resname " + M_mol ).n_residues
+        value_mol = sim.get(key_mol)
+        print(value_mol)
+        x = 'N' + key_mol
+        sim[x] = u.select_atoms("resname " + value_mol ).n_residues
         
         
 

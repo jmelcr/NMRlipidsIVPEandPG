@@ -1,4 +1,3 @@
-#Atoms
 M_G1_M          C27
 M_G1H1_M	H271	
 M_G1H2_M	H272
