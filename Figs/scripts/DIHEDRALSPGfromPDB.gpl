@@ -20,7 +20,7 @@ set label  "O_{/Symbol a}-C_{/Symbol a}-C_{/Symbol b}-N/C_{/Symbol g}"  at graph
 #set label  "{/Arial:Bold A_{pl} = 67.1 {\305}^2}"  at graph  0.02,0.7 #font ",12"
 set key above maxcols 2 maxrows 2
 plot "../../Data/dihedral/0d5/d1d/0d5d1dcb43e775faf4e53c4f9ff255a67481bd38/9b487701b24d3fad83991e311188b08d3d5ea768/M_G3O3_MM_G3C4_MM_G3C5_MM_G3C6_M.dat" using 1:2 with lines title 'POPG' lw 4 lc rgb 'green',\
-     "../../scratch/PG0.dat" using 1:2 with lines title 'PS from PDB' lw 2 lc rgb 'black',\
+     "../../scratch/PG0.dat" using 1:2 with lines title 'PG from PDB' lw 2 lc rgb 'black',\
 
 
 #"../../Data/dihedral/b4f/866/b4f866c0dabffa6cd891e91841591d46590f34aa/a231c358dd8c0b7bb4cf558ccdbf022373354a9a/M_G3O3_MM_G3C4_MM_G3C5_MM_G3N6_M.dat" using 1:2 with lines title 'POPC' lw 4 lc rgb 'black',\
