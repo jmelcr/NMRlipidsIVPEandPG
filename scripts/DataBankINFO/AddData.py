@@ -630,15 +630,6 @@ for sim in sims_working_links :
 
 # ## Read molecule numbers into dictionary
 
-# In[21]:
-
-for sim in sims_working_links :
-    print(sim['MAPPING_DICT'])
-    mapping_filesTST = []
-    for value in sim['MAPPING_DICT'].values():
-        mapping_filesTST.append(value)
-    print(mapping_filesTST)
-
 # In[22]:
 
 
@@ -679,7 +670,7 @@ for sim in sims_working_links :
         selection = ""
         if key_mol in sim['MAPPING_DICT'].keys():
             m_file = sim['MAPPING_DICT'][key_mol]
-            with open('mapping_files/'+m_file,"r") as f:
+            with open('../mapping_files/'+m_file,"r") as f:
                     for line in f:
                         if len(line.split()) > 2 and "Individual atoms" not in line:
                             selection = selection + "(resname " + line.split()[2] + " and name " + line.split()[1] + ") and "
@@ -710,7 +701,7 @@ for sim in sims_working_links :
         selection = ""
         if key_mol in sim['MAPPING_DICT'].keys():
             m_file = sim['MAPPING_DICT'][key_mol]
-            with open('mapping_files/'+m_file,"r") as f:
+            with open('../mapping_files/'+m_file,"r") as f:
                     for line in f:
                         if len(line.split()) > 2 and "Individual atoms" not in line:
                             selection = selection + "resname " + line.split()[2] + " and name " + line.split()[1] + " or "
@@ -899,7 +890,7 @@ for sim in sims_working_links:
 
     for key in sim['MAPPING_DICT']:    
         mapping_file = sim['MAPPING_DICT'][key]
-        OrdParam=find_OP('../mapping_files/'+mapping_file,tpr,xtcwhole)
+        OrdParam=find_OP('../mapping_files/'+mapping_file,tpr,xtcwhole,key)
 
         outfile=open(str(dir_tmp) + '/' + str(ID)+'/' + key + 'OrderParameters.dat','w')
         line1="Atom     Average OP     OP stem"+'\n'
