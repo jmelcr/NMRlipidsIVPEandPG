@@ -141,6 +141,9 @@ lipids_dict = {
                 'POPE' : {"REQUIRED": False,
                             "TYPE" : "string",
                         },
+                'CHOL' : {"REQUIRED": False,
+                            "TYPE" : "string",
+                        },
                 }
 
 molecules_dict = {
@@ -175,6 +178,10 @@ molecule_numbers_dict = {
                             "TYPE" : "array",
                         },
                 'NPOPE' : {"REQUIRED": False,
+                            "TYPE" : "array",
+                        },
+    
+                'NCHOL' : {"REQUIRED": False,
                             "TYPE" : "array",
                         },
     
@@ -630,6 +637,7 @@ for sim in sims_working_links :
 
 # ## Read molecule numbers into dictionary
 
+
 # In[22]:
 
 
@@ -644,9 +652,9 @@ from MDAnalysis import Universe
     
 for sim in sims_working_links :
     ID = sim.get('ID')
-    tpr = str(dir_wrk)+ '/tmp/' + str(ID) + '/' + str(sim.get('TPR')).translate({ord(c): None for c in "']["})
-    trj = str(dir_wrk)+ '/tmp/' + str(ID) + '/' + str(sim.get('TRJ')).translate({ord(c): None for c in "']["})
-    gro = str(dir_wrk)+ '/tmp/' + str(ID) + '/conf.gro'
+    tpr = str(dir_tmp)+ '/' + str(ID) + '/' + str(sim.get('TPR')).translate({ord(c): None for c in "']["})
+    trj = str(dir_tmp)+ '/' + str(ID) + '/' + str(sim.get('TRJ')).translate({ord(c): None for c in "']["})
+    gro = str(dir_tmp)+ '/' + str(ID) + '/conf.gro'
     print(gro)
     
  #   if str(sim.get('INI')).translate({ord(c): None for c in "']["}) != '':
@@ -655,7 +663,7 @@ for sim in sims_working_links :
 
   #  else:
     get_ipython().system('echo System | gmx trjconv -f {trj} -s {tpr} -dump 0 -o {gro}')
-    gro_path = str(dir_wrk) + '/tmp/' + str(ID) + '/' + 'conf.gro'
+    gro_path = str(dir_tmp) + '/' + str(ID) + '/' + 'conf.gro'
     
     
     
