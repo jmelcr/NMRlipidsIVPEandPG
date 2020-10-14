@@ -97,6 +97,7 @@ class OrderParameter:
         cos2 = vec[2]**2/d2
         S = 0.5*(3.0*cos2-1.0)
         return S
+        
 
 
     @property
@@ -177,12 +178,13 @@ def read_trajs_calc_OPs(ordPars, top, trajs):
         selection = mol.select_atoms("resname {rnm} and name {atA} {atB}".format(
                                     rnm=op.resname, atA=op.atAname, atB=op.atBname)
                                     ).atoms.split("residue")
+   #     print(op.resname + " " + op.atAname + " " + op.atBname)
         for res in selection:
             # check if we have only 2 atoms (A & B) selected
             if res.n_atoms != 2:
                 #print(res.resnames, res.resids)
                 for atom in res.atoms:
-                  # print(atom.name, atom.id)
+#                   print(atom.name, atom.id)
                    atA=op.atAname
                    atB=op.atBname
                    nat=res.n_atoms
@@ -206,6 +208,7 @@ def read_trajs_calc_OPs(ordPars, top, trajs):
             for i in range(0,Nres):
 #             for i, op in enumerate(ordPars,1):
                 residue=op.selection[i]
+#                print(residue)
                 S = op.calc_OP(residue)
 #                print(S)
 #                    print(op.atAname + " " + op.atBname)
@@ -218,19 +221,20 @@ def read_trajs_calc_OPs(ordPars, top, trajs):
 #    for op in ordPars:
 #        op.traj=op.traj/Nframes
 
-def parse_op_input(fname):
+def parse_op_input(fname,lipid_name):
     ordPars = []
     atomC = []
     atomH = []
-    resname = ""
+    resname = lipid_name
 
 #    try:
-    with open(fname,"r") as f:
-        for ind, line in enumerate(f,1):
-            if line.startswith("#Whole molecules"):
+#    with open(fname,"r") as f:
+#        for ind, line in enumerate(f,1):
+#            if line.startswith("#Whole molecules"):
 #                print(getline(f.name, ind + 1).split())
-                resname = getline(f.name, ind + 1).split()[1]
-                break
+#                resname = getline(f.name, ind + 1).split()[1]
+#                break
+    
     with open(fname, "r") as f:
         for line in f.readlines():
             if not line.startswith("#"):
@@ -244,13 +248,15 @@ def parse_op_input(fname):
                     atomH = []
                 elif regexp1_H.search(line) or regexp2_H.search(line):
                     atomH = line.split()
+                    if len(line.split())> 2:
+                        resname = line.split()[2]
                 else:
                     atomC = []
                     atomH = []
 
                 if atomH:
                     items = [atomC[1], atomH[1], atomC[0], atomH[0]]
-#                    print(items)
+#                    print(resname + " " + atomH[1])
                     op = OrderParameter(resname, items[0], items[1], items[2], items[3])
                     ordPars.append(op)
 #    except:
@@ -288,8 +294,8 @@ def parse_op_input(fname):
 
 #%%
 
-def find_OP(inp_fname, top_fname, traj_fname):
-    ordPars = parse_op_input(inp_fname)
+def find_OP(inp_fname, top_fname, traj_fname,lipid_name):
+    ordPars = parse_op_input(inp_fname,lipid_name)
 
  #   for file_name in os.listdir(os.getcwd()):
  #       if file_name.startswith(traj_fname):
@@ -333,7 +339,7 @@ def read_trj_PN_angles(molname,atoms, top_fname, traj_fname, gro_fname):
         resSTDerror[i] = np.std(angles[i,:])
 
     totalAverage = sum(resAverageAngles) / Nres
-    totalSTDerror = np.std(resAverageAngles)
+    totalSTDerror = np.std(resAverageAngles) / np.sqrt(Nres)
 
 # standard errors
     
