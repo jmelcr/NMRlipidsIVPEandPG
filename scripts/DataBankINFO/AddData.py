@@ -654,27 +654,26 @@ for sim in sims_working_links :
     ID = sim.get('ID')
     tpr = str(dir_tmp)+ '/' + str(ID) + '/' + str(sim.get('TPR')).translate({ord(c): None for c in "']["})
     trj = str(dir_tmp)+ '/' + str(ID) + '/' + str(sim.get('TRJ')).translate({ord(c): None for c in "']["})
-    gro = str(dir_tmp)+ '/' + str(ID) + '/conf.gro'
-    print(gro)
-    
+    gro = str(dir_tmp) + '/' + str(ID) + '/' + 'conf.gro'
  #   if str(sim.get('INI')).translate({ord(c): None for c in "']["}) != '':
  #       gro = str(sim.get('INI')).translate({ord(c): None for c in "']["})
  #       gro_path = str(dir_wrk) + '/tmp/' + str(ID) + '/' + gro
 
   #  else:
     get_ipython().system('echo System | gmx trjconv -f {trj} -s {tpr} -dump 0 -o {gro}')
-    gro_path = str(dir_tmp) + '/' + str(ID) + '/' + 'conf.gro'
+  #  gro_path = str(dir_tmp) + '/' + str(ID) + '/' + 'conf.gro'
     
     
     
     leaflet1 = 0 #total number of lipids in upper leaflet
     leaflet2 = 0 #total number of lipids in lower leaflet
     
-    u = Universe(gro_path)
+    u = Universe(gro)
     lipids = []
 
 # select lipids 
     for key_mol in lipids_dict:
+        print(key_mol)
         selection = ""
         if key_mol in sim['MAPPING_DICT'].keys():
             m_file = sim['MAPPING_DICT'][key_mol]
@@ -686,19 +685,23 @@ for sim in sims_working_links :
                             continue
                         else:
                             selection = "resname " + sim.get(key_mol)
+                            print(selection)
                             break
         selection = selection.rstrip(' and ')
-  #      print(selection)
+        print(selection)
         molecules = u.select_atoms(selection)
        # print(molecules)
         if molecules.n_residues > 0:
-            lipids.append(selection)
+            lipids.append(u.select_atoms(selection))
 # join all the selected the lipids together to make a selection of the entire membrane and calculate the
 # z component of the centre of mass of the membrane
-    membrane = " and ".join(str(x) for x in lipids)
- #   print(membrane)
-    R_membrane_z = u.select_atoms(membrane).center_of_mass()[2]
-    print(R_membrane_z)
+    if lipids!= []:
+        membrane = u.select_atoms("")
+        for i in range(0,len(lipids)):
+            membrane = membrane + lipids[i] 
+        #print(membrane)  
+        R_membrane_z = membrane.center_of_mass()[2]
+        print(R_membrane_z)
     
 #####number of each lipid per leaflet
         

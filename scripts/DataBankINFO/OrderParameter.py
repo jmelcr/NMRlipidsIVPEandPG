@@ -182,9 +182,9 @@ def read_trajs_calc_OPs(ordPars, top, trajs):
         for res in selection:
             # check if we have only 2 atoms (A & B) selected
             if res.n_atoms != 2:
-                #print(res.resnames, res.resids)
+                print(res.resnames, res.resids)
                 for atom in res.atoms:
-#                   print(atom.name, atom.id)
+                   print(atom.name, atom.id)
                    atA=op.atAname
                    atB=op.atBname
                    nat=res.n_atoms
