@@ -733,7 +733,7 @@ for sim in sims_working_links :
                 elif R[2] - R_membrane_z < 0:
                     leaflet2 = leaflet2 +1
                        # print('layer2  ' + str(leaflet2))
-            sim[x] = [leaflet1, leaflet2] 
+        sim[x] = [leaflet1, leaflet2] 
 
         
 #print("upper leaflet: " + str(leaflet1))
