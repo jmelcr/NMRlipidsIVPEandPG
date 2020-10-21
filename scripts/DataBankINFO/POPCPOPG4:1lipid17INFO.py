@@ -5,7 +5,7 @@ POPC:POPG (4:1) lipid17
 
 @SIM
 @SYSTEM=POPC:POPG(4:1)_T298K
-@MAPPING=POPC,mappingPOPClipid17ecc.txt,POPG,mappingPOPGlipid17ecc.txt
+@MAPPING=POPC,mappingPOPClipid17.txt,POPG,mappingPOPGlipid17.txt
 @SOFTWARE=gromacs
 @FF=lipid17
 @FF_SOURCE=10.5281/zenodo.2585523
@@ -15,16 +15,16 @@ POPC:POPG (4:1) lipid17
 @PREEQTIME=50
 @TIMELEFTOUT=0
 
-@POPC=PC
-@POPG=PGR
+@POPC=system1
+@POPG=system2
 @POPS=POPS
 @POPE=POPE
 
-@POT=M_K_M
-@SOD=M_NA_M
-@CLA=M_CL_M
-@CAL=M_CA_M
-@SOL=M_SOL_M
+@POT=K
+@SOD=NA
+@CLA=CL
+@CAL=CA
+@SOL=SOL
 
 @NPOPC=[0,0]
 @NPOPG=[0,0]
@@ -43,4 +43,4 @@ POPC:POPG (4:1) lipid17
 #NMRLIPIDS END
 
 """
-dir_wrk = "/media/osollila/Data/tmp/DATABANK/"
+dir_wrk = "/media/osollila/Data1/tmp/DATABANK/"

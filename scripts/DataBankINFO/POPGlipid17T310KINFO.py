@@ -1,0 +1,46 @@
+DOI="10.5281/zenodo.3832219"
+user_information = """
+POPG lipid17
+#NMRLIPIDS BEGIN
+
+@SIM
+@SYSTEM=POPG_T310K
+@MAPPING=POPG,mappingPOPGlipid17.txt
+@SOFTWARE=gromacs
+@FF=lipid17
+@FF_SOURCE=??
+@FF_DATE=??
+@TRJ=total_4_500_last.xtc
+@TPR=md.tpr
+@PREEQTIME=400
+@TIMELEFTOUT=0
+
+@POPC=system1
+@POPG=system2
+@POPS=POPS
+@POPE=POPE
+
+@POT=K
+@SOD=NA_d
+@CLA=CL
+@CAL=CA
+@SOL=WAT
+
+@NPOPC=[0,0]
+@NPOPG=[0,0]
+@NPOPS=[0,0]
+@NPOPE=[0,0]
+
+@NPOT=0
+@NSOD=0
+@NCLA=0
+@NCAL=0
+@NSOL=0
+
+@TEMPERATURE=0
+@TRJLENGTH=0
+
+#NMRLIPIDS END
+
+"""
+dir_wrk = "/media/osollila/Data1/tmp/DATABANK/"
