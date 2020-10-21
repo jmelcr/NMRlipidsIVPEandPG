@@ -361,7 +361,7 @@ of the Gromacs sofware package \cite{gromacsMANUAL}.
       POPC                   & CHARMM36 \cite{??}        & 0         & 0  & 500     & 25000 & 0   &  310  & 500 & 100 & \cite{POPCcharmmT310K}  \\
       POPC:POPG (7:3)        & CHARMM36 \cite{??}        & 0         & 0  & 350     & 25000 & 0   &  310  & 500 & 100 & \cite{POPC7POPG1charmm36}  \\
       POPC:POPG (1:1)        & CHARMM36 \cite{??}        &0          & 0  & 150:150 & 31500 & 0   &  298  & 500 & 400 & \cite{CHARMM36POPCPOPG5050} \\ 
-      POPC:POPG (1:1)        & CHARMM36 \cite{??}        &0          & 0.34 \todoi{Concentration calculated based in total amount of calcium ions. This may not be reasonable due to the lack of counterions.}  & 250:250 & 20798 & 128 &  298  & 200 & 200 & \cite{CHARMM36POPCPOPG5050150mMCaCl} \\
+      POPC:POPG (1:1)        & CHARMM36 \cite{??}        &0          & 0.1 & 150:150 & 31329 & 57 &  298  & 400 & 300 & \cite{CHARMM36POPCPOPG5050100mMCaCl} \\
       POPC:POPG (1:1)        & CHARMM36 \cite{??}        &0          & 1.08 & 150:150 & 29766 & 578  &  298  & 500 & 400 & \cite{CHARMM36POPCPOPG50501000mMCaCl} \\
       POPC:POPG (4:1)        & CHARMM36 \cite{??}        &0          & 0  & 350:88 & 26280 & 0  &  298  & 500 & 400 & \cite{CHARMM36POPCPOPG4010} \\
       POPC:POPG (4:1)        & CHARMM36 \cite{??}        &0          & 0.1 & 350:88 & 26280 & 47  &  298  & 500 & 400 & \cite{CHARMM36POPCPOPG4010100mMCaCl} \\
@@ -408,7 +408,6 @@ of the Gromacs sofware package \cite{gromacsMANUAL}.
     \end{tabular}
   \end{minipage}
   %\end{sidewaystable*}
-  \todo{New CHARMM simulations are still to be ran.} \\
   \todo{Citation and ion model for GROMOS-CKP?} \\
   \todo{Citation and description for ''Berger'' model?} \\
   \todo{Lipid17 POPC and POPC:POPG mixtures (https://doi.org/10.5281/zenodo.3241242 and https://doi.org/10.5281/zenodo.3237656)
@@ -744,8 +743,7 @@ while the other simulations are more realistic, but slight overbinding cannot be
     %(right) The headgroup order parameters of PG from PC:PG mixtures as a function CaCl$_2$
     %concentration from experiments \cite{borle85} and CHARMM36 simulations.
   }
-  \todo{Data for CHARMM with 100mM is still coming.} \\
-  \todo{P-N vector angles from Lipid17 and Lipid17ecc models yet to be analyzed.}
+  \todo{P-N vector angles from Lipid17 model yet to be analyzed.}
 \end{figure*}
 
 To evaluate the calcium binding in simulations of lipid bilayers containing PG lipids,
