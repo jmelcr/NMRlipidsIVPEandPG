@@ -1,17 +1,17 @@
-DOI="10.5281/zenodo.3997135"
+DOI="10.5281/zenodo.3855729"
 user_information = """
-POPC:POPG (1:1) +1M CaCl charmm-gui
+POPC:POPG (1:1) lipid17ecc 100mM CaCl
 #NMRLIPIDS BEGIN
 
 @SIM
-@SYSTEM=POPC:POPG(1:1)+1MCaCl_T298K
-@MAPPING=POPC,mappingPOPCcharmm.txt,POPG,mappingPOPGcharmm.txt
+@SYSTEM=POPC:POPG(1:1)_T298K_100mM_CaCl
+@MAPPING=POPC,mappingPOPClipid17ecc.txt,POPG,mappingPOPGlipid17ecc.txt
 @SOFTWARE=gromacs
-@FF=CHARMM36
-@FF_SOURCE=CHARMM-GUI
+@FF=lipid17ecc
+@FF_SOURCE=NMRlipidsIV
 @FF_DATE=?/?/2020
-@TRJ=100-400ns.xtc
-@TPR=run_400ns.tpr
+@TRJ=traj.xtc
+@TPR=topol.tpr
 @PREEQTIME=100
 @TIMELEFTOUT=0
 
@@ -21,10 +21,10 @@ POPC:POPG (1:1) +1M CaCl charmm-gui
 @POPE=POPE
 
 @POT=K
-@SOD=SOD
-@CLA=CLA
-@CAL=CAL
-@SOL=TIP3
+@SOD=NA
+@CLA=CL
+@CAL=CA
+@SOL=SOL
 
 @NPOPC=[0,0]
 @NPOPG=[0,0]

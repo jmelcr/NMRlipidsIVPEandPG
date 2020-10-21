@@ -690,7 +690,6 @@ for sim in sims_working_links :
         selection = selection.rstrip(' and ')
         print(selection)
         molecules = u.select_atoms(selection)
-       # print(molecules)
         if molecules.n_residues > 0:
             lipids.append(u.select_atoms(selection))
 # join all the selected the lipids together to make a selection of the entire membrane and calculate the

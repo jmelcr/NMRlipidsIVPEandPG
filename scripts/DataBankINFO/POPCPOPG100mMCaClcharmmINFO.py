@@ -1,10 +1,10 @@
-DOI="10.5281/zenodo.3997135"
+DOI="10.5281/zenodo.4005515"
 user_information = """
-POPC:POPG (1:1) +1M CaCl charmm-gui
+POPC:POPG (1:1) +100 mM CaCl charmm-gui
 #NMRLIPIDS BEGIN
 
 @SIM
-@SYSTEM=POPC:POPG(1:1)+1MCaCl_T298K
+@SYSTEM=POPC:POPG(1:1)+100mMCaCl_T298K
 @MAPPING=POPC,mappingPOPCcharmm.txt,POPG,mappingPOPGcharmm.txt
 @SOFTWARE=gromacs
 @FF=CHARMM36

@@ -1,18 +1,18 @@
-DOI="10.5281/zenodo.3693681"
+DOI="10.5281/zenodo.3832219"
 user_information = """
-POPC:POPG (4:1) lipid17
+POPG lipid17
 #NMRLIPIDS BEGIN
 
 @SIM
-@SYSTEM=POPC:POPG(4:1)_T298K
-@MAPPING=POPC,mappingPOPClipid17.txt,POPG,mappingPOPGlipid17.txt
+@SYSTEM=POPG_T310K
+@MAPPING=POPG,mappingPOPGlipid17.txt
 @SOFTWARE=gromacs
 @FF=lipid17
-@FF_SOURCE=10.5281/zenodo.2585523
+@FF_SOURCE=??
 @FF_DATE=??
-@TRJ=trajSKIP.xtc
-@TPR=topol.tpr
-@PREEQTIME=50
+@TRJ=total_4_500_last.xtc
+@TPR=md.tpr
+@PREEQTIME=400
 @TIMELEFTOUT=0
 
 @POPC=system1
@@ -21,10 +21,10 @@ POPC:POPG (4:1) lipid17
 @POPE=POPE
 
 @POT=K
-@SOD=NA
+@SOD=NA_d
 @CLA=CL
 @CAL=CA
-@SOL=SOL
+@SOL=WAT
 
 @NPOPC=[0,0]
 @NPOPG=[0,0]
