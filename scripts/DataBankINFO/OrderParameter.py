@@ -178,13 +178,13 @@ def read_trajs_calc_OPs(ordPars, top, trajs):
         selection = mol.select_atoms("resname {rnm} and name {atA} {atB}".format(
                                     rnm=op.resname, atA=op.atAname, atB=op.atBname)
                                     ).atoms.split("residue")
-   #     print(op.resname + " " + op.atAname + " " + op.atBname)
+    #    print(op.resname + " " + op.atAname + " " + op.atBname)
         for res in selection:
             # check if we have only 2 atoms (A & B) selected
             if res.n_atoms != 2:
-                print(res.resnames, res.resids)
+                #print(res.resnames, res.resids)
                 for atom in res.atoms:
-                   print(atom.name, atom.id)
+                  # print(atom.name, atom.id)
                    atA=op.atAname
                    atB=op.atBname
                    nat=res.n_atoms

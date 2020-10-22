@@ -525,6 +525,7 @@ for sim in sims_required_entries:
 
 # Create temporary directory where to download files and analyze them
 dir_tmp = os.path.join(dir_wrk, "tmp_6-" + str(randint(100000, 999999)))
+
 if (not os.path.isdir(dir_tmp)): os.mkdir(dir_tmp)
 
 for sim in sims_working_links:
@@ -680,27 +681,32 @@ for sim in sims_working_links :
             with open('../mapping_files/'+m_file,"r") as f:
                     for line in f:
                         if len(line.split()) > 2 and "Individual atoms" not in line:
-                            selection = selection + "(resname " + line.split()[2] + " and name " + line.split()[1] + ") and "
+                            selection = selection + "(resname " + line.split()[2] + " and name " + line.split()[1] + ") or "
                         elif "Individual atoms" in line:
                             continue
                         else:
                             selection = "resname " + sim.get(key_mol)
                             print(selection)
                             break
-        selection = selection.rstrip(' and ')
-        print(selection)
+        selection = selection.rstrip(' or ')
+        #print("selection    " + selection)
         molecules = u.select_atoms(selection)
+        print("molecules")
+        print(molecules)
         if molecules.n_residues > 0:
             lipids.append(u.select_atoms(selection))
+            print(lipids) 
 # join all the selected the lipids together to make a selection of the entire membrane and calculate the
 # z component of the centre of mass of the membrane
+    membrane = u.select_atoms("")
+    R_membrane_z = 0
     if lipids!= []:
-        membrane = u.select_atoms("")
         for i in range(0,len(lipids)):
-            membrane = membrane + lipids[i] 
-        #print(membrane)  
+            membrane = membrane + lipids[i]
+        print("membrane") 
+        print(membrane)  
         R_membrane_z = membrane.center_of_mass()[2]
-        print(R_membrane_z)
+    print(R_membrane_z)
     
 #####number of each lipid per leaflet
         
