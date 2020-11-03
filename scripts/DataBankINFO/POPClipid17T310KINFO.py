@@ -43,4 +43,4 @@ POPC lipid17
 #NMRLIPIDS END
 
 """
-dir_wrk = "/media/osollila/Data1/tmp/DATABANK/"
+dir_wrk = "/media/osollila/Data/tmp/DATABANK/"

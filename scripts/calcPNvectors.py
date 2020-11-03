@@ -186,7 +186,7 @@ for subdir, dirs, files in os.walk(r'../Data/Simulations/'):
 # In[45]:
 
 
-print(totalAverage,totalAverageError)
+#print(totalAverage,totalAverageError)
 
 
 # In[ ]:

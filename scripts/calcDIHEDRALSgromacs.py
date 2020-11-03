@@ -165,7 +165,7 @@ def calcDihedrals(lipids,DIHatoms):
                                 ndxfile.write('[ '+ atom1 + '_' + atom2 + '_' + atom3 + '_' + atom4 + ' ] \n')
                                 for item in selection:
                                     ndxfile.write(str(item) + " ")
-                                ndxfile.write(' \n')
+                                    ndxfile.write(' \n')
                             
                             #get_ipython().system('echo "{res}_&_{atom1}_{atom2}_{atom3}_{atom4} \n" | gmx angle -f {xtcwhole} -od {outfilename} -type dihedral -n {ndx_name} -xvg none ')
                             get_ipython().system('gmx angle -f {xtcwhole} -od {outfilename} -type dihedral -n {ndx_name} -xvg none ')               

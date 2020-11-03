@@ -40,6 +40,8 @@ set xlabel "mole fraction of POPC"
 set ylabel "P-N vector angle (degrees)"
 plot  "../../Data/PNanglePOPGvsPOPCcharmmT310K.dat" using (1-$1):($2) with linespoints  notitle pt 6 ps 1.6  lw 4 lc rgb "#0088BF",\
      "../../Data/PNanglePOPGvsPOPCcharmmT310K.dat" using (1-$1):($2):3 with ye notitle pt 6 ps 1.6  lw 4 lc rgb "#0088BF",\
+     "../../Data/PNanglePOPGvsPOPClipid17310.dat" using ($1):($2) with linespoints  notitle pt 6 ps 1.6  lw 4 lc rgb "#FFD300",\
+     "../../Data/PNanglePOPGvsPOPClipid17310.dat" using ($1):($2):3 with ye notitle pt 6 ps 1.6  lw 4 lc rgb "#FFD300",\
 #     "../../Data/POPCvsPOPGcharmm.dat" using (1-$1):($12) with linespoints  notitle pt 6 ps 1.6  lw 4 lc rgb "#0088BF",\
 #     "../../Data/POPCvsPOPGcharmm.dat" using (1-$1):($12):13 with ye notitle pt 6 ps 1.6  lw 4 lc rgb "#0088BF",\
 #     "../../Data/POPCvsPOPGlipid17.dat" using (1-$1):($10) with linespoints  notitle pt 6 ps 1.6  lw 4 lc rgb "#FFD300",\
