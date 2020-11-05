@@ -282,10 +282,10 @@ API access to the databank.
 %\subsection{Headgroup and glycerol backbone order parameters of POPE and POPG from $^{13}$C NMR}
 \subsection{Conformational ensembles of different lipid headgroups in bulk bilayer}
 
-The conformational ensembles of different lipid headgroups and their order parameters have been
-discussed previously \cite{??}, but these studies have been inconclusive because order parameter
-signs have been unknown and tools to interpret the conformational ensembles have not been available.
-Our experimental order parameters witht the information of the sign from different lipid headgroups
+Derivation of different lipid headgroup conformational ensembles in liquid state has been
+%discussed previously \cite{??}, but these studies have been
+inconclusive due to lack of suitable experimental data and tools to interpret the conformational ensembles.
+Our experimental order parameters, including the signs, from different lipid headgroups
 combined with the literature data are shown in Fig. \ref{HGorderParameters}.
 The glycerol backbone order parameters are similar for all the lipids, although they move slightly toward
 positive values (closer to zero) in the order PC $<$ PE $<$ PS $<$ PG. 
@@ -293,12 +293,12 @@ positive values (closer to zero) in the order PC $<$ PE $<$ PS $<$ PG.
 %slightly more positive values (Fig. \ref{HGorderParameters}).
 % These could be explained with slightly larger temperature in PE measurements, except for the $\alpha$-carbon with the positive sign, for which the
 % more positive value is farther away from zero.
-While headgroup order parameters of PC and PE lipids are rather similar,
-PG and PS lipids exhibit distinct values compared with other lipids.
-In PS lipids, the $\alpha$-carbon order parameter exhibits significant forking and
-the $\beta$-carbon order parameter is more negative than others.
-The $\alpha$-carbon order parameter of PG is similar to PE and PG, while the positive value of $\beta$-carbon
-is distinct from the other lipids.
+While the headgroup order parameters are similar for PC and PE lipids,
+PG and PS lipids exhibit distinct values in comparison with other lipids.
+In PS headgroup, the $\alpha$-carbon order parameter exhibits significant forking and
+the $\beta$-carbon has more negative value than in other lipids.
+In PG headgroup, the $\alpha$-carbon order parameter is similar to PE and PG,
+while the positive value of $\beta$-carbon is distinct from all the other lipids.
 Notably, this difference was not observed in previous $^2$H NMR experiments,
 because absolute value of $\beta$-carbon order parameter is similar in PG, PE and PC lipids and the order parameter
 signs were not measured~\cite{wohlgemuth80,gally81,borle85}.
@@ -328,53 +328,67 @@ signs were not measured~\cite{wohlgemuth80,gally81,borle85}.
   \todo{The bottom figure could be clarified as Fig. 2 in the NMRlipids IVps paper.}
 \end{figure}
 
-
-
-In conclusion, the order parameter experiments suggest that the glycerol backbone conformations in all lipids
-and the headgroup conformations in PC and PE lipids are relatively similar, while 
-PS and PG headgropus exhibit distinct conformational sampling.
-The details of sampled conformation are difficult to deduce from order parameters only,
-but the distinct headgroup order parameters
-of PS lipids are previously related to the more rigid structure of the headgroup~\cite{browning80,buldt81,antila19}.
-
-
-
-%\subsection{Headgroup and glycerol backbone of POPE and POPG in MD simulations}
-Headgroup and glycerol backbone order parameters of PE and PG lipids
-show wide variation between different force fields
-and none of the force fields reproduce all values within experimental error bars.
-(Figs. \ref{HGorderParametersPE} and \ref{HGorderParametersPOPG}),
-as observed previously also for PC and PS lipids \cite{botan15,antila19}.
+As in previous NMRlipids project results for PC and PS lipids \cite{botan15,antila19},
+none of the MD simulation force fields correctly captures all the
+headgroup and glycerol backbone order parameters of PE and PG lipids
+(Figs. \ref{HGorderParametersPE} and \ref{HGorderParametersPOPG})
+that would enable a straightforward interpretation of conformational ensembles.
+%show wide variation between different force fields
+%and none of the force fields reproduce all values within experimental error bars.
+%(Figs. \ref{HGorderParametersPE} and \ref{HGorderParametersPOPG}),
+%as observed previously also for PC and PS lipids \cite{botan15,antila19}.
 %The Slipid simulations were able to capture the essential differences between PC and PS lipid
 %headgroups \cite{antila19}, but this is not the case for PE and PG lipids.
-The poor performance of headgroup order parameters in Berger model can be probably explained by
-ring like structures seen in Fig. 6 in Ref. \citenum{mukhopadhyay04}, which is a typical feature
-for Berger based lipid force fields containing explicit hydrogen atoms in the head group \cite{zhao08,henin09,dahlberg10}.
-The poor performance of glycerol backbone of Slipids simulations is systemically observed also
-for other lipids in previous studies \cite{botan15,antila19}.
-\todo{Should we comment more the relative quality of different force fields and/or make the subjective force field ranking figures?
-https://github.com/NMRLipids/NMRlipidsIVPEandPG/issues/8}
-
-
-Without further discussion about poorly performing force fields, we focus on more detailed analysis
-of CHARMM36 simulations, which captures the essential differences between
+%Without further discussion about poorly performing force fields, we focus on more detailed analysis
+%of
+Nevertheless, CHARMM36 force field, which gives the results closest to the experiments for all lipids,
+captures the essential differences between
 PC, PS, PG and PE headroup order parameters  (Fig.~\ref{structures}) with the exception of $\beta$-carbon order parameter of PC
 %give the best overall agreement with experiments for
 %the headgroup and glycerol backbone order parameters of all PC, PS, PG and PE lipids in this and our previous
 %studies \cite{botan15,antila19}. Even thought many order parameters in CHARMM36 simulations are
 %not within the experimental error bars, it 
-which is too negative when compared with PS or PE order parameter, or with experiments \cite{botan15}.
-%As already pointed out in our previous study \cite{antila19},
-Characteristic dihedral conformations in PS headgroup are asymmetric conformations
-preferring gauche 270$^\circ$ conformations in N-C$_\beta$-C$_\alpha$-O$_\alpha$ and
-%dihedral exhibits a more asymmetric angle distribution for PS, having largest probability being
-%in , than for the PC headgroup.
-C$_\beta$-C$_\alpha$-O$_\alpha$-P dihedrals. 
-In PG headgroup, the O$_\beta$-C$_\beta$-C$_\alpha$-O$_\alpha$ dihedral (corresponding N-C$_\beta$-C$_\alpha$-O$_\alpha$ dihedral in other lipids)
-is mostly in trans conformation, and C$_\beta$-C$_\alpha$-O$_\alpha$-P  has asymmetric tendency to be in
-gauche 60$^\circ$ conformation. 
-Main difference between PC and PE is the lower probability of trans state in C$_\beta$-C$_\alpha$-O$_\alpha$-P PC dihedral,
-which could be a potential reason for the too negative $\beta$ headgroup order parameter in PC.
+which is too negative when compared with other lipids or experiments \cite{botan15}.
+% As already pointed out in our previous study \cite{antila19},
+
+The conformational ensembles characterized by the distributions of heavy atom dihedral angles
+show major differences between lipids only for O$_\alpha$-C$_\alpha$ and  C$_\alpha$-C$_\beta$ bonds
+near the end of the headgroup (Fig. \ref{structures}).
+These probably explain the slight differences in the
+angle between headgroup dipole and membrane normal, which decreases 
+in the order PG $>$ PE  $>$ PC  $>$ PS, although difference between PC and PE may an artefact as
+the $\beta$-carbon order parameter in PC is poorly reproduced by the CHARMM36 force field.
+Dihedrals of both O-P bonds can freely rotate in all lipids as all possible angles
+are observed in the distributions. For PS, however, some angles are quite unlikely,
+possible explaining the more rigid headgroup structures proposed for PS lipids~\cite{browning80,buldt81}.
+The eclipsed (0 or 360 degrees) are not present in any other dihedrals, and anti-eclipsed (120 or 240 degrees)
+are not present in C$_\alpha$-C$_\beta$ and g$_1$-g$_2$ bonds.
+
+
+%Characteristic dihedral conformations in PS headgroup are asymmetric conformations
+%preferring gauche 270$^\circ$ conformations in N-C$_\beta$-C$_\alpha$-O$_\alpha$ and
+%%dihedral exhibits a more asymmetric angle distribution for PS, having largest probability being
+%%in , than for the PC headgroup.
+%C$_\beta$-C$_\alpha$-O$_\alpha$-P dihedrals. 
+%In PG headgroup, the O$_\beta$-C$_\beta$-C$_\alpha$-O$_\alpha$ dihedral (corresponding N-C$_\beta$-C$_\alpha$-O$_\alpha$ dihedral in other% lipids)
+%is mostly in trans conformation, and C$_\beta$-C$_\alpha$-O$_\alpha$-P  has asymmetric tendency to be in
+%gauche 60$^\circ$ conformation. 
+%Main difference between PC and PE is the lower probability of trans state in C$_\beta$-C$_\alpha$-O$_\alpha$-P PC dihedral,
+%which could be a potential reason for the too negative $\beta$ headgroup order parameter in PC.%
+
+In conclusion, the results suggest that free rotations around O-P bonds decouple the
+headgroup and glycerol backbone structure and dynamics in similarly in all lipids,
+althought this rotation is slower in PS lipids where crossing certain barriers are slower.
+Despite significant differences in dihedral distributions near the headgroup end,
+all lipids have dihedral angles within approximately the same ranges.
+This suggests that all lipids can quite freely arrange to multiple headgroup conformations
+when interaction with proteins, ions or other biomolecules.
+%the order parameter experiments suggest that the glycerol backbone conformations in all lipids
+%and the headgroup conformations in PC and PE lipids are relatively similar, while 
+%PS and PG headgropus exhibit distinct conformational sampling.
+%The details of sampled conformation are difficult to deduce from order parameters only,
+%but the distinct headgroup order parameters
+%of PS lipids are previously related to the more rigid structure of the headgroup~\cite{browning80,buldt81,antila19}.
 
 \begin{figure*}[!h]
   \centering
@@ -396,6 +410,57 @@ which could be a potential reason for the too negative $\beta$ headgroup order p
 
 \clearpage
 \subsection{Lipid conformational ensembles in lipid bilayers with bound ions}
+
+Headgroup order parameters of PC lipids decrease or increase upon addition of positive
+or negative charge into membrane, respectively, while they remain unchanged upon addition
+of neutral molecules such as cholesterol or sphingomyelin \cite{??}.
+This has been explained by the tilting of the headgroup dipole due to electrostatic
+interactions with bound charges, and has been used to measure the binding affinity
+of ions to membranes \cite{??}.
+%The headgroup order parameters of PC lipids can be used to measure the ion binding
+%affinity to lipid bilayers because their magnitude is linearly proportional to the amount of bound charge in bilayer \cite{seelig87,catte16}.
+%This molecular electrometer concept can be used also for bilayers containing PC lipids mixed with charged lipids \cite{borle85,macdonald87,roux90,antila19}.
+%The headgroup order parameters can be used to evaluate MD simulations against experimental data,
+%because they can be directly calculated from MD simulations \cite{catte16}.
+
+%To evaluate the calcium binding in simulations of lipid bilayers containing PG lipids,
+%we calculated
+The changes of PC headgroup order parameters in POPC:POPG (1:1) and (4:1) mixtures
+upon addition of CaCl$_2$ from simulations and experiments \cite{borle85,macdonald87}
+%, and compared these with the available experimental data \cite{borle85,macdonald87}.
+in Figs. \ref{changesWITHCaClPG} and \ref{changesWITHCaClPG1PC4} are in line with
+conclusion from our previous studies \cite{??}:  
+%The decrease of POPC headgroup order parameters in mixtures with POPG lipids with
+%increasing CaCl$_2$ concentration is overestimated in Slipids and Lipid17
+order parameters decrease in the response to bound cations in qualitative agreement with
+experiments, but calcium binding affinity to membranes is overestimated in 
+simulations except in CHARMM36 with the NBfix correction which underestimates the binding affinity.
+On the other hand, implicit inclusion of electronic polarizability to Amber based lipid models
+improves the ion binding affinity leading to a good agreement with experiments.
+%(Figs. \ref{changesWITHCaClPG} and \ref{changesWITHCaClPG1PC4})
+%
+%indicating too strong binding affinity of calcium into the bilayers as previously
+%observed for pure PC lipid bilayers and mixtures with PS lipids \cite{catte16,antila19}.
+%
+%The decrease of $\alpha$-carbon order parameter of PC lipids in PC:PG mixtures as a function
+%of calcium concentration is close to experiments CHARMM36 simulations (Fig. \ref{changesWITHCaClPG}),
+%but the decrease of $\beta$-carbon order parameter seems to be overestimated.
+%However, the $\beta$-carbon order parameter was not actually measured from these samples,
+%but they are calculated from empirical relation $\Delta S_{\beta}=0.43\Delta S_{\alpha}$ \cite{akutsu81}.
+%On the other hand, the simulations are not converged.
+%
+%The calcium binding affinity to lipid bilayers with PC and PS lipids
+%was recently improved by applying the electronic continuum correction (ECC) to Amber Lipid14/17 force fields \cite{melcr18,melcr20}.
+%In this approach, the electronic polarizability is implicitly included in the classical force fields
+%by scaling the charges with constant factors \cite{leontyev11}. Here, we make a ECC-POPG force field
+%by applying the scaling factors originally used for POPS also to POPG, i.e., we multiply
+%charges and Lennard-Jones $\sigma$s of headgroup, glycerol backbone, and carbonyl regions with 
+%$f_q$=0.75 and $f_\sigma$=0.89, respectively \cite{melcr20}.
+%ECC-POPG model gives a weaker calcium binding affinity (Fig.\ref{CAdensPG}) and better agreement with the experimental
+%PC headgroup order parameter changes (Fig. \ref{changesWITHCaClPG}) for POPC:POPG mixtures than the original Lipid17 model
+%\todo{to be finished when we have all the data}, indicating that the ECC improves the simulation predictions of
+%calcium binding affinity as previously observed for PC and PS lipids \cite{melcr18,melcr20}.
+
 \begin{figure*}[bt]
   \centering
   \includegraphics[width=18.0cm]{../Figs/CHANGESwithCaClPG1PC1.eps}
@@ -411,41 +476,42 @@ which could be a potential reason for the too negative $\beta$ headgroup order p
   }
 \end{figure*}
 
-To evaluate the calcium binding in simulations of lipid bilayers containing PG lipids,
-we calculated the changes in headgroup order parameters of POPC:POPG (1:1) and (4:1) mixtures
-upon addition of CaCl$_2$, and compared these with the available experimental data \cite{borle85,macdonald87}.
-The headgroup order parameters of PC lipids can be used to measure the ion binding
-affinity to lipid bilayers because their magnitude is linearly proportional to the amount of bound charge in bilayer \cite{seelig87,catte16}.
-This molecular electrometer concept can be used also for bilayers containing PC lipids mixed with charged lipids \cite{borle85,macdonald87,roux90,antila19}.
-The headgroup order parameters can be used to evaluate MD simulations against experimental data,
-because they can be directly calculated from MD simulations \cite{catte16}.
 
-The decrease of POPC headgroup order parameters in mixtures with POPG lipids with
-increasing CaCl$_2$ concentration is overestimated in Slipids and Lipid17
-simulations (Figs. \ref{changesWITHCaClPG} and \ref{changesWITHCaClPG1PC4})
-indicating too strong binding affinity of calcium into the bilayers as previously
-observed for pure PC lipid bilayers and mixtures with PS lipids \cite{catte16,antila19}.
-\todo{CHARMM results to be mentioned once we have the new simulations.}
-%The decrease of $\alpha$-carbon order parameter of PC lipids in PC:PG mixtures as a function
-%of calcium concentration is close to experiments CHARMM36 simulations (Fig. \ref{changesWITHCaClPG}),
-%but the decrease of $\beta$-carbon order parameter seems to be overestimated.
-%However, the $\beta$-carbon order parameter was not actually measured from these samples,
-%but they are calculated from empirical relation $\Delta S_{\beta}=0.43\Delta S_{\alpha}$ \cite{akutsu81}.
-%On the other hand, the simulations are not converged.
-The calcium binding affinity to lipid bilayers with PC and PS lipids
-was recently improved by applying the electronic continuum correction (ECC) to Amber Lipid14/17 force fields \cite{melcr18,melcr20}.
-In this approach, the electronic polarizability is implicitly included in the classical force fields
-by scaling the charges with constant factors \cite{leontyev11}. Here, we make a ECC-POPG force field
-by applying the scaling factors originally used for POPS also to POPG, i.e., we multiply
-charges and Lennard-Jones $\sigma$s of headgroup, glycerol backbone, and carbonyl regions with 
-$f_q$=0.75 and $f_\sigma$=0.89, respectively \cite{melcr20}.
-ECC-POPG model gives a weaker calcium binding affinity (Fig.\ref{CAdensPG}) and better agreement with the experimental
-PC headgroup order parameter changes (Fig. \ref{changesWITHCaClPG}) for POPC:POPG mixtures than the original Lipid17 model
-\todo{to be finished when we have all the data}, indicating that the ECC improves the simulation predictions of
-calcium binding affinity as previously observed for PC and PS lipids \cite{melcr18,melcr20}.
+\begin{figure}[]
+  \centering
+  \includegraphics[width=8.0cm]{../Figs/CAdensPG1PC1.eps}
+  \caption{\label{CAdensPG}
+    Calcium ion density profiles along membrane normal from simulations of POPC:POPG (1:1) mixtures with different force fields.
+  }
+\end{figure}
 
-Experimental data for the $\beta$-carbon order parameter of POPG
-shows a rapid decrease with increasing CaCl$_2$ concentrations up to 10 mM
+Changes in lipid conformational ensembles characterized by distributions of heavy atom dihedral angles
+are very small upon binding of calcium or addition of cationic surfactants to membranes (Figs. \ref{??}).
+Yet, such changes are sufficient to tilt the headgroup dipole angle and reproduce the experimentally observed
+order parameter changes in $\alpha$ and $\beta$ carbons.
+
+\begin{figure}[]
+  \centering
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3O3_M_M_G3C4_M_M_G3C5_M_M_G3N6_MCHARMM36.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3P2_M_M_G3O3_M_M_G3C4_M_M_G3C5_MCHARMM36.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3O1_M_M_G3P2_M_M_G3O3_M_M_G3C4_MCHARMM36.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3_M_M_G3O1_M_M_G3P2_M_M_G3O3_MCHARMM36.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G2_M_M_G3_M_M_G3O1_M_M_G3P2_MCHARMM36.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G1_M_M_G2_M_M_G3_M_M_G3O1_MCHARMM36.png}  
+  \caption{\label{DIHSwithCA}
+    Changes in CHARMM36 dihedrals with increasing amount of CaCl$_2$.
+  }
+\end{figure}
+
+
+Simulations also qualitatively reproduce the experimentally observed decrease of POPG
+%Experimental data for the
+$\beta$-carbon order parameter
+%of POPG shows a rapid decrease with increasing
+upon addition of CaCl$_2$,
+%concentrations up to 10 mM
+suggesting that the PG headgroup response is qualitatively captured by simulations, in contrast
+to PS in our previous work \cite{antila19}.
 and more modest decrease with larger concentrations (Fig. \ref{changesWITHCaClPG}) \cite{borle85}.
 This behaviour is similar to that of $\beta$-carbon order parameters of POPC,
 but essentially different than observed for POPS, where $\beta$-carbon order parameters increases with
@@ -474,13 +540,7 @@ but experimental data to evaluate these predictions is not available.
 
 \todo{We still need more data to finish the discussion. More detailed discussion is in https://github.com/NMRLipids/NMRlipidsIVPEandPG/issues/12}
 
-\begin{figure}[]
-  \centering
-  \includegraphics[width=8.0cm]{../Figs/CAdensPG1PC1.eps}
-  \caption{\label{CAdensPG}
-    Calcium ion density profiles along membrane normal from simulations of POPC:POPG (1:1) mixtures with different force fields.
-  }
-\end{figure}
+
 
 \subsection{Protein bound lipid conformations }
 \begin{figure*}[!h]
@@ -496,18 +556,6 @@ but experimental data to evaluate these predictions is not available.
 
 
 
-\begin{figure}[]
-  \centering
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3O3_M_M_G3C4_M_M_G3C5_M_M_G3N6_MCHARMM36.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3P2_M_M_G3O3_M_M_G3C4_M_M_G3C5_MCHARMM36.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3O1_M_M_G3P2_M_M_G3O3_M_M_G3C4_MCHARMM36.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3_M_M_G3O1_M_M_G3P2_M_M_G3O3_MCHARMM36.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G2_M_M_G3_M_M_G3O1_M_M_G3P2_MCHARMM36.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G1_M_M_G2_M_M_G3_M_M_G3O1_MCHARMM36.png}  
-  \caption{\label{DIHSwithCA}
-    Changes in CHARMM36 dihedrals with increasing amount of CaCl$_2$.
-  }
-\end{figure}
 
 
 
