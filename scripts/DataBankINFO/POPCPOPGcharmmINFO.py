@@ -24,7 +24,7 @@ POPC:POPG (1:1) charmm-gui
 @SOD=SOD
 @CLA=CL
 @CAL=CA
-@SOL=SOL
+@SOL=TIP3
 
 @NPOPC=[0,0]
 @NPOPG=[0,0]

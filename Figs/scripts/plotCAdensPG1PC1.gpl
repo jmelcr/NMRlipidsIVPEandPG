@@ -17,8 +17,8 @@ set label at screen 0.02,0.35 rotate by 90 "Number density of calcium" font ',15
 set size 1.0,0.3
 set label  "CHARMM36"  at graph  0.4,0.85
 set key at graph 0.6,0.7 maxcols 3 maxrows 5
-plot "../../../MATCH/Data/Lipid_Bilayers/POPG+50%POPC+1000mMCaCl/T298K/MODEL_CHARMM36/IONdens.xvg" using 1:2 with lines title '1 M' lw 6 lc rgb 'black',\
-     "../../../MATCH/Data/Lipid_Bilayers/POPG+50%POPC+150mMCaCl/T298K/MODEL_CHARMM36/IONdens.xvg" using 1:2 with lines title '0.15 M' lw 2 lc rgb 'black',\
+plot "../../Data/CAdensPOPC1POPG1charmm361MCaCl.xvg" using 1:2 with lines title '1 M' lw 6 lc rgb 'black',\
+     "../../Data/CAdensPOPC1POPG1charmm360.1MCaCl.xvg" using 1:2 with lines title '0.15 M' lw 2 lc rgb 'black',\
 #     "../../../MATCH/Data/Lipid_Bilayers/POPG+80%POPC+1000mMCaCl/T298K/MODEL_CHARMM36/IONdens.xvg" using 1:2 with lines title 'PC:PG (4:1) 1 M' lw 6 lc rgb 'black',\
 
 unset label

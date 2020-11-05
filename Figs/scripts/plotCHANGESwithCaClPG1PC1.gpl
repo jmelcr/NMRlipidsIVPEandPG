@@ -107,8 +107,12 @@ set yrange [40:92]
 #unset xrange
 plot "../../Data/PNangleFIXPOPCvsPOPGslipidWITHCaCl.dat" using ($1*0.001):($2) with linespoints  notitle pt 7 ps 1.6 lw 4 lc rgb "#7AEE9E",\
      "../../Data/PNangleFIXPOPCvsPOPGslipidWITHCaCl.dat" using ($1*0.001):($2):3 with yerrorbars notitle pt 7 ps 1.6 lw 4 lc  rgb "#7AEE9E",\
-     "../../Data/PNangleFIXPCPOPCPOPG1\:1charmmWITHCaCl.dat" using ($1*0.001):($2) with linespoints  notitle pt 7 ps 1.6 lw 4 lc rgb "#0088BF",\
-     "../../Data/PNangleFIXPCPOPCPOPG1\:1charmmWITHCaCl.dat" using ($1*0.001):($2):3 with yerrorbars  notitle pt 7 ps 1.6 lw 4 lc  rgb "#0088BF",\
+     "../../Data/PNanglePOPC0.5POPGvsCALCHARMM36298.dat" using ($1):($2) with linespoints  notitle pt 7 ps 1.6 lw 4 lc rgb "#0088BF",\
+     "../../Data/PNanglePOPC0.5POPGvsCALCHARMM36298.dat" using ($1):($2):3 with yerrorbars  notitle pt 7 ps 1.6 lw 4 lc  rgb "#0088BF",\
+     "../../Data/PNanglePOPC0.5033112582781457POPGvsCALlipid17ecc298.dat" using ($1):($2) with linespoints  notitle pt 7 ps 1.6 lw 4 lc rgb "orange",\
+     "../../Data/PNanglePOPC0.5033112582781457POPGvsCALlipid17ecc298.dat" using ($1):($2):3 with yerrorbars  notitle pt 7 ps 1.6 lw 4 lc  rgb "orange",\
+     "../../Data/PNanglePOPC0.5POPGvsCALlipid17298.dat" using ($1):($2) with linespoints  notitle pt 7 ps 1.6 lw 4 lc rgb "#FFD300",\
+     "../../Data/PNanglePOPC0.5POPGvsCALlipid17298.dat" using ($1):($2):3 with yerrorbars  notitle pt 7 ps 1.6 lw 4 lc  rgb "#FFD300",\
 #     "../../Data/PNanglePOPCvsPOPEmacrogT300K.dat" using 1:($2) with linespoints  notitle pt 7 ps 1.6 lw 4 lc rgb "#00A368",\
 #     "../../Data/PNanglePOPCvsPOPEmacrogT300K.dat" using 1:($2):3 with yerrorbars  notitle pt 7 ps 1.6 lw 4 lc  rgb "#00A368",\
 
@@ -122,8 +126,13 @@ set xlabel "[ CaCl_2] M"
 #set yrange [78:100]
 plot  "../../Data/PNangleFIXPOPGslipidWITHCaCl.dat" using ($1*0.001):($2) with linespoints  notitle pt 7 ps 1.6 lw 4 lc rgb "#7AEE9E",\
       "../../Data/PNangleFIXPOPGslipidWITHCaCl.dat" using ($1*0.001):($2):3 with yerrorbars notitle pt 7 ps 1.6 lw 4 lc  rgb "#7AEE9E",\
-     "../../Data/PNangleFIXPGPOPCPOPG1\:1charmmWITHCaCl.dat" using ($1*0.001):($2) with linespoints  notitle pt 7 ps 1.6 lw 4 lc rgb "#0088BF",\
-     "../../Data/PNangleFIXPGPOPCPOPG1\:1charmmWITHCaCl.dat" using ($1*0.001):($2):3 with yerrorbars  notitle pt 7 ps 1.6 lw 4 lc  rgb "#0088BF",\
+     "../../Data/PNanglePOPG0.5POPCvsCALCHARMM36298.dat" using ($1):($2) with linespoints  notitle pt 7 ps 1.6 lw 4 lc rgb "#0088BF",\
+     "../../Data/PNanglePOPG0.5POPCvsCALCHARMM36298.dat" using ($1):($2):3 with yerrorbars  notitle pt 7 ps 1.6 lw 4 lc  rgb "#0088BF",\
+     "../../Data/PNanglePOPG0.4966887417218543POPCvsCALlipid17ecc298.dat" using ($1):($2) with linespoints  notitle pt 7 ps 1.6 lw 4 lc rgb "orange",\
+     "../../Data/PNanglePOPG0.4966887417218543POPCvsCALlipid17ecc298.dat" using ($1):($2):3 with yerrorbars  notitle pt 7 ps 1.6 lw 4 lc  rgb "orange",\
+     "../../Data/PNanglePOPG0.5POPCvsCALlipid17298.dat" using ($1):($2) with linespoints  notitle pt 7 ps 1.6 lw 4 lc rgb "#FFD300",\
+     "../../Data/PNanglePOPG0.5POPCvsCALlipid17298.dat" using ($1):($2):3 with yerrorbars  notitle pt 7 ps 1.6 lw 4 lc  rgb "#FFD300",\
+
 #"../../Data/PNangleFIXPOPCvsPOPGslipidT298K.dat" using 1:($2) with linespoints  notitle pt 4 ps 1.6 lw 4 lc rgb "#7AEE9E",\
 #     "../../Data/PNangleFIXPOPCvsPOPGslipidT298K.dat" using 1:($2):3 with yerrorbars  notitle pt 4 ps 1.6 lw 4 lc  rgb "#7AEE9E",\
 #     "../../Data/PNangleFIXPOPCvsPOPGslipidT310K.dat" using 1:($2) with linespoints  notitle pt 5 ps 1.6 lw 4 lc rgb "#7AEE9E",\

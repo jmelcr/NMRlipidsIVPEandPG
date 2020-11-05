@@ -34,17 +34,21 @@ def read_mapping_file(mapping_file, atom1):
                     m_atom1 = line.split()[1]
     return m_atom1
 
-def read_mapping_filePAIR(mapping_file, atom1, atom2):
+def read_mapping_filePAIR(mapping_file, atom1, atom2, molname):
     with open(mapping_file, 'rt') as mapping_file:
             print(mapping_file)
             for line in mapping_file:
                 if atom1 in line:
                     m_atom1 = line.split()[1]
+                    try:
+                        res = line.split()[2]
+                    except:
+                        res = molname
 #                    print(m_atom1)
                 if atom2 in line: 
                     m_atom2 = line.split()[1]
 #                    print(m_atom2)
-    return m_atom1, m_atom2
+    return m_atom1, m_atom2, res
 
 def make_positive_angles(x):
     for i in range(len(x)):
@@ -93,8 +97,9 @@ for subdir, dirs, files in os.walk(r'../Data/Simulations/'):
 
                     HGorientationFOLDERS = subdir.replace("Simulations","HGorientation")    
                     outfilename = str(HGorientationFOLDERS) + '/' + molname + 'PNvectorDIST.dat' 
-                                   
-                    if not os.path.isfile(outfilename) and sum(readme['N' + molname]) > 0:
+
+                    print(molname, readme['NPOPC'][0], outfilename)                    
+                    if not os.path.isfile(outfilename) and int(readme['N' + molname][0]) > 0:
                                             
                         print('Analyzing '+molname+' in '+filepath)
                         
@@ -116,14 +121,15 @@ for subdir, dirs, files in os.walk(r'../Data/Simulations/'):
                         mapping_file = './mapping_files/'+readme['MAPPING_DICT'][molname] # readme.get('MAPPING')[0][0]
                                                 
                         try:
-                            atoms = read_mapping_filePAIR(mapping_file, atom1 , atom2)
+                            atoms = read_mapping_filePAIR(mapping_file, atom1 , atom2, molname)
                         except:
                             print(atom1 + " and " + atom2 + " not found in the mapping file.")
                             continue
 
+                        print(atoms, [atoms[0],atoms[1]])
                         
                         try:
-                            anglesMeanError = read_trj_PN_angles(molname, atoms, tpr_name, xtcwhole, gro_name)
+                            anglesMeanError = read_trj_PN_angles(atoms[2], [atoms[0],atoms[1]] , tpr_name, xtcwhole, gro_name)
                         except OSError:
                             print("Could not calculate angles for " + molname + " from files " + tpr_name + " and " + trj_name)
                             continue
@@ -180,7 +186,7 @@ for subdir, dirs, files in os.walk(r'../Data/Simulations/'):
 # In[45]:
 
 
-print(totalAverage,totalAverageError)
+#print(totalAverage,totalAverageError)
 
 
 # In[ ]:
