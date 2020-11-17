@@ -411,33 +411,82 @@ when interaction with proteins, ions or other biomolecules.
 
 \clearpage
 \subsection{Lipid conformational ensembles in lipid bilayers with bound ions}
-
-Headgroup order parameters of PC lipids decrease or increase upon addition of positive
-or negative charge into membrane, respectively, while they remain unchanged upon addition
-of neutral molecules such as cholesterol or sphingomyelin \cite{??}.
-This has been explained by the tilting of the headgroup dipole due to electrostatic
-interactions with bound charges, and has been used to measure the binding affinity
-of ions to membranes \cite{??}.
+Phosphatidylcholine headgroup conformational ensemble and orientation are unchanged
+upon addition of neutral molecules such as cholesterol or sphingomyelin into a bilayer,
+while incorporation of charges affect the headgroup dipole vector tilt which can
+be detected by measuring C-H bond order parameters of $\alpha$ and $\beta$ carbons \cite{??}.
+Such changes have been observed upon addition of charged lipids, proteins, surfactants,
+drugs, or ions \cite{??}, but how charges affect the lipid conformational ensemble remains unknown.
+%Headgroup order parameters of PC lipids decrease or increase upon addition of positive
+%or negative charge into membrane, respectively, while they remain 
+%\cite{??}.
+%This has been explained by the tilting of the headgroup dipole due to electrostatic
+%interactions with bound charges, and has been used to measure the binding affinity
+%of ions to membranes \cite{??}.
 %The headgroup order parameters of PC lipids can be used to measure the ion binding
 %affinity to lipid bilayers because their magnitude is linearly proportional to the amount of bound charge in bilayer \cite{seelig87,catte16}.
 %This molecular electrometer concept can be used also for bilayers containing PC lipids mixed with charged lipids \cite{borle85,macdonald87,roux90,antila19}.
 %The headgroup order parameters can be used to evaluate MD simulations against experimental data,
 %because they can be directly calculated from MD simulations \cite{catte16}.
 
-%To evaluate the calcium binding in simulations of lipid bilayers containing PG lipids,
-%we calculated
-The changes of PC headgroup order parameters in POPC:POPG (1:1) and (4:1) mixtures
-upon addition of CaCl$_2$ from simulations and experiments \cite{borle85,macdonald87}
-%, and compared these with the available experimental data \cite{borle85,macdonald87}.
+\begin{figure*}[bt]
+  \centering
+  \includegraphics[width=9.0cm]{../Figs/HGorderparametersPCvsSURFchange.eps}
+  \caption{\label{changesWITHsurf}
+    Modulation of PC headgroup order parameters and P-N vector angle upon addition of cationic surfactant.
+  }
+\end{figure*}
+
+\begin{figure}[]
+  \centering
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPCsurf_M_G3O3_M_M_G3C4_M_M_G3C5_M_M_G3N6_MCHARMM36.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPCsurf_M_G3P2_M_M_G3O3_M_M_G3C4_M_M_G3C5_MCHARMM36.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPCsurf_M_G3O1_M_M_G3P2_M_M_G3O3_M_M_G3C4_MCHARMM36.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPCsurf_M_G3_M_M_G3O1_M_M_G3P2_M_M_G3O3_MCHARMM36.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPCsurf_M_G2_M_M_G3_M_M_G3O1_M_M_G3P2_MCHARMM36.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPCsurf_M_G1_M_M_G2_M_M_G3_M_M_G3O1_MCHARMM36.png}  
+  \caption{\label{DIHSwithSURF}
+    Changes in CHARMM36 dihedrals with increasing amount of cationic surfactant.
+  }
+\end{figure}
+
+
+The response of PC headgroup order parameters to the addition of cationic surfactants into a
+membrane in CHARMM36 simulations are in very good agreement with the experimental data (Fig. \ref{changesWITHsurf})
+suggesting that these simulations can be used to interpret how lipid headgroups respond to the
+inclusion of charges into a membrane. Analysis of lipid dihedral bond distributions suggest that
+the lipid conformational changes upon addition of charge occur in phosphate-oxygen and g$_3$-phosphate-oxygen bonds.
+
+
+To resolve the lipid headgroup conformational ensembles in mixed membranes we analyzed
+headgroup order parameters from mixture of PC and PE or PG and compared the changes
+upon mixing to the experimental data \cite{??} (Figs. \ref{??}). However, the currently
+available force fields failed to capture the headgroup conformational ensembles in mixed membranes
+as we previously observed also for mixtures with PS lipids \cite{antila19}. The best performing force field for
+single componen membrane, CHARMM36, overestimated the influcence of PE to PC conformations and
+undersestimated response to anionic PG headgroup. The latter may arise from overbinding of sodium
+counterions \cite{antila19}. 
+
+Also the changes of headgroup order parameters in POPC:POPG (1:1) and (4:1) mixtures
+upon addition of CaCl$_2$
+%from simulations and experiments \cite{borle85,macdonald87}
 in Figs. \ref{changesWITHCaClPG} and \ref{changesWITHCaClPG1PC4} are in line with
-conclusion from our previous studies \cite{??}:  
+conclusions from our previous studies \cite{catte16,melcr18,antila19,melcr20}:  
 %The decrease of POPC headgroup order parameters in mixtures with POPG lipids with
 %increasing CaCl$_2$ concentration is overestimated in Slipids and Lipid17
-order parameters decrease in the response to bound cations in qualitative agreement with
-experiments, but calcium binding affinity to membranes is overestimated in 
-simulations except in CHARMM36 with the NBfix correction which underestimates the binding affinity.
-On the other hand, implicit inclusion of electronic polarizability to Amber based lipid models
-improves the ion binding affinity leading to a good agreement with experiments.
+%order parameters decrease in the response to bound cations in qualitative agreement with
+%experiments, but
+calcium binding affinity to membranes is typically overestimated in simulations, but
+CHARMM36 with the NBfix correction underestimates the binding affinity, and that the
+%On the other hand,
+results can be improved by implicit inclusion of electronic polarizability.
+Among the available simulations, there are two models that correctly reproduce the
+PG headgroup order parameter changes upon addition of calcium, Lipid17 and Slipids,
+even though the binding affinity of calcium is overestimated in these simulations.
+The response of PC to calcium binding is correctly reproduced by Lipid17ecc model, as
+previously reported for other membranes \cite{melcr18,melcr19}.
+%to Amber based lipid models
+%improves the ion binding affinity leading to a good agreement with experiments.
 %(Figs. \ref{changesWITHCaClPG} and \ref{changesWITHCaClPG1PC4})
 %
 %indicating too strong binding affinity of calcium into the bilayers as previously
