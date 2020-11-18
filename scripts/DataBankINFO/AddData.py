@@ -268,7 +268,9 @@ gromacs_dict = {
                              "TYPE" : "string",
  #                        "EXTENSION": ("txt"),
                              },
-              
+            'UNITEDATOM' : {"REQUIRED": False,
+                            "TYPE" : "string",
+                         },
                }
 
 # Amber
@@ -633,8 +635,18 @@ for sim in sims_working_links :
     sim['MAPPING_DICT'] = mapping_dict
 
     print(sim['MAPPING_DICT'])
-    print(sim)
 
+#in case of a united atom simulation make a dictionary of united atom names 
+    if sim.get('UNITEDATOM'):
+        unitedAtoms = sim['UNITEDATOM'].split(',')
+        unitedAtomsDic = {}
+        for i in range(0, int(len(unitedAtoms)/2)):
+            lipid = unitedAtoms[2*i]
+            UAlipid = unitedAtoms[2*i+1]
+            unitedAtomsDic[lipid]=UAlipid
+        sim['UADICTIONARY'] = unitedAtomsDic
+        
+    print(sim)
 
 # ## Read molecule numbers into dictionary
 
@@ -656,13 +668,12 @@ for sim in sims_working_links :
     tpr = str(dir_tmp)+ '/' + str(ID) + '/' + str(sim.get('TPR')).translate({ord(c): None for c in "']["})
     trj = str(dir_tmp)+ '/' + str(ID) + '/' + str(sim.get('TRJ')).translate({ord(c): None for c in "']["})
     gro = str(dir_tmp) + '/' + str(ID) + '/' + 'conf.gro'
- #   if str(sim.get('INI')).translate({ord(c): None for c in "']["}) != '':
- #       gro = str(sim.get('INI')).translate({ord(c): None for c in "']["})
- #       gro_path = str(dir_wrk) + '/tmp/' + str(ID) + '/' + gro
 
-  #  else:
+    #make gro file
     get_ipython().system('echo System | gmx trjconv -f {trj} -s {tpr} -dump 0 -o {gro}')
-  #  gro_path = str(dir_tmp) + '/' + str(ID) + '/' + 'conf.gro'
+
+    # add gro into dictionary for later use
+    sim['GRO'] = gro
     
     
     
@@ -859,6 +870,10 @@ import warnings
 import subprocess
 import mdtraj
 import json
+import sys
+#sys.path.insert(1, '../')
+import buildH_calcOP_test
+
 #!cp corr_ftios_ind.sh {dir_wrk}
 for sim in sims_working_links:
     trj=sim.get('TRJ')
@@ -903,34 +918,75 @@ for sim in sims_working_links:
     
     print("Calculating order parameters")
     
+    if unitedAtom:
+        for key in sim['UADICTIONARY']:
+        #construct order parameter definition file for CH bonds from mapping file
+            def_file = open(str(dir_wrk) + '/tmp/' + str(ID) + '/' + key + '.def', 'w')
 
-    for key in sim['MAPPING_DICT']:    
-        mapping_file = sim['MAPPING_DICT'][key]
-        OrdParam=find_OP('../mapping_files/'+mapping_file,tpr,xtcwhole,key)
+            mapping_file = sim['MAPPING_DICT'][key]
+            previous_line = ""
+            
+            with open('../mapping_files/'+mapping_file, "r") as f:
+                for line in f.readlines():
+                    if not line.startswith("#"):
+                        regexp1_H = re.compile(r'M_[A-Z0-9]*C[0-9]*H[0-9]*_M')
+                        regexp2_H = re.compile(r'M_G[0-9]*H[0-9]*_M')
+                        regexp1_C = re.compile(r'M_[A-Z0-9]*C[0-9]*_M')
+                        regexp2_C = re.compile(r'M_G[0-9]_M')
 
-        outfile=open(str(dir_tmp) + '/' + str(ID)+'/' + key + 'OrderParameters.dat','w')
-        line1="Atom     Average OP     OP stem"+'\n'
-        outfile.write(line1)
+                        if regexp1_C.search(line) or regexp2_C.search(line):
+                            atomC = line.split()
+                            atomH = []
+                        elif regexp1_H.search(line) or regexp2_H.search(line):
+                            atomH = line.split()
+                        else:
+                            atomC = []
+                            atomH = []
+
+                        if atomH:
+                            items = [atomC[1], atomH[1], atomC[0], atomH[0]]
+                            def_line = items[3] + " " + key + " " + items[0] + " " + items[1] + "\n"
+                            if def_line != previous_line:
+                                def_file.write(def_line)
+                                print(def_line)
+                                previous_line = def_line
+            def_file.close()
+
+        #Add hydrogens to trajectory and calculate order parameters with buildH
+            ordPfile = str(dir_wrk) + '/tmp/' + str(ID) + '/' + key + '_order_parameter.dat'
+            topfile = sim.get('GRO')
+            deffile = str(dir_wrk) + '/tmp/' + str(ID) + '/' + key + '.def'
+            lipidname = sim['UADICTIONARY'][key]
+            print(lipidname)
+            buildH_calcOP_test.main(topfile,lipidname,deffile,xtcwhole,ordPfile)
+    else:
+        for key in sim['MAPPING_DICT']:    
+            mapping_file = sim['MAPPING_DICT'][key]
+            OrdParam=find_OP('../mapping_files/'+mapping_file,tpr,xtcwhole,key)
+
+            outfile=open(str(dir_tmp) + '/' + str(ID)+'/' + key + 'OrderParameters.dat','w')
+            line1="Atom     Average OP     OP stem"+'\n'
+            outfile.write(line1)
     
-        data = {}
-        outfile2=str(dir_tmp) + '/' + str(ID)+'/' + key + 'OrderParameters.json' 
+            data = {}
+            outfile2=str(dir_tmp) + '/' + str(ID)+'/' + key + 'OrderParameters.json' 
         
-        for i,op in enumerate(OrdParam):
-            resops =op.get_op_res
-            (op.avg, op.std, op.stem) =op.get_avg_std_stem_OP
-            line2=str(op.name)+" "+str(op.avg)+" "+str(op.stem)+'\n'
-            outfile.write(line2)
+            for i,op in enumerate(OrdParam):
+                resops =op.get_op_res
+                (op.avg, op.std, op.stem) =op.get_avg_std_stem_OP
+                line2=str(op.name)+" "+str(op.avg)+" "+str(op.stem)+'\n'
+                outfile.write(line2)
     
-            data[str(op.name)]=[]
-            data[str(op.name)].append(op.get_avg_std_stem_OP)
+                data[str(op.name)]=[]
+                data[str(op.name)].append(op.get_avg_std_stem_OP)
         
-        with open(outfile2, 'w') as f:
-            json.dump(data,f)
+            with open(outfile2, 'w') as f:
+                json.dump(data,f)
 
-        outfile.close()
+            outfile.close()
 
-        get_ipython().system("cp {str(dir_tmp)}'/'{str(ID)}'/'{key}'OrderParameters.dat' {data_directory.get(str(ID))}    ")
-        get_ipython().system("cp {str(dir_tmp)}'/'{str(ID)}'/'{key}'OrderParameters.json' {data_directory.get(str(ID))}  ")
+            get_ipython().system("cp {str(dir_tmp)}'/'{str(ID)}'/'{key}'OrderParameters.dat' {data_directory.get(str(ID))}    ")
+            get_ipython().system("cp {str(dir_tmp)}'/'{str(ID)}'/'{key}'OrderParameters.json' {data_directory.get(str(ID))}  ")
     
     print("Done calculating order parameters.")
 
