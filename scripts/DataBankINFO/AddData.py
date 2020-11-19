@@ -313,7 +313,73 @@ namd_dict = {
 charmm_dict = {}
 
 # OPENMM
-openmm_dict = {}
+openmm_dict = {
+               'INI' : {"REQUIRED": False,
+                        "TYPE" : "files",
+                        "EXTENSION" : ("gro", "pdb",),
+                       }, # Could be not needed in the future (tpr)
+               'MDP' : {"REQUIRED": False,
+                        "TYPE" : "file",
+                        "EXTENSION" : ("mdp",),
+                       }, # Could be not needed in the future (tpr)
+               'TRJ' : {"REQUIRED": True,
+                        "TYPE" : "files",
+                        "EXTENSION" : ("xtc","trr",),
+                       },
+               'PDB' : {"REQUIRED": True,
+                        "TYPE" : "file",
+                        "EXTENSION" : ("pdb",),
+                       },
+               'TPR' : {"REQUIRED": False,
+                        "TYPE" : "file",
+                        "EXTENSION" : ("tpr",),
+                       },
+               'CPT' : {"REQUIRED": False,
+                        "TYPE" : "file",
+                        "EXTENSION" : ("cpt",),
+                       },
+               'TOP' : {"REQUIRED": False,
+                        "TYPE" : "file",
+                        "EXTENSION" : ("top",),
+                       },
+               'ITP' : {"REQUIRED": False,
+                        "TYPE" : "files",
+                        "EXTENSION" : ("itp",),
+                       },
+               'FF'  : {"REQUIRED": False,
+                        "TYPE" : "string",
+                       },
+               'FF_SOURCE' : {"REQUIRED": False,
+                              "TYPE" : "string",
+                              },
+               'FF_DATE' : {"REQUIRED": False,
+                            "TYPE" : "date",
+                           },
+               'DOI' : {"REQUIRED": True,
+                            "TYPE" : "string",
+                           },
+
+               'SYSTEM' : {"REQUIRED": True,
+                            "TYPE" : "string",
+                           },
+            'TEMPERATURE' : {"REQUIRED": False,
+                            "TYPE" : "integer",
+                            },
+             'TRJLENGTH' : {"REQUIRED": False,
+                           "TYPE" : "integer",
+                           },
+            'PREEQTIME' : {"REQUIRED": True,
+                          "TYPE" : "integer",
+                          },
+          'TIMELEFTOUT' : {"REQUIRED":True,
+                          "TYPE" : "integer",
+                          },
+            'MAPPING' : {"REQUIRED": True,
+                             "TYPE" : "string",
+ #                        "EXTENSION": ("txt"),
+                             },
+
+               }
 
 # SOFTWARE
 software_dict = {
@@ -548,9 +614,10 @@ for sim in sims_working_links:
                     file_name = os.path.join(dir_sim, file_provided[0])
                     if (not os.path.isfile(file_name)):
                         response = urllib.request.urlretrieve(file_url, file_name)
-        except: #It is normal that fails for "ID" and "SOFTWARE"
+        except:# urllib.error.ContentTooShortError(): #It is normal that fails for "ID" and "SOFTWARE"
+           # print("Downloading of the file " + str(file_name) + " failed.")
+            #break
             continue
-            
 
 
 # ## Calculate hash downloaded files
@@ -670,7 +737,7 @@ for sim in sims_working_links :
     gro = str(dir_tmp) + '/' + str(ID) + '/' + 'conf.gro'
 
     #make gro file
-    get_ipython().system('echo System | gmx trjconv -f {trj} -s {tpr} -dump 0 -o {gro}')
+    os.system('echo System | gmx trjconv -f '+trj+' -s '+tpr+' -dump 0 -o ' +gro)
 
     # add gro into dictionary for later use
     sim['GRO'] = gro
@@ -786,12 +853,13 @@ for sim in sims_working_links:
     tpr_path = str(dir_tmp) + '/' + str(ID) + '/' + tpr
     trj = str(sim.get('TRJ')).translate({ord(c): None for c in "']["})
     trj_path = str(dir_tmp) + '/' + str(ID) + '/' + trj
-    
-    get_ipython().system('echo System | gmx dump -s {tpr_path} > tpr.txt')
-    
     file1 = str(dir_tmp) + '/' + str(ID) + '/tpr.txt'
 
-    with open("tpr.txt", 'rt') as tpr_info:
+    os.system('echo System | gmx dump -s '+ tpr_path +' > '+file1)
+    
+    
+
+    with open(file1, 'rt') as tpr_info:
         for line in tpr_info:
             if 'ref-t' in line:
                 sim['TEMPERATURE']=line.split()[1]
@@ -825,14 +893,10 @@ for sim in sims_working_links:
     sub_dir2 = sims_hashes[ID].get('TPR')[0][1]
     sub_dir3 = sims_hashes[ID].get('TRJ')[0][1]
     
-   # !mkdir {'../TABLEIII/'}
-   # !mkdir {'../Data/Simulations'}
-   # !mkdir {'../Data/Simulations/TABLEIII'}
-    
-    get_ipython().system("mkdir {'../../Data/Simulations/' + str(head_dir)}")
-    get_ipython().system("mkdir {'../../Data/Simulations/' + str(head_dir) + '/' + str(sub_dir1)}")
-    get_ipython().system("mkdir {'../../Data/Simulations/' + str(head_dir) + '/' + str(sub_dir1) + '/' + str(sub_dir2)}")
-    get_ipython().system("mkdir {'../../Data/Simulations/' + str(head_dir) + '/' + str(sub_dir1) + '/' + str(sub_dir2) + '/' + str(sub_dir3)}")
+    os.system('mkdir ../../Data/Simulations/' + str(head_dir))
+    os.system('mkdir ../../Data/Simulations/' + str(head_dir) + '/' + str(sub_dir1))
+    os.system('mkdir ../../Data/Simulations/' + str(head_dir) + '/' + str(sub_dir1) + '/' + str(sub_dir2))
+    os.system('mkdir ../../Data/Simulations/' + str(head_dir) + '/' + str(sub_dir1) + '/' + str(sub_dir2) + '/' + str(sub_dir3))
     
     DATAdir = '../../Data/Simulations/' + str(head_dir) + '/' + str(sub_dir1) + '/' + str(sub_dir2) + '/' + str(sub_dir3)
     data_directory[str(ID)] = DATAdir
@@ -851,8 +915,8 @@ for sim in sims_working_links:
     
     with open(outfileDICT, 'w') as f:
         yaml.dump(sim,f, sort_keys=False)
-        
-    get_ipython().system("cp {str(dir_tmp)}'/'{str(ID)}'/README.yaml' {data_directory.get(str(ID))}")
+       
+    os.system('cp ' + str(dir_tmp) + '/' + str(ID) + '/README.yaml ' + data_directory.get(str(ID)))
     #outfileDICT.write(str(sim))
     #outfileDICT.close()
    
@@ -881,13 +945,14 @@ for sim in sims_working_links:
     ID=sim.get('ID')
     software=sim.get('SOFTWARE')
     EQtime=float(sim.get('TIMELEFTOUT'))*1000
+    unitedAtom = sim.get('UNITEDATOM')
     
-    ext=trj[0:-3] # getting the trajectory extension
-    
+    ext=str(trj)[-6:-3] # getting the trajectory extension
+    print(ext)
     # BATUHAN: Adding a few lines to convert the trajectory into .xtc using MDTRAJ
     #          We will need users to install MDTRAJ in their system so that we can convert other trajectories into xtc
 
-    if software != "gromacs":
+    if ext != "xtc":
         
         print("converting the trajectory into xtc")
         
@@ -897,9 +962,9 @@ for sim in sims_working_links:
         input_pdb = str(dir_tmp) + '/' + str(ID) + '/' + pdb[0][0]
       
         if os.path.isfile(output_traj): # when we're done with the converted trajectory we can simply remove it
-            get_ipython().system('rm {output_traj}')
+            os.system('rm {output_traj}')
         
-        get_ipython().system('echo System | mdconvert {input_traj} -o {output_traj} -t {input_pdb} --force # force overwrite')
+        os.system('echo System | mdconvert {input_traj} -o {output_traj} -t {input_pdb} --force # force overwrite')
         
         # SAMULI: this xtcwhole does not necessarily have molecules as whole. Only if {input_traj} has.
         xtcwhole = str(dir_tmp) + '/' + str(ID) + '/' + 'tmp_converted.xtc'
@@ -912,7 +977,7 @@ for sim in sims_working_links:
         xtc = str(dir_tmp) + '/' + str(ID) + '/' + str(trj[0][0])  
         tpr = str(dir_tmp) + '/' + str(ID) + '/' + str(tpr[0][0])
         xtcwhole=str(dir_tmp) + '/' + str(ID) + '/whole.xtc'
-        get_ipython().system('echo System | gmx trjconv -f {xtc} -s {tpr} -o {xtcwhole} -pbc mol -b {EQtime}')
+        os.system('echo System | gmx trjconv -f ' + xtc + ' -s ' + tpr + ' -o ' + xtcwhole + ' -pbc mol -b ' + str(EQtime))
    
 
     
@@ -957,7 +1022,7 @@ for sim in sims_working_links:
             topfile = sim.get('GRO')
             deffile = str(dir_wrk) + '/tmp/' + str(ID) + '/' + key + '.def'
             lipidname = sim['UADICTIONARY'][key]
-            print(lipidname)
+        #    print(lipidname)
             buildH_calcOP_test.main(topfile,lipidname,deffile,xtcwhole,ordPfile)
     else:
         for key in sim['MAPPING_DICT']:    
@@ -985,8 +1050,8 @@ for sim in sims_working_links:
 
             outfile.close()
 
-            get_ipython().system("cp {str(dir_tmp)}'/'{str(ID)}'/'{key}'OrderParameters.dat' {data_directory.get(str(ID))}    ")
-            get_ipython().system("cp {str(dir_tmp)}'/'{str(ID)}'/'{key}'OrderParameters.json' {data_directory.get(str(ID))}  ")
+            os.system('cp ' + str(dir_tmp) + '/' + str(ID) + '/' + key + '_OrderParameters.dat ' + data_directory.get(str(ID)))
+            os.system('cp ' +str(dir_tmp) + '/' + str(ID) + '/' + key + '_OrderParameters.json ' + data_directory.get(str(ID)))
     
     print("Done calculating order parameters.")
 
