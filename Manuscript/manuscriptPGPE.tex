@@ -150,6 +150,10 @@ bacteria \cite{devries04,murzyn05,pedersen06,zhao07,gurtovenko08,zhao08,henin09,
 \todo{There may be some relevant publication missing from here},
 but evaluation of glycerol backbone and headgroup structures against experiments is rare \cite{henin09}.
 
+Derivation of different lipid headgroup conformational ensembles in liquid state has been
+inconclusive due to lack of suitable experimental data and tools to interpret the conformational ensembles.
+
+
 Besides the structure, also ion binding may regulate biophysical activity of especially negatively
 charged lipid headgroups \cite{seelig90}. Monovalent cation (except Lithium) binding to zwitterionic PC and anionic PS headgroups is
 very weak, while multivalent ion binding is stronger but still weak \cite{cevc90,tocanne90,roux90,catte16,antila19}. The ion binding affinity
@@ -283,26 +287,29 @@ API access to the databank.
 %\subsection{Headgroup and glycerol backbone order parameters of POPE and POPG from $^{13}$C NMR}
 \subsection{Conformational ensembles of different lipid headgroups in bulk bilayer}
 
-Derivation of different lipid headgroup conformational ensembles in liquid state has been
-%discussed previously \cite{??}, but these studies have been
-inconclusive due to lack of suitable experimental data and tools to interpret the conformational ensembles.
-Our experimental order parameters, including the signs, from different lipid headgroups
-combined with the literature data are shown in Fig. \ref{HGorderParameters}.
-The glycerol backbone order parameters are similar for all the lipids, although they move slightly toward
-positive values (closer to zero) in the order PC $<$ PE $<$ PS $<$ PG. 
+To experimentally characterize the differences in lipid headgroup conformational ensembles
+in liquid bilayer phase, we measured the C-H bond order parameters magnitudes and signs
+from POPG and POPE bilayers, and compared those to our previously published results
+for POPC \cite{ferreira13,ferreira16} and POPS \cite{antila19} in figure \ref{HGorderParameters}.
+%Our experimental order parameters, including the signs, from different lipid headgroups
+%combined with the literature data are shown in Fig. \ref{HGorderParameters}.
 %Also the headgroup order parameters of PC lipids are close PE, althought the latter gives systematically
 %slightly more positive values (Fig. \ref{HGorderParameters}).
 % These could be explained with slightly larger temperature in PE measurements, except for the $\alpha$-carbon with the positive sign, for which the
 % more positive value is farther away from zero.
-While the headgroup order parameters are similar for PC and PE lipids,
-PG and PS lipids exhibit distinct values in comparison with other lipids.
-In PS headgroup, the $\alpha$-carbon order parameter exhibits significant forking and
-the $\beta$-carbon has more negative value than in other lipids.
-In PG headgroup, the $\alpha$-carbon order parameter is similar to PE and PG,
-while the positive value of $\beta$-carbon is distinct from all the other lipids.
-Notably, this difference was not observed in previous $^2$H NMR experiments,
-because absolute value of $\beta$-carbon order parameter is similar in PG, PE and PC lipids and the order parameter
-signs were not measured~\cite{wohlgemuth80,gally81,borle85}.
+%While the headgroup order parameters are similar for PC and PE lipids,
+%PG and PS lipids exhibit distinct values in comparison with other lipids.
+The most distinct order parameters are observed for PS and PG headgroups.
+In PS, the $\alpha$-carbon order parameter exhibits significant forking
+and the $\beta$-carbon has more negative value than in other lipids.
+In PG headgroup,
+%the $\alpha$-carbon order parameter is similar to PE and PG, while
+the $\beta$-carbon order parameter has positive sign in contrast to all the other lipids.
+Notably, this has not been observed in traditional $^2$H NMR experiments,
+%because absolute value of $\beta$-carbon order parameter is similar in PG, PE and PC lipids and
+where only the absolute value of the order parameters are measured~\cite{wohlgemuth80,gally81,borle85}.
+The glycerol backbone order parameters are similar for all the lipids, although they move slightly toward
+positive values (closer to zero) in the order PC $<$ PE $<$ PS $<$ PG. 
 
 %As discussed previously for PC and PS headgroups \cite{ollila16,antila19}, also 
 %the headgroup and glycerol backbone order parameters of PE and PG are essentially independent of 
@@ -329,6 +336,21 @@ signs were not measured~\cite{wohlgemuth80,gally81,borle85}.
   \todo{The bottom figure could be clarified as Fig. 2 in the NMRlipids IVps paper.}
 \end{figure}
 
+To characterize the differences in lipid headgroup conformational ensembles
+leading to the distinct order parameters in PS and PG lipids, we calculate the
+the distributions of heavy atom dihedral angles from CHARMM36 simulations.
+Among available simulation models, this force field has least problems in
+reproducing the experimental lipid headgroup and glycerol backbone order parameters in different lipids,
+see Refs. \cite{botan15} and \cite{antila19}, and Figs. \ref{HGorderParametersPE} and \ref{HGorderParametersPOPG}.
+Importantly, it captures the experimentally observed distinct order parameters for PS and PG headgroups (Fig. \ref{??}).
+
+
+show major differences between lipids only for O$_\alpha$-C$_\alpha$ and  C$_\alpha$-C$_\beta$ bonds
+near the end of the headgroup (Fig. \ref{structures}).
+These probably explain the slight differences in the
+angle between headgroup dipole and membrane normal, which decreases 
+in the order PG $>$ PE  $>$ PC  $>$ PS, although difference between PC and PE may an artefact as
+the $\beta$-carbon order parameter in PC is poorly reproduced by the CHARMM36 force field.
 As in previous NMRlipids project results for PC and PS lipids \cite{botan15,antila19},
 none of the MD simulation force fields correctly captures all the
 headgroup and glycerol backbone order parameters of PE and PG lipids
@@ -352,13 +374,7 @@ PC, PS, PG and PE headroup order parameters  (Fig.~\ref{structures}) with the ex
 which is too negative when compared with other lipids or experiments \cite{botan15}.
 % As already pointed out in our previous study \cite{antila19},
 
-The conformational ensembles characterized by the distributions of heavy atom dihedral angles
-show major differences between lipids only for O$_\alpha$-C$_\alpha$ and  C$_\alpha$-C$_\beta$ bonds
-near the end of the headgroup (Fig. \ref{structures}).
-These probably explain the slight differences in the
-angle between headgroup dipole and membrane normal, which decreases 
-in the order PG $>$ PE  $>$ PC  $>$ PS, although difference between PC and PE may an artefact as
-the $\beta$-carbon order parameter in PC is poorly reproduced by the CHARMM36 force field.
+
 Dihedrals of both O-P bonds can freely rotate in all lipids as all possible angles
 are observed in the distributions. For PS, however, some angles are quite unlikely,
 possible explaining the more rigid headgroup structures proposed for PS lipids~\cite{browning80,buldt81}.
@@ -393,7 +409,7 @@ when interaction with proteins, ions or other biomolecules.
 
 \begin{figure*}[!h]
   \centering
-  \includegraphics[width=18.0cm]{../Figs/PCPEPGPSstructures.png}
+  \includegraphics[width=18.0cm]{../Figs/PCPEPGPSstructures2.png}
   \includegraphics[width=8.0cm]{../Figs/CHARMMfromLIPIDS.eps}
 %  \includegraphics[width=8.0cm]{../Figs/PCPEPGPSdihedrals1.png}
 %  \includegraphics[width=8.0cm]{../Figs/PCPEPGPSdihedrals2.png}
@@ -403,7 +419,6 @@ when interaction with proteins, ions or other biomolecules.
     Overlayed snapshots and dihedral angle distributions from CHARMM36 simulations of different lipids
     which give the best agreement with experiments.
   }
-  \todo{The differences observed in dihedral distributions are not visible in the snapshot figures.} \\
   \todo{More detailed discussion of this figure is in https://github.com/NMRLipids/NMRlipidsIVPEandPG/issues/9} \\
 \end{figure*}
 
