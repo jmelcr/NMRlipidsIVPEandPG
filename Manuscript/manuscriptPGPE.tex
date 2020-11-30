@@ -340,22 +340,26 @@ To characterize the differences in lipid headgroup conformational ensembles
 leading to the distinct order parameters in PS and PG lipids, we calculate the
 the distributions of heavy atom dihedral angles from CHARMM36 simulations.
 Among available simulation models, this force field has least problems in
-reproducing the experimental lipid headgroup and glycerol backbone order parameters in different lipids,
-see Refs. \cite{botan15} and \cite{antila19}, and Figs. \ref{HGorderParametersPE} and \ref{HGorderParametersPOPG}.
+reproducing the experimental lipid headgroup and glycerol backbone order parameters in different
+lipids \cite{botan15,antila19} (Figs. \ref{HGorderParametersPE} and \ref{HGorderParametersPOPG}).
 Importantly, it captures the experimentally observed distinct order parameters for PS and PG headgroups (Fig. \ref{??}).
+The dihedral distributions show significant similarity between different lipids for all the other
+bonds, except for the last two in the headgroup end, O$_\alpha$-C$_\alpha$ and  C$_\alpha$-C$_\beta$ bonds,
+in figure \ref{structures}. Therefore, we conclude that the disctinct order parameters of
+PS and PG headgroups can be explained by the differences in these two dihedrals with respenct to other lipids.
+The differences between PC and PE lipids, especially in O$_\alpha$-C$_\alpha$ bond dihedral,
+may be an artefact because the $\beta$-carbon order parameter in PC is poorly reproduced by the CHARMM36 force field \cite{botan15}.
+In larger scale, these differences are reflected, for example, to the 
+angle between headgroup dipole and membrane normal,
+which decreases in the order of PG $>$ PE  $>$ PC  $>$ PS (Fig. \ref{structures}). 
 
-
-show major differences between lipids only for O$_\alpha$-C$_\alpha$ and  C$_\alpha$-C$_\beta$ bonds
-near the end of the headgroup (Fig. \ref{structures}).
-These probably explain the slight differences in the
-angle between headgroup dipole and membrane normal, which decreases 
-in the order PG $>$ PE  $>$ PC  $>$ PS, although difference between PC and PE may an artefact as
-the $\beta$-carbon order parameter in PC is poorly reproduced by the CHARMM36 force field.
-As in previous NMRlipids project results for PC and PS lipids \cite{botan15,antila19},
-none of the MD simulation force fields correctly captures all the
-headgroup and glycerol backbone order parameters of PE and PG lipids
-(Figs. \ref{HGorderParametersPE} and \ref{HGorderParametersPOPG})
-that would enable a straightforward interpretation of conformational ensembles.
+%
+%As in previous NMRlipids project results for PC and PS lipids \cite{botan15,antila19},
+%none of the MD simulation force fields correctly captures all the
+%headgroup and glycerol backbone order parameters of PE and PG lipids
+%(Figs. \ref{HGorderParametersPE} and \ref{HGorderParametersPOPG})
+%that would enable a straightforward interpretation of conformational ensembles.
+%
 %show wide variation between different force fields
 %and none of the force fields reproduce all values within experimental error bars.
 %(Figs. \ref{HGorderParametersPE} and \ref{HGorderParametersPOPG}),
@@ -364,14 +368,18 @@ that would enable a straightforward interpretation of conformational ensembles.
 %headgroups \cite{antila19}, but this is not the case for PE and PG lipids.
 %Without further discussion about poorly performing force fields, we focus on more detailed analysis
 %of
-Nevertheless, CHARMM36 force field, which gives the results closest to the experiments for all lipids,
-captures the essential differences between
-PC, PS, PG and PE headroup order parameters  (Fig.~\ref{structures}) with the exception of $\beta$-carbon order parameter of PC
+%
+%Nevertheless, CHARMM36 force field, which gives the results closest to the experiments for all lipids,
+%captures the essential differences between
+%PC, PS, PG and PE headroup order parameters  (Fig.~\ref{structures}) with the exception of $\beta$-carbon order parameter of PC
+%
 %give the best overall agreement with experiments for
 %the headgroup and glycerol backbone order parameters of all PC, PS, PG and PE lipids in this and our previous
 %studies \cite{botan15,antila19}. Even thought many order parameters in CHARMM36 simulations are
 %not within the experimental error bars, it 
-which is too negative when compared with other lipids or experiments \cite{botan15}.
+%
+%which is too negative when compared with other lipids or experiments \cite{botan15}.
+%
 % As already pointed out in our previous study \cite{antila19},
 
 
