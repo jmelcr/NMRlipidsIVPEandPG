@@ -85,6 +85,44 @@ University of Groningen, 9747 AG Groningen, The Netherlands}
 \newpage
 %\tableofcontents
 
+
+\section{R-PDLF and SDROSS experiments}
+
+\begin{figure}[]
+%  \centering
+  \includegraphics[width=0.8\textwidth]{../Figs/POPEexperiment.pdf}
+  \caption{\label{POPEspectra}
+    (A) Chemical structure of POPE with the labeling of headgroup and glycerol backbone carbons.
+    (B) INEPT spectra from POPE sample with the headgroup and glycerol backbone peaks labeled.
+    (C) 2D R-PDLF spectra
+    (D) Dipolar sliced from the  2D R-PDLF spectra with the resulting order parameters on top of figures.
+    (E) Experimetal S-DROSS curves giving signs of the order parameters.
+  }
+  \todo{A, B etc. labels to be put in the figure.}
+\end{figure}
+
+\begin{figure}[]
+%  \centering
+  \includegraphics[width=0.8\textwidth]{../Figs/PGexpRPDLF.eps}
+  \caption{\label{POPGspectra}
+    (A) Chemical structure of POPG with the labeling of headgroup and glycerol backbone carbons.
+    (B) INEPT spectra from POPG sample with the headgroup and glycerol backbone peaks labeled.
+    (C) 2D R-PDLF spectra
+    (D) Dipolar sliced from the  2D R-PDLF spectra with the resulting order parameters on top of figures.
+    (E) Experimetal S-DROSS curves giving signs of the order parameters.
+  }
+\end{figure}
+
+\begin{figure}[]
+%  \centering
+  \includegraphics[width=0.8\textwidth]{../Figs/SIMPSON.pdf}
+  \caption{\label{POPGsimpson}
+    Simpson simulaton of S-DROSS curve of $\beta$-carbon of POPG.
+  }
+\end{figure}
+
+
+\clearpage
 \section{Comparison of headgroup order parameters from different force fields to experiments}
 The poor performance of headgroup order parameters in Berger model can be probably explained by
 ring like structures seen in Fig. 6 in Ref. \citenum{mukhopadhyay04}, which is a typical feature
@@ -271,6 +309,162 @@ while the other simulations are more realistic, but slight overbinding cannot be
 \end{figure}
 
 
+
+\section{Calcium density distributions}
+
+\begin{figure}[]
+  \centering
+  \includegraphics[width=8.0cm]{../Figs/CAdensPG1PC1.eps}
+  \caption{\label{CAdensPG}
+    Calcium ion density profiles along membrane normal from simulations of POPC:POPG (1:1) mixtures with different force fields.
+  }
+\end{figure}
+
+
+\clearpage
+
+\section{Changes of PG headroup order parameters upon addition of PC}
+
+\begin{figure}[]
+  \centering
+  \includegraphics[width=8.0cm]{../Figs/HGorderparametersPGvsPC.eps}
+  \caption{\label{HGorderparametersPGvsPC}
+    Modulation of PG lipid headgroup order parameters with the increasing amount of PC in lipid bilayer
+    from experiments \cite{borle85,macdonald87} and simulations with different force fields.
+  }
+\end{figure}
+
+\clearpage
+
+\section{Sodium binding to POPC simulations}
+
+\begin{figure}[]
+  \centering
+  \includegraphics[width=8.0cm]{../Figs/NAdensPC.eps}
+  \caption{\label{NAdensPC}
+    Sodium (solid line) and choride ion density profiles along membrane normal
+    from different simulations with PC lipids.
+  }
+  \todo{Discussion about differences to the NMRlipids II to be discussed once we have the details on ions models.}
+\end{figure}
+
+\clearpage
+
+\section{Calcium binding to POPC:POPG (4:1) mixtures}
+\begin{figure*}[]
+  \centering
+  \includegraphics[width=18.0cm]{../Figs/CHANGESwithCaClPG1PC4.eps}
+  \caption{\label{changesWITHCaClPG1PC4}
+    Modulation of headgroup order parameters of POPC ({\it left}) and POPG ({\it right}) in POPC:POPG (4:1)
+    mixture upon addition of CaCl$_2$ in 298 K temperature from experiments \cite{macdonald87} and simulations.
+    The changes with respect to the systems without CaCl$_2$ are shown for other data than
+    for the $\alpha$-carbon of POPG for which experimental order parameter is not available.
+  }
+  \todo{Lipid17ecc data to be analyzed and added.}
+\end{figure*}
+
+\begin{figure}[]
+  \centering
+  \includegraphics[width=8.0cm]{../Figs/CAdensPG1PC4.eps}
+  \caption{\label{CAdensPG1PC4}
+    Calcium ion density profiles along membrane normal from simulations of POPC:POPG (4:1) mixtures with different force fields.
+  }
+\end{figure}
+
+\section{Changes in headgroup conformations upon addition of CaCl$_2$}
+
+\begin{figure}[]
+  \centering
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3O3_M_M_G3C4_M_M_G3C5_M_M_G3N6_MCHARMM36.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3P2_M_M_G3O3_M_M_G3C4_M_M_G3C5_MCHARMM36.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3O1_M_M_G3P2_M_M_G3O3_M_M_G3C4_MCHARMM36.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3_M_M_G3O1_M_M_G3P2_M_M_G3O3_MCHARMM36.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G2_M_M_G3_M_M_G3O1_M_M_G3P2_MCHARMM36.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G1_M_M_G2_M_M_G3_M_M_G3O1_MCHARMM36.png}  
+  \caption{\label{DIHSwithCA}
+    Changes in POPC CHARMM36 dihedrals with increasing amount of CaCl$_2$.
+  }
+\end{figure}
+
+\begin{figure}[]
+  \centering
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3O3_M_M_G3C4_M_M_G3C5_M_M_G3N6_Mlipid17ecc.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3P2_M_M_G3O3_M_M_G3C4_M_M_G3C5_Mlipid17ecc.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3O1_M_M_G3P2_M_M_G3O3_M_M_G3C4_Mlipid17ecc.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3_M_M_G3O1_M_M_G3P2_M_M_G3O3_Mlipid17ecc.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G2_M_M_G3_M_M_G3O1_M_M_G3P2_Mlipid17ecc.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G1_M_M_G2_M_M_G3_M_M_G3O1_Mlipid17ecc.png}  
+  \caption{\label{DIHSwithCAlipid17eccPOPC}
+    Changes in POPC lipid17ecc dihedrals with increasing amount of CaCl$_2$.
+  }
+\end{figure}
+
+
+%\begin{figure}[]
+%  \centering
+%  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3O3_M_M_G3C4_M_M_G3C5_M_M_G3N6_MSlipids.png}
+%  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3P2_M_M_G3O3_M_M_G3C4_M_M_G3C5_MSlipids.png}
+%  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3O1_M_M_G3P2_M_M_G3O3_M_M_G3C4_MSlipids.png}
+%  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3_M_M_G3O1_M_M_G3P2_M_M_G3O3_MSlipids.png}
+%  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G2_M_M_G3_M_M_G3O1_M_M_G3P2_MSlipids.png}
+%  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G1_M_M_G2_M_M_G3_M_M_G3O1_MSlipids.png}  
+%  \caption{\label{DIHSwithCA}
+%    Changes in POPC Slipids dihedrals with increasing amount of CaCl$_2$.
+%  }
+%\end{figure}
+
+\begin{figure}[]
+  \centering
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G3O3_M_M_G3C4_M_M_G3C5_M_M_G3C6_MSlipids.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G3P2_M_M_G3O3_M_M_G3C4_M_M_G3C5_MSlipids.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G3O1_M_M_G3P2_M_M_G3O3_M_M_G3C4_MSlipids.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G3_M_M_G3O1_M_M_G3P2_M_M_G3O3_MSlipids.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G2_M_M_G3_M_M_G3O1_M_M_G3P2_MSlipids.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G1_M_M_G2_M_M_G3_M_M_G3O1_MSlipids.png}  
+  \caption{\label{DIHSwithCAslipidsPOPG}
+    Changes in POPG Slipids dihedrals with increasing amount of CaCl$_2$.
+  }
+\end{figure}
+
+%\begin{figure}[]
+%  \centering
+%  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3O3_M_M_G3C4_M_M_G3C5_M_M_G3N6_Mlipid17.png}
+%  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3P2_M_M_G3O3_M_M_G3C4_M_M_G3C5_Mlipid17.png}
+%  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3O1_M_M_G3P2_M_M_G3O3_M_M_G3C4_Mlipid17.png}
+%  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3_M_M_G3O1_M_M_G3P2_M_M_G3O3_Mlipid17.png}
+%  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G2_M_M_G3_M_M_G3O1_M_M_G3P2_Mlipid17.png}
+%  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G1_M_M_G2_M_M_G3_M_M_G3O1_Mlipid17.png}  
+%  \caption{\label{DIHSwithCA}
+%    Changes in POPC lipid17 dihedrals with increasing amount of CaCl$_2$.
+%  }
+%\end{figure}
+
+\begin{figure}[]
+  \centering
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G3O3_M_M_G3C4_M_M_G3C5_M_M_G3C6_Mlipid17.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G3P2_M_M_G3O3_M_M_G3C4_M_M_G3C5_Mlipid17.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G3O1_M_M_G3P2_M_M_G3O3_M_M_G3C4_Mlipid17.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G3_M_M_G3O1_M_M_G3P2_M_M_G3O3_Mlipid17.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G2_M_M_G3_M_M_G3O1_M_M_G3P2_Mlipid17.png}
+  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G1_M_M_G2_M_M_G3_M_M_G3O1_Mlipid17.png}  
+  \caption{\label{DIHSwithCAlipid17POPG}
+    Changes in POPG lipid17 dihedrals with increasing amount of CaCl$_2$.
+  }
+\end{figure}
+
+
+%\begin{figure}[]
+%  \centering
+%  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G3O3_M_M_G3C4_M_M_G3C5_M_M_G3C6_Mlipid17ecc.png}
+%  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G3P2_M_M_G3O3_M_M_G3C4_M_M_G3C5_Mlipid17ecc.png}
+%  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G3O1_M_M_G3P2_M_M_G3O3_M_M_G3C4_Mlipid17ecc.png}
+%  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G3_M_M_G3O1_M_M_G3P2_M_M_G3O3_Mlipid17ecc.png}
+%  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G2_M_M_G3_M_M_G3O1_M_M_G3P2_Mlipid17ecc.png}
+%  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G1_M_M_G2_M_M_G3_M_M_G3O1_Mlipid17ecc.png}  
+%  \caption{\label{DIHSwithCA}
+%    Changes in POPG lipid17ecc dihedrals with increasing amount of CaCl$_2$.
+%  }
+%\end{figure}
 
 
 
@@ -568,172 +762,6 @@ of Amber Lipid17 POPG parameters. The Lipid17 parameters (described above) and i
 were taken from Ref. \cite{POPGlipid17} with the correct dihedral type,
 and the resulting parameters are available from Ref. \citenum{??}. ECC-ion parameters with the scaled charges \cite{pluharova14,kohagen16,martinek18},
 downloaded from \url{bitbucket.org/hseara/ions/src/master/}, were used in these simulations. 
-
-\clearpage
-\section{R-PDLF and SDROSS experiments}
-
-\begin{figure}[]
-%  \centering
-  \includegraphics[width=0.8\textwidth]{../Figs/POPEexperiment.pdf}
-  \caption{\label{POPEspectra}
-    (A) Chemical structure of POPE with the labeling of headgroup and glycerol backbone carbons.
-    (B) INEPT spectra from POPE sample with the headgroup and glycerol backbone peaks labeled.
-    (C) 2D R-PDLF spectra
-    (D) Dipolar sliced from the  2D R-PDLF spectra with the resulting order parameters on top of figures.
-    (E) Experimetal S-DROSS curves giving signs of the order parameters.
-  }
-  \todo{A, B etc. labels to be put in the figure.}
-\end{figure}
-
-\begin{figure}[]
-%  \centering
-  \includegraphics[width=0.8\textwidth]{../Figs/PGexpRPDLF.eps}
-  \caption{\label{POPGspectra}
-    (A) Chemical structure of POPG with the labeling of headgroup and glycerol backbone carbons.
-    (B) INEPT spectra from POPG sample with the headgroup and glycerol backbone peaks labeled.
-    (C) 2D R-PDLF spectra
-    (D) Dipolar sliced from the  2D R-PDLF spectra with the resulting order parameters on top of figures.
-    (E) Experimetal S-DROSS curves giving signs of the order parameters.
-  }
-\end{figure}
-
-\begin{figure}[]
-%  \centering
-  \includegraphics[width=0.8\textwidth]{../Figs/SIMPSON.pdf}
-  \caption{\label{POPGsimpson}
-    Simpson simulaton of S-DROSS curve of $\beta$-carbon of POPG.
-  }
-\end{figure}
-
-\clearpage
-
-\section{Changes of PG headroup order parameters upon addition of PC}
-
-\begin{figure}[]
-  \centering
-  \includegraphics[width=8.0cm]{../Figs/HGorderparametersPGvsPC.eps}
-  \caption{\label{HGorderparametersPGvsPC}
-    Modulation of PG lipid headgroup order parameters with the increasing amount of PC in lipid bilayer
-    from experiments \cite{borle85,macdonald87} and simulations with different force fields.
-  }
-\end{figure}
-
-\clearpage
-
-\section{Sodium binding to POPC simulations}
-
-\begin{figure}[]
-  \centering
-  \includegraphics[width=8.0cm]{../Figs/NAdensPC.eps}
-  \caption{\label{NAdensPC}
-    Sodium (solid line) and choride ion density profiles along membrane normal
-    from different simulations with PC lipids.
-  }
-  \todo{Discussion about differences to the NMRlipids II to be discussed once we have the details on ions models.}
-\end{figure}
-
-\clearpage
-
-\section{Calcium binding to POPC:POPG (4:1) mixtures}
-\begin{figure*}[]
-  \centering
-  \includegraphics[width=18.0cm]{../Figs/CHANGESwithCaClPG1PC4.eps}
-  \caption{\label{changesWITHCaClPG1PC4}
-    Modulation of headgroup order parameters of POPC ({\it left}) and POPG ({\it right}) in POPC:POPG (4:1)
-    mixture upon addition of CaCl$_2$ in 298 K temperature from experiments \cite{macdonald87} and simulations.
-    The changes with respect to the systems without CaCl$_2$ are shown for other data than
-    for the $\alpha$-carbon of POPG for which experimental order parameter is not available.
-  }
-  \todo{Lipid17ecc data to be analyzed and added.}
-\end{figure*}
-
-\begin{figure}[]
-  \centering
-  \includegraphics[width=8.0cm]{../Figs/CAdensPG1PC4.eps}
-  \caption{\label{CAdensPG1PC4}
-    Calcium ion density profiles along membrane normal from simulations of POPC:POPG (4:1) mixtures with different force fields.
-  }
-\end{figure}
-
-\section{Changes in headgroup conformations upon addition of CaCl$_2$}
-
-\begin{figure}[]
-  \centering
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3O3_M_M_G3C4_M_M_G3C5_M_M_G3N6_MSlipids.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3P2_M_M_G3O3_M_M_G3C4_M_M_G3C5_MSlipids.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3O1_M_M_G3P2_M_M_G3O3_M_M_G3C4_MSlipids.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3_M_M_G3O1_M_M_G3P2_M_M_G3O3_MSlipids.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G2_M_M_G3_M_M_G3O1_M_M_G3P2_MSlipids.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G1_M_M_G2_M_M_G3_M_M_G3O1_MSlipids.png}  
-  \caption{\label{DIHSwithCA}
-    Changes in POPC Slipids dihedrals with increasing amount of CaCl$_2$.
-  }
-\end{figure}
-
-\begin{figure}[]
-  \centering
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G3O3_M_M_G3C4_M_M_G3C5_M_M_G3C6_MSlipids.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G3P2_M_M_G3O3_M_M_G3C4_M_M_G3C5_MSlipids.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G3O1_M_M_G3P2_M_M_G3O3_M_M_G3C4_MSlipids.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G3_M_M_G3O1_M_M_G3P2_M_M_G3O3_MSlipids.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G2_M_M_G3_M_M_G3O1_M_M_G3P2_MSlipids.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G1_M_M_G2_M_M_G3_M_M_G3O1_MSlipids.png}  
-  \caption{\label{DIHSwithCA}
-    Changes in POPG Slipids dihedrals with increasing amount of CaCl$_2$.
-  }
-\end{figure}
-
-\begin{figure}[]
-  \centering
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3O3_M_M_G3C4_M_M_G3C5_M_M_G3N6_Mlipid17.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3P2_M_M_G3O3_M_M_G3C4_M_M_G3C5_Mlipid17.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3O1_M_M_G3P2_M_M_G3O3_M_M_G3C4_Mlipid17.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3_M_M_G3O1_M_M_G3P2_M_M_G3O3_Mlipid17.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G2_M_M_G3_M_M_G3O1_M_M_G3P2_Mlipid17.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G1_M_M_G2_M_M_G3_M_M_G3O1_Mlipid17.png}  
-  \caption{\label{DIHSwithCA}
-    Changes in POPC lipid17 dihedrals with increasing amount of CaCl$_2$.
-  }
-\end{figure}
-
-\begin{figure}[]
-  \centering
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G3O3_M_M_G3C4_M_M_G3C5_M_M_G3C6_Mlipid17.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G3P2_M_M_G3O3_M_M_G3C4_M_M_G3C5_Mlipid17.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G3O1_M_M_G3P2_M_M_G3O3_M_M_G3C4_Mlipid17.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G3_M_M_G3O1_M_M_G3P2_M_M_G3O3_Mlipid17.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G2_M_M_G3_M_M_G3O1_M_M_G3P2_Mlipid17.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G1_M_M_G2_M_M_G3_M_M_G3O1_Mlipid17.png}  
-  \caption{\label{DIHSwithCA}
-    Changes in POPG lipid17 dihedrals with increasing amount of CaCl$_2$.
-  }
-\end{figure}
-
-\begin{figure}[]
-  \centering
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3O3_M_M_G3C4_M_M_G3C5_M_M_G3N6_Mlipid17ecc.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3P2_M_M_G3O3_M_M_G3C4_M_M_G3C5_Mlipid17ecc.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3O1_M_M_G3P2_M_M_G3O3_M_M_G3C4_Mlipid17ecc.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G3_M_M_G3O1_M_M_G3P2_M_M_G3O3_Mlipid17ecc.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G2_M_M_G3_M_M_G3O1_M_M_G3P2_Mlipid17ecc.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPC_M_G1_M_M_G2_M_M_G3_M_M_G3O1_Mlipid17ecc.png}  
-  \caption{\label{DIHSwithCA}
-    Changes in POPC lipid17ecc dihedrals with increasing amount of CaCl$_2$.
-  }
-\end{figure}
-
-\begin{figure}[]
-  \centering
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G3O3_M_M_G3C4_M_M_G3C5_M_M_G3C6_Mlipid17ecc.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G3P2_M_M_G3O3_M_M_G3C4_M_M_G3C5_Mlipid17ecc.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G3O1_M_M_G3P2_M_M_G3O3_M_M_G3C4_Mlipid17ecc.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G3_M_M_G3O1_M_M_G3P2_M_M_G3O3_Mlipid17ecc.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G2_M_M_G3_M_M_G3O1_M_M_G3P2_Mlipid17ecc.png}
-  \includegraphics[width=6.0cm]{../Figs/dihedralFIGS/POPG_M_G1_M_M_G2_M_M_G3_M_M_G3O1_Mlipid17ecc.png}  
-  \caption{\label{DIHSwithCA}
-    Changes in POPG lipid17ecc dihedrals with increasing amount of CaCl$_2$.
-  }
-\end{figure}
 
 
 
