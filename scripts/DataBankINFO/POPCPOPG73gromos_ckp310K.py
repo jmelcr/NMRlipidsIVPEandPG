@@ -5,7 +5,7 @@ POPC-POPG 7:3 310K gromos-ckp
 #NMRLIPIDS BEGIN
 
 @SIM
-@MAPPING=POPG,mappingPOPGgromos-ckp.txt
+@MAPPING=POPC,mappingPOPCgromos-ckp.txt,POPG,mappingPOPGgromos-ckp.txt
 @SYSTEM=POPCPOPG7:3_T310K
 @SOFTWARE=gromacs
 @FF=gromos-ckp
@@ -13,8 +13,8 @@ POPC-POPG 7:3 310K gromos-ckp
 @FF_DATE=?/?/????
 @TRJ=total_4_500.xtc
 @TPR=md_0.tpr
-@PREEQTIME=0
-@TIMELEFTOUT=400
+@PREEQTIME=400
+@TIMELEFTOUT=0
 @UNITEDATOM=POPC,GROMOS_CKP_POPC,POPG,GROMOS_CKP_POPG
 
 @POPC=POPC
