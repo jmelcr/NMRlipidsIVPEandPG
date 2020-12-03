@@ -1,24 +1,24 @@
-DOI="10.5281/zenodo.3266240"
+DOI="10.5281/zenodo.1402449"
 
 user_information = """
-POPC-POPG 7:3 310K gromos-ckp
+POPC:POPE 1:1 300K berger
 #NMRLIPIDS BEGIN
 
 @SIM
-@MAPPING=POPC,mappingPOPCgromos-ckp.txt,POPG,mappingPOPGgromos-ckp.txt
-@SYSTEM=POPCPOPG7:3_T310K
+@MAPPING=POPC,mappingPOPCberger.txt,POPE,mappingPOPEberger.txt
+@SYSTEM=POPE_T300K
 @SOFTWARE=gromacs
-@FF=gromos-ckp
+@FF=berger
 @FF_SOURCE=??
 @FF_DATE=?/?/????
-@TRJ=total_4_500.xtc
-@TPR=md_0.tpr
-@PREEQTIME=400
-@TIMELEFTOUT=0
-@UNITEDATOM=POPC,GROMOS_CKP_POPC,POPG,GROMOS_CKP_POPG
+@TRJ=md_dt100_OK_centered.xtc
+@TPR=md.tpr
+@PREEQTIME=0
+@TIMELEFTOUT=100
+@UNITEDATOM=POPC,Berger_POPC,POPE,Berger_POPE
 
 @POPC=POPC
-@POPG=LPOG
+@POPG=POPG
 @POPS=POPS
 @POPE=POPE
 

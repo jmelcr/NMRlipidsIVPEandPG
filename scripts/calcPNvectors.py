@@ -121,7 +121,7 @@ for subdir, dirs, files in os.walk(r'../Data/Simulations/'):
                         mapping_file = './mapping_files/'+readme['MAPPING_DICT'][molname] # readme.get('MAPPING')[0][0]
                                                 
                         try:
-                            atoms = read_mapping_filePAIR(mapping_file, atom1 , atom2, molname)
+                            atoms = read_mapping_filePAIR(mapping_file, atom1 , atom2, readme[molname])
                         except:
                             print(atom1 + " and " + atom2 + " not found in the mapping file.")
                             continue

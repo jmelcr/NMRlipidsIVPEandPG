@@ -1,0 +1,51 @@
+ID: 0
+DOI: 10.5281/zenodo.1402417
+MAPPING: POPC,mappingPOPCberger.txt
+SYSTEM: POPC_T300K
+SOFTWARE: gromacs
+FF: berger
+FF_SOURCE: ??
+FF_DATE: ?/?/????
+TRJ:
+- - md_dt100_OK_centered.xtc
+TPR:
+- - md.tpr
+PREEQTIME: '0'
+TIMELEFTOUT: '100'
+UNITEDATOM: POPC,Berger_POPC
+POPC: POPC
+POPG: POPG
+POPS: POPS
+POPE: POPE
+POT: K
+SOD: NA
+CLA: CL
+CAL: CA
+SOL: SOL
+NPOPC:
+- 128
+- 128
+NPOPG:
+- 0
+- 0
+NPOPS:
+- 0
+- 0
+NPOPE:
+- 0
+- 0
+NPOT: 0
+NSOD: 0
+NCLA: 0
+NCAL: 0
+NSOL: 10342
+TEMPERATURE: '300'
+TRJLENGTH: 300100.0
+MAPPING_DICT:
+  POPC: mappingPOPCberger.txt
+UADICTIONARY:
+  POPC: Berger_POPC
+GRO: /media/osollila/Data/tmp/DATABANK/tmp_6-205652/0/conf.gro
+NCHOL:
+- 0
+- 0
