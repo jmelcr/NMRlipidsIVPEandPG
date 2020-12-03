@@ -984,7 +984,7 @@ for sim in sims_working_links:
     if unitedAtom:
         for key in sim['UADICTIONARY']:
         #construct order parameter definition file for CH bonds from mapping file
-            def_file = open(strdir_tmp) + '/' + str(ID) + '/' + key + '.def', 'w')
+            def_file = str(strdir_tmp) + '/' + str(ID) + '/' + key + '.def', 'w')
 
             mapping_file = sim['MAPPING_DICT'][key]
             previous_line = ""
@@ -1016,9 +1016,9 @@ for sim in sims_working_links:
             def_file.close()
 
         #Add hydrogens to trajectory and calculate order parameters with buildH
-            ordPfile = open(strdir_tmp) + '/' + str(ID) + '/' + key + '_order_parameter.dat' #ONKS NÄÄ VÄÄRIN
+            ordPfile = str(strdir_tmp) + '/' + str(ID) + '/' + key + '_order_parameter.dat' 
             topfile = sim.get('GRO')
-            deffile = open(strdir_tmp) + '/' + str(ID) + '/' + key + '.def' #ONKS TÄÄ VÄÄRIN
+            deffile = str(strdir_tmp) + '/' + str(ID) + '/' + key + '.def' 
             lipidname = sim['UADICTIONARY'][key]
         #    print(lipidname)
             buildH_calcOP_test.main(topfile,lipidname,deffile,xtcwhole,ordPfile)
