@@ -1,0 +1,52 @@
+DOI="10.5281/zenodo.3484548"
+
+user_information = """
+POPG 310K gromos-ckp
+#NMRLIPIDS BEGIN
+
+@SIM
+@MAPPING=POPG,mappingPOPGgromos-ckp.txt
+@SYSTEM=POPG_T310K
+@SOFTWARE=gromacs
+@FF=gromos-ckp
+@FF_SOURCE=??
+@FF_DATE=?/?/????
+@TRJ=total_4_500.xtc
+@TPR=md_1.tpr
+@PREEQTIME=400
+@TIMELEFTOUT=0
+@UNITEDATOM=POPG,GROMOS_CKP_POPG
+
+@POPC=POPC
+@POPG=LPOG
+@POPS=POPS
+@POPE=POPE
+
+@POT=K
+@SOD=NA
+@CLA=CL
+@CAL=CA
+@SOL=SOL
+
+@NPOPC=[0,0]
+@NPOPG=[0,0]
+@NPOPS=[0,0]
+@NPOPE=[0,0]
+
+@NPOT=0
+@NSOD=0
+@NCLA=0
+@NCAL=0
+@NSOL=0
+
+@TEMPERATURE=0
+@TRJLENGTH=0
+
+
+#NMRLIPIDS END
+
+"""
+
+
+# Working directory
+dir_wrk  = "/media/osollila/Data/tmp/DATABANK/"
