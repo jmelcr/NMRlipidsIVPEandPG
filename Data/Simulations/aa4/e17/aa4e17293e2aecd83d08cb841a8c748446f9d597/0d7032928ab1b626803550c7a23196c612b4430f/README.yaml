@@ -16,26 +16,26 @@ POPC: POPC
 POPG: POG
 POPS: POPS
 POPE: POPE
-POT: M_K_M
-SOD: M_NA_M
-CLA: M_CL_M
-CAL: M_CA_M
-SOL: M_SOL_M
+POT: K
+SOD: NA
+CLA: CL
+CAL: CA
+SOL: SOL
 NPOPC:
 - 175
 - 175
 NPOPG:
-- 0
-- 0
+- 75
+- 75
 NPOPS:
 - 0
 - 0
 NPOPE:
 - 0
 - 0
-NPOT: '0'
+NPOT: 0
 NSOD: 150
-NCLA: '0'
+NCLA: 0
 NCAL: 0
 NSOL: 25000
 TEMPERATURE: '310'
@@ -43,3 +43,7 @@ TRJLENGTH: 100010.0
 MAPPING_DICT:
   POPC: mappingPOPCslipids.txt
   POPG: mappingPOPGslipids.txt
+GRO: /media/osollila/Data/tmp/DATABANK/tmp_6-612937/0/conf.gro
+NCHOL:
+- 0
+- 0
