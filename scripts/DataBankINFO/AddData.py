@@ -29,7 +29,7 @@ import os
 
 #For quering webs
 import urllib.request
-from urllib.error import URLError,HTTPError
+from urllib.error import URLError,HTTPError #,ContentTooShortError
 
 # From time monitoring
 from tqdm import tqdm
@@ -618,8 +618,6 @@ for sim in sims_working_links:
            # print("Downloading of the file " + str(file_name) + " failed.")
             #break
             continue
-
-
 # ## Calculate hash downloaded files
 
 # In[15]:
@@ -986,7 +984,7 @@ for sim in sims_working_links:
     if unitedAtom:
         for key in sim['UADICTIONARY']:
         #construct order parameter definition file for CH bonds from mapping file
-            def_file = open(str(dir_wrk) + '/tmp/' + str(ID) + '/' + key + '.def', 'w')
+            def_file = open(str(dir_tmp) + '/' + str(ID) + '/' + key + '.def', 'w')
 
             mapping_file = sim['MAPPING_DICT'][key]
             previous_line = ""
@@ -1018,9 +1016,9 @@ for sim in sims_working_links:
             def_file.close()
 
         #Add hydrogens to trajectory and calculate order parameters with buildH
-            ordPfile = str(dir_wrk) + '/tmp/' + str(ID) + '/' + key + '_order_parameter.dat'
+            ordPfile = str(dir_tmp) + '/' + str(ID) + '/' + key + '_order_parameter.dat' 
             topfile = sim.get('GRO')
-            deffile = str(dir_wrk) + '/tmp/' + str(ID) + '/' + key + '.def'
+            deffile = str(dir_tmp) + '/' + str(ID) + '/' + key + '.def' 
             lipidname = sim['UADICTIONARY'][key]
         #    print(lipidname)
             buildH_calcOP_test.main(topfile,lipidname,deffile,xtcwhole,ordPfile)
