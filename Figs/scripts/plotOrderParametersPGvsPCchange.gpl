@@ -42,6 +42,12 @@ plot  "../../Data/PNanglePOPGvsPOPCcharmmT310K.dat" using (1-$1):($2) with lines
      "../../Data/PNanglePOPGvsPOPCcharmmT310K.dat" using (1-$1):($2):3 with ye notitle pt 6 ps 1.6  lw 4 lc rgb "#0088BF",\
      "../../Data/PNanglePOPGvsPOPClipid17310.dat" using ($1):($2) with linespoints  notitle pt 6 ps 1.6  lw 4 lc rgb "#FFD300",\
      "../../Data/PNanglePOPGvsPOPClipid17310.dat" using ($1):($2):3 with ye notitle pt 6 ps 1.6  lw 4 lc rgb "#FFD300",\
+     "../../Data/PNanglePOPGvsPOPCgromos-ckp310.dat" using ($1):($2) with linespoints  notitle pt 6 ps 1.6  lw 4 lc rgb "#FFA0A3",\
+     "../../Data/PNanglePOPGvsPOPCgromos-ckp310.dat" using ($1):($2):3 with ye notitle pt 6 ps 1.6  lw 4 lc rgb "#FFA0A3",\
+     "../../Data/PNanglePOPGvsPOPCSlipids310.dat" using ($1):($2) with linespoints  notitle pt 6 ps 1.6  lw 4 lc rgb "#7AEE9E",\
+     "../../Data/PNanglePOPGvsPOPCSlipids310.dat" using ($1):($2):3 with ye notitle pt 6 ps 1.6  lw 4 lc rgb "#7AEE9E",\
+
+
 #     "../../Data/POPCvsPOPGcharmm.dat" using (1-$1):($12) with linespoints  notitle pt 6 ps 1.6  lw 4 lc rgb "#0088BF",\
 #     "../../Data/POPCvsPOPGcharmm.dat" using (1-$1):($12):13 with ye notitle pt 6 ps 1.6  lw 4 lc rgb "#0088BF",\
 #     "../../Data/POPCvsPOPGlipid17.dat" using (1-$1):($10) with linespoints  notitle pt 6 ps 1.6  lw 4 lc rgb "#FFD300",\

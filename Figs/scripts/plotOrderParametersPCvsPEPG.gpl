@@ -120,7 +120,7 @@ set xlabel "mole fraction of POPE"
 set ylabel "P-N vector angle (degrees)"
 set ytic 2
 #set xtic 0.1
-set yrange [56:72]
+set yrange [56:81]
 #unset xrange
 plot "../../Data/PNanglePOPCvsPOPEslipidsT300K.dat" using 1:($2) with linespoints  notitle pt 7 ps 1.6 lw 4 lc rgb "#7AEE9E",\
      "../../Data/PNanglePOPCvsPOPEslipidsT300K.dat" using 1:($2):3 with yerrorbars notitle pt 7 ps 1.6 lw 4 lc  rgb "#7AEE9E",\
@@ -128,6 +128,8 @@ plot "../../Data/PNanglePOPCvsPOPEslipidsT300K.dat" using 1:($2) with linespoint
      "../../Data/PNanglePOPCvsPOPEcharmmT300K.dat" using 1:($2):3 with yerrorbars  notitle pt 7 ps 1.6 lw 4 lc  rgb "#0088BF",\
      "../../Data/PNanglePOPCvsPOPEmacrogT300K.dat" using 1:($2) with linespoints  notitle pt 7 ps 1.6 lw 4 lc rgb "#00A368",\
      "../../Data/PNanglePOPCvsPOPEmacrogT300K.dat" using 1:($2):3 with yerrorbars  notitle pt 7 ps 1.6 lw 4 lc  rgb "#00A368",\
+     "../../Data/PNanglePOPCvsPOPEberger300.dat" using 1:($2) with linespoints  notitle pt 7 ps 1.6 lw 4 lc rgb "#D70039",\
+     "../../Data/PNanglePOPCvsPOPEberger300.dat" using 1:($2):3 with yerrorbars  notitle pt 7 ps 1.6 lw 4 lc  rgb "#D70039",\
 
 unset ylabel
 set origin 1.03,0
@@ -145,6 +147,8 @@ plot "../../Data/PNangleFIXPOPCvsPOPGslipidT298K.dat" using 1:($2) with linespoi
      "../../Data/PNanglePOPCvsPOPGcharmmT310K.dat" using 1:($2):3 with yerrorbars  notitle pt 5 ps 2.5 lw 4 lc  rgb "#0088BF",\
      "../../Data/PNanglePOPCvsPOPGlipid17310.dat" using 1:($2) with linespoints  notitle pt 5 ps 1.6 lw 4 lc rgb "#FFD300",\
      "../../Data/PNanglePOPCvsPOPGlipid17310.dat" using 1:($2):3 with yerrorbars  notitle pt 5 ps 1.6 lw 4 lc  rgb "#FFD300",\
+     "../../Data/PNanglePOPCvsPOPGgromos-ckp310.dat" using 1:($2) with linespoints  notitle pt 5 ps 1.6 lw 4 lc rgb "#FFA0A3",\
+     "../../Data/PNanglePOPCvsPOPGgromos-ckp310.dat" using 1:($2):3 with yerrorbars  notitle pt 5 ps 1.6 lw 4 lc  rgb "#FFA0A3",\
 
 
 

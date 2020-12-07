@@ -1,9 +1,9 @@
-set size 2.0,1.05
+set size 2.0,1.07
 set terminal postscript portrait enhanced color dashed lw 1 "Helvetica" 14 
 set output "../CHANGESwithCaClPG1PC4.eps"
 set multiplot  layout 2,2
 
-set xrange [-0.02:1.02] 
+set xrange [-0.02:1.07] 
 #set ytic 0.05
 #set key box linestyle 1 linecolor rgb 'black'
 set key at screen 0.95,1.15 maxcols 1 maxrows 10
@@ -21,6 +21,10 @@ plot       "../../Data/CHARMM3620POPGwithCaCl.dat" using ($1):($6+0.073626288938
            "../../Data/CHARMM3620POPGwithCaCl.dat" using ($1):($6+0.07362628893899748):7 with yerrorbars notitle pt 5 lt 1 lw 4 ps 2.0  lc rgb "#0088BF",\
            "../../Data/POPC80_POPG20withCa_LIPID17.dat" using ($1*0.001):($6+0.01309) with linespoint notitle pt 5 lt 1 lw 4 ps 2.0  lc rgb "#FFD300",\
            "../../Data/POPC80_POPG20withCa_LIPID17.dat" using ($1*0.001):($6+0.01309):7 with yerrorbars notitle pt 5 lt 1 lw 4 ps 2.0  lc rgb "#FFD300",\
+           "../../Data/lipid17ecc20POPGwithCaCl.dat" using ($1):($6+0.036221139590053825) with linespoint notitle pt 5 lt 1 lw 4 ps 2.0  lc rgb "orange",\
+           "../../Data/lipid17ecc20POPGwithCaCl.dat" using ($1):($6+0.036221139590053825):7 with yerrorbars notitle pt 5 lt 1 lw 4 ps 2.0  lc rgb "orange",\
+	   "../../Data/lipid17ecc20POPGwithCaCl.dat" using ($1):($8+0.036221139590053825) with linespoint notitle pt 5 lt 1 lw 4 ps 2.0  lc rgb "orange",\
+           "../../Data/lipid17ecc20POPGwithCaCl.dat" using ($1):($8+0.036221139590053825):9 with yerrorbars notitle pt 5 lt 1 lw 4 ps 2.0  lc rgb "orange",\
 
   #   "../../Data/POPC80_POPG20withCa_CHARMMgui.dat" using 1:($4+0.0698361738567) with linespoint notitle pt 5 lt 1 lw 4 ps 2.0 lc rgb "#0088BF",\
 
@@ -34,11 +38,13 @@ plot  "../../Data/CHARMM3620POPGwithCaCl.dat" using ($1):($14) with linespoint n
       "../../Data/CHARMM3620POPGwithCaCl.dat" using ($1):($14):15 with yerrorbars notitle pt 5 lt 1 lw 4 ps 2.0  lc rgb "#0088BF",\
       "../../Data/POPC80_POPG20withCa_LIPID17.dat" using ($1*0.001):($14) with linespoint notitle pt 5 lt 1 lw 4 ps 2.0  lc rgb "#FFD300",\
       "../../Data/POPC80_POPG20withCa_LIPID17.dat" using ($1*0.001):($14):15 with yerrorbars notitle pt 5 lt 1 lw 4 ps 2.0  lc rgb "#FFD300",\
+      "../../Data/lipid17ecc20POPGwithCaCl.dat" using ($1):($14) with linespoint notitle pt 5 lt 1 lw 4 ps 2.0  lc rgb "orange",\
+      "../../Data/lipid17ecc20POPGwithCaCl.dat" using ($1):($14):15 with yerrorbars notitle pt 5 lt 1 lw 4 ps 2.0  lc rgb "orange",\
 
 # "../../Data/POPC80_POPG20withCa_CHARMMgui.dat" using 1:($8) with linespoint notitle pt 5 lt 1 lw 4 ps 2.0  lc rgb "#0088BF",\
 
 
-set key at screen 1.9,1.05 maxcols 3 maxrows 2 font ",20"
+set key at screen 1.5,1.07 maxcols 3 maxrows 3 font ",20"
 set size 1.0,0.5
 set ylabel "{{/Symbol D}S_{CH}^{/Symbol a}"
 set xlabel "[ CaCl_2] M"
@@ -51,6 +57,10 @@ plot  "../../Data/CHARMM3620POPGwithCaCl.dat" using ($1):($2-0.04047884306812797
       "../../Data/POPC80_POPG20withCa_LIPID17.dat" using ($1*0.001):($2-0.15899):3 with yerrorbars notitle pt 5 ps 2.0  lt 1 lw 4  lc rgb "#FFD300",\
       "../../Data/POPC80_POPG20withCa_LIPID17.dat" using ($1*0.001):($4-0.17151) with linespoint notitle pt 5 ps 2.0 lt 1 lw 4  lc rgb "#FFD300",\
       "../../Data/POPC80_POPG20withCa_LIPID17.dat" using ($1*0.001):($4-0.17151):5 with yerrorbars notitle pt 5 ps 2.0 lt 1 lw 4  lc rgb "#FFD300",\
+      "../../Data/lipid17ecc20POPGwithCaCl.dat" using ($1):($2-0.03177105543487221) with linespoint title 'Lipid17ecc' pt 5 ps 2.0  lt 1 lw 4  lc rgb "orange",\
+      "../../Data/lipid17ecc20POPGwithCaCl.dat" using ($1):($2-0.03177105543487221):3 with yerrorbars notitle pt 5 ps 2.0  lt 1 lw 4  lc rgb "orange",\
+      "../../Data/lipid17ecc20POPGwithCaCl.dat" using ($1):($4-0.032660463072037085) with linespoint notitle pt 5 ps 2.0 lt 1 lw 4  lc rgb "orange",\
+      "../../Data/lipid17ecc20POPGwithCaCl.dat" using ($1):($4-0.032660463072037085):5 with yerrorbars notitle pt 5 ps 2.0 lt 1 lw 4  lc rgb "orange",\
       "../../Data/POPC80_POPG20withCaALPHA.dat" using 1:(($2-8.10)*0.00784)  with linespoint title 'exp (0.1 M NaCl) 8:2' pt 5 ps 2.0 lt 1 lw 4 lc rgb 'black',\
       "../../Data/POPC50_POPG50withCaALPHA.dat" using 1:(($2-9.9)*0.00784) with linespoint title 'exp (0.1 M NaCl) POPC:POPG 1:1' pt 6 ps 2.0 lt 1 lw 4  lc rgb 'black',\
 
@@ -71,6 +81,10 @@ plot  "../../Data/CHARMM3620POPGwithCaCl.dat" using ($1):($10) with linespoint n
       "../../Data/POPC80_POPG20withCa_LIPID17.dat" using ($1*0.001):($10):11 with yerrorbars notitle   pt 5 lt 1 lw 4 ps 2.0 lc rgb "#FFD300",\
       "../../Data/POPC80_POPG20withCa_LIPID17.dat" using ($1*0.001):($12) with linespoint notitle   pt 5 lt 1 lw 4 ps 2.0 lc rgb "#FFD300",\
       "../../Data/POPC80_POPG20withCa_LIPID17.dat" using ($1*0.001):($12):13 with yerrorbars notitle   pt 5 lt 1 lw 4 ps 2.0 lc rgb "#FFD300",\
+      "../../Data/lipid17ecc20POPGwithCaCl.dat" using ($1):($10) with linespoint notitle   pt 5 lt 1 lw 4 ps 2.0 lc rgb "orange",\
+      "../../Data/lipid17ecc20POPGwithCaCl.dat" using ($1):($10):11 with yerrorbars notitle   pt 5 lt 1 lw 4 ps 2.0 lc rgb "orange",\
+      "../../Data/lipid17ecc20POPGwithCaCl.dat" using ($1):($12) with linespoint notitle   pt 5 lt 1 lw 4 ps 2.0 lc rgb "orange",\
+      "../../Data/lipid17ecc20POPGwithCaCl.dat" using ($1):($12):13 with yerrorbars notitle   pt 5 lt 1 lw 4 ps 2.0 lc rgb "orange",\
 
 # "../../Data/POPC80_POPG20withCa_CHARMMgui.dat" using 1:($6) with linespoint notitle   pt 5 lt 1 lw 4 ps 2.0 lc rgb "#0088BF",\
      # "../../Data/POPC80_POPG20withCa_CHARMMgui.dat" using 1:($7) with linespoint notitle   pt 5 lt 1 lw 4 ps 2.0 lc rgb "#0088BF",\
