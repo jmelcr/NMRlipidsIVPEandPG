@@ -389,6 +389,7 @@ to resolve the PG conformational ensembles in mixtures with other lipids.
   }
 \end{figure}
 
+\clearpage
 \section{Changes in headgroup conformations upon addition of CaCl$_2$}
 
 \begin{figure}[]
@@ -487,7 +488,7 @@ to resolve the PG conformational ensembles in mixtures with other lipids.
 
 
 
-
+\clearpage
 \section{Simulated systems}
 
 
@@ -539,6 +540,7 @@ to resolve the PG conformational ensembles in mixtures with other lipids.
       POPE             & LIPID17 \cite{gould18} & 0.11   & 500 & 25000 & 50  &  310  & 500 & 100 & \cite{POPElipid17150mMNaCl} \\
     \end{tabular}
   \end{minipage}
+  \todo{Simulations with added NaCl are not currently used here, maybe should be removed from the table?} \\
   \todo{Citation for CHARMM36 PE?} \\
   \todo{Which ion model is used in \cite{POPEcharmm150mMNaCl}?} \\
   \todo{Citation for GROMOS-CKP?} \\
@@ -580,8 +582,9 @@ to resolve the PG conformational ensembles in mixtures with other lipids.
       POPG             & GROMOS-CKP \cite{??}         & 0.11           & 500 & 25000 & 49 &  310  & 500 & 100 & \cite{POPGgromosCKP150mMNaCl} \\
     \end{tabular}
   \end{minipage}
+    \todo{Simulations with added NaCl are not currently used here, maybe should be removed from the table?} \\
     \todo{Citations and ion model for CHARMM36?} \\
-  \todo{Lipid17 simulation with correct dihedral potentials still coming.} \\
+  \todo{Lipid17 simulation with ions with correct dihedral potentials still coming?} \\
   \todo{Citation and ion model for GROMOS-CKP?}
 %\end{table*}
  \end{sidewaystable*}
@@ -634,9 +637,6 @@ to resolve the PG conformational ensembles in mixtures with other lipids.
     \end{tabular}
   \end{minipage}
     \todo{Citation and ion model for GROMOS-CKP?} \\
-  \todo{Citation and description for ''Berger'' model?} \\
-  \todo{Lipid17 POPC and POPC:POPG mixtures (https://doi.org/10.5281/zenodo.3241242 and https://doi.org/10.5281/zenodo.3237656)
-    should be added after simulated with corrected dihedrals.}\\
   \todo{Upcoming Lipid17ecc with POPC:POPS (4:1) mixture simulations to be added.}
 %\end{table*}
 \end{sidewaystable*}
@@ -661,6 +661,9 @@ to resolve the PG conformational ensembles in mixtures with other lipids.
       POPC:POPG (1:1)        & Lipid17 / Dang \cite{gould18,smith94,dang06}        &0          & 0.1& 150:150 & 31401 & 57 &  298  & 718 & 198 & \cite{Lipid17POPCPOPG5050100mMCaCl} \\
       POPC:POPG (1:1)        & Lipid17 / Dang \cite{gould18,smith94,dang06}        &0          & 1.0& 150:150 & 29865 & 569 &  298  & 720 & 200 & \cite{Lipid17POPCPOPG50501000mMCaCl} \\
       \hline
+      POPC:POPG (4:1)        & Lipid17ecc / ECC-ions \cite{pluharova14,kohagen16,martinek18}     &0          & 0  & 350:88 & 26265 & 0  &  298  & 400 & 300 & \cite{Lipid17eccPOPCPOPG8020} \\
+      POPC:POPG (4:1)        & Lipid17ecc / ECC-ions \cite{pluharova14,kohagen16,martinek18}     &0          & 0.1& 350:88 & 26124 & 47 &  298  & 400 & 300 & \cite{Lipid17eccPOPCPOPG8020100mMCaCl} \\
+      POPC:POPG (4:1)        & Lipid17ecc / ECC-ions \cite{pluharova14,kohagen16,martinek18}     &0          & 1.0& 350:88 & 24840 & 475 &  298  & 400 & 300 & \cite{Lipid17eccPOPCPOPG80201000mMCaCl} \\
       POPC:POPG (1:1)        & Lipid17ecc / ECC-ions \cite{pluharova14,kohagen16,martinek18}     &0          & 0  & 150:150 & 31572 & 0  &  298  & 347.8 & 333 & \cite{Lipid17eccPOPCPOPG5050} \\
       POPC:POPG (1:1)        & Lipid17ecc / ECC-ions \cite{pluharova14,kohagen16,martinek18}     &0          & 0.1& 150:150 & 29865 & 54 &  298  & 400 & 300 & \cite{Lipid17eccPOPCPOPG5050100mMCaCl} \\
       POPC:POPG (1:1)        & Lipid17ecc / ECC-ions \cite{pluharova14,kohagen16,martinek18}     &0          & 1.0& 150:150 & 29865 & 569 &  298  & 600 & 400 & \cite{Lipid17eccPOPCPOPG50501000mMCaCl} \\
@@ -673,10 +676,7 @@ to resolve the PG conformational ensembles in mixtures with other lipids.
       DOPC:DOPE (1:1)  & Berger \cite{??}   \todoi{This is probable not plain berger, correct force filed should be described.}  &0          & 0  & 128 & 11008 & 0  &  300  & 300 & 200 & \cite{DOPC1DOPE1berger} \\
     \end{tabular}
   \end{minipage}
-    \todo{Citation and ion model for GROMOS-CKP?} \\
   \todo{Citation and description for ''Berger'' model?} \\
-  \todo{Lipid17 POPC and POPC:POPG mixtures (https://doi.org/10.5281/zenodo.3241242 and https://doi.org/10.5281/zenodo.3237656)
-    should be added after simulated with corrected dihedrals.}\\
   \todo{Upcoming Lipid17ecc with POPC:POPS (4:1) mixture simulations to be added.}
 %\end{table*}
 \end{sidewaystable*}
