@@ -110,7 +110,12 @@ University of Groningen, 9747 AG Groningen, The Netherlands}
 
 \begin{abstract}
 % insert abstract here
-Abstract
+The force field giving the best description for glycerol backbone and headgroup structures
+of PC, PS, PG and PE headgroups (CHARMM36) reproduces the essential differences in order parameters
+between these headgroups, and therefore enables the analysis of structural differences between the
+headgroups.
+
+
 \end{abstract}
 
 %\pacs{}% insert suggested PACS numbers in braces on next line
@@ -124,48 +129,77 @@ Abstract
 %\label{}
 \section{Introduction}
 
-Lipid composition of biomembranes vary greatly between different
-organelles and organism, and different lipid types interact with
-proteins in many different ways regulating their function \cite{??}.
-Lipids may directly interact with proteins by specific binding sites
-or indirectly affect protein functions by altering membrane properties
-or charge \cite{??}. Specific interactions with certain lipid headgroups
-are known to be essential for the function of several proteins \cite{??}.
-However, it is not clear if the specific binding is driven by
-the differences in acessible conformational states between lipid types or
-by specific intermolecular interactions between lipids and proteins.
+Chemical compositions of hydrophilic lipid headgroups vary between different
+organelles and organisms, and different lipid types
+regulate protein functions in many different ways \cite{lee03,vanmeer08}.
+Lipids can directly bind to proteins or indirectly affect protein
+functions by altering membrane properties or charge \cite{lee03,lemmon08}.
+While the specific interactions with certain lipid headgroups
+are known to be essential for the function of several proteins \cite{lee11,lemmon08},
+it is not clear if the specificity is driven by the differences in accessible
+conformational states between lipid types or
+by specific intermolecular lipid-protein interactions.
 
-Differences between preferred conformations of different lipid types
-are observed in lipid crystal structures \cite{buldt81,pascher92},
-but lipids are not in solid state in biomembranes. 
-On the other hand, NMR experiments enable detection of lipid headgroups
-in physiological liquid states also in cells \cite{gally81,scherer87,seelig90}.
-These studies suggest that the glycerol backbone structures are largely similar irrespectively of the headroup \cite{gally81}, 
-glycerol backbone and headgroup structure and behaviour are similar in model membranes and in bacteria \cite{gally81,scherer87,seelig90},
+Lipid conformational ensembles in physiologically relevant lamellar liquid phase
+are typically derived from NMR experiments, particularly from 
+%Attempts to resolve the conformational ensembles of lipid headgroup rely mainly on
+C-H bond order parameters measured using $^2$H NMR~\cite{seelig77c,davis83,Semchyschyn04}
+which can be detected even from cells \cite{gally81,scherer87,seelig90}.
+%but lipids are not in solid state in biomembranes. 
+%On the other hand, NMR experiments enable detection of lipid headgroups
+%in physiological liquid states also in cells \cite{gally81,scherer87,seelig90}.
+These studies suggest that the glycerol backbone structures are largely similar irrespectively of the headgroup \cite{gally81}, 
 and the headgroup structures are similar in PC, PE and PG lipids, while headgroup is more rigid in PS lipids \cite{wohlgemuth80,buldt81}. 
 %Extensive discussion about structural details of PE, PG or PS headgroups do not exists (as far as I know), 
 %In contrast to PC lipids (see \cite{botan15} and references therein).
 %Some attempts to resolve conformational ensembles from NMR for PC and PE lipids have been made,
 %but lesser extend for PG or PS lipids \cite{seelig77c,davis83,Semchyschyn04}.
-Attempts to resolve the conformational ensembles of lipid headgroup rely mainly on
-absolute values of C-H bond order parameters measured using $^2$H NMR~\cite{seelig77c,davis83,Semchyschyn04}.
-However, appropriate models to interpret the experimental data have not been available and
-also the signs of the order parameters are required to fully capture the details in conformational ensembles  \cite{botan15,ollila16}.
+However, these results are based only on the absolute values while 
+%we have recently demonstrated that also
+the necessity of order parameters signs in capturing the lipid conformational ensembles has been resently demonstrated \cite{botan15,ollila16,ferreira16}.
+Furthermore, the detailed understanding of lipid conformational ensembles
+is limited by the lack of universal models to interpret the experiments \cite{pezeshkian18,akutsu20}.
+%do not exist and
+%the proposed structures are often based on lipid crystal structures \cite{pezeshkian18,akutsu20}.
+%which were solved many decades ago \cite{buldt81,pascher92}.
 %determine the structural 
 %Classical molecular dynamics simulations could potentially give such ensembles and therefore enable
 %the detailed studies of lipid headgroup behaviour in complex biomolecular systems, but current
 %force fields are not accurate enough to reproduce the correct conformational ensembles for PC and PS headgroups \cite{botan15,antila19}.
 
+Stuctures of different lipid types in protein bound states can be extracted from the protein data bank (PDB) \cite{berman00},
+but their relation to the conformational ensembles in liquid lamellar state remains unclear \cite{marsh13b}.
+In addition to the changes in lipid conformational ensembles upon binding to proteins,
+%PC headgroup conformations do not change upon addition of zwitterionic lipids or cholesterol \cite{scherer87,ferreira13} into a membrane,
+%but are sensitive to the presence of charged molecules in membranes \cite{seelig87}.
+also the experimentally measured response of lipid headgroup to membrane bound charges remains poorly understood 
+%The response to charges is explained by the change in the orientation of lipid headgroup dipole vector due to electrostatic interactions,
+%but the detailed changes are not yet understood
+due to the lack of suitable models to interpret the lipid conformational ensembles in liquid lamellar state \cite{Semchyschyn04}.
 
-PE and PG lipids are most common lipids in bacteria \cite{sohlenkamp16}.
-Zwitterionic PE is the second most abundant glycerophospholipid in eukaryotic cells
-and has been related to the diseases \cite{vance15,calzada16,patel17}.
-Anionic PG lipids are less abundant, but is also proposed to be fundamental for terrestrial life \cite{furse17}.
-PE and PG affect membrane protein functionality \cite{hariharan18} and bind to various proteins \cite{yeagle14}.
-PE headgroup is also prone for negative membrane curvature and causes membrane fusion \cite{Chernomordik08,calzada16}.
-Therefore, the PE and PG headgroup structures play probably essential roles in 
-many biological processes.
 
+Here, we use natural abundance $^{13}$C NMR experiments and MD simulations from the NMRlipids open collaboration
+to resolve the differences in conformational ensembles between PC, PE, PG and PS lipid headgroups.
+%open collaboration and order parameters of glycerol backbone and headgroup
+%to evaluate the accuracy of PE and PG heagroup structures, and the cation binding affinity
+Zwitterionic PC and PE are the most common lipids in eukaryotes and bacteria, respectively \cite{vanmeer08,sohlenkamp16}.
+PE is also the second most abundant glycerophospholipid in eukaryotic cells
+and has been related to various diseases \cite{vance15,calzada16,patel17}.
+PS and PG are the most common negatively charged lipids in eukaryotes and bacteria, respectively,
+and affect membrane protein functionality and signaling \cite{lemmon08,leventis10,sohlenkamp16,hariharan18}.
+%PE and PG lipids are most common lipids in bacteria \cite{sohlenkamp16}.
+%Anionic PG lipids are less abundant, but is also proposed to be fundamental for terrestrial life \cite{furse17}.
+%PE and PG affect membrane protein functionality \cite{hariharan18} and
+All the studied lipids specifically bind to various proteins \cite{yeagle14}.
+%PE headgroup is also prone for negative membrane curvature and causes membrane fusion \cite{Chernomordik08,calzada16}.
+%Therefore, the PE and PG headgroup structures play probably essential roles in 
+%many biological processes.
+Furthermore, we use our results to elucidate lipid-protein interactions and the effect of charges on lipid conformations.
+
+The lipid conformational ensembles in liquid lamellar state paves the way toward understanding the
+specific binding of different lipid types to membrane proteins and how they regulate the protein function.
+Because glycerol backbone and headgroup structures of PC lipids are similar in model membranes and in bacteria \cite{gally81,scherer87,seelig90},
+the results from model systems could be used to understand the biological role of lipid headgroup conformational ensembles in different lipid types.
 
 %Several MD simulations of PE and PG lipids have been published especially in the context of modeling
 %inner membrane of Gram-negative
@@ -173,17 +207,18 @@ many biological processes.
 %\todo{There may be some relevant publication missing from here},
 %but evaluation of glycerol backbone and headgroup structures against experiments is rare \cite{henin09}.
 
-Derivation of different lipid headgroup conformational ensembles in liquid state has been
-inconclusive due to lack of suitable experimental data and tools to interpret the conformational ensembles.
+%Derivation of different lipid headgroup conformational ensembles in liquid state has been
+%inconclusive due to lack of suitable experimental data and tools to interpret the conformational ensembles.
 
 
-Besides the structure, also ion binding may regulate biophysical activity of especially negatively
-charged lipid headgroups \cite{seelig90}. Monovalent cation (except Lithium) binding to zwitterionic PC and anionic PS headgroups is
-very weak, while multivalent ion binding is stronger but still weak \cite{cevc90,tocanne90,roux90,catte16,antila19}. The ion binding affinity
-data for PE is more scarce \cite{marra85}, but large differences to PC would be surprising.
-Negatively charged lipids are suggested to bear same cation binding constants than zwitterionic lipids, but
-the amount of bound ions to negatively charged membranes would still be larger because
-the concentration of cations in the vicinity of membranes would be higher  \cite{seelig90}.
+%Besides the structure, also ion binding may regulate biophysical activity of especially negatively
+%charged lipid headgroups \cite{seelig90}. Monovalent cation (except Lithium) binding to zwitterionic PC and anionic PS headgroups is
+%very weak, while multivalent ion binding is stronger but still weak \cite{cevc90,tocanne90,roux90,catte16,antila19}. The ion binding affinity
+%data for PE is more scarce \cite{marra85}, but large differences to PC would be surprising.
+%Negatively charged lipids are suggested to bear same cation binding constants than zwitterionic lipids, but
+%the amount of bound ions to negatively charged membranes would still be larger because
+%the concentration of cations in the vicinity of membranes would be higher  \cite{seelig90}.
+%
 %is stronger
 %Based on the electrometer concept and other data is has been suggested that \cite{seelig90}
 %\begin{displayquote}
@@ -198,18 +233,11 @@ the concentration of cations in the vicinity of membranes would be higher  \cite
 %    adsorption isotherm with a 1 lipid:1 Ca$^{2+}$ stoichiometry, provided the interfacial concentration C$_M$, is
 %    used to describe the chemical binding equilibrium.''}
 %\end{displayquote}
-On the other hand, anionic PS lipids are proposed chelate with calcium ions \cite{hauser85,feigenson86,roux91}.
-In simulations, the cation binding affinity to PC and PS membranes is typically overestimated \cite{catte16,antila19},
-which can be improved by applying the ECC to the partial charges of the force fields \cite{melcr18,melcr19}.
+%
+%On the other hand, anionic PS lipids are proposed chelate with calcium ions \cite{hauser85,feigenson86,roux91}.
+%In simulations, the cation binding affinity to PC and PS membranes is typically overestimated \cite{catte16,antila19},
+%which can be improved by applying the ECC to the partial charges of the force fields \cite{melcr18,melcr19}.
 
-Here, we use open collaboration and order parameters of glycerol backbone and headgroup
-to evaluate the accuracy of PE and PG heagroup structures, and the cation binding affinity
-
-to anionic membranes containing PG lipids in the current MD simulation force fields.
-The force field giving the best description for glycerol backbone and headgroup structures
-of PC, PS, PG and PE headgroups (CHARMM36) reproduces the essential differences in order parameters
-between these headgroups, and therefore enables the analysis of structural differences between the
-headgroups.
 
 %\begin{figure}[]
 %  \centering
