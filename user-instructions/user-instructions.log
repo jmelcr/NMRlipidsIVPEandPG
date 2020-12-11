@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.6.5)  26 NOV 2020 16:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.6.5)  11 DEC 2020 15:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**user_instructions.tex
-(./user_instructions.tex
+**user-instructions.tex
+(./user-instructions.tex
 LaTeX2e <2018-04-01> patch level 4
 Babel <3.20> and hyphenation patterns for 34 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -333,8 +333,8 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip50
 )
-(./user_instructions.aux)
-\openout1 = `user_instructions.aux'.
+(./user-instructions.aux)
+\openout1 = `user-instructions.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
 LaTeX Font Info:    ... okay on input line 21.
@@ -435,9 +435,9 @@ LaTeX Info: Redefining \ref on input line 21.
 LaTeX Info: Redefining \pageref on input line 21.
 LaTeX Info: Redefining \nameref on input line 21.
 
-(./user_instructions.out) (./user_instructions.out)
+(./user-instructions.out) (./user-instructions.out)
 \@outlinefile=\write3
-\openout3 = `user_instructions.out'.
+\openout3 = `user-instructions.out'.
 
 LaTeX Font Info:    Try loading font information for U+msa on input line 23.
 
@@ -473,40 +473,44 @@ Underfull \hbox (badness 10000) in paragraph at lines 24--33
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 48--51
+Underfull \hbox (badness 10000) in paragraph at lines 46--49
 
  []
 
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 78.
- [3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 78.
+Underfull \hbox (badness 10000) in paragraph at lines 88--91
 
-(./user_instructions.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 78.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 78.
-Package rerunfilecheck Info: File `user_instructions.out' has not changed.
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 98.
+[3]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 98.
+ (./user-instructions.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 98.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 98.
+Package rerunfilecheck Info: File `user-instructions.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 78.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 98.
  ) 
 Here is how much of TeX's memory you used:
- 8294 strings out of 493935
- 121745 string characters out of 6163150
+ 8301 strings out of 493935
+ 121824 string characters out of 6163150
  223652 words of memory out of 5000000
- 11979 multiletter control sequences out of 15000+600000
- 11162 words of font info for 32 fonts, out of 8000000 for 9000
+ 11980 multiletter control sequences out of 15000+600000
+ 11937 words of font info for 33 fonts, out of 8000000 for 9000
  331 hyphenation exceptions out of 8191
  42i,6n,40p,701b,336s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf/
 fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/c
-m-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb
-></usr/share/texmf/fonts/type1/public/cm-super/sfrm2074.pfb>
-Output written on user_instructions.pdf (3 pages, 70077 bytes).
+m-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb
+></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/f
+onts/type1/public/cm-super/sfrm2074.pfb>
+Output written on user-instructions.pdf (3 pages, 85080 bytes).
 PDF statistics:
- 59 PDF objects out of 1000 (max. 8388607)
- 49 compressed objects within 1 object stream
- 21 named destinations out of 1000 (max. 500000)
+ 69 PDF objects out of 1000 (max. 8388607)
+ 58 compressed objects within 1 object stream
+ 26 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
