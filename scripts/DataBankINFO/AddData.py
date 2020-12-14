@@ -29,7 +29,7 @@ import os
 
 #For quering webs
 import urllib.request
-from urllib.error import URLError,HTTPError #,ContentTooShortError
+from urllib.error import URLError,HTTPError
 
 # From time monitoring
 from tqdm import tqdm
@@ -202,7 +202,40 @@ molecule_numbers_dict = {
                         },
     
                 }
-               
+
+molecule_ff_dict = {
+                'FFPOPC' : {"REQUIRED": False,
+                                "TYPE": "string",
+                           },
+                'FFPOPG' : {"REQUIRED": False,
+                                "TYPE": "string",
+                           },
+                'FFPOPS' : {"REQUIRED": False,
+                                "TYPE": "string",
+                           },
+                'FFPOPE' : {"REQUIRED": False,
+                                "TYPE": "string",
+                           },
+                'FFCHOL' : {"REQUIRED": False,
+                                "TYPE": "string",
+                           },
+		'FFPOT' : {"REQUIRED": False,
+                            "TYPE" : "string",
+                        },
+                'FFSOD' : {"REQUIRED": False,
+                            "TYPE" : "string",
+                        },
+                'FFCLA' : {"REQUIRED": False,
+                            "TYPE" : "string",
+                        },
+                'FFCAL' : {"REQUIRED": False,
+                            "TYPE" : "string",
+                        },
+                'FFSOL' : {"REQUIRED": False,
+                            "TYPE" : "string",
+                        },
+               }
+
                 
                 
 
@@ -268,7 +301,7 @@ gromacs_dict = {
                              "TYPE" : "string",
  #                        "EXTENSION": ("txt"),
                              },
-            'UNITEDATOM' : {"REQUIRED": False,
+            'UNITEDATOM' : {"REQUIRED": True,
                             "TYPE" : "string",
                          },
                }
@@ -427,8 +460,8 @@ for sim in sims_valid_software:
         if key_sim.upper() in ("ID", "SOFTWARE"):
             #print("NOT REQUIRED")
             continue
-    #Anne: check if key is in molecules_dict or molecule_numbers_dict too
-        if key_sim.upper() not in software_dict[sim['SOFTWARE'].upper()].keys() and key_sim.upper() not in molecules_dict.keys() and key_sim.upper() not in lipids_dict.keys() and key_sim.upper() not in molecule_numbers_dict:
+    #Anne: check if key is in molecules_dict, molecule_numbers_dict or molecule_ff_dict too
+        if key_sim.upper() not in software_dict[sim['SOFTWARE'].upper()].keys() and key_sim.upper() not in molecules_dict.keys() and key_sim.upper() not in lipids_dict.keys() and key_sim.upper() not in molecule_numbers_dict and key_sim.upper() not in molecule_ff_dict:
             print ("{0} NOT in {1}".format(key_sim, software_dict_name))
             wrong_key_entries += 1
     if wrong_key_entries:
@@ -594,14 +627,16 @@ for sim in sims_required_entries:
 # Create temporary directory where to download files and analyze them
 dir_tmp = os.path.join(dir_wrk, "tmp_6-" + str(randint(100000, 999999)))
 
-if (not os.path.isdir(dir_tmp)): os.mkdir(dir_tmp)
+if (not os.path.isdir(dir_tmp)): 
+    os.mkdir(dir_tmp)
 
 for sim in sims_working_links:
     print("ID {0}".format(sim["ID"]), flush=True)
     software_sim = software_dict[sim['SOFTWARE'].upper()]
     dir_sim = os.path.join(dir_tmp, str(sim["ID"]))
     DOI = sim['DOI']
-    if (not os.path.isdir(dir_sim)): os.mkdir(dir_sim)
+    if (not os.path.isdir(dir_sim)): 
+        os.mkdir(dir_sim)
     for key_sim, value_sim in sim.items():
         #print("key_sim = {0} => value_sim = {1}".format(key_sim, value_sim))
         try:
@@ -614,10 +649,10 @@ for sim in sims_working_links:
                     file_name = os.path.join(dir_sim, file_provided[0])
                     if (not os.path.isfile(file_name)):
                         response = urllib.request.urlretrieve(file_url, file_name)
-        except:# urllib.error.ContentTooShortError(): #It is normal that fails for "ID" and "SOFTWARE"
-           # print("Downloading of the file " + str(file_name) + " failed.")
-            #break
+                          
+        except:#It is normal that fails for "ID" and "SOFTWARE"
             continue
+
 # ## Calculate hash downloaded files
 
 # In[15]:
