@@ -1,0 +1,48 @@
+ID: 0
+DOI: 10.5281/zenodo.3864993
+SYSTEM: POPC:POPG(1:1)_T298K_1000mM_CaCl
+MAPPING: POPC,mappingPOPClipid17.txt,POPG,mappingPOPGlipid17.txt
+SOFTWARE: gromacs
+FF: lipid17
+FF_SOURCE: NMRlipidsIV
+FF_DATE: ?/?/2020
+TRJ:
+- - traj.xtc
+TPR:
+- - run3.tpr
+PREEQTIME: '520'
+TIMELEFTOUT: '0'
+POPC: system1
+POPG: system2
+POPS: POPS
+POPE: POPE
+POT: K
+SOD: NA
+CLA: CL
+CAL: CA
+SOL: SOL
+NPOPC:
+- 75
+- 75
+NPOPG:
+- 76
+- 74
+NPOPS:
+- 0
+- 0
+NPOPE:
+- 0
+- 0
+NPOT: 0
+NSOD: 150
+NCLA: 1138
+NCAL: 569
+NSOL: 29865
+TEMPERATURE: '298'
+TRJLENGTH: 200020.0
+MAPPING_DICT:
+  POPC: mappingPOPClipid17.txt
+  POPG: mappingPOPGlipid17.txt
+NCHOL:
+- 0
+- 0
