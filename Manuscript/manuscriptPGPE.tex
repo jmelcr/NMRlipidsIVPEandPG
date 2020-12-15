@@ -110,10 +110,25 @@ University of Groningen, 9747 AG Groningen, The Netherlands}
 
 \begin{abstract}
 % insert abstract here
-The force field giving the best description for glycerol backbone and headgroup structures
-of PC, PS, PG and PE headgroups (CHARMM36) reproduces the essential differences in order parameters
-between these headgroups, and therefore enables the analysis of structural differences between the
-headgroups.
+  Chemistry of lipid headgroups, the water facing components of cell membranes, varies between organisms and
+  organelles and regulate cell functions via lipid-protein interactions.
+  Because lipid membranes are in liquid state in physiological conditions,
+  the conformational ensembles of lipids and their dependence of headgroup chemistry are difficult to resolve experimentally.
+  Here, we combine solid state NMR experiments and MD simulations from NMRlipids open collaboration to
+  resolve conformational ensembles of PC, PS, PG and PE lipid headgroups in liquid lamellar phase in various biologically relevant conditions.
+  Interpretation of NMR experiments using the best simulations from the NMRlipids project suggests that all lipid headgroups sample wide range of
+  conformations in neutral and charged cell membranes, and that the differences in headgroup chemistry
+  appears in the probability weights of different conformations. Together with the analysis of protein-bound-lipids
+  from the protein data bank (PDB), this suggests that lipids can bind to proteins in wide range of conformations
+  independently on the headgroup chemistry. Therefore, the specific lipid-protein interactions are likely driven by
+  protein-lipid interactions, rather than conformational restrictions of lipids. Our results paves the way to
+  comprehensive understanding of lipid-protein interaction energetics, and understanding complex biomolecular assemblies
+  such as membrane proteins.
+
+  %The force field giving the best description for glycerol backbone and headgroup structures
+  %of PC, PS, PG and PE headgroups (CHARMM36) reproduces the essential differences in order parameters
+  %between these headgroups, and therefore enables the analysis of structural differences between the
+  %headgroups.
 
 
 \end{abstract}
@@ -326,11 +341,6 @@ with explicit hydrogens and the deviations in order parameters are small \cite{b
 The ion number density profiles were calculated using the {\tt gmx density} tool
 of the Gromacs sofware package \cite{gromacsMANUAL}.
 
-
-\subsection{Analysis of lipid conformations bound to proteins}
-Dihedral angles of all available conformations in the PDB databank were calculated using the
-API access to the databank.
-
 %\clearpage
 \begin{figure*}[]
   \centering
@@ -355,6 +365,22 @@ API access to the databank.
    \todo{This is a sketch, Tiago Ferreira will make a new figure.} \\
   \todo{D) could be clarified as Fig. 2 in the NMRlipids IVps paper.}
 \end{figure*}
+
+
+\subsection{Analysis of lipid conformations bound to proteins}
+Lipid structures from PDB (\url{http://www.rcsb.org/})
+were searched using PDBe REST API (\url{www.ebi.ac.uk/pdbe/pdbe-rest-api}).
+First, all PDB entries containing PC, PE, PG, or PS lipid headgroups were searched.
+The ligand names to identify the lipids were:
+PLC, PX4, 6PL, LIO, HGX, PC7, PC8, P1O, 6O8, XP5, EGY, PLD, SBM, HXG, and PCW for PC;
+8PE, PTY, 3PE, PEH, PEF, 6OE, 6O9, 9PE, PEV, 46E, SBJ, L9Q, PEK, EPH, ZPE, 9TL, 9Y0, 6OU, LOP, and PEE for PE;
+PGT, PGK, LHG, 44G, PGV, OZ2, D3D, PGW, DR9, P6L, PG8, H3T, and GOT for PG; and
+PSF, PS6, Q3G, P5S, D39, PS2, 17F, and 8SP for PS.
+All PDB structures containing these ligands were downloaded and the dihedral angles of
+the first lipid in the latest version of the structures within each PDB code were calculated  
+using MDTraj python library \cite{mcgibbon15}.
+The used Jupyter notebook is available from the project's GitHub repository ({\it scripts/pdbSEARCH.ipynb}).
+
 
 
 \section{Results and Discussion}
@@ -443,6 +469,19 @@ Essential differences between PC and PE headgroups are not observed.
 %the headgroup and glycerol backbone order parameters of PE and PG are essentially independent of 
 %acyl chain composition, and therefore manifest mainly headgroup chemistry (Fig. \ref{HGorderParameters}).
 
+\begin{figure*}[bt]
+  \centering
+  \includegraphics[width=18.0cm]{../Figs/figure3.eps}
+  \caption{\label{changesWITHsurf}
+    {\bf A)} Modulation of PC headgroup order parameters and P-N vector angle upon addition of cationic surfactant
+    from CHARMM36 simulations compared with experimental data \cite{??}.
+    {\bf B)} Changes in PC headgroup conformational ensembles upon increasing amount of positive charge in bilayer,
+    characterized by the heavy atom dihedral distributions, from CHARMM36 simulations.
+  }
+\end{figure*}
+
+
+
 To resolve the conformational ensembles of lipid headgroups,
 we compared the headgroup and glycerol backbone C-H bond order parameters
 from different MD simulation force fields to the experimental data. 
@@ -495,17 +534,6 @@ in PE as observed in experiments \cite{botan15}.
 %Main difference between PC and PE is the lower probability of trans state in C$_\beta$-C$_\alpha$-O$_\alpha$-P PC dihedral,
 %which could be a potential reason for the too negative $\beta$ headgroup order parameter in PC.%
 
-\begin{figure*}[bt]
-  \centering
-  \includegraphics[width=18.0cm]{../Figs/figure3.eps}
-  \caption{\label{changesWITHsurf}
-    {\bf A)} Modulation of PC headgroup order parameters and P-N vector angle upon addition of cationic surfactant
-    from CHARMM36 simulations compared with experimental data \cite{??}.
-    {\bf B)} Changes in PC headgroup conformational ensembles upon increasing amount of positive charge in bilayer,
-    characterized by the heavy atom dihedral distributions, from CHARMM36 simulations.
-  }
-\end{figure*}
-
 
 In conclusion, all lipid headgroups sample very broad conformational ensembles in liquid lamellar phase.
 %the results suggest that free rotations around O-P bonds decouple the
@@ -550,9 +578,26 @@ lipid conformational ensembles in membranes bearing electric charge is still lac
 %Such changes have been observed upon addition of charged lipids, proteins, surfactants,
 %drugs, or ions \cite{??}, but how charges affect the lipid conformational ensemble remains unknown.
 
+\begin{figure*}[]
+  \centering
+  \includegraphics[width=18.0cm]{../Figs/CHANGESwithCaClPG1PC1.eps}
+  \caption{\label{changesWITHCaClPG}
+    Modulation of headgroup order parameters of POPC ({\it left}) and POPG ({\it right}) in POPC:POPG (1:1)
+    mixture upon addition of CaCl$_2$ in 298 K temperature from experiments \cite{borle85,macdonald87} and simulations.
+    The $\beta$-carbon order parameter of POPC (dashed line on top left) is not directly measured but
+    calculated from empirical relation $\Delta S_{\beta}=0.43\Delta S_{\alpha}$ \cite{akutsu81}.
+    The changes with respect to the systems without CaCl$_2$ are shown for other data than
+    for the $\alpha$-carbon of POPG for which experimental order parameter is not available.
+    Calsium density distributions are shown in figure \ref{CAdensPG}.
+    %(right) The headgroup order parameters of PG from PC:PG mixtures as a function CaCl$_2$
+    %concentration from experiments \cite{borle85} and CHARMM36 simulations.
+  }
+\end{figure*}
+
+
 To resolve lipid headgroup conformational ensembles in cell membrane bearing positive charge,
 %suggesting that these simulations can be used to interpret the charge induced changes in lipid conformational ensembles.
-we first analyzed CHARMM36 simulations which correctly capture the experimentally measured decrease in PC headgroup order parameters
+we first analyzed CHARMM36 simulations which correctly captures the experimentally measured decrease in PC headgroup order parameters
 upon addition of cationic surfactants into a bilayer in figure \ref{changesWITHsurf} A).
 Heavy atom dihedral angle distributions in figure \ref{changesWITHsurf} B
 reveal that the decrease of trans state probabilities in g$_2$-g$_3$-O$_{g_3}$-P and g$_3$-O$_{g_3}$-P-O$_\alpha$
@@ -583,47 +628,31 @@ was not sufficient for this (Fig. \ref{HGorderparametersPCvsPEPG}).
 %%The latter may arise from
 %by overbinding of the sodium counterions \cite{antila19}.
 
-\begin{figure*}[]
-  \centering
-  \includegraphics[width=18.0cm]{../Figs/CHANGESwithCaClPG1PC1.eps}
-  \caption{\label{changesWITHCaClPG}
-    Modulation of headgroup order parameters of POPC ({\it left}) and POPG ({\it right}) in POPC:POPG (1:1)
-    mixture upon addition of CaCl$_2$ in 298 K temperature from experiments \cite{borle85,macdonald87} and simulations.
-    The $\beta$-carbon order parameter of POPC (dashed line on top left) is not directly measured but
-    calculated from empirical relation $\Delta S_{\beta}=0.43\Delta S_{\alpha}$ \cite{akutsu81}.
-    The changes with respect to the systems without CaCl$_2$ are shown for other data than
-    for the $\alpha$-carbon of POPG for which experimental order parameter is not available.
-    Calsium density distributions are shown in figure \ref{CAdensPG}.
-    %(right) The headgroup order parameters of PG from PC:PG mixtures as a function CaCl$_2$
-    %concentration from experiments \cite{borle85} and CHARMM36 simulations.
-  }
-\end{figure*}
 
-Also binding of ions may affect the zwitterionic and charged lipid headgroup conformational
-ensembles in physiological conditions. The resolve this effect,
-%In order to analyze how conformational ensemble of PC and PG lipids response to the
-%bound ions,
-we compared the changes of headgroup order parameters
+Also binding of ions may affect the lipid headgroup conformational ensembles in physiological conditions.
+The resolve this effect, we compared the changes of headgroup order parameters
 in POPC:POPG mixtures 
 upon addition of CaCl$_2$ between different simulations and experiments \cite{borle85,macdonald87}
 in figures \ref{changesWITHCaClPG} (molar ratio 1:1) and \ref{changesWITHCaClPG1PC4} (molar ratio 4:1).
-As in our previous studies \cite{catte16,melcr18,antila19,melcr20},  
-%The decrease of POPC headgroup order parameters in mixtures with POPG lipids with
-%increasing CaCl$_2$ concentration is overestimated in Slipids and Lipid17
-%order parameters decrease in the response to bound cations in qualitative agreement with
-%experiments, but
-the calcium binding affinity to membranes is typically overestimated in simulations,
-except by CHARMM36 with the NBfix correction which underestimates the binding affinity,
-and the implicit inclusion of electronic polarizability improves the results.
-Lipid17ecc model with the implicit inclusion of electronic polarizability gives
-the most realistic response of PC lipid headgroup order parameters to the binding of calcium.
-In this model, the main effect of calcium to the lipid conformational ensemble is
-%the decrease is headgroup order parameters observed in this model is
-the slight change of g$_3$-O$_{g3}$-P-O$_\alpha$ dihedral distribution from trans state
-to eclipsed conformations (Fig. \ref{DIHSwithCAlipid17eccPOPC}).
-This is in line with the changes observed in CHARMM36 simulations upon addition of charged surgactants (Fig. \ref{changesWITHsurf}),
-despite the major differences in lipid headgroup conformational ensembles between
-these models without ions (Fig. \ref{structures} vs. Fig. \ref{DIHSwithCAlipid17eccPOPC}).
+The results are in line with our previous studies:
+most force fields overestimate the calcium binding \cite{catte16,antila19}, but CHARMM36 with the NBfix correction
+underestimates the binding affinity \cite{antila19}, and the implicit inclusion of electronic polarizability
+using the electronic continuum correction (ECC) improves the results \cite{melcr18,melcr20}.
+The most realistic response of PC lipid headgroup order parameters to the calcium binding
+is observed in the Lipid17ecc simulations with the ECC included, where
+the decreased probability for trans state of g$_3$-O$_{g3}$-P-O$_\alpha$ dihedral
+is the main structural consequence of bound ions (Fig. \ref{DIHSwithCAlipid17eccPOPC}).
+Similar but smaller effect is seen in CHARMM36 simulations with less bound calcium (Fig. \ref{DIHSwithCAcharmm36POPC}).
+
+%distribution from
+%to eclipsed conformations 
+%In this model, the main effect of calcium to the lipid conformational ensemble is
+%the slight change of 
+%This is in line with the changes observed in CHARMM36 simulations upon addition of charged surgactants (Fig. \ref{changesWITHsurf}),
+%despite the major differences in lipid headgroup conformational ensembles between
+%these models without ions (Fig. \ref{structures} vs. Fig. \ref{DIHSwithCAlipid17eccPOPC}).
+
+
 %of lipid headgroup is not 
 %Changes in lipid conformational ensembles characterized by distributions of heavy atom dihedral angles
 %are very small upon binding of calcium or addition of cationic surfactants to membranes (Figs. \ref{??}).
@@ -697,31 +726,30 @@ these models without ions (Fig. \ref{structures} vs. Fig. \ref{DIHSwithCAlipid17
 %%exhibiting 
 %%The behaviour is qualitatively different than in the $\beta$-carbon of PS lipids which increase upon addition of CaCl$_2$.
 
-Decrease in headgroup order parameters of PC lipids upon addition of charges is
-usually qualitatitely captured in simulations despite the inaccuries in lipid conformational ensembles \cite{catte16},
-but situation with PS lipids is more complicated \cite{antila19,meclr20}.
-Here, Lipid17 and Slipids force fields correctly capture the PG $\beta$-carbon order parameter response to CaCl$_2$
-in figure \ref{changesWITHCaClPG} even thought the calcium binding affinity was overestimated.
-%based on the comparison of PC headgroup order parameter changes with experiments.
-%While applying ECC to Lipid17 improved the PC headgroup order parameter response and binding affinity,
-%The response of PG $\beta$-carbon order parameter to calcium is too weak in CHARMM36 and ECC-lipid17 force fields,
-%but decrease of the order parameter is associated with decreased P-N vector angle in all force fields.
-Heavy atom dihedral angle distributions calculated from these simulations
-%the changes in PG conformational ensemble from these models
-suggest that also the headgroup glycerol conformations in PG are affected by calcium
-(Figs \ref{DIHSwithCAslipidsPOPG} and \ref{DIHSwithCAlipid17POPG}),
-in contrast to PC lipids where only conformations near phosphate were affected.
-%dihedral angle distribution around O$_\alpha$-C$_\alpha$ bond is affected by calcium binding (Fig. ??).
-On the other hand, the upward tilting of the headgroup dipole is weaker
-%Even thought the change in headgroup orientation upon addition of calcium is smaller
-in PG than in PC headgroup, possible due to the compensating effects from the changes in
-phosphate and glycerol regions. 
-However, none of the simulations captures and calcium binding affinity and conformational ensemble of PG lipids
-simultaneously, and experimental data to evaluate 
-%differences between force fields are observed for
-the response of $\alpha$-carbon order parameters to
-the added calcium in PG is not available.
-Therefore, more accurate force fields are required for the solid analysis of PG conformations enembles in different ionic conditions.
+%Decrease in headgroup order parameters of PC lipids upon addition of charges is
+%usually qualitatitely captured in simulations despite the inaccuries in lipid conformational ensembles \cite{catte16},
+%but situation with PS lipids is more complicated \cite{antila19,melcr20}.
+Also the headgroup order parameters of charged lipids are affected by the binding of ions,
+but their response is less well understood and more difficult to capture in MD simulations \cite{antila19,melcr20}.
+In our simulations, the Lipid17 and Slipids force fields give the most realistic response of PG $\beta$-carbon to CaCl$_2$
+in figure \ref{changesWITHCaClPG} even thought the calcium binding affinity was overestimated in these models.
+%Even thought the
+%change in headgroup orientation upon addition of calcium is smaller
+%On the other hand, the
+These models suggest that the upward tilting of the headgroup dipole is weaker in PG than in PC headgroup (\ref{changesWITHCaClPG}),
+%Heavy atom dihedral angle distributions calculated from these simulations
+%suggest that also the headgroup glycerol conformations in PG are affected by calcium
+but dihedral distributions are more sensitive to the bound ions in PG 
+(Figs \ref{DIHSwithCAslipidsPOPG} and \ref{DIHSwithCAlipid17POPG}).
+%in contrast to PC lipids where only conformations near phosphate were affected.
+%, possible due to the compensating effects from the changes in
+%phosphate and glycerol regions. 
+However, none of the simulations captures the calcium binding affinity and conformational ensemble of PG lipids
+simultaneously, experimental data to evaluate the response of $\alpha$-carbon order parameters to
+the added calcium in PG is not available, and changes in dihedrals upon addition of cacium differ between
+the best models (Figs \ref{DIHSwithCAslipidsPOPG} and \ref{DIHSwithCAlipid17POPG}).
+Therefore, more accurate force fields are required for the detailed analysis of the interactions between ions
+and charged lipids, as concluded previously also for PS lipids \cite{antila19,melcr20}.
 
 %and PG
 %The response of PG $\alpha$-carbon order parameters to CaCl$_2$ differs between force fields,
@@ -757,30 +785,27 @@ Therefore, more accurate force fields are required for the solid analysis of PG 
 
 %\todo{We still need more data to finish the discussion. More detailed discussion is in https://github.com/NMRLipids/NMRlipidsIVPEandPG/issues/12}
 
-Despite the limited cabability of simulations to interpret some experimental data due to
-the inaccuries in force fields, we can conclude that the experimentally observed changes
+Despite the limited capability of simulations to interpret some of the experimental data due to
+the inaccuries in force fields, we conclude that the experimentally observed changes
 in headgroup order parameters upon addition of charges into bilayer arise from relatively
-small changes in conformational ensembles. These changes can be characterised by
-mild changes in dihedral angle distributions, rather than restriction of lipids into
+small changes in conformational ensembles. These changes eventuate from
+mild changes in dihedral angle distributions, rather than from restriction of lipids into
 fixed conformations. Therefore, lipid headgroups remain in disordered state sampling large
 space of different conformations, thereby being able to interact with different molecules
-in various ways, also when charged molecules are bound to membranes.
+in various ways, also in membranes bearing electric charge.
 
 
 
 \subsection{Protein bound lipid conformations}
 
-While our results in previous sections suggest that lipid headgroups
-sample large conformational space in liquid lamellar phase, lipids
-can bound to proteins in fixed conformations which can be then detected
-using crystallography or cryo-EM. Such protein bound lipid conformations are
-available within protein structures deposited in The Protein Data Bank (PDB)
-available at \url{http://www.rcsb.org/} \cite{berman00}. With our criterias described
-in the methods, we found
-?? conformations of PC lipids,
-?? conformations of PE lipids,
-?? conformations of PG lipids, and
-?? conformations of PS lipids from PDB.
+To analyze lipid conformations in protein bound states,
+we calculated the heavy atom dihedral distributions from 
+all lipid conformations available within protein structures
+deposited in the PDB \cite{berman00} in figure \ref{dihedralsFROMpdb}.
+We found 176 PC, 198 PE, 70 PG, and 41 PS conformations, which
+present lipids that are tightly bound to proteins in fixed conformations
+that can be determined as a part of protein structure using crystallography, NMR, or cryo-EM. 
+
 
 \begin{figure}[]
   \centering
@@ -793,54 +818,83 @@ in the methods, we found
   }
 \end{figure}
 
-To analyze the relation of lipid headgroup conformational ensembles between
-liquid lamellar and protein bound states, we calculated the heavy atom dihedral angle
-distributions also from the protein conformations found from the PDB.
-The results in figure \ref{dihedralsFROMpdb} do not reveal major differences
-between different lipid headgroups when bound to proteins.
-Some preference for trans state in C$_\alpha$-C$_\beta$ bond of PC lipids, and
-for positive angles in O$_\alpha$-C$_\alpha$ and P-O$_\alpha$ of PS lipids with respect
-to other lipids may be present in the data, but more statistics is required for solid
-conclusions. Therefore, the differences in conformational ensembles between different
-lipids observed in liquid lamellar state are not clearly visible in the protein bound states.
+Similarly to the liquid lamellar state, lipid dihedrals have very wide range of angles
+when bound to proteins. Only %restrictions seem to be in 
+%Almost all dihedral angles are found from the protein bounds states for all dihedrals
+%except for
+P-O$_\alpha$-C$_\alpha$-C$_\beta$ and g$_2$-g$_3$-O$_{g_3}$-P dihedrals
+seem to avoid cis conformations as observed also in liquid lamellar state.
+The %range of available angles for
+O$_\alpha$-C$_\alpha$-C$_\beta$-N/C$_\gamma$ and
+g$_1$-g$_2$-g$_3$-O$_{g_3}$ dihedrals are even less restricted in protein bound state
+than in liquid lamellar phase where cis and anti ecplipsed state were not present (Fig. \ref{structures}). 
+Major differences between different lipid headgroups are not observed when bound to proteins.
+Slight preference for the trans state in O$_\alpha$-C$_\alpha$-C$_\beta$-/C$_\gamma$ dihedral of PC,
+and for positive angles in P-O$_\alpha$-C$_\alpha$-C$_\gamma$ dihedral of PS lipids with respect
+to other lipids could be present in the data, but the statistics is not sufficient for conclusions.
+Therefore, the differences in conformational ensembles between different
+lipids in liquid lamellar state in Fig. \ref{structures} are not seen in the protein bound states.
 
-Almost all dihedral angles are found from the protein bounds states for all dihedrals
-except for P-O$_\alpha$-C$_\alpha$-C$_\beta$ and g$_2$-g$_3$-O$_{g_3}$-P, which seem to avoid
-the cis conformations. The wide range of available dihedrals is similar to our results
-in liquid lamellar state, except for O$_\alpha$-C$_\alpha$-C$_\beta$-/C$_\gamma$ and
-g$_1$-g$_2$-g$_3$-O$_{g_3}$ dihedrals which seem to be more restricted in the liquid
-lamellar phase (Fig. \ref{structures}). This suggests that lipids compromize their
-preferred conformations when bound to proteins to minimize the intermolecular interactions
-with proteins.
+This suggests that lipids can bind to proteins in wide range of conformations independently
+of headgroup chemistry. Thereby, lipids compromize their preferred conformations when binding
+to proteins and the binding of lipids to specific locations would be driven by 
+the intermolecular interactions between proteins and lipids.
+However, it is important to note that lipids are often not the main target in
+structures deposited in PDB and therefore their conformations may be less reliable than proteins.
+Stereochemical violations and structures deviating from lipid crystals have been
+previously proposed to indicate inaccuracies in lipid structures in PDB \cite{marsh13b,pezeshkian18}. 
+However, we see large deviations from lipid crystals structures also in conformational ensembles
+that reproduce the NMR data in liquid lamellar phase, thereby proposing that such deviations
+are realistic also in protein bound states.
 
 \section{Conclusions}
 
-We have measured the C-H bond order parameters with the signs for headgroup and glycerol
-backbone regions of the most most abundant biological phopholipids, PC, PE, PG and PS.
-Combining this experimental data with the large amount of simulation data collected 
-using the NMRlipids open collaboration, we were able to resolve the differences between
-conformational ensembles of lipid headgroup leading to the differences observed in NMR experiments.
+%We have measured the C-H bond order parameters with the signs for headgroup and glycerol
+%backbone regions of the
+Conformational ensembles resolved using solid state NMR experiments and MD simulations
+from NMRlipids open collaboration revealed that headgroups of the most abundant biological
+phopholipids, PC, PE, PG and PS, sample wide range of different conformations in lamellar liquid state.
+%Combining this experimental data with the large amount of simulation data collected 
+%using the NMRlipids open collaboration, we were able to resolve the differences between
+%conformational ensembles of lipid headgroup leading to the differences observed in NMR experiments.
+%Our results indicate that lipid headgroups are flexible and sample large conformational space
+%in biologically relevant liquid lamellar state,
+Differences in NMR order parameters between different headgroups can be explained
+by the changes in dihedral angle distributions, suggesting that
+similar conformations are accessed by all headgroups, but with different probabilities.
+Also the changes in order parameters upon addition of charged molecules, such as cationic lipids, surfactants, or drugs,
+in membranes can be explained by the changes in dihedral angle probabilities, particularly close to the phosphate region.
 
-Our results indicate that lipid headgroups are flexible and sample large conformational space
-in biologically relevant liquid lamellar state, also in membranes containing charged molecules,
-which have the largest affect on lipid headgroups in NMR experiments.
-Therefore, lipids can bind to proteins and other biomolecules in multiple different conformations,
-as indeed observed in the analysis of protein bound lipid conformations available from PDB.
-The weak correlation between lipid structures in liquid lamellar phase and protein bound state
-suggestst that the selective lipid binding to proteins is dominated by the intermolecular lipid-protein
-interactions, and the differences in conformational ensembles between different lipid types
-play only a minor role.
+Wide range of conformations are observed also in lipids that are tightly bound to proteins in PDB,
+%Therefore, lipids can bind to proteins and other biomolecules in multiple different conformations,
+%as indeed observed in the analysis of protein bound lipid conformations available from PDB.
+%The weak correlation between lipid structures in liquid lamellar phase and protein bound state
+suggesting that the specific binding of lipids to proteins is dominated by the intermolecular lipid-protein
+interactions, while the differences in conformational ensembles between different lipid types
+play a minor role. Therefore, lipids can conform themself to multiple binding positions locating
+in various proteins.
 
 Our results pave the way to understand how lipids regulate membrane protein function.
-For example, the resolved lipid conformational ensembles in liquid lamellar phase and
-realistic MD simulations enables accurate analysis of lipid-protein interactions energetics.
-Furthermore, our results demonstrate how NMR data can be combined with the large amount of
-indexed MD simulation data to find the most realistic conformational ensembles of biomolecules
-in membrane environment. This paves the way toward standardized methods to resolve the quality
-evaluated conformational ensembles of disordered biomolecules in membrane environment.
-In the NMRlipids project we aim to build a general databank of quality evaluated
-conformational ensembles of lipids and other disordered biomolecules based primarily on
-MD simulations and NMR data.
+Lipid conformational ensembles in liquid lamellar phase are necessary
+for the detailed analysis of lipid-protein interaction energetics,
+%the
+%realistic MD simulations enables accurate
+%analysis of
+particularly for the entropic part. 
+Furthermore, our results demonstrate how the NMRlipids databank, containing MD simulations and NMR data,
+can be used to resolve
+%NMR data can be combined with the large amount of
+%indexed MD simulation data to find the most realistic
+conformational ensembles of disordered biomolecules in membrane environment,
+and how this information can be coupled with structural data in the PDB.
+We believe that this combination brings us closer to the comprehensive understanding of
+complex biomolecular assemblies containg both disordered and structural regions, such as membrane
+protein complexes.
+%This paves the way toward standardized methods to resolve the quality
+%evaluated conformational ensembles of disordered biomolecules in membrane environment.
+%In the NMRlipids project we aim to build a general databank of quality evaluated
+%conformational ensembles of lipids and other disordered biomolecules based primarily on
+%MD simulations and NMR data.
 
 
 
