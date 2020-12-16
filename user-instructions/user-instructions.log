@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.6.5)  11 DEC 2020 15:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.6.5)  14 DEC 2020 13:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -480,37 +480,38 @@ Underfull \hbox (badness 10000) in paragraph at lines 46--49
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Underfull \hbox (badness 10000) in paragraph at lines 88--91
+Underfull \hbox (badness 10000) in paragraph at lines 89--92
 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 98.
 [3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 98.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 99.
+ [4]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 99.
  (./user-instructions.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 98.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 98.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 99.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 99.
 Package rerunfilecheck Info: File `user-instructions.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 98.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 99.
  ) 
 Here is how much of TeX's memory you used:
- 8301 strings out of 493935
- 121824 string characters out of 6163150
+ 8303 strings out of 493935
+ 121841 string characters out of 6163150
  223652 words of memory out of 5000000
  11980 multiletter control sequences out of 15000+600000
  11937 words of font info for 33 fonts, out of 8000000 for 9000
  331 hyphenation exceptions out of 8191
- 42i,6n,40p,701b,336s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,6n,40p,702b,336s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf/
 fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/c
 m-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb
 ></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/f
 onts/type1/public/cm-super/sfrm2074.pfb>
-Output written on user-instructions.pdf (3 pages, 85080 bytes).
+Output written on user-instructions.pdf (4 pages, 86404 bytes).
 PDF statistics:
- 69 PDF objects out of 1000 (max. 8388607)
- 58 compressed objects within 1 object stream
- 26 named destinations out of 1000 (max. 500000)
+ 74 PDF objects out of 1000 (max. 8388607)
+ 62 compressed objects within 1 object stream
+ 28 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
