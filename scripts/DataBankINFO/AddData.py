@@ -29,10 +29,12 @@ import os
 
 #For quering webs
 import urllib.request
-from urllib.error import URLError,HTTPError
+from urllib.error import URLError,HTTPError,ContentTooShortError
 
 # From time monitoring
 from tqdm import tqdm
+
+import socket
 
 # Python program to find SHA256 hash string of a file
 import hashlib
@@ -622,7 +624,9 @@ for sim in sims_required_entries:
 
 # In[14]:
 
+socket.setdefaulttimeout(30)
 
+download_failed = False
 
 # Create temporary directory where to download files and analyze them
 dir_tmp = os.path.join(dir_wrk, "tmp_6-" + str(randint(100000, 999999)))
@@ -631,6 +635,7 @@ if (not os.path.isdir(dir_tmp)):
     os.mkdir(dir_tmp)
 
 for sim in sims_working_links:
+    file_sizes={}
     print("ID {0}".format(sim["ID"]), flush=True)
     software_sim = software_dict[sim['SOFTWARE'].upper()]
     dir_sim = os.path.join(dir_tmp, str(sim["ID"]))
@@ -647,11 +652,41 @@ for sim in sims_working_links:
                 for file_provided in tqdm(value_sim, desc = key_sim):
                     file_url = download_link(DOI, file_provided[0])
                     file_name = os.path.join(dir_sim, file_provided[0])
+                    #get the size of the file to be downloaded
+                    url_size = urllib.request.urlopen(file_url).length
                     if (not os.path.isfile(file_name)):
-                        response = urllib.request.urlretrieve(file_url, file_name)
-                          
+                        print("downloading")
+                        try:
+                            response = urllib.request.urlretrieve(file_url, file_name)
+                        except ContentTooShortError:
+                            download_failed = True
+                            print("Content too short error.")
+                        except HTTPError as e:
+                            download_failed = True
+                            print(e)
+                        except URLError as ue:
+                            download_failed = True
+                            print("failed to download")
+                        except socket.timeout as se:
+                            download_failed = True
+                            print("socket time out")
+                        except Exception as ee:
+                            download_failed = True
+                            print(ee)
+                #check if the file is fully downloaded
+                    size = os.path.getsize(file_name)
+                    print("size of the file " + file_provided[0] + " to be downloaded: " + str(url_size))
+                    print("size of the file " + file_provided[0] + " after download: " + str(size) )
+                    if url_size != size:
+                        print("Download of the file " + file_provided[0] + " was interrupted.")
+                        sys.exit()
         except:#It is normal that fails for "ID" and "SOFTWARE"
             continue
+
+if download_failed:
+    print("One of the downloads failed. Terminating the script.")
+    sys.exit()
+
 
 # ## Calculate hash downloaded files
 
