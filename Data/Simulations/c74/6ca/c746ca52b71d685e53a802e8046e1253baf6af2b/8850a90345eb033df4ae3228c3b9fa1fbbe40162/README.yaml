@@ -17,9 +17,9 @@ POPG: POPG
 POPS: POPS
 POPE: POPE
 POT: K
-SOD: Na_d
-CLA: CL_d
-CAL: CA_d
+SOD: NA
+CLA: CL
+CAL: CA
 SOL: TIP3p
 NPOPC:
 - 64
@@ -34,7 +34,7 @@ NPOPE:
 - 0
 - 0
 NPOT: 0
-NSOD: 0
+NSOD: 128
 NCLA: 0
 NCAL: 0
 NSOL: 0
@@ -43,7 +43,10 @@ TRJLENGTH: 500100.0
 MAPPING_DICT:
   POPC: mappingPOPCslipids.txt
   POPG: mappingPOPGslipids.txt
-GRO: /media/osollila/Data/tmp/DATABANK/tmp_6-665323/0/conf.gro
+GRO: /media/osollila/Data/tmp/DATABANK/tmp_6-619969/0/conf.gro
 NCHOL:
+- 0
+- 0
+NDHMDMAB:
 - 0
 - 0
