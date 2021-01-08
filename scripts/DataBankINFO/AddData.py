@@ -146,6 +146,9 @@ lipids_dict = {
                 'CHOL' : {"REQUIRED": False,
                             "TYPE" : "string",
                         },
+                'DHMDMAB' : {"REQUIRED": False,
+                            "TYPE" : "string",
+                        },
                 }
 
 molecules_dict = {
@@ -186,6 +189,9 @@ molecule_numbers_dict = {
                 'NCHOL' : {"REQUIRED": False,
                             "TYPE" : "array",
                         },
+                'DHMDMAB' : {"REQUIRED": False,
+                            "TYPE" : "array",
+                        },
     
                'NPOT' : {"REQUIRED": False,
                             "TYPE" : "integer",
@@ -219,6 +225,9 @@ molecule_ff_dict = {
                                 "TYPE": "string",
                            },
                 'FFCHOL' : {"REQUIRED": False,
+                                "TYPE": "string",
+                           },
+                'FFDHMDMAB' : {"REQUIRED": False,
                                 "TYPE": "string",
                            },
 		'FFPOT' : {"REQUIRED": False,
@@ -303,7 +312,7 @@ gromacs_dict = {
                              "TYPE" : "string",
  #                        "EXTENSION": ("txt"),
                              },
-            'UNITEDATOM' : {"REQUIRED": True,
+            'UNITEDATOM' : {"REQUIRED": False,
                             "TYPE" : "string",
                          },
                }
@@ -1118,8 +1127,8 @@ for sim in sims_working_links:
 
             outfile.close()
 
-            os.system('cp ' + str(dir_tmp) + '/' + str(ID) + '/' + key + '_OrderParameters.dat ' + data_directory.get(str(ID)))
-            os.system('cp ' +str(dir_tmp) + '/' + str(ID) + '/' + key + '_OrderParameters.json ' + data_directory.get(str(ID)))
+            os.system('cp ' + str(dir_tmp) + '/' + str(ID) + '/' + key + 'OrderParameters.dat ' + data_directory.get(str(ID)))
+            os.system('cp ' +str(dir_tmp) + '/' + str(ID) + '/' + key + 'OrderParameters.json ' + data_directory.get(str(ID)))
     
     print("Done calculating order parameters.")
 

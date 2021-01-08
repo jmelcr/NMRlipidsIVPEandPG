@@ -5,7 +5,7 @@ POPC:POPG (4:1) lipid17ecc + 1 M CaCl
 
 @SIM
 @SYSTEM=POPC:POPG(4:1)_T298K_1MCaCl
-@MAPPING=POPC,mappingPOPClipid17ecc.txt,POPG,mappingPOPGlipid17ecc.txt
+@MAPPING=POPC,mappingPOPClipid17ecc2.txt,POPG,mappingPOPGlipid17ecc.txt
 @SOFTWARE=gromacs
 @FF=lipid17ecc
 @FF_SOURCE=NMRlipidsIV
@@ -43,4 +43,4 @@ POPC:POPG (4:1) lipid17ecc + 1 M CaCl
 #NMRLIPIDS END
 
 """
-dir_wrk = "/media/osollila/Data1/tmp/DATABANK/"
+dir_wrk = "/media/osollila/Data/tmp/DATABANK/"

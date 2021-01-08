@@ -20,12 +20,13 @@ POPC charmm with 20% cationic surfactant T313K
 @POPS=POPS
 @POPE=POPE
 @CHOL=CHOL
+@DHMDMAB=T7H
 
-@POT=M_K_M
-@SOD=M_NA_M
-@CLA=M_CL_M
-@CAL=M_CA_M
-@SOL=M_SOL_M
+@POT=K
+@SOD=NA
+@CLA=CLA
+@CAL=CA
+@SOL=TIP3
 
 @NPOPC=[0,0]
 @NPOPG=[0,0]

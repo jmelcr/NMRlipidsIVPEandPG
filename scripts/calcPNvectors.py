@@ -69,8 +69,8 @@ def make_positive_angles(x):
 lipids = {'POPS','POPE','POPG','POPC'}
 #lipids = {'POPE'}
 atom1 = 'M_G3P2_M'
-#atom2 = 'M_G3C5O1_M'   #for POPG
-atom2 = 'M_G3N6_M'
+atom2 = 'M_G3C5O1_M'   #for POPG
+#atom2 = 'M_G3N6_M'
 
 colors = {'POPC' :'black','POPS':'red','POPE':'blue','POPG':'green'}
 

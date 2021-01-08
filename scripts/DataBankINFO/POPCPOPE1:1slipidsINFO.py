@@ -20,11 +20,11 @@ POPC:POPE 1:1 slipids from M. Javanainen
 @POPS=POPS
 @POPE=POPE
 
-@POT=M_K_M
-@SOD=M_NA_M
-@CLA=M_CL_M
-@CAL=M_CA_M
-@SOL=M_SOL_M
+@POT=K
+@SOD=NA
+@CLA=CL
+@CAL=CA
+@SOL=SOL
 
 @NPOPC=[0,0]
 @NPOPG=[0,0]
