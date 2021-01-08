@@ -4,7 +4,7 @@ set terminal postscript portrait enhanced color dashed lw 1 "Helvetica" 14 backg
 set output "../CAdensPG1PC4.eps"
 set yrange [0:1.65] 
 set xrange [-4:4] 
-set multiplot layout 2,1
+set multiplot layout 3,1
 
 set xtics format " " 
 set label at screen 0.02,0.35 rotate by 90 "Number density of calcium" font ',15'
@@ -14,13 +14,6 @@ set size 1.0,0.3
 set label  "CHARMM36"  at graph  0.4,0.85
 set key at graph 0.6,0.7 maxcols 3 maxrows 5
 plot      "../../../MATCH/Data/Lipid_Bilayers/POPG+80%POPC+1000mMCaCl/T298K/MODEL_CHARMM36/IONdens.xvg" using 1:2 with lines title '1 M' lw 6 lc rgb 'black',\
-
-#unset label
-#set size 1.0,0.3
-#set label  "SLIPIDS"  at graph  0.4,0.85
-#set key at graph 0.6,0.7 maxcols 3 maxrows 5
-#plot    "../../../MATCH/Data/Lipid_Bilayers/POPG+50%POPC+500mMCaCl/T298K/MODEL_SLIPIDS/IONdens.xvg" using 1:2 with lines title '0.5 M' lw 4 lc rgb 'black',\
-#        "../../../MATCH/Data/Lipid_Bilayers/POPG+50%POPC+200mMCaCl/T298K/MODEL_SLIPIDS/IONdens.xvg" using 1:2 with lines title '0.2 M' lw 3 lc rgb 'black',\
 
 
 #set origin 0,0.3
@@ -37,11 +30,11 @@ plot "../../../MATCH/Data/Lipid_Bilayers/POPG+80%POPC+1000mMCaCl/T298K/MODEL_LIP
 ##set origin 0,0.3
 #set size 1.0,0.3
 #unset label
-#set xtics format "%G"
-#set xlabel "Membrane normal coordinate (nm)"
-#set label  "Lipid17ecc"  at graph  0.4,0.85
-#plot "../../../MATCH/Data/Lipid_Bilayers/POPG+50%POPC+1000mMCaCl/T298K/MODEL_LIPID17ecc/IONdens2.xvg" using 1:2 with lines title '1 M' lw 6 lc rgb 'black',\
-##     "../../../MATCH/Data/Lipid_Bilayers/POPG+50%POPC+100mMCaCl/T298K/MODEL_LIPID17ecc/IONdens.xvg" using 1:2 with lines title '100 mM' lw 2 lc rgb 'black',\
+set xtics format "%G"
+set xlabel "Membrane normal coordinate (nm)"
+set label  "Lipid17ecc"  at graph  0.4,0.85
+plot "../../Data/DENSITIES/cfc/4c4/cfc4c4be95331177929f47a2f1c59f2792643901/112cf0742e84e4dbdd3598c8bcc6921f84378fb3/CALdensity.xvg" using 1:2 with lines title '1 M' lw 6 lc rgb 'black',\
+     "../../Data/DENSITIES/efe/f45/efef45ac201347d6822e5436d2566d3be298b54a/a2c7ff5a30728119cc82206b15a3df9fb63eaf5e/CALdensity.xvg" using 1:2 with lines title '100 mM' lw 2 lc rgb 'black',\
 
 
 
