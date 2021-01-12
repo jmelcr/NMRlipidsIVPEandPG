@@ -1,0 +1,123 @@
+set size 2.2,0.95
+set terminal postscript portrait enhanced color dashed lw 1 "Helvetica" 14 
+set output "../DIHEDRALSslipidsWITHCaCl.eps"
+set multiplot layout 2,3
+
+set ytics font ",20"
+set xtics font ",20"
+set ylabel font ",20"
+set xlabel  font ",20"
+set xtics format " "
+
+#set ytic 0.02
+#set key box linestyle 1 linecolor rgb 'black'
+#set key above maxcols 2 maxrows 2
+set key at screen 0.9,0.9 font ",20"
+
+#set label  "A)"  at screen  0.01,0.92 font ",25"
+
+#
+# FIRST COLUMN OF DIHEDRALS
+#
+unset ytic
+unset yrange
+unset ylabel
+unset xlabel
+
+set xrange [0:360]
+
+set xtics format " "
+
+unset key
+set key at graph 0.35,0.7 maxcols 1 font ",17"
+set size 1.15,0.35
+set origin 0, 0.6
+set label  "O_{/Symbol a}-C_{/Symbol a}-C_{/Symbol b}-N/C_{/Symbol g}"  at graph  0.05,0.9 font ",20"
+plot "../../Data/dihedral/c74/6ca/c746ca52b71d685e53a802e8046e1253baf6af2b/8850a90345eb033df4ae3228c3b9fa1fbbe40162/POPG_M_G3O3_M_M_G3C4_M_M_G3C5_M_M_G3C6_M_0-360.xvg" using 1:2 with lines title '0 M' lw 6 lc rgb 'black',\
+     "../../Data/dihedral/4fb/255/4fb255b704c3d6a78c006a1b068e14c659d9667b/8e7e5deb23cdd19f7239116293ccf2a7995ecbbb/POPG_M_G3O3_M_M_G3C4_M_M_G3C5_M_M_G3C6_M_0-360.xvg" using 1:2 with lines title '0.1 M' lw 6 lc rgb 'red',\
+     "../../Data/dihedral/944/25d/94425d6fcd0a0716ffd72d8908daff83a5ec6772/db9102a50e078ee7769b908aef3ad900f9172ae4/POPG_M_G3O3_M_M_G3C4_M_M_G3C5_M_M_G3C6_M_0-360.xvg" using 1:2 with lines title '0.2 M' lw 6 lc rgb 'blue',\
+     "../../Data/dihedral/72c/a50/72ca507d6c27e37f020ca31197879b41f45a150a/66d5aff21e8512a9bec660eda244715dfd9eebe7/POPG_M_G3O3_M_M_G3C4_M_M_G3C5_M_M_G3C6_M_0-360.xvg" using 1:2 with lines title '0.5 M' lw 6 lc rgb 'orange',\
+     "../../Data/dihedral/902/649/90264920ee5640b7c18082ff86a7fcc0b9bd75ea/b6e03a197721f25e989d3452166ec5f88ca0aae4/POPG_M_G3O3_M_M_G3C4_M_M_G3C5_M_M_G3C6_M_0-360.xvg" using 1:2 with lines title '1.0 M' lw 6 lc rgb 'brown',\
+
+unset label
+
+set size 1.15,0.35
+set origin 0, 0.3
+set label  "P-O_{/Symbol a}-C_{/Symbol a}-C_{/Symbol b}"  at graph  0.05,0.8  font ",20"
+plot "../../Data/dihedral/c74/6ca/c746ca52b71d685e53a802e8046e1253baf6af2b/8850a90345eb033df4ae3228c3b9fa1fbbe40162/POPG_M_G3P2_M_M_G3O3_M_M_G3C4_M_M_G3C5_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'black',\
+     "../../Data/dihedral/4fb/255/4fb255b704c3d6a78c006a1b068e14c659d9667b/8e7e5deb23cdd19f7239116293ccf2a7995ecbbb/POPG_M_G3P2_M_M_G3O3_M_M_G3C4_M_M_G3C5_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'red',\
+     "../../Data/dihedral/944/25d/94425d6fcd0a0716ffd72d8908daff83a5ec6772/db9102a50e078ee7769b908aef3ad900f9172ae4/POPG_M_G3P2_M_M_G3O3_M_M_G3C4_M_M_G3C5_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'blue',\
+     "../../Data/dihedral/72c/a50/72ca507d6c27e37f020ca31197879b41f45a150a/66d5aff21e8512a9bec660eda244715dfd9eebe7/POPG_M_G3P2_M_M_G3O3_M_M_G3C4_M_M_G3C5_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'orange',\
+     "../../Data/dihedral/902/649/90264920ee5640b7c18082ff86a7fcc0b9bd75ea/b6e03a197721f25e989d3452166ec5f88ca0aae4/POPG_M_G3P2_M_M_G3O3_M_M_G3C4_M_M_G3C5_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'brown',\
+
+unset label
+
+
+set label  "O_{g3}-P-O_{/Symbol a}-C_{/Symbol a}"  at graph  0.35,0.8  font ",20"
+set xtics font ",20"
+set xlabel  font ",20"
+set xtics format "%G"
+set xlabel "Dihedral angle"
+set size 1.15,0.35
+set origin 0, 0
+plot "../../Data/dihedral/c74/6ca/c746ca52b71d685e53a802e8046e1253baf6af2b/8850a90345eb033df4ae3228c3b9fa1fbbe40162/POPG_M_G3O1_M_M_G3P2_M_M_G3O3_M_M_G3C4_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'black',\
+     "../../Data/dihedral/4fb/255/4fb255b704c3d6a78c006a1b068e14c659d9667b/8e7e5deb23cdd19f7239116293ccf2a7995ecbbb/POPG_M_G3O1_M_M_G3P2_M_M_G3O3_M_M_G3C4_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'red',\
+     "../../Data/dihedral/944/25d/94425d6fcd0a0716ffd72d8908daff83a5ec6772/db9102a50e078ee7769b908aef3ad900f9172ae4/POPG_M_G3O1_M_M_G3P2_M_M_G3O3_M_M_G3C4_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'blue',\
+     "../../Data/dihedral/72c/a50/72ca507d6c27e37f020ca31197879b41f45a150a/66d5aff21e8512a9bec660eda244715dfd9eebe7/POPG_M_G3O1_M_M_G3P2_M_M_G3O3_M_M_G3C4_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'orange',\
+     "../../Data/dihedral/902/649/90264920ee5640b7c18082ff86a7fcc0b9bd75ea/b6e03a197721f25e989d3452166ec5f88ca0aae4/POPG_M_G3O1_M_M_G3P2_M_M_G3O3_M_M_G3C4_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'brown',\
+
+unset label
+
+#
+# SECOND COLUMN OF DIHEDRALS
+#
+unset ytic
+unset yrange
+unset ylabel
+unset xlabel
+
+set xrange [0:360]
+
+set xtics format " "
+
+set label  "g_3-O_{g3}-P-O_{/Symbol a}"  at graph  0.35,0.8  font ",20"
+set size 1.15,0.35
+set origin 1.08, 0.6
+plot "../../Data/dihedral/c74/6ca/c746ca52b71d685e53a802e8046e1253baf6af2b/8850a90345eb033df4ae3228c3b9fa1fbbe40162/POPG_M_G3_M_M_G3O1_M_M_G3P2_M_M_G3O3_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'black',\
+     "../../Data/dihedral/4fb/255/4fb255b704c3d6a78c006a1b068e14c659d9667b/8e7e5deb23cdd19f7239116293ccf2a7995ecbbb/POPG_M_G3_M_M_G3O1_M_M_G3P2_M_M_G3O3_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'red',\
+     "../../Data/dihedral/944/25d/94425d6fcd0a0716ffd72d8908daff83a5ec6772/db9102a50e078ee7769b908aef3ad900f9172ae4/POPG_M_G3_M_M_G3O1_M_M_G3P2_M_M_G3O3_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'blue',\
+     "../../Data/dihedral/72c/a50/72ca507d6c27e37f020ca31197879b41f45a150a/66d5aff21e8512a9bec660eda244715dfd9eebe7/POPG_M_G3_M_M_G3O1_M_M_G3P2_M_M_G3O3_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'orange',\
+     "../../Data/dihedral/902/649/90264920ee5640b7c18082ff86a7fcc0b9bd75ea/b6e03a197721f25e989d3452166ec5f88ca0aae4/POPG_M_G3_M_M_G3O1_M_M_G3P2_M_M_G3O3_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'brown',\
+
+unset label
+
+set label  "g_2-g_3-O_{g3}-P"  at graph  0.05,0.8  font ",20"
+set size 1.15,0.35
+set origin 1.08, 0.3
+plot "../../Data/dihedral/c74/6ca/c746ca52b71d685e53a802e8046e1253baf6af2b/8850a90345eb033df4ae3228c3b9fa1fbbe40162/POPG_M_G2_M_M_G3_M_M_G3O1_M_M_G3P2_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'black',\
+     "../../Data/dihedral/4fb/255/4fb255b704c3d6a78c006a1b068e14c659d9667b/8e7e5deb23cdd19f7239116293ccf2a7995ecbbb/POPG_M_G2_M_M_G3_M_M_G3O1_M_M_G3P2_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'red',\
+     "../../Data/dihedral/944/25d/94425d6fcd0a0716ffd72d8908daff83a5ec6772/db9102a50e078ee7769b908aef3ad900f9172ae4/POPG_M_G2_M_M_G3_M_M_G3O1_M_M_G3P2_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'blue',\
+     "../../Data/dihedral/72c/a50/72ca507d6c27e37f020ca31197879b41f45a150a/66d5aff21e8512a9bec660eda244715dfd9eebe7/POPG_M_G2_M_M_G3_M_M_G3O1_M_M_G3P2_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'orange',\
+     "../../Data/dihedral/902/649/90264920ee5640b7c18082ff86a7fcc0b9bd75ea/b6e03a197721f25e989d3452166ec5f88ca0aae4/POPG_M_G2_M_M_G3_M_M_G3O1_M_M_G3P2_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'brown',\
+
+unset label
+
+
+set label  "g_1-g_2-g_3-O_{g3}"  at graph  0.05,0.8  font ",20"
+set xtics format "%G"
+set xtics font ",20"
+set xlabel  font ",20"
+set xlabel "Dihedral angle"
+set size 1.15,0.35
+set origin 1.08, 0
+plot "../../Data/dihedral/c74/6ca/c746ca52b71d685e53a802e8046e1253baf6af2b/8850a90345eb033df4ae3228c3b9fa1fbbe40162/POPG_M_G1_M_M_G2_M_M_G3_M_M_G3O1_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'black',\
+     "../../Data/dihedral/4fb/255/4fb255b704c3d6a78c006a1b068e14c659d9667b/8e7e5deb23cdd19f7239116293ccf2a7995ecbbb/POPG_M_G1_M_M_G2_M_M_G3_M_M_G3O1_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'red',\
+     "../../Data/dihedral/944/25d/94425d6fcd0a0716ffd72d8908daff83a5ec6772/db9102a50e078ee7769b908aef3ad900f9172ae4/POPG_M_G1_M_M_G2_M_M_G3_M_M_G3O1_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'blue',\
+     "../../Data/dihedral/72c/a50/72ca507d6c27e37f020ca31197879b41f45a150a/66d5aff21e8512a9bec660eda244715dfd9eebe7/POPG_M_G1_M_M_G2_M_M_G3_M_M_G3O1_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'orange',\
+     "../../Data/dihedral/902/649/90264920ee5640b7c18082ff86a7fcc0b9bd75ea/b6e03a197721f25e989d3452166ec5f88ca0aae4/POPG_M_G1_M_M_G2_M_M_G3_M_M_G3O1_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'brown',\
+
+
+
+
+unset multiplot
+
