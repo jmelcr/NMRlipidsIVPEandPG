@@ -10,69 +10,67 @@ unset ytic
 #set key box linestyle 1 linecolor rgb 'black'
 set multiplot layout 6,1
 
+#set ytics font ",20"
+set xtics font ",20"
+#set ylabel font ",20"
+set xlabel  font ",20"
 set xtics format " " 
-set label at screen 0.02,0.5 rotate by 90 "Distribution" font ',15'
+#set label at screen 0.02,0.5 rotate by 90 "Distribution" font ',15'
 
 set origin 0,0.93
 set size 1.0,0.23
-set label  "O_{/Symbol a}-C_{/Symbol a}-C_{/Symbol b}-N/C_{/Symbol g}"  at graph  0.4,0.8
-#set label  "A_{pl} = 66.8 {\305}^2"  at graph  0.02,0.8
-#set label  "{/Arial:Bold A_{pl} = 67.1 {\305}^2}"  at graph  0.02,0.7 #font ",12"
-set key above maxcols 2 maxrows 2
-plot "../../Data/dihedral/f40/bb6/f40bb6ab5d44402be07059e8df74b5a8200f031e/6774168dfec0a5a7377c8a46341eba603f320cf7/M_G3O3_MM_G3C4_MM_G3C5_MM_G3N6_M.dat" using 1:2 with lines title 'POPS' lw 2 lc rgb 'red',\
-     "../../Data/dihedral/b4f/866/b4f866c0dabffa6cd891e91841591d46590f34aa/a231c358dd8c0b7bb4cf558ccdbf022373354a9a/M_G3O3_MM_G3C4_MM_G3C5_MM_G3N6_M.dat" using 1:2 with lines title 'POPC' lw 4 lc rgb 'black',\
-     "../../Data/dihedral/2d4/61b/2d461bc9d828af155146162ef42438974e4cbeaf/c8ce4cc36ef6ec7a085cf011176a92d9d746a792/M_G3O3_MM_G3C4_MM_G3C5_MM_G3N6_M.dat" using 1:2 with lines title 'POPE' lw 4 lc rgb 'blue',\
-   "../../Data/dihedral/0d5/d1d/0d5d1dcb43e775faf4e53c4f9ff255a67481bd38/9b487701b24d3fad83991e311188b08d3d5ea768/M_G3O3_MM_G3C4_MM_G3C5_MM_G3C6_M.dat" using 1:2 with lines title 'POPG' lw 4 lc rgb 'green',\
+set label  "O_{/Symbol a}-C_{/Symbol a}-C_{/Symbol b}-N/C_{/Symbol g}"  at graph  0.35,0.8 font ",20"
+set key at graph 0.75,0.5 maxcols 2 maxrows 2 font ",17"
+plot  "../../Data/dihedral/b4f/866/b4f866c0dabffa6cd891e91841591d46590f34aa/a231c358dd8c0b7bb4cf558ccdbf022373354a9a/M_G3O3_MM_G3C4_MM_G3C5_MM_G3N6_M.dat" using 1:2 with lines title 'POPC' lw 6 lc rgb 'black',\
+     "../../Data/dihedral/2d4/61b/2d461bc9d828af155146162ef42438974e4cbeaf/c8ce4cc36ef6ec7a085cf011176a92d9d746a792/M_G3O3_MM_G3C4_MM_G3C5_MM_G3N6_M.dat" using 1:2 with lines title 'POPE' lw 6 lc rgb 'blue',\
+   "../../Data/dihedral/0d5/d1d/0d5d1dcb43e775faf4e53c4f9ff255a67481bd38/9b487701b24d3fad83991e311188b08d3d5ea768/M_G3O3_MM_G3C4_MM_G3C5_MM_G3C6_M.dat" using 1:2 with lines title 'POPG' lw 6 lc rgb 'green',\
+   "../../Data/dihedral/f40/bb6/f40bb6ab5d44402be07059e8df74b5a8200f031e/6774168dfec0a5a7377c8a46341eba603f320cf7/M_G3O3_MM_G3C4_MM_G3C5_MM_G3N6_M.dat" using 1:2 with lines title 'POPS' lw 6 lc rgb 'red',\
+
 	 
 
 set origin 0,0.75
 set size 1.0,0.23
+set yrange [0:0.015]
 unset label
-set label  "P-O_{/Symbol a}-C_{/Symbol a}-C_{/Symbol b}"  at graph  0.01,0.8
-#set label  "A_{pl} = 65.7 {\305}^2"  at graph  0.02,0.9
-#set label  "{/Arial:Bold A_{pl} = 68.9 {\305}^2}"  at graph  0.02,0.78 #font ",12"
-#set label  "A_{pl} = 53.5 {\305}^2"  at graph  0.79,0.9  tc rgb 'red'
-#set label  "A_{pl} = 61.6 {\305}^2"  at graph  0.79,0.78  tc rgb 'green'
+set label  "P-O_{/Symbol a}-C_{/Symbol a}-C_{/Symbol b}"  at graph  0.35,0.9  font ",20"
 set key at graph 0.97,0.95
-plot  "../../Data/dihedral/f40/bb6/f40bb6ab5d44402be07059e8df74b5a8200f031e/6774168dfec0a5a7377c8a46341eba603f320cf7/M_G3P2_MM_G3O3_MM_G3C4_MM_G3C5_M.dat" using 1:2 with lines notitle lw 2 lc rgb 'red',\
-     "../../Data/dihedral/b4f/866/b4f866c0dabffa6cd891e91841591d46590f34aa/a231c358dd8c0b7bb4cf558ccdbf022373354a9a/M_G3P2_MM_G3O3_MM_G3C4_MM_G3C5_M.dat" using 1:2 with lines notitle lw 4 lc rgb 'black',\
-     "../../Data/dihedral/2d4/61b/2d461bc9d828af155146162ef42438974e4cbeaf/c8ce4cc36ef6ec7a085cf011176a92d9d746a792/M_G3P2_MM_G3O3_MM_G3C4_MM_G3C5_M.dat" using 1:2 with lines notitle lw 4 lc rgb 'blue',\
-     "../../Data/dihedral/0d5/d1d/0d5d1dcb43e775faf4e53c4f9ff255a67481bd38/9b487701b24d3fad83991e311188b08d3d5ea768/M_G3P2_MM_G3O3_MM_G3C4_MM_G3C5_M.dat" using 1:2 with lines notitle lw 4 lc rgb 'green',\
+plot  "../../Data/dihedral/f40/bb6/f40bb6ab5d44402be07059e8df74b5a8200f031e/6774168dfec0a5a7377c8a46341eba603f320cf7/M_G3P2_MM_G3O3_MM_G3C4_MM_G3C5_M.dat" using 1:2 with lines notitle lw 6 lc rgb 'red',\
+     "../../Data/dihedral/b4f/866/b4f866c0dabffa6cd891e91841591d46590f34aa/a231c358dd8c0b7bb4cf558ccdbf022373354a9a/M_G3P2_MM_G3O3_MM_G3C4_MM_G3C5_M.dat" using 1:2 with lines notitle lw 6 lc rgb 'black',\
+     "../../Data/dihedral/2d4/61b/2d461bc9d828af155146162ef42438974e4cbeaf/c8ce4cc36ef6ec7a085cf011176a92d9d746a792/M_G3P2_MM_G3O3_MM_G3C4_MM_G3C5_M.dat" using 1:2 with lines notitle lw 6 lc rgb 'blue',\
+     "../../Data/dihedral/0d5/d1d/0d5d1dcb43e775faf4e53c4f9ff255a67481bd38/9b487701b24d3fad83991e311188b08d3d5ea768/M_G3P2_MM_G3O3_MM_G3C4_MM_G3C5_M.dat" using 1:2 with lines notitle lw 6 lc rgb 'green',\
 	  
 
 
 set origin 0,0.57
 set size 1.0,0.23
+unset yrange
 unset label
-set label  "O_{g3}-P-O_{/Symbol a}-C_{/Symbol a}"  at graph  0.4,0.8
-#set label  "{/Arial:Bold A_{pl} = 58.0 {\305}^2}"  at graph  0.01,0.85
+set label  "O_{g3}-P-O_{/Symbol a}-C_{/Symbol a}"  at graph  0.35,0.8  font ",20"
 set key at graph 0.67,0.82
-plot  "../../Data/dihedral/f40/bb6/f40bb6ab5d44402be07059e8df74b5a8200f031e/6774168dfec0a5a7377c8a46341eba603f320cf7/M_G3O1_MM_G3P2_MM_G3O3_MM_G3C4_M.dat" using 1:2 with lines notitle lw 2 lc rgb 'red',\
-     "../../Data/dihedral/b4f/866/b4f866c0dabffa6cd891e91841591d46590f34aa/a231c358dd8c0b7bb4cf558ccdbf022373354a9a/M_G3O1_MM_G3P2_MM_G3O3_MM_G3C4_M.dat" using 1:2 with lines notitle lw 4 lc rgb 'black',\
-     "../../Data/dihedral/2d4/61b/2d461bc9d828af155146162ef42438974e4cbeaf/c8ce4cc36ef6ec7a085cf011176a92d9d746a792/M_G3O1_MM_G3P2_MM_G3O3_MM_G3C4_M.dat" using 1:2 with lines notitle lw 4 lc rgb 'blue',\
-     "../../Data/dihedral/0d5/d1d/0d5d1dcb43e775faf4e53c4f9ff255a67481bd38/9b487701b24d3fad83991e311188b08d3d5ea768/M_G3O1_MM_G3P2_MM_G3O3_MM_G3C4_M.dat" using 1:2 with lines notitle lw 4 lc rgb 'green',\
+plot  "../../Data/dihedral/f40/bb6/f40bb6ab5d44402be07059e8df74b5a8200f031e/6774168dfec0a5a7377c8a46341eba603f320cf7/M_G3O1_MM_G3P2_MM_G3O3_MM_G3C4_M.dat" using 1:2 with lines notitle lw 6 lc rgb 'red',\
+     "../../Data/dihedral/b4f/866/b4f866c0dabffa6cd891e91841591d46590f34aa/a231c358dd8c0b7bb4cf558ccdbf022373354a9a/M_G3O1_MM_G3P2_MM_G3O3_MM_G3C4_M.dat" using 1:2 with lines notitle lw 6 lc rgb 'black',\
+     "../../Data/dihedral/2d4/61b/2d461bc9d828af155146162ef42438974e4cbeaf/c8ce4cc36ef6ec7a085cf011176a92d9d746a792/M_G3O1_MM_G3P2_MM_G3O3_MM_G3C4_M.dat" using 1:2 with lines notitle lw 6 lc rgb 'blue',\
+     "../../Data/dihedral/0d5/d1d/0d5d1dcb43e775faf4e53c4f9ff255a67481bd38/9b487701b24d3fad83991e311188b08d3d5ea768/M_G3O1_MM_G3P2_MM_G3O3_MM_G3C4_M.dat" using 1:2 with lines notitle lw 6 lc rgb 'green',\
 
 set origin 0,0.39
 set size 1.0,0.23
 unset label
-set label  "g_3-O_{g3}-P-O_{/Symbol a}"  at graph  0.4,0.8
-#set label  "{/Arial:Bold A_{pl} = 58.0 {\305}^2}"  at graph  0.01,0.85
+set label  "g_3-O_{g3}-P-O_{/Symbol a}"  at graph  0.35,0.8   font ",20"
 set key at graph 0.67,0.82
-plot  "../../Data/dihedral/f40/bb6/f40bb6ab5d44402be07059e8df74b5a8200f031e/6774168dfec0a5a7377c8a46341eba603f320cf7/M_G3_MM_G3O1_MM_G3P2_MM_G3O3_M.dat" using 1:2 with lines notitle lw 2 lc rgb 'red',\
-     "../../Data/dihedral/b4f/866/b4f866c0dabffa6cd891e91841591d46590f34aa/a231c358dd8c0b7bb4cf558ccdbf022373354a9a/M_G3_MM_G3O1_MM_G3P2_MM_G3O3_M.dat" using 1:2 with lines notitle lw 4 lc rgb 'black',\
-     "../../Data/dihedral/2d4/61b/2d461bc9d828af155146162ef42438974e4cbeaf/c8ce4cc36ef6ec7a085cf011176a92d9d746a792/M_G3_MM_G3O1_MM_G3P2_MM_G3O3_M.dat" using 1:2 with lines notitle lw 4 lc rgb 'blue',\
-     "../../Data/dihedral/0d5/d1d/0d5d1dcb43e775faf4e53c4f9ff255a67481bd38/9b487701b24d3fad83991e311188b08d3d5ea768/M_G3_MM_G3O1_MM_G3P2_MM_G3O3_M.dat" using 1:2 with lines notitle lw 4 lc rgb 'green',\
+plot  "../../Data/dihedral/f40/bb6/f40bb6ab5d44402be07059e8df74b5a8200f031e/6774168dfec0a5a7377c8a46341eba603f320cf7/M_G3_MM_G3O1_MM_G3P2_MM_G3O3_M.dat" using 1:2 with lines notitle lw 6 lc rgb 'red',\
+     "../../Data/dihedral/b4f/866/b4f866c0dabffa6cd891e91841591d46590f34aa/a231c358dd8c0b7bb4cf558ccdbf022373354a9a/M_G3_MM_G3O1_MM_G3P2_MM_G3O3_M.dat" using 1:2 with lines notitle lw 6 lc rgb 'black',\
+     "../../Data/dihedral/2d4/61b/2d461bc9d828af155146162ef42438974e4cbeaf/c8ce4cc36ef6ec7a085cf011176a92d9d746a792/M_G3_MM_G3O1_MM_G3P2_MM_G3O3_M.dat" using 1:2 with lines notitle lw 6 lc rgb 'blue',\
+     "../../Data/dihedral/0d5/d1d/0d5d1dcb43e775faf4e53c4f9ff255a67481bd38/9b487701b24d3fad83991e311188b08d3d5ea768/M_G3_MM_G3O1_MM_G3P2_MM_G3O3_M.dat" using 1:2 with lines notitle lw 6 lc rgb 'green',\
 
 set origin 0,0.21
 set size 1.0,0.23
 unset label
-set label  "g_2-g_3-O_{g3}-P"  at graph  0.02,0.8
-#set label  "{/Arial:Bold A_{pl} = 58.0 {\305}^2}"  at graph  0.01,0.85
+set label  "g_2-g_3-O_{g3}-P"  at graph  0.02,0.8   font ",20"
 set key at graph 0.67,0.82
-plot  "../../Data/dihedral/f40/bb6/f40bb6ab5d44402be07059e8df74b5a8200f031e/6774168dfec0a5a7377c8a46341eba603f320cf7/M_G2_MM_G3_MM_G3O1_MM_G3P2_M.dat" using 1:2 with lines notitle lw 2 lc rgb 'red',\
-     "../../Data/dihedral/b4f/866/b4f866c0dabffa6cd891e91841591d46590f34aa/a231c358dd8c0b7bb4cf558ccdbf022373354a9a/M_G2_MM_G3_MM_G3O1_MM_G3P2_M.dat" using 1:2 with lines notitle lw 4 lc rgb 'black',\
-     "../../Data/dihedral/2d4/61b/2d461bc9d828af155146162ef42438974e4cbeaf/c8ce4cc36ef6ec7a085cf011176a92d9d746a792/M_G2_MM_G3_MM_G3O1_MM_G3P2_M.dat" using 1:2 with lines notitle lw 4 lc rgb 'blue',\
-     "../../Data/dihedral/0d5/d1d/0d5d1dcb43e775faf4e53c4f9ff255a67481bd38/9b487701b24d3fad83991e311188b08d3d5ea768/M_G2_MM_G3_MM_G3O1_MM_G3P2_M.dat" using 1:2 with lines notitle lw 4 lc rgb 'green',\
+plot  "../../Data/dihedral/f40/bb6/f40bb6ab5d44402be07059e8df74b5a8200f031e/6774168dfec0a5a7377c8a46341eba603f320cf7/M_G2_MM_G3_MM_G3O1_MM_G3P2_M.dat" using 1:2 with lines notitle lw 6 lc rgb 'red',\
+     "../../Data/dihedral/b4f/866/b4f866c0dabffa6cd891e91841591d46590f34aa/a231c358dd8c0b7bb4cf558ccdbf022373354a9a/M_G2_MM_G3_MM_G3O1_MM_G3P2_M.dat" using 1:2 with lines notitle lw 6 lc rgb 'black',\
+     "../../Data/dihedral/2d4/61b/2d461bc9d828af155146162ef42438974e4cbeaf/c8ce4cc36ef6ec7a085cf011176a92d9d746a792/M_G2_MM_G3_MM_G3O1_MM_G3P2_M.dat" using 1:2 with lines notitle lw 6 lc rgb 'blue',\
+     "../../Data/dihedral/0d5/d1d/0d5d1dcb43e775faf4e53c4f9ff255a67481bd38/9b487701b24d3fad83991e311188b08d3d5ea768/M_G2_MM_G3_MM_G3O1_MM_G3P2_M.dat" using 1:2 with lines notitle lw 6 lc rgb 'green',\
 
 
 set xtics format "%G"
@@ -80,22 +78,12 @@ set xlabel "Angle in degrees"
 set origin 0,0
 set size 1.0,0.26
 unset label
-set label  "g_1-g_2-g_3-O_{g3}"  at graph  0.02,0.8
-#set label  "{/Arial:Bold A_{pl} = 58.0 {\305}^2}"  at graph  0.01,0.85
+set label  "g_1-g_2-g_3-O_{g3}"  at graph  0.02,0.8  font ",20"
 set key at graph 0.67,0.82
-plot  "../../Data/dihedral/f40/bb6/f40bb6ab5d44402be07059e8df74b5a8200f031e/6774168dfec0a5a7377c8a46341eba603f320cf7/M_G1_MM_G2_MM_G3_MM_G3O1_M.dat" using 1:2 with lines notitle lw 2 lc rgb 'red',\
-     "../../Data/dihedral/b4f/866/b4f866c0dabffa6cd891e91841591d46590f34aa/a231c358dd8c0b7bb4cf558ccdbf022373354a9a/M_G1_MM_G2_MM_G3_MM_G3O1_M.dat" using 1:2 with lines notitle lw 4 lc rgb 'black',\
-     "../../Data/dihedral/2d4/61b/2d461bc9d828af155146162ef42438974e4cbeaf/c8ce4cc36ef6ec7a085cf011176a92d9d746a792/M_G1_MM_G2_MM_G3_MM_G3O1_M.dat" using 1:2 with lines notitle lw 4 lc rgb 'blue',\
-     "../../Data/dihedral/0d5/d1d/0d5d1dcb43e775faf4e53c4f9ff255a67481bd38/9b487701b24d3fad83991e311188b08d3d5ea768/M_G1_MM_G2_MM_G3_MM_G3O1_M.dat" using 1:2 with lines notitle lw 4 lc rgb 'green',\
-
-
-##set size 1.0,0.25
-#unset label
-#set label  "Gromos-CKP"  at graph  0.4,0.9
-#set label  "A_{pl} = 65.9 {\305}^2"  at graph  0.02,0.8
-#set key at graph 0.67,0.82
-#plot "../../../MATCH/Data/Lipid_Bilayers/POPG/T310K/MODEL_GROMOS-CKP/IONdens.xvg" using 1:2 with lines title 'POPG 310K' lw 4 lc rgb 'black',\
-
+plot  "../../Data/dihedral/f40/bb6/f40bb6ab5d44402be07059e8df74b5a8200f031e/6774168dfec0a5a7377c8a46341eba603f320cf7/M_G1_MM_G2_MM_G3_MM_G3O1_M.dat" using 1:2 with lines notitle lw 6 lc rgb 'red',\
+     "../../Data/dihedral/b4f/866/b4f866c0dabffa6cd891e91841591d46590f34aa/a231c358dd8c0b7bb4cf558ccdbf022373354a9a/M_G1_MM_G2_MM_G3_MM_G3O1_M.dat" using 1:2 with lines notitle lw 6 lc rgb 'black',\
+     "../../Data/dihedral/2d4/61b/2d461bc9d828af155146162ef42438974e4cbeaf/c8ce4cc36ef6ec7a085cf011176a92d9d746a792/M_G1_MM_G2_MM_G3_MM_G3O1_M.dat" using 1:2 with lines notitle lw 6 lc rgb 'blue',\
+     "../../Data/dihedral/0d5/d1d/0d5d1dcb43e775faf4e53c4f9ff255a67481bd38/9b487701b24d3fad83991e311188b08d3d5ea768/M_G1_MM_G2_MM_G3_MM_G3O1_M.dat" using 1:2 with lines notitle lw 6 lc rgb 'green',\
 
 
 

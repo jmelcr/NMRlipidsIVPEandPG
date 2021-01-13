@@ -1,4 +1,4 @@
-set size 1.0,0.5
+set size 1.22,0.56
 set terminal postscript portrait enhanced color dashed lw 1 "Helvetica" 14 
 set output "../PNangleNORM.eps"
 #set yrange [0:0.25] 
@@ -9,11 +9,18 @@ set xlabel "Angle"
 #set xtics ("{/Symbol b}" 1, "{/Symbol a}" 2, "g_{3R}" 3, "g_{3S}" 4, "g_{2}" 5, "g_{1R}" 6, "g_{1S}" 7)
 #set xtics ("{/Symbol g}" 0, "{/Symbol b}" 1, "{/Symbol a}" 2, "g_{3}" 3, "g_{2}" 4, "g_{1}" 5)
 #set key box linestyle 1 linecolor rgb 'black'
-set key at screen 0.93,0.4 maxcols 2 maxrows 5
+set key at graph 0.93,0.75 maxcols 2 maxrows 5 font ",17"
 set angles degrees
 
 
-plot "../../Data/HGorientation/0d5/d1d/0d5d1dcb43e775faf4e53c4f9ff255a67481bd38/9b487701b24d3fad83991e311188b08d3d5ea768/POPGPNvectorDIST.dat" using 1:($2) with lines title 'POPG T=298K' lw 3 lc rgb 'green',\
-"../../Data/HGorientation/1b2/6e6/1b26e6c750b4f39c37770422cd4d3c40240cf111/995bc873b811ca09c916b47784fa33bb9d793732/POPSPNvectorDIST.dat" using 1:($2) with lines title 'POPS T=298K'  lw 3 lc rgb 'red',\
-"../../Data/HGorientation/2d4/61b/2d461bc9d828af155146162ef42438974e4cbeaf/c8ce4cc36ef6ec7a085cf011176a92d9d746a792/POPEPNvectorDIST.dat" using 1:($2) with lines title 'POPE T=310K' lw 3 lc rgb 'blue',\
-"../../Data/HGorientation/b4f/866/b4f866c0dabffa6cd891e91841591d46590f34aa/a231c358dd8c0b7bb4cf558ccdbf022373354a9a/POPCPNvectorDIST.dat" using 1:($2) with lines title 'POPC T=303K' lw 3 lc rgb 'black'
+#set ytics font ",20"
+set xtics font ",20"
+set ylabel font ",20"
+set xlabel  font ",20"
+
+
+plot "../../Data/HGorientation/b4f/866/b4f866c0dabffa6cd891e91841591d46590f34aa/a231c358dd8c0b7bb4cf558ccdbf022373354a9a/POPCPNvectorDIST.dat" using 1:($2) with lines title 'POPC' lw 6 lc rgb 'black',\
+     "../../Data/HGorientation/2d4/61b/2d461bc9d828af155146162ef42438974e4cbeaf/c8ce4cc36ef6ec7a085cf011176a92d9d746a792/POPEPNvectorDIST.dat" using 1:($2) with lines title 'POPE' lw 6 lc rgb 'blue',\
+     "../../Data/HGorientation/0d5/d1d/0d5d1dcb43e775faf4e53c4f9ff255a67481bd38/9b487701b24d3fad83991e311188b08d3d5ea768/POPGPNvectorDIST.dat" using 1:($2) with lines title 'POPG' lw 6 lc rgb 'green',\
+     "../../Data/HGorientation/1b2/6e6/1b26e6c750b4f39c37770422cd4d3c40240cf111/995bc873b811ca09c916b47784fa33bb9d793732/POPSPNvectorDIST.dat" using 1:($2) with lines title 'POPS'  lw 6 lc rgb 'red',\
+
