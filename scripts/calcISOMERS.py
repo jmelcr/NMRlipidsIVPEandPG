@@ -97,7 +97,7 @@ for subdir, dirs, files in os.walk(r'../Data/Simulations/'):
                     #outfilename = str(HGorientationFOLDERS) + '/' + molname + 'PNvectorDIST.dat' 
 
                     #print(molname, readme['NPOPC'][0], outfilename)                    
-                    if not os.path.isfile(outfilename) and int(readme['N' + molname][0]) > 0:
+                    if int(readme['N' + molname][0]) > 0:
                                             
                         print('Analyzing '+molname+' in '+filepath)
                         
