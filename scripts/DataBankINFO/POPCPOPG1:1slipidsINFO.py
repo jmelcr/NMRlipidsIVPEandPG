@@ -21,9 +21,9 @@ POPC:POPG 1:1 slipids
 @POPE=POPE
 
 @POT=K
-@SOD=Na_d
-@CLA=CL_d
-@CAL=CA_d
+@SOD=NA
+@CLA=CL
+@CAL=CA
 @SOL=TIP3p
 
 @NPOPC=[0,0]
