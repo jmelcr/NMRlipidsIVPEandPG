@@ -1,11 +1,11 @@
-DOI="10.5281/zenodo.3997184"
+DOI="10.5281/zenodo.4492639"
 user_information = """
 POPC:POPG (4:1) lipid17ecc + 1 M CaCl
 #NMRLIPIDS BEGIN
 
 @SIM
 @SYSTEM=POPC:POPG(4:1)_T298K_1MCaCl
-@MAPPING=POPC,mappingPOPClipid17ecc2.txt,POPG,mappingPOPGlipid17ecc.txt
+@MAPPING=POPC,mappingPOPClipid17ecc.txt,POPG,mappingPOPGlipid17ecc.txt
 @SOFTWARE=gromacs
 @FF=lipid17ecc
 @FF_SOURCE=NMRlipidsIV
