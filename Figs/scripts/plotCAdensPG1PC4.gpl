@@ -1,4 +1,4 @@
-set size 1.0,1.1
+set size 1.0,0.9
 set encoding iso_8859_1
 set terminal postscript portrait enhanced color dashed lw 1 "Helvetica" 14 background rgb 'white'
 set output "../CAdensPG1PC4.eps"
@@ -9,14 +9,14 @@ set multiplot layout 3,1
 set xtics format " " 
 set label at screen 0.02,0.35 rotate by 90 "Number density of calcium" font ',15'
 
-#set origin 0,0.3
+set origin 0,0.57
 set size 1.0,0.3
 set label  "CHARMM36"  at graph  0.4,0.85
 set key at graph 0.6,0.7 maxcols 3 maxrows 5
 plot      "../../../MATCH/Data/Lipid_Bilayers/POPG+80%POPC+1000mMCaCl/T298K/MODEL_CHARMM36/IONdens.xvg" using 1:2 with lines title '1 M' lw 6 lc rgb 'black',\
 
 
-#set origin 0,0.3
+set origin 0,0.3
 set size 1.0,0.3
 unset label
 #set xtics format "%G"
@@ -33,7 +33,7 @@ plot "../../../MATCH/Data/Lipid_Bilayers/POPG+80%POPC+1000mMCaCl/T298K/MODEL_LIP
 set xtics format "%G"
 set xlabel "Membrane normal coordinate (nm)"
 set label  "Lipid17ecc"  at graph  0.4,0.85
-plot "../../Data/DENSITIES/cfc/4c4/cfc4c4be95331177929f47a2f1c59f2792643901/112cf0742e84e4dbdd3598c8bcc6921f84378fb3/CALdensity.xvg" using 1:2 with lines title '1 M' lw 6 lc rgb 'black',\
+plot "../../Data/DENSITIES/fff/eb4/fffeb47b2c0e2d5695b450fec4a58caab3d979e3/f0cfbf9f22f869d89465c7454c21c796e7e6ecd0/CALdensity.xvg" using 1:2 with lines title '1 M' lw 6 lc rgb 'black',\
      "../../Data/DENSITIES/efe/f45/efef45ac201347d6822e5436d2566d3be298b54a/a2c7ff5a30728119cc82206b15a3df9fb63eaf5e/CALdensity.xvg" using 1:2 with lines title '100 mM' lw 2 lc rgb 'black',\
 
 
