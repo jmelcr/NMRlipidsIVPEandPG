@@ -22,7 +22,7 @@ set key above maxcols 4 maxrows 1
 plot "../../Data/PC0.dat" using 1:2 with lines title '  PC' lw 4 lc rgb 'black',\
      "../../Data/PE0.dat" using 1:2 with lines title '  PE' lw 4 lc rgb 'blue',\
      "../../Data/PG0.dat" using 1:2 with lines title '  PG' lw 4 lc rgb 'green',\
-     "../../Data/PS0.dat" using 1:2 with lines title '  PS' lw 4 lc rgb 'red',\
+     "../../Data/PSdih1.dat" using 1:2 with lines title '  PS' lw 4 lc rgb 'red',\
      
 
 set origin 0,0.75
