@@ -15,7 +15,7 @@ set key l at screen 0.01,0.195 Left reverse noautotitle samplen 2 width 3 maxrow
 set lmargin at screen 0.122 #0.157
 set rmargin at screen 0.99
 
-set xtics ("{/Symbol b}" 1, "{/Symbol a}" 2, "g_3" 3, "g_2" 4, "g_1" 5) offset 0,49 scale 0 font "Arial,25"
+set xtics ("𝛽" 1, "𝛼" 2, "g_3" 3, "g_2" 4, "g_1" 5) offset 0,8 scale 0 font "Arial,25"
 set ytics 0.1 out nomirror
 set mytics 2
 dx = 0.05
@@ -80,24 +80,18 @@ set linetype MacRog lw w lc rgb "#00A368" # for MacRog
 
 # x-displacements to avoid ovelaps:
 d=0.06
-dxC36do = -7*d
-dxC36pK = -6*d
-dxC36po = -5*d
-dxCKPd2 = -3.5*d
-dxCKPp2 = -2.5*d
-dxCUAdo = -2*d
-dxCUApo = -1*d
+dxC36po = -7.0*d
+dxCUApo = -5.0*d
+dxBERdo = -6.0*d
+dxBERpo = -4.0*d
 dxCKPdo = -0.5*d
+dxCKPdp =  0.0*d
 dxCKPpo =  0.5*d
-dxBERdo =  2*d
-dxMcRpo =  4.5*d
-dxBERpo =  3*d
-dxSLIdo =  dxBERdo
-dxSLIpo =  dxBERpo
-dxL17do =  4*d
-dxL17dJ =  5*d
-dxL17po =  6*d
-dxL17pJ =  7*d
+dxSLIpo =  2.0*d
+dxSLIdp =  2.0*d
+dxOPLpo =  3.0*d
+dxMcRpo =  5.0*d
+dxL17po =  7.0*d
 
 
 # Arrows pointing data outside the graph:
@@ -118,36 +112,36 @@ plot [0.5:5.5][0.26:-0.315] \
          u ($1):(($2)) w l ls 8 lc rgb "#5F5F5F" lw 6.5 t "POPE 310K experiment", \
      horizLines(' ../../../MATCH/Data/Lipid_Bilayers/POPE/T310K/Headgroup_Glycerol_Order_Parameters_Experiments.dat') \
          u ($1):(($3)) w l ls 8 lc rgb "#5F5F5F" lw 6.5, \
-     "../../../MATCH/Data/Lipid_Bilayers/POPE/T310K/Slipids/OrdParsPOPEplot.dat" \
-         u ($1):($2)  lt Slipid pt 7 ps r t 'POPE 310K SLIPIDS', \
-     "../../../MATCH/Data/Lipid_Bilayers/POPE/T310K/MODEL_SLIPID_500lipids/Headgroup_Glycerol_Order_Parameters_Simulation.dat" \
-         u ($1):($2)  lt Slipid pt 6 ps r t 'POPE 310K SLIPIDS', \
      "../../../MATCH/Data/Lipid_Bilayers/POPE/T310K/CHARMM36/Headgroup_Glycerol_Order_Parameters_Simulation.dat" \
-         u ($1):($2)  lt CHARMM pt 7 ps r t 'POPE 310K CHARMM36',\
+         u ($1+dxC36po):($2)  lt CHARMM pt 7 ps r t 'POPE 310K CHARMM36',\
      "../../../MATCH/Data/Lipid_Bilayers/POPE/T310K/MODEL_CHARMM36_500lipids/Headgroup_Glycerol_Order_Parameters_Simulation.dat" \
-         u ($1):($2)  lt CHARMM pt 6 ps 1.2 t 'POPE 310K CHARMM36',\
+         u ($1+dxC36po):($2)  lt CHARMM pt 6 ps 1.2 t 'POPE 310K CHARMM36',\
      "../../../MATCH/Data/Lipid_Bilayers/POPE/T310K/CHARMM36UA/OrdParsPOPE_forPLOT.dat" \
-         u ($1):($2)  lt C36_UA pt 7 ps r t 'POPE 310K CHARMM36ua',\
+         u ($1+dxCUApo):($2)  lt C36_UA pt 7 ps r t 'POPE 310K CHARMM36-UA',\
+     "../../../MATCH/Data/Lipid_Bilayers/POPE/T310K/Slipids/OrdParsPOPEplot.dat" \
+         u ($1+dxSLIpo):($2)  lt Slipid pt 7 ps r t 'POPE 310K Slipids', \
+     "../../../MATCH/Data/Lipid_Bilayers/POPE/T310K/MODEL_SLIPID_500lipids/Headgroup_Glycerol_Order_Parameters_Simulation.dat" \
+         u ($1+dxSLIpo):($2)  lt Slipid pt 6 ps r t 'POPE 310K Slipids', \
      "../../../MATCH/Data/Lipid_Bilayers/POPE/T313K/GROMOS43A1-S3/OrdParsPOPE_forPLOT.dat" \
          u ($1):($2)  lt CKP_QK pt 7 ps r t 'POPE 313K GROMOS43A1-S3',\
      "../../../MATCH/Data/Lipid_Bilayers/POPE/T303K/MODEL_BERGER_LARGEh/OrdParsPOPE_forPLOT.dat" \
-         u ($1):($2)  lt Berger pt 6 ps r t 'POPE 303K Berger with large H',\
+         u ($1+dxBERpo):($2)  lt Berger pt 6 ps r t 'POPE 303K Berger with large H',\
      "../../../MATCH/Data/Lipid_Bilayers/POPE/T303K/MODEL_BERGER_VRIES/OrdParsPOPE_forPLOT.dat" \
-         u ($1):($2)  lt Berger pt 7 ps r t 'POPE 303K Berger-Vries',\
+         u ($1+dxBERpo):($2)  lt Berger pt 7 ps r t 'POPE 303K Berger-Vries',\
      "../../../MATCH/Data/Lipid_Bilayers/DOPE/T271K/MODEL_BERGER_VRIES/OrdParsPOPE_forPLOT.dat" \
-         u ($1):($2)  lt Berger pt 9 ps r t 'DOPE 271K Berger-Vries',\
+         u ($1+dxBERdo):($2)  lt Berger pt 9 ps r t 'DOPE 271K Berger-Vries',\
      "../../../MATCH/Data/Lipid_Bilayers/DOPE/T271K/MODEL_BERGER_LARGEh/OrdParsPOPE_forPLOT.dat" \
-         u ($1):($2)  lt Berger pt 8 ps r t 'DOPE 271K Berger with large H',\
+         u ($1+dxBERdo):($2)  lt Berger pt 8 ps r t 'DOPE 271K Berger with large H',\
      "../../../MATCH/Data/Lipid_Bilayers/POPE/T303K/MODEL_OPLSua/OrdParsPOPE_forPLOT.dat" \
-         u ($1):($2)  lt MacRog pt 7 ps r t 'POPE 303K OPLSua',\
+         u ($1+dxOPLpo):($2)  lt MacRog pt 7 ps r t 'POPE 303K OPLS-UA',\
      "../../../MATCH/Data/Lipid_Bilayers/POPE/T303K/MODEL_OPLSuaWvdW/OrdParsPOPE_forPLOT.dat" \
-         u ($1):($2)  lt MacRog pt 6 ps r t 'POPE 303K OPLSuaWvdW',\
+         u ($1+dxOPLpo):($2)  lt MacRog pt 6 ps r t 'POPE 303K OPLS-UA WvdW',\
      "../../../MATCH/Data/Lipid_Bilayers/POPE/T310K/MODEL_MACROG/Headgroup_Glycerol_Order_Parameters_Simulation.dat" \
-         u ($1):($2)  lt MacRog pt 13 ps r t 'POPE 310K MacRog',\
+         u ($1+dxMcRpo):($2)  lt MacRog pt 13 ps r t 'POPE 310K MacRog',\
      "../../../MATCH/Data/Lipid_Bilayers/POPE/T300K/MODEL_MACROG/Headgroup_Glycerol_Order_Parameters_Simulation.dat" \
-         u ($1):($2)  lt MacRog pt 12 ps r t 'POPE 300K MacRog',\
+         u ($1+dxMcRpo):($2)  lt MacRog pt 12 ps r t 'POPE 300K MacRog',\
      "../../../MATCH/Data/Lipid_Bilayers/POPE/T310K/MODEL_LIPID17_500lipids/Headgroup_Glycerol_Order_Parameters_Simulation.dat" \
-         u ($1):($2)  lt Lipd17 pt 6 ps r t 'POPE 310K LIPID17',\
+         u ($1+dxL17po):($2)  lt Lipd17 pt 6 ps r t 'POPE 310K Lipid17',\
      horizLines(' ../../../MATCH/Data/Lipid_Bilayers/DPPE/T341K/Headgroup_Glycerol_Order_Parameters_Experiments.dat') \
          u ($1):($2*0.00784) w l ls 4 lc 16 lw 3 t "DPPE 341K experiment", \
      horizLines(' ../../../MATCH/Data/Lipid_Bilayers/DPPE/T341K/Headgroup_Glycerol_Order_Parameters_Experiments.dat') \
@@ -157,15 +151,15 @@ plot [0.5:5.5][0.26:-0.315] \
      horizLines(' ../../../MATCH/Data/Lipid_Bilayers/E.coliPE/T310K/Headgroup_Glycerol_Order_Parameters_Experiments.dat') \
          u ($1):($3*0.00784) w l ls 4 lc rgb "#5F5F5F" lw 3 , \
      "../../../MATCH/Data/Lipid_Bilayers/DPPE/T336K/MODEL_SLIPIDS/Headgroup_Glycerol_Order_Parameters_Simulations.dat" \
-         u ($1):($2)  lt Slipid pt 12 ps r t 'DPPE 336K SLIPIDS' ,\
+         u ($1+dxSLIdp):($2)  lt Slipid pt 12 ps r t 'DPPE 336K Slipids' ,\
       "../../../MATCH/Data/Lipid_Bilayers/POPE/T310K/MODEL_GROMOS-CKP/Headgroup_Glycerol_Order_Parameters_Simulations.dat" \
-         u ($1):($2)  lt CKP_QB pt 7 ps r t 'POPE 310K GROMOS-CKP', \
+         u ($1+dxCKPpo):($2)  lt CKP_QB pt 7 ps r t 'POPE 310K GROMOS-CKP', \
 	 "../../../MATCH/Data/Lipid_Bilayers/POPE/T313K/GROMOS-CKP/OrdParsPOPE_forPLOT.dat" \
-         u ($1):($2)  lt CKP_QB pt 6 ps r t 'POPE 313K GROMOS-CKP', \
+         u ($1+dxCKPpo):($2)  lt CKP_QB pt 6 ps r t 'POPE 313K GROMOS-CKP', \
 	 "../../../MATCH/Data/Lipid_Bilayers/DPPE/T342K/GROMOS-CKP/OrdParsPOPE_forPLOT.dat" \
-         u ($1):($2)  lt CKP_QB pt 12 ps r t 'DPPE 342K GROMOS-CKP', \
+         u ($1+dxCKPdp):($2)  lt CKP_QB pt 12 ps r t 'DPPE 342K GROMOS-CKP', \
 	 "../../../MATCH/Data/Lipid_Bilayers/DOPE/T271K/MODEL_GROMOS-CKP/OrdParsPOPE_forPLOT.dat" \
-         u ($1):($2)  lt CKP_QB pt 9 ps r t 'DOPE 271K GROMOS-CKP'
+         u ($1+dxCKPdo):($2)  lt CKP_QB pt 9 ps r t 'DOPE 271K GROMOS-CKP'
 
 
 
