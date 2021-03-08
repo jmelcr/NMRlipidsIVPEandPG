@@ -1,7 +1,7 @@
 %!PS-Adobe-2.0
 %%Title: ../DIHEDRALSALLfromPDB.eps
-%%Creator: gnuplot 5.2 patchlevel 2
-%%CreationDate: Fri Mar  5 16:31:44 2021
+%%Creator: gnuplot 5.0 patchlevel 3
+%%CreationDate: Mon Mar  8 15:55:44 2021
 %%DocumentFonts: (atend)
 %%BoundingBox: 50 50 554 885
 %%Orientation: Portrait
@@ -474,27 +474,15 @@ currentdict end definefont
 /otilde/odieresis/divide/oslash/ugrave/uacute/ucircumflex/udieresis
 /yacute/thorn/ydieresis
 ] def
-/Metrics {ExtendTextBox Gswidth} def
-/Lwidth {currentpoint stroke M 0 vshift R Metrics} def
-/Rwidth {currentpoint stroke M dup stringwidth pop neg vshift R Metrics} def
-/Cwidth {currentpoint stroke M dup stringwidth pop -2 div vshift R Metrics} def
-/GLwidth {currentpoint stroke M 0 vshift R {ExtendTextBox} forall} def
-/GRwidth {currentpoint stroke M dup Gwidth vshift R {ExtendTextBox} forall} def
-/GCwidth {currentpoint stroke M dup Gwidth 2 div vshift R {ExtendTextBox} forall} def
-/GLwidth2 {0 Gwidth AddGlyphWidth} def
-/GRwidth2 {Gwidth -1 mul 0 AddGlyphWidth} def
-/GCwidth2 {Gwidth 2 div dup -1 mul AddGlyphWidth} def
-/AddGlyphWidth { dup TBx2 gt {userdict /TBx2 3 -1 roll put} {pop} ifelse
-                 dup TBx1 lt {userdict /TBx1 3 -1 roll put} {pop} ifelse } def
 /MFshow {
    { dup 5 get 3 ge
      { 5 get 3 eq {gsave} {grestore} ifelse }
      {dup dup 0 get findfont exch 1 get scalefont setfont
      [ currentpoint ] exch dup 2 get 0 exch R dup 5 get 2 ne {dup dup 6
-     get exch 4 get {textshow} {Metrics pop 0 R} ifelse }if dup 5 get 0 eq
+     get exch 4 get {textshow} {stringwidth pop 0 R} ifelse }if dup 5 get 0 eq
      {dup 3 get {2 get neg 0 exch R pop} {pop aload pop M} ifelse} {dup 5
-     get 1 eq {dup 2 get exch dup 3 get exch 6 get Gswidth pop -2 div
-     dup 0 R} {dup 6 get Gswidth pop -2 div 0 R 6 get
+     get 1 eq {dup 2 get exch dup 3 get exch 6 get stringwidth pop -2 div
+     dup 0 R} {dup 6 get stringwidth pop -2 div 0 R 6 get
      textshow 2 index {aload pop M neg 3 -1 roll neg R pop pop} {pop pop pop
      pop aload pop M} ifelse }ifelse }ifelse }
      ifelse }
@@ -524,39 +512,42 @@ systemdict /pdfmark known not {
 SDict begin [
   /Title (../DIHEDRALSALLfromPDB.eps)
   /Subject (gnuplot plot)
-  /Creator (gnuplot 5.2 patchlevel 2)
+  /Creator (gnuplot 5.0 patchlevel 3)
+  /Author (samuli)
 %  /Producer (gnuplot)
 %  /Keywords ()
-  /CreationDate (Fri Mar  5 16:31:44 2021)
+  /CreationDate (Mon Mar  8 15:55:44 2021)
   /DOCINFO pdfmark
 end
 } ifelse
 %
-% Support for boxed text - Ethan A Merritt Sep 2016
+% Support for boxed text - Ethan A Merritt May 2005
 %
 /InitTextBox { userdict /TBy2 3 -1 roll put userdict /TBx2 3 -1 roll put
            userdict /TBy1 3 -1 roll put userdict /TBx1 3 -1 roll put
 	   /Boxing true def } def
-/ExtendTextBox { dup type /stringtype eq
-    { Boxing { gsave dup false charpath pathbbox
+/ExtendTextBox { Boxing
+    { gsave dup false charpath pathbbox
       dup TBy2 gt {userdict /TBy2 3 -1 roll put} {pop} ifelse
       dup TBx2 gt {userdict /TBx2 3 -1 roll put} {pop} ifelse
       dup TBy1 lt {userdict /TBy1 3 -1 roll put} {pop} ifelse
       dup TBx1 lt {userdict /TBx1 3 -1 roll put} {pop} ifelse
-      grestore } if }
-    {} ifelse} def
+      grestore } if } def
 /PopTextBox { newpath TBx1 TBxmargin sub TBy1 TBymargin sub M
                TBx1 TBxmargin sub TBy2 TBymargin add L
 	       TBx2 TBxmargin add TBy2 TBymargin add L
 	       TBx2 TBxmargin add TBy1 TBymargin sub L closepath } def
 /DrawTextBox { PopTextBox stroke /Boxing false def} def
-/FillTextBox { gsave PopTextBox fill grestore /Boxing false def} def
+/FillTextBox { gsave PopTextBox 1 1 1 setrgbcolor fill grestore /Boxing false def} def
 0 0 0 0 InitTextBox
 /TBxmargin 20 def
 /TBymargin 20 def
 /Boxing false def
 /textshow { ExtendTextBox Gshow } def
 %
+% redundant definitions for compatibility with prologue.ps older than 5.0.2
+/LTB {BL [] LCb DL} def
+/LTb {PL [] LCb DL} def
 end
 %%EndProlog
 %%Page: 1 1
@@ -574,7 +565,7 @@ LTb
 LCb setrgbcolor
 210 6976 M
 0 63 V
-0 1032 R
+0 1004 R
 0 -63 V
 stroke
 210 6836 M
@@ -585,7 +576,7 @@ LTb
 LCb setrgbcolor
 846 6976 M
 0 63 V
-0 1032 R
+0 1004 R
 0 -63 V
 stroke
 846 6836 M
@@ -596,7 +587,7 @@ LTb
 LCb setrgbcolor
 1481 6976 M
 0 63 V
-0 1032 R
+0 1004 R
 0 -63 V
 stroke
 1481 6836 M
@@ -607,7 +598,7 @@ LTb
 LCb setrgbcolor
 2117 6976 M
 0 63 V
-0 1032 R
+0 1004 R
 0 -63 V
 stroke
 2117 6836 M
@@ -618,7 +609,7 @@ LTb
 LCb setrgbcolor
 2753 6976 M
 0 63 V
-0 1032 R
+0 1004 R
 0 -63 V
 stroke
 2753 6836 M
@@ -629,7 +620,7 @@ LTb
 LCb setrgbcolor
 3388 6976 M
 0 63 V
-0 1032 R
+0 1004 R
 0 -63 V
 stroke
 3388 6836 M
@@ -640,7 +631,7 @@ LTb
 LCb setrgbcolor
 4024 6976 M
 0 63 V
-0 1032 R
+0 1004 R
 0 -63 V
 stroke
 4024 6836 M
@@ -651,7 +642,7 @@ LTb
 LCb setrgbcolor
 4660 6976 M
 0 63 V
-0 1032 R
+0 1004 R
 0 -63 V
 stroke
 4660 6836 M
@@ -663,10 +654,10 @@ LCb setrgbcolor
 1.000 UL
 LTB
 LCb setrgbcolor
-210 8071 N
-0 -1095 V
+210 8043 N
+0 -1067 V
 4577 0 V
-0 1095 V
+0 1067 V
 -4577 0 V
 Z stroke
 1.000 UP
@@ -677,7 +668,7 @@ currentpoint gsave translate 90 rotate 0 0 moveto
 ] -50.0 MLshow
 grestore
 LCb setrgbcolor
-256 7852 M
+256 7830 M
 [ [(Helvetica) 140.0 0.0 true true 0 (O)]
 /Symbol reencodeISO def
 [(Symbol) 112.0 -42.0 true true 0 (a)]
@@ -703,22 +694,22 @@ LTb
 0.00 0.00 0.00 C 1112 8219 M
 399 0 V
 210 6976 M
-254 6 V
-255 13 V
-254 194 V
-254 38 V
-254 -71 V
-255 13 V
-254 181 V
-254 721 V
-255 -238 V
-254 -612 V
-254 -90 V
+254 8 V
+255 8 V
+254 247 V
+254 0 V
+254 -88 V
+255 32 V
+254 119 V
+254 741 V
+255 -111 V
+254 -661 V
+254 -112 V
+254 -40 V
+255 -32 V
 254 -39 V
-255 -13 V
-254 -39 V
-254 -19 V
-254 -45 V
+254 -16 V
+254 -56 V
 255 0 V
 254 0 V
 % End plot #1
@@ -733,25 +724,25 @@ LTb
 LTb
 0.00 0.00 1.00 C 2015 8219 M
 399 0 V
-210 7005 M
-254 94 V
-255 86 V
-254 123 V
-254 -181 V
-254 37 V
+210 7012 M
+254 72 V
+255 100 V
+254 117 V
+254 -171 V
+254 63 V
 255 36 V
-254 79 V
-254 310 V
-255 -115 V
-254 -210 V
-254 -108 V
-254 -50 V
-255 65 V
-254 -44 V
-254 37 V
-254 -123 V
-255 -15 V
-254 -50 V
+254 72 V
+254 335 V
+255 -154 V
+254 -199 V
+254 -90 V
+254 -90 V
+255 90 V
+254 -54 V
+254 36 V
+254 -127 V
+255 -27 V
+254 -45 V
 % End plot #2
 % Begin plot #3
 stroke
@@ -764,25 +755,25 @@ LTb
 LTb
 0.00 1.00 0.00 C 2918 8219 M
 399 0 V
-210 7090 M
-254 -23 V
-255 0 V
-254 91 V
-254 -114 V
-254 114 V
-255 -159 V
-254 250 V
-254 251 V
-255 182 V
-254 -524 V
-254 -23 V
+210 7100 M
+254 -25 V
+255 -25 V
+254 124 V
+254 -124 V
+254 124 V
+255 -173 V
+254 248 V
+254 297 V
+255 174 V
+254 -546 V
+254 -24 V
 254 0 V
 255 0 V
-254 342 V
-254 -273 V
-254 -46 V
-255 -91 V
-254 -91 V
+254 322 V
+254 -248 V
+254 -50 V
+255 -99 V
+254 -99 V
 % End plot #3
 % Begin plot #4
 stroke
@@ -796,24 +787,24 @@ LTb
 1.00 0.00 0.00 C 3821 8219 M
 399 0 V
 210 6976 M
-254 163 V
-255 245 V
-973 7221 L
-254 -82 V
-254 -163 V
-255 245 V
-254 -163 V
+254 115 V
+255 230 V
+973 7206 L
 254 0 V
-255 489 V
-254 -245 V
-254 -163 V
-254 -163 V
-255 571 V
-254 -326 V
-254 81 V
-254 -163 V
+254 -230 V
+255 345 V
+254 -345 V
+254 115 V
+255 575 V
+254 -345 V
+254 -115 V
+254 -230 V
+255 690 V
+254 -460 V
+254 115 V
+254 -230 V
 255 0 V
-254 -163 V
+254 -115 V
 % End plot #4
 stroke
 2.000 UL
@@ -822,10 +813,10 @@ LCb setrgbcolor
 1.000 UL
 LTB
 LCb setrgbcolor
-210 8071 N
-0 -1095 V
+210 8043 N
+0 -1067 V
 4577 0 V
-0 1095 V
+0 1067 V
 -4577 0 V
 Z stroke
 1.000 UP
@@ -837,7 +828,7 @@ LTb
 LCb setrgbcolor
 210 5680 M
 0 63 V
-0 1172 R
+0 1144 R
 0 -63 V
 stroke
 210 5540 M
@@ -848,7 +839,7 @@ LTb
 LCb setrgbcolor
 846 5680 M
 0 63 V
-0 1172 R
+0 1144 R
 0 -63 V
 stroke
 846 5540 M
@@ -859,7 +850,7 @@ LTb
 LCb setrgbcolor
 1481 5680 M
 0 63 V
-0 1172 R
+0 1144 R
 0 -63 V
 stroke
 1481 5540 M
@@ -870,7 +861,7 @@ LTb
 LCb setrgbcolor
 2117 5680 M
 0 63 V
-0 1172 R
+0 1144 R
 0 -63 V
 stroke
 2117 5540 M
@@ -881,7 +872,7 @@ LTb
 LCb setrgbcolor
 2753 5680 M
 0 63 V
-0 1172 R
+0 1144 R
 0 -63 V
 stroke
 2753 5540 M
@@ -892,7 +883,7 @@ LTb
 LCb setrgbcolor
 3388 5680 M
 0 63 V
-0 1172 R
+0 1144 R
 0 -63 V
 stroke
 3388 5540 M
@@ -903,7 +894,7 @@ LTb
 LCb setrgbcolor
 4024 5680 M
 0 63 V
-0 1172 R
+0 1144 R
 0 -63 V
 stroke
 4024 5540 M
@@ -914,7 +905,7 @@ LTb
 LCb setrgbcolor
 4660 5680 M
 0 63 V
-0 1172 R
+0 1144 R
 0 -63 V
 stroke
 4660 5540 M
@@ -926,15 +917,15 @@ LCb setrgbcolor
 1.000 UL
 LTB
 LCb setrgbcolor
-210 6915 N
-0 -1235 V
+210 6887 N
+0 -1207 V
 4577 0 V
-0 1235 V
+0 1207 V
 -4577 0 V
 Z stroke
 1.000 UP
 LCb setrgbcolor
-256 6668 M
+256 6646 M
 [ [(Helvetica) 140.0 0.0 true true 0 (P-O)]
 [(Symbol) 112.0 -42.0 true true 0 (a)]
 [(Helvetica) 140.0 0.0 true true 0 (-C)]
@@ -948,23 +939,23 @@ LCb setrgbcolor
 % Begin plot #1
 4.000 UL
 LTb
-0.00 0.00 0.00 C 210 5688 M
+0.00 0.00 0.00 C 210 5680 M
+254 9 V
+255 17 V
+254 111 V
+254 265 V
+254 -42 V
+255 -137 V
+254 51 V
+254 779 V
+255 154 V
+254 -916 V
+254 -180 V
 254 0 V
-255 39 V
-254 87 V
-254 267 V
-254 24 V
-255 -181 V
-254 55 V
-254 794 V
-255 142 V
-254 -889 V
-254 -228 V
-254 -8 V
-255 71 V
-254 -87 V
-254 -55 V
-254 -39 V
+255 26 V
+254 -60 V
+254 -43 V
+254 -34 V
 255 0 V
 254 0 V
 % End plot #1
@@ -972,22 +963,22 @@ LTb
 stroke
 LTb
 0.00 0.00 1.00 C 210 5680 M
-254 35 V
-255 -17 V
-254 105 V
-254 124 V
-254 97 V
-255 -18 V
-254 317 V
-254 114 V
-255 -193 V
-254 -9 V
-254 -220 V
-254 79 V
-255 -176 V
-254 -115 V
-254 -61 V
-254 -62 V
+254 19 V
+255 -9 V
+254 116 V
+254 117 V
+254 87 V
+255 0 V
+254 224 V
+254 194 V
+255 -252 V
+254 -10 V
+254 -175 V
+254 68 V
+255 -146 V
+254 -116 V
+254 -49 V
+254 -68 V
 255 0 V
 254 0 V
 % End plot #2
@@ -995,22 +986,22 @@ LTb
 stroke
 LTb
 0.00 1.00 0.00 C 210 5680 M
-254 28 V
-255 28 V
-254 -28 V
-254 361 V
-254 251 V
-255 -390 V
-254 28 V
-254 584 V
-255 -56 V
-254 -361 V
-254 -195 V
-254 0 V
-255 -55 V
-254 83 V
-254 -250 V
-254 -28 V
+254 27 V
+255 26 V
+254 -26 V
+254 320 V
+254 266 V
+255 -373 V
+254 27 V
+254 533 V
+255 -80 V
+254 -294 V
+254 -213 V
+254 27 V
+255 -53 V
+254 80 V
+254 -240 V
+254 -27 V
 255 0 V
 254 0 V
 % End plot #3
@@ -1018,21 +1009,21 @@ LTb
 stroke
 LTb
 1.00 0.00 0.00 C 210 5680 M
-254 100 V
-719 5680 L
-254 199 V
-254 -199 V
-254 100 V
-255 99 V
-254 200 V
-254 298 V
+254 0 V
 255 0 V
-254 -99 V
-254 99 V
-254 -298 V
-255 0 V
-254 -100 V
-254 -299 V
+254 247 V
+254 -247 V
+254 124 V
+255 123 V
+254 0 V
+254 495 V
+255 124 V
+254 -371 V
+254 123 V
+254 -247 V
+255 -247 V
+254 247 V
+254 -371 V
 254 0 V
 255 0 V
 254 0 V
@@ -1044,10 +1035,10 @@ LCb setrgbcolor
 1.000 UL
 LTB
 LCb setrgbcolor
-210 6915 N
-0 -1235 V
+210 6887 N
+0 -1207 V
 4577 0 V
-0 1235 V
+0 1207 V
 -4577 0 V
 Z stroke
 1.000 UP
@@ -1059,7 +1050,7 @@ LTb
 LCb setrgbcolor
 210 4384 M
 0 63 V
-0 1172 R
+0 1144 R
 0 -63 V
 stroke
 210 4244 M
@@ -1070,7 +1061,7 @@ LTb
 LCb setrgbcolor
 846 4384 M
 0 63 V
-0 1172 R
+0 1144 R
 0 -63 V
 stroke
 846 4244 M
@@ -1081,7 +1072,7 @@ LTb
 LCb setrgbcolor
 1481 4384 M
 0 63 V
-0 1172 R
+0 1144 R
 0 -63 V
 stroke
 1481 4244 M
@@ -1092,7 +1083,7 @@ LTb
 LCb setrgbcolor
 2117 4384 M
 0 63 V
-0 1172 R
+0 1144 R
 0 -63 V
 stroke
 2117 4244 M
@@ -1103,7 +1094,7 @@ LTb
 LCb setrgbcolor
 2753 4384 M
 0 63 V
-0 1172 R
+0 1144 R
 0 -63 V
 stroke
 2753 4244 M
@@ -1114,7 +1105,7 @@ LTb
 LCb setrgbcolor
 3388 4384 M
 0 63 V
-0 1172 R
+0 1144 R
 0 -63 V
 stroke
 3388 4244 M
@@ -1125,7 +1116,7 @@ LTb
 LCb setrgbcolor
 4024 4384 M
 0 63 V
-0 1172 R
+0 1144 R
 0 -63 V
 stroke
 4024 4244 M
@@ -1136,7 +1127,7 @@ LTb
 LCb setrgbcolor
 4660 4384 M
 0 63 V
-0 1172 R
+0 1144 R
 0 -63 V
 stroke
 4660 4244 M
@@ -1148,15 +1139,15 @@ LCb setrgbcolor
 1.000 UL
 LTB
 LCb setrgbcolor
-210 5619 N
-0 -1235 V
+210 5591 N
+0 -1207 V
 4577 0 V
-0 1235 V
+0 1207 V
 -4577 0 V
 Z stroke
 1.000 UP
 LCb setrgbcolor
-256 5372 M
+256 5350 M
 [ [(Helvetica) 140.0 0.0 true true 0 (O)]
 [(Helvetica) 112.0 -42.0 true true 0 (g3)]
 [(Helvetica) 140.0 0.0 true true 0 (-P-O)]
@@ -1170,94 +1161,94 @@ LCb setrgbcolor
 % Begin plot #1
 4.000 UL
 LTb
-0.00 0.00 0.00 C 210 4413 M
+0.00 0.00 0.00 C 210 4407 M
 254 0 V
-255 21 V
-254 36 V
-254 71 V
-254 7 V
-255 43 V
-254 36 V
-254 585 V
-255 407 V
-254 -735 V
-254 -293 V
-254 -43 V
-255 0 V
-254 -14 V
-254 -93 V
-254 -21 V
-255 0 V
-254 -36 V
+255 31 V
+254 38 V
+254 62 V
+254 -23 V
+255 23 V
+254 54 V
+254 661 V
+255 338 V
+254 -823 V
+254 -215 V
+254 -69 V
+255 69 V
+254 -15 V
+254 -100 V
+254 -31 V
+255 8 V
+254 -31 V
 % End plot #1
 % Begin plot #2
 stroke
 LTb
-0.00 0.00 1.00 C 210 4464 M
+0.00 0.00 1.00 C 210 4436 M
 254 0 V
-255 64 V
-254 72 V
-254 120 V
-254 -80 V
-255 48 V
-254 192 V
-254 -16 V
-255 0 V
-254 -144 V
-254 -80 V
-254 -72 V
-255 -16 V
-254 96 V
-254 -144 V
-254 -40 V
-255 -16 V
-254 -64 V
+255 88 V
+254 69 V
+254 105 V
+254 -78 V
+255 43 V
+254 166 V
+254 -35 V
+255 35 V
+254 -157 V
+254 -52 V
+254 -44 V
+255 -9 V
+254 88 V
+254 -149 V
+254 -43 V
+255 -35 V
+254 -44 V
 % End plot #2
 % Begin plot #3
 stroke
 LTb
-0.00 1.00 0.00 C 210 4510 M
-254 -76 V
-255 -25 V
-254 152 V
-254 302 V
-254 -403 V
-255 328 V
-254 -202 V
-254 378 V
-255 26 V
+0.00 1.00 0.00 C 210 4504 M
+254 -96 V
+255 0 V
+254 144 V
+254 287 V
+254 -383 V
+255 311 V
+254 -191 V
+254 335 V
+255 48 V
 254 -455 V
-254 0 V
-254 -126 V
-255 227 V
-254 101 V
-254 76 V
-254 -227 V
-255 -152 V
-254 -50 V
+254 24 V
+254 -120 V
+255 215 V
+254 96 V
+254 72 V
+254 -239 V
+255 -144 V
+254 -24 V
 % End plot #3
 % Begin plot #4
 stroke
 LTb
-1.00 0.00 0.00 C 210 4474 M
-254 181 V
+1.00 0.00 0.00 C 210 4495 M
+254 111 V
 719 4384 L
-254 181 V
-254 271 V
+254 111 V
+254 333 V
 254 0 V
-255 -362 V
+255 -444 V
+254 111 V
 254 0 V
-254 181 V
-255 181 V
-254 -181 V
-254 -90 V
-254 362 V
-255 -181 V
-254 -91 V
-254 -90 V
-254 -91 V
+255 333 V
+254 -222 V
+254 -111 V
+254 555 V
+255 -333 V
+254 -111 V
+254 0 V
+254 -111 V
 255 0 V
-254 -90 V
+254 -111 V
 % End plot #4
 stroke
 2.000 UL
@@ -1266,10 +1257,10 @@ LCb setrgbcolor
 1.000 UL
 LTB
 LCb setrgbcolor
-210 5619 N
-0 -1235 V
+210 5591 N
+0 -1207 V
 4577 0 V
-0 1235 V
+0 1207 V
 -4577 0 V
 Z stroke
 1.000 UP
@@ -1281,7 +1272,7 @@ LTb
 LCb setrgbcolor
 210 3088 M
 0 63 V
-0 1172 R
+0 1144 R
 0 -63 V
 stroke
 210 2948 M
@@ -1292,7 +1283,7 @@ LTb
 LCb setrgbcolor
 846 3088 M
 0 63 V
-0 1172 R
+0 1144 R
 0 -63 V
 stroke
 846 2948 M
@@ -1303,7 +1294,7 @@ LTb
 LCb setrgbcolor
 1481 3088 M
 0 63 V
-0 1172 R
+0 1144 R
 0 -63 V
 stroke
 1481 2948 M
@@ -1314,7 +1305,7 @@ LTb
 LCb setrgbcolor
 2117 3088 M
 0 63 V
-0 1172 R
+0 1144 R
 0 -63 V
 stroke
 2117 2948 M
@@ -1325,7 +1316,7 @@ LTb
 LCb setrgbcolor
 2753 3088 M
 0 63 V
-0 1172 R
+0 1144 R
 0 -63 V
 stroke
 2753 2948 M
@@ -1336,7 +1327,7 @@ LTb
 LCb setrgbcolor
 3388 3088 M
 0 63 V
-0 1172 R
+0 1144 R
 0 -63 V
 stroke
 3388 2948 M
@@ -1347,7 +1338,7 @@ LTb
 LCb setrgbcolor
 4024 3088 M
 0 63 V
-0 1172 R
+0 1144 R
 0 -63 V
 stroke
 4024 2948 M
@@ -1358,7 +1349,7 @@ LTb
 LCb setrgbcolor
 4660 3088 M
 0 63 V
-0 1172 R
+0 1144 R
 0 -63 V
 stroke
 4660 2948 M
@@ -1370,15 +1361,15 @@ LCb setrgbcolor
 1.000 UL
 LTB
 LCb setrgbcolor
-210 4323 N
-0 -1235 V
+210 4295 N
+0 -1207 V
 4577 0 V
-0 1235 V
+0 1207 V
 -4577 0 V
 Z stroke
 1.000 UP
 LCb setrgbcolor
-2041 4076 M
+256 4054 M
 [ [(Helvetica) 140.0 0.0 true true 0 (g)]
 [(Helvetica) 112.0 -42.0 true true 0 (3)]
 [(Helvetica) 140.0 0.0 true true 0 (-O)]
@@ -1392,92 +1383,92 @@ LCb setrgbcolor
 % Begin plot #1
 4.000 UL
 LTb
-0.00 0.00 0.00 C 210 3172 M
-254 138 V
-255 -11 V
-254 -32 V
-254 85 V
-254 95 V
-255 84 V
-254 254 V
-254 538 V
+0.00 0.00 0.00 C 210 3168 M
+254 91 V
+255 45 V
+254 -34 V
+254 91 V
+254 23 V
+255 148 V
+254 171 V
+254 592 V
 255 -148 V
-254 -865 V
+254 -843 V
+254 -57 V
+254 -34 V
+255 80 V
 254 -11 V
-254 -53 V
-255 64 V
-254 52 V
-254 -42 V
-254 -84 V
-255 21 V
-254 -169 V
+254 45 V
+254 -114 V
+255 -11 V
+254 -114 V
 % End plot #1
 % Begin plot #2
 stroke
 LTb
-0.00 0.00 1.00 C 210 3123 M
-254 213 V
-255 107 V
-254 35 V
-254 -130 V
-254 118 V
-255 47 V
-254 -35 V
-254 -35 V
-255 130 V
-254 0 V
-254 -225 V
-254 35 V
-255 213 V
-254 296 V
-254 -379 V
-254 -260 V
-255 -11 V
-254 -154 V
+0.00 0.00 1.00 C 210 3114 M
+254 220 V
+255 77 V
+254 65 V
+254 -181 V
+254 168 V
+255 39 V
+254 -78 V
+254 26 V
+255 78 V
+254 -91 V
+254 -129 V
+254 13 V
+255 271 V
+254 259 V
+254 -336 V
+254 -272 V
+255 0 V
+254 -155 V
 % End plot #2
 % Begin plot #3
 stroke
 LTb
-0.00 1.00 0.00 C 210 3200 M
+0.00 1.00 0.00 C 210 3194 M
 254 0 V
-255 37 V
-254 747 V
-254 -560 V
-254 -149 V
-255 -75 V
-254 373 V
-254 -298 V
-255 522 V
-254 -261 V
-254 -187 V
-254 336 V
-255 -261 V
-254 709 V
-254 -709 V
-254 -299 V
-255 38 V
-254 -75 V
+255 36 V
+254 673 V
+254 -496 V
+254 -142 V
+255 -71 V
+254 319 V
+254 -248 V
+255 461 V
+254 -213 V
+254 -212 V
+254 319 V
+255 -213 V
+254 674 V
+254 -674 V
+254 -284 V
+255 36 V
+254 -71 V
 % End plot #3
 % Begin plot #4
 stroke
 LTb
-1.00 0.00 0.00 C 210 3355 M
+1.00 0.00 0.00 C 210 3417 M
 254 0 V
-255 535 V
-973 3355 L
-254 134 V
-254 -134 V
+255 493 V
+973 3417 L
+254 0 V
+254 0 V
 255 0 V
-254 268 V
-254 -134 V
-255 -267 V
-254 535 V
-254 -268 V
+254 164 V
+254 -329 V
+255 0 V
+254 494 V
+254 -494 V
+254 165 V
+255 493 V
+254 -658 V
 254 0 V
-255 535 V
-254 -802 V
-254 133 V
-254 -267 V
+254 -164 V
 255 0 V
 254 0 V
 % End plot #4
@@ -1488,10 +1479,10 @@ LCb setrgbcolor
 1.000 UL
 LTB
 LCb setrgbcolor
-210 4323 N
-0 -1235 V
+210 4295 N
+0 -1207 V
 4577 0 V
-0 1235 V
+0 1207 V
 -4577 0 V
 Z stroke
 1.000 UP
@@ -1503,7 +1494,7 @@ LTb
 LCb setrgbcolor
 210 1792 M
 0 63 V
-0 1173 R
+0 1145 R
 0 -63 V
 stroke
 210 1652 M
@@ -1514,7 +1505,7 @@ LTb
 LCb setrgbcolor
 846 1792 M
 0 63 V
-0 1173 R
+0 1145 R
 0 -63 V
 stroke
 846 1652 M
@@ -1525,7 +1516,7 @@ LTb
 LCb setrgbcolor
 1481 1792 M
 0 63 V
-0 1173 R
+0 1145 R
 0 -63 V
 stroke
 1481 1652 M
@@ -1536,7 +1527,7 @@ LTb
 LCb setrgbcolor
 2117 1792 M
 0 63 V
-0 1173 R
+0 1145 R
 0 -63 V
 stroke
 2117 1652 M
@@ -1547,7 +1538,7 @@ LTb
 LCb setrgbcolor
 2753 1792 M
 0 63 V
-0 1173 R
+0 1145 R
 0 -63 V
 stroke
 2753 1652 M
@@ -1558,7 +1549,7 @@ LTb
 LCb setrgbcolor
 3388 1792 M
 0 63 V
-0 1173 R
+0 1145 R
 0 -63 V
 stroke
 3388 1652 M
@@ -1569,7 +1560,7 @@ LTb
 LCb setrgbcolor
 4024 1792 M
 0 63 V
-0 1173 R
+0 1145 R
 0 -63 V
 stroke
 4024 1652 M
@@ -1580,7 +1571,7 @@ LTb
 LCb setrgbcolor
 4660 1792 M
 0 63 V
-0 1173 R
+0 1145 R
 0 -63 V
 stroke
 4660 1652 M
@@ -1592,15 +1583,15 @@ LCb setrgbcolor
 1.000 UL
 LTB
 LCb setrgbcolor
-210 3028 N
-0 -1236 V
+210 3000 N
+0 -1208 V
 4577 0 V
-0 1236 V
+0 1208 V
 -4577 0 V
 Z stroke
 1.000 UP
 LCb setrgbcolor
-302 2781 M
+302 2758 M
 [ [(Helvetica) 140.0 0.0 true true 0 (g)]
 [(Helvetica) 112.0 -42.0 true true 0 (2)]
 [(Helvetica) 140.0 0.0 true true 0 (-g)]
@@ -1618,19 +1609,19 @@ LTb
 0.00 0.00 0.00 C 210 1798 M
 254 -6 V
 255 0 V
-254 67 V
-254 -22 V
-254 33 V
-255 50 V
-254 267 V
-254 841 V
-255 -295 V
-254 -746 V
-254 -45 V
-254 -100 V
-255 22 V
-254 -55 V
-254 -11 V
+254 75 V
+254 -25 V
+254 18 V
+255 25 V
+254 268 V
+254 847 V
+255 -305 V
+254 -729 V
+254 -31 V
+254 -87 V
+255 19 V
+254 -56 V
+254 -13 V
 254 -6 V
 255 0 V
 254 0 V
@@ -1640,66 +1631,66 @@ stroke
 LTb
 0.00 0.00 1.00 C 210 1792 M
 254 0 V
-255 12 V
-254 38 V
+255 14 V
+254 43 V
 254 56 V
-254 62 V
-255 181 V
-254 137 V
-254 6 V
-255 44 V
-254 -100 V
-254 -81 V
+254 57 V
+255 155 V
+254 113 V
+254 78 V
+255 -78 V
+254 -14 V
+254 -78 V
 254 -106 V
-255 -131 V
-254 -106 V
-254 -12 V
+255 -113 V
+254 -113 V
+254 -14 V
 254 0 V
-255 12 V
-254 -12 V
+255 14 V
+254 -14 V
 % End plot #2
 % Begin plot #3
 stroke
 LTb
-0.00 1.00 0.00 C 210 1871 M
+0.00 1.00 0.00 C 210 1870 M
 254 -20 V
 255 -39 V
 254 39 V
-254 276 V
-254 -197 V
-255 -40 V
-254 158 V
-254 197 V
-255 196 V
-254 -275 V
+254 272 V
+254 -194 V
+255 -58 V
+254 155 V
+254 213 V
+255 155 V
+254 -233 V
 254 59 V
-254 -157 V
-255 -217 V
+254 -175 V
+255 -194 V
 254 20 V
-254 -79 V
-254 20 V
-255 -20 V
+254 -78 V
+254 19 V
+255 -19 V
 254 0 V
 % End plot #3
 % Begin plot #4
 stroke
 LTb
 1.00 0.00 0.00 C 210 1792 M
-254 71 V
+254 90 V
 255 0 V
 254 0 V
 254 0 V
-254 70 V
-255 0 V
-254 353 V
-254 70 V
-255 -352 V
-254 423 V
-254 -282 V
+254 90 V
+255 -90 V
+254 360 V
+254 90 V
+255 -360 V
+254 360 V
+254 -270 V
+254 180 V
+255 -270 V
+254 -180 V
 254 0 V
-255 -212 V
-254 -70 V
-254 -71 V
 254 0 V
 255 0 V
 254 0 V
@@ -1711,10 +1702,10 @@ LCb setrgbcolor
 1.000 UL
 LTB
 LCb setrgbcolor
-210 3028 N
-0 -1236 V
+210 3000 N
+0 -1208 V
 4577 0 V
-0 1236 V
+0 1208 V
 -4577 0 V
 Z stroke
 1.000 UP
@@ -1726,7 +1717,7 @@ LTb
 LCb setrgbcolor
 210 448 M
 0 63 V
-0 1221 R
+0 1193 R
 0 -63 V
 stroke
 210 308 M
@@ -1737,7 +1728,7 @@ LTb
 LCb setrgbcolor
 846 448 M
 0 63 V
-0 1221 R
+0 1193 R
 0 -63 V
 stroke
 846 308 M
@@ -1748,7 +1739,7 @@ LTb
 LCb setrgbcolor
 1481 448 M
 0 63 V
-0 1221 R
+0 1193 R
 0 -63 V
 stroke
 1481 308 M
@@ -1759,7 +1750,7 @@ LTb
 LCb setrgbcolor
 2117 448 M
 0 63 V
-0 1221 R
+0 1193 R
 0 -63 V
 stroke
 2117 308 M
@@ -1770,7 +1761,7 @@ LTb
 LCb setrgbcolor
 2753 448 M
 0 63 V
-0 1221 R
+0 1193 R
 0 -63 V
 stroke
 2753 308 M
@@ -1781,7 +1772,7 @@ LTb
 LCb setrgbcolor
 3388 448 M
 0 63 V
-0 1221 R
+0 1193 R
 0 -63 V
 stroke
 3388 308 M
@@ -1792,7 +1783,7 @@ LTb
 LCb setrgbcolor
 4024 448 M
 0 63 V
-0 1221 R
+0 1193 R
 0 -63 V
 stroke
 4024 308 M
@@ -1803,7 +1794,7 @@ LTb
 LCb setrgbcolor
 4660 448 M
 0 63 V
-0 1221 R
+0 1193 R
 0 -63 V
 stroke
 4660 308 M
@@ -1815,15 +1806,15 @@ LCb setrgbcolor
 1.000 UL
 LTB
 LCb setrgbcolor
-210 1732 N
+210 1704 N
 210 448 L
 4577 0 V
-0 1284 V
+0 1256 V
 -4577 0 V
 Z stroke
 1.000 UP
 LCb setrgbcolor
-302 1475 M
+302 1453 M
 [ [(Helvetica) 140.0 0.0 true true 0 (g)]
 [(Helvetica) 112.0 -42.0 true true 0 (1)]
 [(Helvetica) 140.0 0.0 true true 0 (-g)]
@@ -1844,93 +1835,93 @@ LTb
 % Begin plot #1
 4.000 UL
 LTb
-0.00 0.00 0.00 C 210 572 M
-254 90 V
-255 439 V
-254 293 V
-254 -293 V
-254 -34 V
-1736 865 L
-254 56 V
+0.00 0.00 0.00 C 210 557 M
+254 54 V
+719 937 L
+254 228 V
+254 -141 V
 254 -11 V
-2499 797 L
-254 0 V
-3007 617 L
-254 11 V
-255 0 V
-254 259 V
-254 -79 V
-4278 606 L
-255 -57 V
-4787 448 L
+1736 731 L
+254 54 V
+254 54 V
+255 -65 V
+254 -11 V
+3007 589 L
+254 22 V
+255 -11 V
+254 228 V
+254 -76 V
+4278 600 L
+255 -65 V
+254 -87 V
 % End plot #1
 % Begin plot #2
 stroke
 LTb
-0.00 0.00 1.00 C 210 637 M
-254 76 V
-719 927 L
-254 379 V
-1227 940 L
+0.00 0.00 1.00 C 210 571 M
+254 74 V
+719 880 L
+254 345 V
+1227 868 L
 254 0 V
-255 -51 V
+255 -25 V
+254 -99 V
+254 321 V
+2499 954 L
+2753 596 L
+254 86 V
+254 -86 V
+255 99 V
 254 -37 V
-254 353 V
-255 -101 V
-2753 675 L
-254 38 V
-254 -63 V
-255 75 V
-254 26 V
-4024 637 L
-254 -75 V
-255 126 V
+254 -37 V
+254 -87 V
+255 136 V
 4787 448 L
 % End plot #2
 % Begin plot #3
 stroke
 LTb
-0.00 1.00 0.00 C 210 528 M
-254 79 V
-255 398 V
-254 319 V
-1227 806 L
-254 -39 V
-255 -40 V
-254 398 V
-2244 767 L
-255 39 V
-2753 567 L
-254 -79 V
-254 318 V
-255 279 V
-3770 846 L
-254 358 V
-4278 966 L
-4533 488 L
-254 -40 V
+0.00 1.00 0.00 C 210 448 M
+464 583 L
+719 922 L
+254 271 V
+1227 753 L
+254 -34 V
+255 -34 V
+254 338 V
+2244 719 L
+255 34 V
+2753 550 L
+254 -68 V
+254 271 V
+255 203 V
+3770 786 L
+254 305 V
+4278 820 L
+4533 482 L
+254 -34 V
 % End plot #3
 % Begin plot #4
 stroke
 LTb
-1.00 0.00 0.00 C 210 733 M
+1.00 0.00 0.00 C 210 605 M
+464 762 L
+255 0 V
+973 605 L
+254 157 V
 254 0 V
-719 876 L
-973 733 L
-254 286 V
-1481 876 L
-1736 733 L
-254 143 V
-254 856 V
-2499 876 L
-254 285 V
-3007 733 L
+1736 605 L
+254 157 V
+254 942 V
+2499 762 L
+254 314 V
+3007 762 L
 3261 448 L
-255 143 V
-254 428 V
+255 157 V
+254 471 V
 4024 448 L
-254 143 V
-255 142 V
+254 157 V
+255 0 V
 4787 448 L
 % End plot #4
 stroke
@@ -1940,10 +1931,10 @@ LCb setrgbcolor
 1.000 UL
 LTB
 LCb setrgbcolor
-210 1732 N
+210 1704 N
 210 448 L
 4577 0 V
-0 1284 V
+0 1256 V
 -4577 0 V
 Z stroke
 1.000 UP
