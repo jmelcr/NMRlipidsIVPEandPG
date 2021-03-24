@@ -15,7 +15,7 @@ set xtics font ",20"
 #set ylabel font ",20"
 set xlabel  font ",20"
 set xtics format " " 
-set label at screen 0.02,0.5 rotate by 90 "Relative energy ({/Symbol D}kT)" font ',20'
+set label at screen 0.02,0.5 rotate by 90 "Relative energy (kT)" font ',20'
 
 set origin 0.03,0.93
 set size 1.0,0.23
