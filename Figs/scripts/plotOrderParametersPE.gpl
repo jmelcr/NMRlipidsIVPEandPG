@@ -36,15 +36,15 @@ horizLines(filename)="< awk '{ if(substr($1,1,1)!~/#/) {print $1-0.46,$2,$3;prin
 # Subjective sweet spots:
 set style rectangle fc rgb "#D6F0FE" fs solid noborder
 set object 1 rectangle \
-         from 0.0,-0.01 to 1.5,-0.05 
+         from 0.0,-0.009504 to 1.5,-0.049504 
 set object 2 rectangle \
-         from 1.5, 0.1 to 2.5, 0.06 
+         from 1.5, 0.100752 to 2.5, 0.056832 #-- Forking, sweet spots overlapping.
 set object 3 rectangle \
-         from 2.5, -0.234 to 3.5, -0.173
+         from 2.5, -0.232016 to 3.5, -0.173648 #-- Forking, sweet spots overlapping.
 set object 4 rectangle \
-         from 3.5,-0.218 to 4.5,-0.17
+         from 3.5,-0.214176 to 4.5,-0.174176
 set object 6 rectangle \
-         from 4.5,-0.11 to 5.5,-0.158
+         from 4.5,-0.113992 to 5.5,-0.153992
 set object 7 rectangle \
          from 4.5,-0.02 to 5.5,0.02
 
