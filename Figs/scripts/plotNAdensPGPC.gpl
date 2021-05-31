@@ -1,0 +1,55 @@
+set size 1.0,1.1
+set encoding iso_8859_1
+set terminal postscript portrait enhanced color dashed lw 1 "Helvetica" 14 background rgb 'white'
+set output "../NAdensPGPC.eps"
+set yrange [0:1.65] 
+set xrange [-4:4] 
+set multiplot layout 4,1
+
+set xtics format " " 
+set label at screen 0.02,0.35 rotate by 90 "Number density of calcium" font ',15'
+
+#set origin 0,0.3
+set size 1.0,0.3
+set label  "CHARMM36"  at graph  0.4,0.85
+set key at graph 0.7,0.8 maxcols 3 maxrows 5
+plot      "../../Data/DENSITIES/0c2/1a9/0c21a9be136ea0eb9df9e5c6cdc19f723a0af245/9ac73b6a98acb54a7a67a5d690794ad7f1e4a1d1/SODdensity.xvg" using 1:2 with lines title 'POPC:POPG 1:1' lw 2 lc rgb 'black',\
+
+
+#set origin 0,0.3
+set size 1.0,0.3
+unset label
+#set xtics format "%G"
+#set xlabel "Membrane normal coordinate (nm)"
+set label  "Lipid17"  at graph  0.4,0.85
+#set label  "A_{pl} = 57 {\305}^2"  at graph  0.02,0.85
+#set label  "A_{pl} = 53 {\305}^2"  at graph  0.02,0.7 tc rgb 'red'
+plot "../../Data/DENSITIES/50a/869/50a869e592b5cb04f2139c462da1fd7814832acd/4416de72d1d15b560aef6adf7222ea774c90b53f/SODdensity.xvg" using 1:2 with lines title 'POPC:POPG 1:1' lw 2 lc rgb 'black',\
+#     "../../../MATCH/Data/Lipid_Bilayers/POPG+80%POPC+100mMCaCl/T298K/MODEL_LIPID17/IONdens.xvg" using 1:2 with lines title '100 mM' lw 2 lc rgb 'black',\
+
+set size 1.0,0.3
+unset label
+#set xtics format "%G"
+#set xlabel "Membrane normal coordinate (nm)"
+set label  "GROMOS-CKP"  at graph  0.4,0.85
+#set label  "A_{pl} = 57 {\305}^2"  at graph  0.02,0.85
+#set label  "A_{pl} = 53 {\305}^2"  at graph  0.02,0.7 tc rgb 'red'
+plot "../../Data/DENSITIES/393/0bc/3930bc1addae9455c0c46e225fedbe7ed1db93ad/c1c23bdd2acb5f21f947cad163ba8274a0edf41d/SODdensity.xvg" using 1:2 with lines title 'POPC:POPG 7:3' lw 6 lc rgb 'black',\
+
+##set origin 0,0.3
+#set size 1.0,0.3
+unset label
+set xtics format "%G"
+set xlabel "Membrane normal coordinate (nm)"
+set label  "Slipids"  at graph  0.4,0.9
+plot "../../Data/DENSITIES/c74/6ca/c746ca52b71d685e53a802e8046e1253baf6af2b/8850a90345eb033df4ae3228c3b9fa1fbbe40162/SODdensity.xvg" using 1:2 with lines title 'Dang POPC:POPG 1:1' lw 2 lc rgb 'black',\
+     "../../Data/DENSITIES/aa4/e17/aa4e17293e2aecd83d08cb841a8c748446f9d597/0d7032928ab1b626803550c7a23196c612b4430f/SODdensity.xvg" using 1:2 with lines title 'Aqvist POPC:POPG 7:3' lw 6 lc rgb 'black',\
+
+
+
+
+
+
+
+
+

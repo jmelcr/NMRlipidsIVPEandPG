@@ -1,0 +1,50 @@
+DOI="10.5281/zenodo.1288297"
+user_information = """
+POPC charmm with 20% cationic surfactant T313K
+#NMRLIPIDS BEGIN
+
+@SIM
+@SYSTEM=POPC10%DHMDMAB_T313K
+@MAPPING=POPC,mappingPOPCcharmm.txt,DHMDMAB,mappingDHMDMABcharmm.txt
+@SOFTWARE=gromacs
+@FF=CHARMM36
+@FF_SOURCE=NMRlipids IVa
+@FF_DATE=??
+@TRJ=run20.xtc
+@TPR=run20.tpr
+@PREEQTIME=0
+@TIMELEFTOUT=20
+
+@POPC=POPC
+@POPG=POPG
+@POPS=POPS
+@POPE=POPE
+@CHOL=CHOL
+@DHMDMAB=T7H
+
+@POT=K
+@SOD=NA
+@CLA=CLA
+@CAL=CA
+@SOL=TIP3
+
+@NPOPC=[0,0]
+@NPOPG=[0,0]
+@NPOPS=[0,0]
+@NPOPE=[0,0]
+@NCHOL=[0,0]
+
+@NPOT=0
+@NSOD=0
+@NCLA=0
+@NCAL=0
+@NSOL=0
+@NCHOL=0
+
+@TEMPERATURE=0
+@TRJLENGTH=0
+
+#NMRLIPIDS END
+
+"""
+dir_wrk = "/media/osollila/Data/tmp/DATABANK/"

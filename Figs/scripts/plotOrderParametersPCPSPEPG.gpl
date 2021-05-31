@@ -1,35 +1,39 @@
-set size 1.0,0.7
+set size 1.55,1.21
 set terminal postscript portrait enhanced color dashed lw 1 "Helvetica" 14 
 set output "../HGorderparametersPCPSPEPG.eps"
+
 set yrange [0.11:-0.25] 
 set xrange [-0.5:5.5] 
-set ytic 0.05 font ", 20"
-set ylabel "S_{CH}" font ", 20"
-#set xtics ("{/Symbol b}" 1, "{/Symbol a}" 2, "g_{3R}" 3, "g_{3S}" 4, "g_{2}" 5, "g_{1R}" 6, "g_{1S}" 7)
-set xtics ("{/Symbol g}" 0, "{/Symbol b}" 1, "{/Symbol a}" 2, "g_{3}" 3, "g_{2}" 4, "g_{1}" 5) font ", 20"
-set key box linestyle 1 linecolor rgb 'black' width -6
-set key at graph 0.5,0.98 maxcols 1 maxrows 10
+set ytic 0.05 font ", 30"
+set ylabel "S_{CH}" font ", 30" offset -3,0,0
+set xtics ("{/Symbol g}" 0, "{/Symbol b}" 1, "{/Symbol a}" 2, "g_{3}" 3, "g_{2}" 4, "g_{1}" 5) font ", 30" offset 0,-0.1,0
+set key box linestyle 1 linecolor rgb 'black' width -1 height +0.5
+set key at graph 0.32,0.98 maxcols 1 maxrows 10 font ", 20"
 #set key above maxcols 2 maxrows 6
 
-plot "../../../MATCH/Data/Lipid_Bilayers/POPC/T300K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using 1:($2):4 with yerrorbars  title 'POPC literature' pt 5 ps 1.8 lc rgb 'black',\
-     "../../../MATCH/Data/Lipid_Bilayers/POPC/T300K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using 1:($3):4 with yerrorbars  notitle pt 5 ps 1.8 lc rgb 'black',\
-     "../../../NMRlipidsIVotherHGs/Data/POPSorderparametersNOCaEXP.dat" using 1:($2):4 with yerrorbars title 'POPS literature' pt 7 ps 1.6 lc rgb 'red',\
-     "../../../NMRlipidsIVotherHGs/Data/POPSorderparametersNOCaEXP.dat" using 1:($3):4 with yerrorbars notitle pt 7 ps 1.6 lc rgb 'red',\
-     "../../../MATCH/Data/Lipid_Bilayers/DOPS/T303K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using 1:($2*0.00784) title 'DOPS literature' pt 13 ps 2.0 lc rgb 'red',\
-     "../../../MATCH/Data/Lipid_Bilayers/DOPS/T303K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using 1:($3*0.00784) notitle pt 13 ps 2.0 lc rgb 'red',\
-     "../../../MATCH/Data/Lipid_Bilayers/POPE/T310K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using 1:2:3 with yerrorbars title 'POPE this work' pt 7 ps 1.6 lc rgb 'blue',\
-     "../../../MATCH/Data/Lipid_Bilayers/DPPE/T341K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using 1:($2*0.00784) title 'DPPE literature' pt 12 ps 2.5 lc rgb 'blue',\
-     "../../../MATCH/Data/Lipid_Bilayers/DPPE/T341K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using 1:($3*0.00784) notitle pt 12 ps 2.5 lc rgb 'blue',\
-     "../../../MATCH/Data/Lipid_Bilayers/E.coliPE/T310K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using 1:($2*0.00784) title 'E.Coli PE literature' pt 10 ps 1.6 lc rgb 'blue',\
-     "../../../MATCH/Data/Lipid_Bilayers/E.coliPE/T310K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using 1:($3*0.00784) notitle pt 10 ps 1.6 lc rgb 'blue',\
-     "../../../MATCH/Data/Lipid_Bilayers/POPG/T298K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using 1:($2*0.00784) title 'POPG literature' pt 4 ps 1.6 lc rgb 'green',\
-     "../../../MATCH/Data/Lipid_Bilayers/POPG/T298K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using 1:($3*0.00784) notitle pt 4 ps 1.6 lc rgb 'green',\
-     "../../../MATCH/Data/Lipid_Bilayers/POPG/T298K/Headgroup_Glycerol_Order_Parameters_Experiments2.dat" using 1:2:4 with yerrorbars title 'POPG this work' pt 5 ps 1.6 lc rgb 'green',\
-     "../../../MATCH/Data/Lipid_Bilayers/POPG/T298K/Headgroup_Glycerol_Order_Parameters_Experiments2.dat" using 1:3:4 with yerrorbars notitle pt 5 ps 1.6 lc rgb 'green',\
-     "../../../MATCH/Data/Lipid_Bilayers/DPPG/T314K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using 1:($2*0.00784) title 'DPPG literature' pt 8 ps 1.8 lc rgb 'green',\
-     "../../../MATCH/Data/Lipid_Bilayers/DPPG/T314K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using 1:($3*0.00784) notitle pt 8 ps 1.8 lc rgb 'green',\
-     "../../../MATCH/Data/Lipid_Bilayers/E.coliPG/T310K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using 1:($2*0.00784) title 'E. Coli PG literature' pt 10 ps 2.5 lc rgb 'green',\
-     "../../../MATCH/Data/Lipid_Bilayers/E.coliPG/T310K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using 1:($3*0.00784) notitle pt 10 ps 2.5 lc rgb 'green',\
+set multiplot 
+set origin 0.08,0.01
+set size 1.5,1.2
 
+plot "../../../MATCH/Data/Lipid_Bilayers/POPC/T300K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using ($1-0.05):($2):4 with yerrorbars  title 'POPC' pt 5 ps 2.5 lc rgb 'black',\
+     "../../../MATCH/Data/Lipid_Bilayers/POPC/T300K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using ($1-0.05):($3):4 with yerrorbars  notitle pt 5 ps 2.5 lc rgb 'black',\
+     "../../../NMRlipidsIVPEandPG/Data/POPSorderparametersNOCaEXP.dat" using ($1+0.03):($2):4 with yerrorbars title 'POPS' pt 5 ps 2.5 lc rgb 'red',\
+     "../../../NMRlipidsIVPEandPG/Data/POPSorderparametersNOCaEXP.dat" using ($1+0.03):($3):4 with yerrorbars notitle pt 5 ps 2.5 lc rgb 'red',\
+     "../../../MATCH/Data/Lipid_Bilayers/POPE/T310K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using ($1+0.1):2:4 with yerrorbars title 'POPE' pt 5 ps 2.5 lc rgb 'blue',\
+     "../../../MATCH/Data/Lipid_Bilayers/DPPE/T341K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using ($1+0.2):($2*0.00784) title 'DPPE' pt 12 lw 4 ps 2.5 lc rgb 'blue',\
+     "../../../MATCH/Data/Lipid_Bilayers/DPPE/T341K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using ($1+0.2):($3*0.00784) notitle pt 12 lw 4 ps 2.5 lc rgb 'blue',\
+     "../../../MATCH/Data/Lipid_Bilayers/E.coliPE/T310K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using ($1+0.2):($2*0.00784) title 'E.Coli PE' pt 10  lw 4 ps 2.5 lc rgb 'blue',\
+     "../../../MATCH/Data/Lipid_Bilayers/E.coliPE/T310K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using ($1+0.2):($3*0.00784) notitle pt 10 lw 4 ps 2.5 lc rgb 'blue',\
+     "../../../MATCH/Data/Lipid_Bilayers/POPG/T298K/Headgroup_Glycerol_Order_Parameters_Experiments2.dat" using ($1-0.05):2:4 with yerrorbars title 'POPG' pt 5 ps 2.5 lc rgb 'web-green',\
+     "../../../MATCH/Data/Lipid_Bilayers/POPG/T298K/Headgroup_Glycerol_Order_Parameters_Experiments2.dat" using ($1-0.05):3:4 with yerrorbars notitle pt 5 ps 2.5 lc rgb 'web-green',\
+     "../../../MATCH/Data/Lipid_Bilayers/POPG/T298K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using ($1-0.1):($2*0.00784) title 'POPG' pt 4 lw 4 ps 2.5 lc rgb 'web-green',\
+     "../../../MATCH/Data/Lipid_Bilayers/POPG/T298K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using ($1-0.1):($3*0.00784) notitle pt 4 lw 4 ps 2.5 lc rgb 'web-green',\
+     "../../../MATCH/Data/Lipid_Bilayers/DPPG/T314K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using ($1-0.15):($2*0.00784) title 'DPPG' pt 8 lw 4 ps 2.5 lc rgb 'web-green',\
+     "../../../MATCH/Data/Lipid_Bilayers/DPPG/T314K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using ($1-0.15):($3*0.00784) notitle pt 8 lw 4 ps 2.5 lc rgb 'web-green',\
+     "../../../MATCH/Data/Lipid_Bilayers/E.coliPG/T310K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using ($1-0.2):($2*0.00784) title 'E. Coli PG' pt 10 lw 4 ps 2.5 lc rgb 'web-green',\
+     "../../../MATCH/Data/Lipid_Bilayers/E.coliPG/T310K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using ($1-0.2):($3*0.00784) notitle pt 10 lw 4 ps 2.5 lc rgb 'web-green',\
+
+#     "../../../MATCH/Data/Lipid_Bilayers/DOPS/T303K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using 1:($2*0.00784) title 'DOPS literature' pt 13 ps 2.0 lc rgb 'red',\
+#     "../../../MATCH/Data/Lipid_Bilayers/DOPS/T303K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using 1:($3*0.00784) notitle pt 13 ps 2.0 lc rgb 'red',\
 
 

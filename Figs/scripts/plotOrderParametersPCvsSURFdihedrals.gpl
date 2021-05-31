@@ -1,0 +1,159 @@
+set size 1.95,0.95
+set terminal postscript portrait enhanced color dashed lw 1 "Helvetica" 14 
+set output "../HGorderparametersPCvsSURFdihedrals.eps"
+set multiplot layout 3,3
+
+set ytics font ",20"
+set xtics font ",20"
+set ylabel font ",20"
+set xlabel  font ",20"
+set xtics format " "
+
+#set ytic 0.02
+#set key box linestyle 1 linecolor rgb 'black'
+#set key above maxcols 2 maxrows 2
+set key at screen 0.9,0.9 font ",20"
+
+#set label  "A)"  at screen  0.01,0.92 font ",25"
+
+##
+## BETA ORDER PARAMETERS
+##
+#set ytic 0.04
+#set mytics 2
+#set size 1.0,0.35
+#set origin 0.01, 0.6
+#set yrange [-0.14:0.02] 
+#set xrange [-0.01:0.65] 
+#set ylabel "S_{CH}^{/Symbol b}"
+#plot      "../../../NMRlipidsIVotherHGs/Data/sceherer89fig4BETAC16.dat" using 1:(-0.00784*($2+0.0016332244517)) with linespoints title 'Experiment' pt 5 lw 6 ps 1.5 lc rgb 'black',\
+#     "../../../NMRlipidsIVotherHGs/Data/POPCvsDHMDMABcharmm36beta.dat" using 1:($2+0.0722439037234) with linespoints title 'Simulation' pt 4 lw 6 ps 1.5 lc rgb 'red',\
+#     "../../../NMRlipidsIVotherHGs/Data/POPCvsDHMDMABcharmm36beta.dat" using 1:($3+0.0693562746186) with linespoints notitle pt 4 lw 6 ps 1.5 lc rgb 'red',\
+
+#set size 1.0,0.35
+#set origin 0.01,0.3
+##set yrange [0:0.15]
+#set ylabel "S_{CH}^{/Symbol a}"
+##set xlabel "mole fraction of cholesterol or cationic surfactant"
+#plot      "../../../NMRlipidsIVotherHGs/Data/sceherer89fig4ALPHAC16.dat" using 1:(0.00784*($2-0.11024265049)) with linespoints notitle pt 5 lw 6 ps 1.5 lc rgb 'black',\
+#     "../../../NMRlipidsIVotherHGs/Data/POPCvsDHMDMABcharmm36alpha.dat" using 1:($2-0.036729064498) with linespoints notitle  pt 4 ps 1.5 lc rgb 'red' lw 6,\
+#     "../../../NMRlipidsIVotherHGs/Data/POPCvsDHMDMABcharmm36alpha.dat" using 1:($3-0.0324774347332) with linespoints notitle pt 4 ps 1.5 lc rgb 'red' lw 6,\
+
+#set xtics format "%G"
+#set size 0.97,0.35
+#set origin 0.04,0
+#set yrange [38:72]
+#set ytic 10
+#set mytics 2
+#set ylabel "P-N vector (angles)"
+#set xlabel "mole fraction of cationic surfactant"
+#plot      "../../Data/PNvectorWITHsurf.dat" using ($1):($2) with linespoints notitle pt 4 lw 6 ps 1.5 lc rgb 'red',\
+
+
+#set label  "B)"  at screen  1.05,0.92 font ",25"
+
+#
+# FIRST COLUMN OF DIHEDRALS
+#
+unset ytic
+unset yrange
+unset ylabel
+unset xlabel
+
+set xrange [0:360]
+
+set xtics format " "
+
+unset key
+set key at graph 0.65,0.6 maxcols 1 font ",17"
+set size 1.0,0.35
+set origin 0, 0.6
+set label  "O_{/Symbol a}-C_{/Symbol a}-C_{/Symbol b}-N/C_{/Symbol g}"  at graph  0.35,0.8 font ",20"
+plot "../../Data/dihedral/007/ed1/007ed172073ee268b07f29ecd413eb9de13a3d47/895cd634e9106b949e0c15cd8873592748b66fed/POPC_M_G3O3_M_M_G3C4_M_M_G3C5_M_M_G3N6_M_0-360.xvg" using 1:2 with lines title '0 mol%' lw 6 lc rgb 'black',\
+     "../../Data/dihedral/ed4/076/ed4076a232ce5d87dc4a244164604a0b91d9d877/25731b859c4bc2652de35ead4f799ac1d922df28/POPC_M_G3O3_M_M_G3C4_M_M_G3C5_M_M_G3N6_M_0-360.xvg" using 1:2 with lines title '11 mol%' lw 6 lc rgb 'red',\
+     "../../Data/dihedral/702/d04/702d047ee14fb2c6b8ceb1666df45f0783272d8c/50161179ab704faeaf1644957545a77fe97a1063/POPC_M_G3O3_M_M_G3C4_M_M_G3C5_M_M_G3N6_M_0-360.xvg" using 1:2 with lines title '23 mol%' lw 6 lc rgb 'blue',\
+     "../../Data/dihedral/66f/81c/66f81c7905a792bfdc935f463c56af8bb1a1e31f/7050b07cc869d03e5645bc7935a4989dc0480766/POPC_M_G3O3_M_M_G3C4_M_M_G3C5_M_M_G3N6_M_0-360.xvg" using 1:2 with lines title '31 mol%' lw 6 lc rgb 'orange',\
+     "../../Data/dihedral/b86/c00/b86c00db1e4696dc7fa04770509c1cea31d4bf63/3c4f254f6ac8cba7eb9b53b430acba33ec2f5ce7/POPC_M_G3O3_M_M_G3C4_M_M_G3C5_M_M_G3N6_M_0-360.xvg" using 1:2 with lines title '47 mol%' lw 6 lc rgb 'brown',\
+
+unset label
+
+set size 1.0,0.35
+set origin 0, 0.3
+set label  "P-O_{/Symbol a}-C_{/Symbol a}-C_{/Symbol b}"  at graph  0.35,0.8  font ",20"
+plot "../../Data/dihedral/007/ed1/007ed172073ee268b07f29ecd413eb9de13a3d47/895cd634e9106b949e0c15cd8873592748b66fed/POPC_M_G3P2_M_M_G3O3_M_M_G3C4_M_M_G3C5_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'black',\
+     "../../Data/dihedral/ed4/076/ed4076a232ce5d87dc4a244164604a0b91d9d877/25731b859c4bc2652de35ead4f799ac1d922df28/POPC_M_G3P2_M_M_G3O3_M_M_G3C4_M_M_G3C5_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'red',\
+     "../../Data/dihedral/702/d04/702d047ee14fb2c6b8ceb1666df45f0783272d8c/50161179ab704faeaf1644957545a77fe97a1063/POPC_M_G3P2_M_M_G3O3_M_M_G3C4_M_M_G3C5_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'blue',\
+     "../../Data/dihedral/66f/81c/66f81c7905a792bfdc935f463c56af8bb1a1e31f/7050b07cc869d03e5645bc7935a4989dc0480766/POPC_M_G3P2_M_M_G3O3_M_M_G3C4_M_M_G3C5_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'orange',\
+     "../../Data/dihedral/b86/c00/b86c00db1e4696dc7fa04770509c1cea31d4bf63/3c4f254f6ac8cba7eb9b53b430acba33ec2f5ce7/POPC_M_G3P2_M_M_G3O3_M_M_G3C4_M_M_G3C5_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'brown',\
+
+unset label
+
+
+set label  "O_{g3}-P-O_{/Symbol a}-C_{/Symbol a}"  at graph  0.35,0.8  font ",20"
+set xtics font ",20"
+set xlabel  font ",20"
+set xtics format "%G"
+set xlabel "Dihedral angle"
+set size 1.0,0.35
+set origin 0, 0
+plot "../../Data/dihedral/007/ed1/007ed172073ee268b07f29ecd413eb9de13a3d47/895cd634e9106b949e0c15cd8873592748b66fed/POPC_M_G3O1_M_M_G3P2_M_M_G3O3_M_M_G3C4_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'black',\
+     "../../Data/dihedral/ed4/076/ed4076a232ce5d87dc4a244164604a0b91d9d877/25731b859c4bc2652de35ead4f799ac1d922df28/POPC_M_G3O1_M_M_G3P2_M_M_G3O3_M_M_G3C4_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'red',\
+     "../../Data/dihedral/702/d04/702d047ee14fb2c6b8ceb1666df45f0783272d8c/50161179ab704faeaf1644957545a77fe97a1063/POPC_M_G3O1_M_M_G3P2_M_M_G3O3_M_M_G3C4_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'blue',\
+     "../../Data/dihedral/66f/81c/66f81c7905a792bfdc935f463c56af8bb1a1e31f/7050b07cc869d03e5645bc7935a4989dc0480766/POPC_M_G3O1_M_M_G3P2_M_M_G3O3_M_M_G3C4_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'orange',\
+     "../../Data/dihedral/b86/c00/b86c00db1e4696dc7fa04770509c1cea31d4bf63/3c4f254f6ac8cba7eb9b53b430acba33ec2f5ce7/POPC_M_G3O1_M_M_G3P2_M_M_G3O3_M_M_G3C4_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'brown',\
+
+unset label
+
+#
+# SECOND COLUMN OF DIHEDRALS
+#
+unset ytic
+unset yrange
+unset ylabel
+unset xlabel
+
+set xrange [0:360]
+
+set xtics format " "
+
+set label  "g_3-O_{g3}-P-O_{/Symbol a}"  at graph  0.35,0.8  font ",20"
+set size 1.0,0.35
+set origin 0.95, 0.6
+plot "../../Data/dihedral/007/ed1/007ed172073ee268b07f29ecd413eb9de13a3d47/895cd634e9106b949e0c15cd8873592748b66fed/POPC_M_G3_M_M_G3O1_M_M_G3P2_M_M_G3O3_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'black',\
+     "../../Data/dihedral/ed4/076/ed4076a232ce5d87dc4a244164604a0b91d9d877/25731b859c4bc2652de35ead4f799ac1d922df28/POPC_M_G3_M_M_G3O1_M_M_G3P2_M_M_G3O3_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'red',\
+     "../../Data/dihedral/702/d04/702d047ee14fb2c6b8ceb1666df45f0783272d8c/50161179ab704faeaf1644957545a77fe97a1063/POPC_M_G3_M_M_G3O1_M_M_G3P2_M_M_G3O3_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'blue',\
+     "../../Data/dihedral/66f/81c/66f81c7905a792bfdc935f463c56af8bb1a1e31f/7050b07cc869d03e5645bc7935a4989dc0480766/POPC_M_G3_M_M_G3O1_M_M_G3P2_M_M_G3O3_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'orange',\
+     "../../Data/dihedral/b86/c00/b86c00db1e4696dc7fa04770509c1cea31d4bf63/3c4f254f6ac8cba7eb9b53b430acba33ec2f5ce7/POPC_M_G3_M_M_G3O1_M_M_G3P2_M_M_G3O3_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'brown',\
+
+unset label
+
+set label  "g_2-g_3-O_{g3}-P"  at graph  0.05,0.8  font ",20"
+set size 1.0,0.35
+set origin 0.95, 0.3
+plot "../../Data/dihedral/007/ed1/007ed172073ee268b07f29ecd413eb9de13a3d47/895cd634e9106b949e0c15cd8873592748b66fed/POPC_M_G2_M_M_G3_M_M_G3O1_M_M_G3P2_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'black',\
+     "../../Data/dihedral/ed4/076/ed4076a232ce5d87dc4a244164604a0b91d9d877/25731b859c4bc2652de35ead4f799ac1d922df28/POPC_M_G2_M_M_G3_M_M_G3O1_M_M_G3P2_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'red',\
+     "../../Data/dihedral/702/d04/702d047ee14fb2c6b8ceb1666df45f0783272d8c/50161179ab704faeaf1644957545a77fe97a1063/POPC_M_G2_M_M_G3_M_M_G3O1_M_M_G3P2_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'blue',\
+     "../../Data/dihedral/66f/81c/66f81c7905a792bfdc935f463c56af8bb1a1e31f/7050b07cc869d03e5645bc7935a4989dc0480766/POPC_M_G2_M_M_G3_M_M_G3O1_M_M_G3P2_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'orange',\
+     "../../Data/dihedral/b86/c00/b86c00db1e4696dc7fa04770509c1cea31d4bf63/3c4f254f6ac8cba7eb9b53b430acba33ec2f5ce7/POPC_M_G2_M_M_G3_M_M_G3O1_M_M_G3P2_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'brown',\
+
+unset label
+
+
+set label  "g_1-g_2-g_3-O_{g3}"  at graph  0.05,0.8  font ",20"
+set xtics format "%G"
+set xtics font ",20"
+set xlabel  font ",20"
+set xlabel "Dihedral angle"
+set size 1.0,0.35
+set origin 0.95, 0
+plot "../../Data/dihedral/007/ed1/007ed172073ee268b07f29ecd413eb9de13a3d47/895cd634e9106b949e0c15cd8873592748b66fed/POPC_M_G1_M_M_G2_M_M_G3_M_M_G3O1_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'black',\
+     "../../Data/dihedral/ed4/076/ed4076a232ce5d87dc4a244164604a0b91d9d877/25731b859c4bc2652de35ead4f799ac1d922df28/POPC_M_G1_M_M_G2_M_M_G3_M_M_G3O1_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'red',\
+     "../../Data/dihedral/702/d04/702d047ee14fb2c6b8ceb1666df45f0783272d8c/50161179ab704faeaf1644957545a77fe97a1063/POPC_M_G1_M_M_G2_M_M_G3_M_M_G3O1_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'blue',\
+     "../../Data/dihedral/66f/81c/66f81c7905a792bfdc935f463c56af8bb1a1e31f/7050b07cc869d03e5645bc7935a4989dc0480766/POPC_M_G1_M_M_G2_M_M_G3_M_M_G3O1_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'orange',\
+     "../../Data/dihedral/b86/c00/b86c00db1e4696dc7fa04770509c1cea31d4bf63/3c4f254f6ac8cba7eb9b53b430acba33ec2f5ce7/POPC_M_G1_M_M_G2_M_M_G3_M_M_G3O1_M_0-360.xvg" using 1:2 with lines notitle lw 6 lc rgb 'brown',\
+
+
+
+
+unset multiplot
+

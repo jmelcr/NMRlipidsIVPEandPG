@@ -1,0 +1,86 @@
+set size 1.0,1.2
+set encoding iso_8859_1
+set terminal postscript portrait enhanced color dashed lw 1 "Helvetica" 14 background rgb 'white'
+set output "../ENEDISTfromPDB.eps"
+#set yrange [0:1.8] 
+set xrange [0:10] 
+unset ytic 
+#set key box linestyle 1 linecolor rgb 'black'
+set multiplot layout 6,1
+
+set xtics format " " 
+set label at screen 0.025,0.4 rotate by 90 "Normalized probability in PDB" font ',20'
+
+set origin 0.03,0.93
+set size 1.0,0.23
+set label  "O_{/Symbol a}-C_{/Symbol a}-C_{/Symbol b}-N/C_{/Symbol g}"  at graph  0.35,0.85 font ",20"
+set key at graph 0.75,1.2 maxcols 4 maxrows 1
+plot "../../Data/PC0eneDIST.dat" using 1:2 with lines title '  PC' lw 6 lc rgb 'black',\
+     "../../Data/PE0eneDIST.dat" using 1:2 with lines title '  PE' lw 6 lc rgb 'blue',\
+     "../../Data/PG0eneDIST.dat" using 1:2 with lines title '  PG' lw 6 lc rgb 'green',\
+     "../../Data/PS0eneDIST.dat" using 1:2 with lines title '  PS' lw 6 lc rgb 'red',\
+     
+
+set origin 0.03,0.75
+set size 1.0,0.23
+unset label
+set label  "P-O_{/Symbol a}-C_{/Symbol a}-C_{/Symbol b}"  at graph  0.35,0.8 font ",20"
+set key at graph 0.97,0.95
+plot "../../Data/PC1eneDIST.dat" using 1:2 with lines notitle  lw 6 lc rgb 'black',\
+     "../../Data/PE1eneDIST.dat" using 1:2 with lines notitle  lw 6 lc rgb 'blue',\
+     "../../Data/PG1eneDIST.dat" using 1:2 with lines notitle  lw 6 lc rgb 'green',\
+     "../../Data/PS1eneDIST.dat" using 1:2 with lines notitle  lw 6 lc rgb 'red',\
+
+	  
+set origin 0.03,0.57
+set size 1.0,0.23
+unset label
+set label  "O_{g3}-P-O_{/Symbol a}-C_{/Symbol a}"  at graph  0.35,0.8 font ",20"
+set key at graph 0.67,0.82
+plot "../../Data/PC2eneDIST.dat" using 1:2 with lines notitle  lw 6 lc rgb 'black',\
+     "../../Data/PE2eneDIST.dat" using 1:2 with lines notitle  lw 6 lc rgb 'blue',\
+     "../../Data/PG2eneDIST.dat" using 1:2 with lines notitle  lw 6 lc rgb 'green',\
+     "../../Data/PS2eneDIST.dat" using 1:2 with lines notitle  lw 6 lc rgb 'red',\
+
+
+
+set origin 0.03,0.39
+set size 1.0,0.23
+unset label
+set label  "g_3-O_{g3}-P-O_{/Symbol a}"  at graph  0.35,0.8 font ",20"
+#set label  "{/Arial:Bold A_{pl} = 58.0 {\305}^2}"  at graph  0.01,0.85
+set key at graph 0.67,0.82
+plot  "../../Data/PC3eneDIST.dat" using 1:2 with lines notitle  lw 6 lc rgb 'black',\
+     "../../Data/PE3eneDIST.dat" using 1:2 with lines notitle  lw 6 lc rgb 'blue',\
+     "../../Data/PG3eneDIST.dat" using 1:2 with lines notitle  lw 6 lc rgb 'green',\
+     "../../Data/PS3eneDIST.dat" using 1:2 with lines notitle  lw 6 lc rgb 'red',\
+
+
+set origin 0.03,0.21
+set size 1.0,0.23
+unset label
+set label  "g_2-g_3-O_{g3}-P"  at graph  0.35,0.8 font ",20"
+#set label  "{/Arial:Bold A_{pl} = 58.0 {\305}^2}"  at graph  0.01,0.85
+set key at graph 0.67,0.82
+plot  "../../Data/PC4eneDIST.dat" using 1:2 with lines notitle  lw 6 lc rgb 'black',\
+     "../../Data/PE4eneDIST.dat" using 1:2 with lines notitle  lw 6 lc rgb 'blue',\
+     "../../Data/PG4eneDIST.dat" using 1:2 with lines notitle  lw 6 lc rgb 'green',\
+     "../../Data/PS4eneDIST.dat" using 1:2 with lines notitle  lw 6 lc rgb 'red',\
+
+set xtics format "%G" font ",20"
+set xlabel "Relative energy ({/Symbol D}kT)" font ",20"
+set origin 0.03,0
+set size 1.0,0.26
+unset label
+set label  "g_1-g_2-g_3-O_{g3}"  at graph  0.35,0.8 font ",20"
+#set label  "{/Arial:Bold A_{pl} = 58.0 {\305}^2}"  at graph  0.01,0.85
+set key at graph 0.67,0.82
+plot  "../../Data/PC5eneDIST.dat" using 1:2 with lines notitle  lw 6 lc rgb 'black',\
+     "../../Data/PE5eneDIST.dat" using 1:2 with lines notitle  lw 6 lc rgb 'blue',\
+     "../../Data/PG5eneDIST.dat" using 1:2 with lines notitle  lw 6 lc rgb 'green',\
+     "../../Data/PS5eneDIST.dat" using 1:2 with lines notitle  lw 6 lc rgb 'red',\
+
+
+
+
+

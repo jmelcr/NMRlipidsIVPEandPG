@@ -1,27 +1,38 @@
-set size 1.0,0.6
+set size 1.0,1.0
 set encoding iso_8859_1
 set terminal postscript portrait enhanced color dashed lw 1 "Helvetica" 14 background rgb 'white'
 set output "../CAdensPG.eps"
-set yrange [0:1.4] 
+set yrange [0:1.65] 
 set xrange [-4:4] 
 #set ytic 0.05
 #set xtics ("{/Symbol b}" 1, "{/Symbol a}" 2, "g_{3R}" 3, "g_{3S}" 4, "g_{2}" 5, "g_{1R}" 6, "g_{1S}" 7)
 #set xtics ("{/Symbol g}" 0, "{/Symbol b}" 1, "{/Symbol a}" 2, "g_{3}" 3, "g_{2}" 4, "g_{1}" 5)
 #set key box linestyle 1 linecolor rgb 'black'
-set multiplot layout 2,1
+set multiplot layout 3,1
 
 set xtics format " " 
-set label at screen 0.02,0.15 rotate by 90 "Number density of counterions" font ',15'
+set label at screen 0.02,0.35 rotate by 90 "Number density of calcium" font ',15'
 
-set origin 0,0.3
+#set origin 0,0.3
 set size 1.0,0.3
 set label  "CHARMM36"  at graph  0.4,0.85
 #set label  "A_{pl} = 66.8 {\305}^2"  at graph  0.02,0.85
 #set label  "A_{pl} = 56 {\305}^2"  at graph  0.02,0.7 tc rgb 'red'
 set key at graph 0.73,0.7 maxcols 3 maxrows 5
 plot "../../../MATCH/Data/Lipid_Bilayers/POPG+50%POPC+1000mMCaCl/T298K/MODEL_CHARMM36/IONdens.xvg" using 1:2 with lines title 'PC:PG (1:1) 1 M' lw 6 lc rgb 'red',\
-     "../../../MATCH/Data/Lipid_Bilayers/POPG+50%POPC+150mMCaCl/T298K/MODEL_CHARMM36/IONdens.xvg" using 1:2 with lines title 'PC:PG (1:1) 0.15 mM' lw 2 lc rgb 'red',\
+     "../../../MATCH/Data/Lipid_Bilayers/POPG+50%POPC+150mMCaCl/T298K/MODEL_CHARMM36/IONdens.xvg" using 1:2 with lines title 'PC:PG (1:1) 0.15 M' lw 2 lc rgb 'red',\
      "../../../MATCH/Data/Lipid_Bilayers/POPG+80%POPC+1000mMCaCl/T298K/MODEL_CHARMM36/IONdens.xvg" using 1:2 with lines title 'PC:PG (4:1) 1 M' lw 6 lc rgb 'black',\
+
+unset label
+set size 1.0,0.3
+set label  "SLIPIDS"  at graph  0.4,0.85
+#set label  "A_{pl} = 66.8 {\305}^2"  at graph  0.02,0.85
+#set label  "A_{pl} = 56 {\305}^2"  at graph  0.02,0.7 tc rgb 'red'
+set key at graph 0.73,0.7 maxcols 3 maxrows 5
+plot "../../../MATCH/Data/Lipid_Bilayers/POPG+50%POPC+1000mMCaCl/T298K/MODEL_SLIPIDS/IONdens.xvg" using 1:2 with lines title 'PC:PG (1:1) 1 M' lw 6 lc rgb 'red',\
+     "../../../MATCH/Data/Lipid_Bilayers/POPG+50%POPC+500mMCaCl/T298K/MODEL_SLIPIDS/IONdens.xvg" using 1:2 with lines title 'PC:PG (1:1) 0.5 M' lw 4 lc rgb 'red',\
+     "../../../MATCH/Data/Lipid_Bilayers/POPG+50%POPC+200mMCaCl/T298K/MODEL_SLIPIDS/IONdens.xvg" using 1:2 with lines title 'PC:PG (1:1) 0.2 M' lw 3 lc rgb 'red',\
+     "../../../MATCH/Data/Lipid_Bilayers/POPG+50%POPC+100mMCaCl/T298K/MODEL_SLIPIDS/IONdens.xvg" using 1:2 with lines title 'PC:PG (1:1) 0.1 M' lw 2 lc rgb 'red',\
 
 
 #set origin 0,0.3
@@ -34,6 +45,8 @@ set label  "Lipid17"  at graph  0.4,0.85
 #set label  "A_{pl} = 53 {\305}^2"  at graph  0.02,0.7 tc rgb 'red'
 plot "../../../MATCH/Data/Lipid_Bilayers/POPG+80%POPC+1000mMCaCl/T298K/MODEL_LIPID17/IONdens.xvg" using 1:2 with lines title 'PC:PG (4:1) 1 M' lw 6 lc rgb 'black',\
      "../../../MATCH/Data/Lipid_Bilayers/POPG+80%POPC+100mMCaCl/T298K/MODEL_LIPID17/IONdens.xvg" using 1:2 with lines title 'PC:PG (4:1) 100 mM' lw 2 lc rgb 'black',\
+     "../../../MATCH/Data/Lipid_Bilayers/POPG+50%POPC+1000mMCaCl/T298K/MODEL_LIPID17/IONdens.xvg" using 1:2 with lines title 'PC:PG (1:1) 1 M' lw 6 lc rgb 'red',\
+     "../../../MATCH/Data/Lipid_Bilayers/POPG+50%POPC+100mMCaCl/T298K/MODEL_LIPID17/IONdens.xvg" using 1:2 with lines title 'PC:PG (1:1) 100 mM' lw 2 lc rgb 'red',\
 
 
 

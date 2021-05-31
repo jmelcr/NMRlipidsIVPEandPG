@@ -1,0 +1,53 @@
+ID: 0
+DOI: 10.5281/zenodo.14068
+SYSTEM: POPC50%chol_T303K
+MAPPING: POPC,mappingPOPCcharmm.txt,CHOL,mappingCHOLESTEROLcharmm.txt
+SOFTWARE: gromacs
+FF: CHARMM36
+FF_SOURCE: ??
+FF_DATE: ??
+TRJ:
+- - POPC_50CHL.xtc
+TPR:
+- - POPC_50CHL.tpr
+PREEQTIME: '0'
+TIMELEFTOUT: '100'
+POPC: POPC
+POPG: POPG
+POPS: POPS
+POPE: POPE
+CHOL: CHL1
+POT: K
+SOD: NA
+CLA: CL
+CAL: CA
+SOL: SOL
+NPOPC:
+- 40
+- 40
+NPOPG:
+- 0
+- 0
+NPOPS:
+- 0
+- 0
+NPOPE:
+- 0
+- 0
+NCHOL:
+- 40
+- 40
+NPOT: 0
+NSOD: 0
+NCLA: 0
+NCAL: 0
+NSOL: 4496
+TEMPERATURE: '303'
+TRJLENGTH: 200020.0
+MAPPING_DICT:
+  POPC: mappingPOPCcharmm.txt
+  CHOL: mappingCHOLESTEROLcharmm.txt
+GRO: /media/osollila/Data/tmp/DATABANK/tmp_6-421160/0/conf.gro
+NDHMDMAB:
+- 0
+- 0

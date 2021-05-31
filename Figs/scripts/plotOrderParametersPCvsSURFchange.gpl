@@ -1,0 +1,48 @@
+set size 1.0,0.95
+set terminal postscript portrait enhanced color dashed lw 1 "Helvetica" 14 
+set output "../HGorderparametersPCvsSURFchange.eps"
+set multiplot layout 3,1
+
+set ytics font ",20"
+set xtics font ",20"
+set ylabel font ",20"
+set xlabel  font ",20"
+set xtics format " "
+
+#set ytic 0.02
+#set key box linestyle 1 linecolor rgb 'black'
+set key above maxcols 2 maxrows 2
+
+set ytic 0.04
+set mytics 2
+set size 1.0,0.35
+set origin 0.01, 0.6
+set yrange [-0.14:0.02] 
+set xrange [-0.01:0.65] 
+set ylabel "S_{CH}^{/Symbol b}"
+plot      "../../../NMRlipidsIVotherHGs/Data/sceherer89fig4BETAC16.dat" using 1:(-0.00784*($2+0.0016332244517)) with linespoints title 'Experiment)' pt 5 lw 6 ps 1.5 lc rgb 'black',\
+     "../../../NMRlipidsIVotherHGs/Data/POPCvsDHMDMABcharmm36beta.dat" using 1:($2+0.0722439037234) with linespoints title 'Simulation' pt 4 lw 6 ps 1.5 lc rgb 'red',\
+     "../../../NMRlipidsIVotherHGs/Data/POPCvsDHMDMABcharmm36beta.dat" using 1:($3+0.0693562746186) with linespoints notitle pt 4 lw 6 ps 1.5 lc rgb 'red',\
+
+
+set size 1.0,0.35
+set origin 0.01,0.3
+#set yrange [0:0.15]
+set ylabel "S_{CH}^{/Symbol a}"
+#set xlabel "mole fraction of cholesterol or cationic surfactant"
+plot      "../../../NMRlipidsIVotherHGs/Data/sceherer89fig4ALPHAC16.dat" using 1:(0.00784*($2-0.11024265049)) with linespoints notitle pt 5 lw 6 ps 1.5 lc rgb 'black',\
+     "../../../NMRlipidsIVotherHGs/Data/POPCvsDHMDMABcharmm36alpha.dat" using 1:($2-0.036729064498) with linespoints notitle  pt 4 ps 1.5 lc rgb 'red' lw 6,\
+     "../../../NMRlipidsIVotherHGs/Data/POPCvsDHMDMABcharmm36alpha.dat" using 1:($3-0.0324774347332) with linespoints notitle pt 4 ps 1.5 lc rgb 'red' lw 6,\
+
+set xtics format "%G"
+set size 0.97,0.35
+set origin 0.04,0
+set yrange [38:72]
+set ytic 10
+set mytics 2
+set ylabel "P-N vector (angles)"
+set xlabel "mole fraction of cationic surfactant"
+plot      "../../Data/PNvectorWITHsurf.dat" using ($1):($2) with linespoints notitle pt 4 lw 6 ps 1.5 lc rgb 'red',\
+
+unset multiplot
+

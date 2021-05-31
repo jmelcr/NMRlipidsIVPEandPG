@@ -1,0 +1,45 @@
+ID: 0
+DOI: 10.5281/zenodo.3613573
+SYSTEM: POPC_T298K
+MAPPING: POPC,mappingPOPCslipidsECCions.txt,POPG,mappingPOPGslipids.txt
+SOFTWARE: gromacs
+FF: Slipids
+FF_SOURCE: http://www.fos.su.se/~sasha/SLipids/, https://bitbucket.org/hseara/ions/
+FF_DATE: ??
+TRJ:
+- - PCPG_CA100_extend.xtc
+TPR:
+- - PCPG_CA100.tpr
+PREEQTIME: '0'
+TIMELEFTOUT: '500'
+POPC: POPC
+POPG: POPG
+POPS: POPS
+POPE: POPE
+POT: M_K_M
+SOD: NA
+CLA: M_CL_M
+CAL: CA
+SOL: M_SOL_M
+NPOPC:
+- 64
+- 64
+NPOPG:
+- 64
+- 64
+NPOPS:
+- 0
+- 0
+NPOPE:
+- 0
+- 0
+NPOT: '0'
+NSOD: 0
+NCLA: '0'
+NCAL: 0
+NSOL: 12800
+TEMPERATURE: '298'
+TRJLENGTH: 1000100.0
+MAPPING_DICT:
+  POPC: mappingPOPCslipidsECCions.txt
+  POPG: mappingPOPGslipids.txt

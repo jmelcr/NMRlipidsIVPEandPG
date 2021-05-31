@@ -1,0 +1,45 @@
+ID: 0
+DOI: 10.5281/zenodo.1306821
+SYSTEM: POPC_T300K
+MAPPING: POPC,mappingPOPCcharmm.txt,POPE,mappingPOPEcharmm.txt
+SOFTWARE: gromacs
+FF: CHARMM36
+FF_SOURCE: CHARMM-GUI
+FF_DATE: ??
+TRJ:
+- - md_dt100_OK_centered.xtc
+TPR:
+- - md.tpr
+PREEQTIME: '0'
+TIMELEFTOUT: '50'
+POPC: POPC
+POPG: POPG
+POPS: POPS
+POPE: POPE
+POT: M_K_M
+SOD: M_NA_M
+CLA: M_CL_M
+CAL: M_CA_M
+SOL: M_SOL_M
+NPOPC:
+- 64
+- 64
+NPOPG:
+- 0
+- 0
+NPOPS:
+- 0
+- 0
+NPOPE:
+- 64
+- 64
+NPOT: 0
+NSOD: 0
+NCLA: 0
+NCAL: 0
+NSOL: 9102
+TEMPERATURE: '300'
+TRJLENGTH: 300100.0
+MAPPING_DICT:
+  POPC: mappingPOPCcharmm.txt
+  POPE: mappingPOPEcharmm.txt

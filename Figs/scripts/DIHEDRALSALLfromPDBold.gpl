@@ -1,0 +1,95 @@
+set size 1.0,1.16
+set encoding iso_8859_1
+set terminal postscript portrait enhanced color dashed lw 1 "Helvetica" 14 background rgb 'white'
+set output "../DIHEDRALSALLfromPDBold.eps"
+#set yrange [0:1.8] 
+set xrange [0:360] 
+unset ytic 
+#set xtics ("{/Symbol b}" 1, "{/Symbol a}" 2, "g_{3R}" 3, "g_{3S}" 4, "g_{2}" 5, "g_{1R}" 6, "g_{1S}" 7)
+#set xtics ("{/Symbol g}" 0, "{/Symbol b}" 1, "{/Symbol a}" 2, "g_{3}" 3, "g_{2}" 4, "g_{1}" 5)
+#set key box linestyle 1 linecolor rgb 'black'
+set multiplot layout 6,1
+
+set xtics format " " 
+set label at screen 0.02,0.5 rotate by 90 "Distribution" font ',15'
+
+set origin 0,0.93
+set size 1.0,0.23
+set label  "O_{/Symbol a}-C_{/Symbol a}-C_{/Symbol b}-N/C_{/Symbol g}"  at graph  0.01,0.8
+#set label  "A_{pl} = 66.8 {\305}^2"  at graph  0.02,0.8
+#set label  "{/Arial:Bold A_{pl} = 67.1 {\305}^2}"  at graph  0.02,0.7 #font ",12"
+set key above maxcols 4 maxrows 1
+plot "../../Data/PC0.dat" using 1:2 with lines title '  PC' lw 4 lc rgb 'black',\
+     "../../Data/PE0.dat" using 1:2 with lines title '  PE' lw 4 lc rgb 'blue',\
+     "../../Data/PG0.dat" using 1:2 with lines title '  PG' lw 4 lc rgb 'green',\
+     "../../Data/PSdih1.dat" using 1:2 with lines title '  PS' lw 4 lc rgb 'red',\
+     
+
+set origin 0,0.75
+set size 1.0,0.23
+unset label
+set label  "P-O_{/Symbol a}-C_{/Symbol a}-C_{/Symbol b}"  at graph  0.01,0.8
+#set label  "A_{pl} = 65.7 {\305}^2"  at graph  0.02,0.9
+#set label  "{/Arial:Bold A_{pl} = 68.9 {\305}^2}"  at graph  0.02,0.78 #font ",12"
+#set label  "A_{pl} = 53.5 {\305}^2"  at graph  0.79,0.9  tc rgb 'red'
+#set label  "A_{pl} = 61.6 {\305}^2"  at graph  0.79,0.78  tc rgb 'green'
+set key at graph 0.97,0.95
+plot "../../Data/PC1.dat" using 1:2 with lines notitle  lw 4 lc rgb 'black',\
+     "../../Data/PE1.dat" using 1:2 with lines notitle  lw 4 lc rgb 'blue',\
+     "../../Data/PG1.dat" using 1:2 with lines notitle  lw 4 lc rgb 'green',\
+     "../../Data/PS1.dat" using 1:2 with lines notitle  lw 4 lc rgb 'red',\
+
+	  
+set origin 0,0.57
+set size 1.0,0.23
+unset label
+set label  "O_{g3}-P-O_{/Symbol a}-C_{/Symbol a}"  at graph  0.01,0.8
+#set label  "{/Arial:Bold A_{pl} = 58.0 {\305}^2}"  at graph  0.01,0.85
+set key at graph 0.67,0.82
+plot "../../Data/PC2.dat" using 1:2 with lines notitle  lw 4 lc rgb 'black',\
+     "../../Data/PE2.dat" using 1:2 with lines notitle  lw 4 lc rgb 'blue',\
+     "../../Data/PG2.dat" using 1:2 with lines notitle  lw 4 lc rgb 'green',\
+     "../../Data/PS2.dat" using 1:2 with lines notitle  lw 4 lc rgb 'red',\
+
+
+
+set origin 0,0.39
+set size 1.0,0.23
+unset label
+set label  "g_3-O_{g3}-P-O_{/Symbol a}"  at graph  0.4,0.8
+#set label  "{/Arial:Bold A_{pl} = 58.0 {\305}^2}"  at graph  0.01,0.85
+set key at graph 0.67,0.82
+plot  "../../Data/PC3.dat" using 1:2 with lines notitle  lw 4 lc rgb 'black',\
+     "../../Data/PE3.dat" using 1:2 with lines notitle  lw 4 lc rgb 'blue',\
+     "../../Data/PG3.dat" using 1:2 with lines notitle  lw 4 lc rgb 'green',\
+     "../../Data/PS3.dat" using 1:2 with lines notitle  lw 4 lc rgb 'red',\
+
+
+set origin 0,0.21
+set size 1.0,0.23
+unset label
+set label  "g_2-g_3-O_{g3}-P"  at graph  0.02,0.8
+#set label  "{/Arial:Bold A_{pl} = 58.0 {\305}^2}"  at graph  0.01,0.85
+set key at graph 0.67,0.82
+plot  "../../Data/PC4.dat" using 1:2 with lines notitle  lw 4 lc rgb 'black',\
+     "../../Data/PE4.dat" using 1:2 with lines notitle  lw 4 lc rgb 'blue',\
+     "../../Data/PG4.dat" using 1:2 with lines notitle  lw 4 lc rgb 'green',\
+     "../../Data/PS4.dat" using 1:2 with lines notitle  lw 4 lc rgb 'red',\
+
+set xtics format "%G"
+set xlabel "Angle in degrees"
+set origin 0,0
+set size 1.0,0.26
+unset label
+set label  "g_1-g_2-g_3-O_{g3}"  at graph  0.02,0.8
+#set label  "{/Arial:Bold A_{pl} = 58.0 {\305}^2}"  at graph  0.01,0.85
+set key at graph 0.67,0.82
+plot  "../../Data/PC5.dat" using 1:2 with lines notitle  lw 4 lc rgb 'black',\
+     "../../Data/PE5.dat" using 1:2 with lines notitle  lw 4 lc rgb 'blue',\
+     "../../Data/PG5.dat" using 1:2 with lines notitle  lw 4 lc rgb 'green',\
+     "../../Data/PS5.dat" using 1:2 with lines notitle  lw 4 lc rgb 'red',\
+
+
+
+
+
